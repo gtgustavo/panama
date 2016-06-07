@@ -11,11 +11,15 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+$factory->define(App\Models\User::class, function ($faker) {
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => str_random(10),
-        'remember_token' => str_random(10),
+        'first_name' => $faker->firstName,
+        'last_name'  => $faker->lastName,
+        'ced_id'     => $faker->unique()->ean8,
+        'phone'      => '04161234567',
+        'email'      => $faker->unique()->email,
+        'role_id'    => '2',
     ];
+
 });
