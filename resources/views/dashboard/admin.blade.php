@@ -25,10 +25,3 @@
         <!-- End: Content -->
 
 @endsection
-
-
-@section('script')
-
-    {!! Html::script('assets/js/app/init.js') !!}
-
-@endsection

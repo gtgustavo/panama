@@ -76,39 +76,59 @@ return [
 
     'form' => [
 
-        /*
-         * Translations from title of form and principal label title
-         */
+        'profile' => [
 
-        'title' => [
+            'title' => 'PERFILES ADMINISTRATIVOS',
 
-            'welcome'    => 'Bienvenido',
+            'create' => 'Nuevo Perfil',
 
-            'sing'       => 'Iniciar Sesión',
+            'tile' => [
 
-            'forget'     => '¿Se te olvidó tu contraseña?',
+                'profiles' => 'PERFILES ADMINISTRATIVOS',
 
-            'reset'      => 'Restablecer la Contraseña',
+                'roles'    => 'ROLES',
 
-            'return'     => 'Regresar al inicio',
+                'users'    => 'EMPLEADOS',
 
-            'employees'  => 'Empleados',
+            ],
 
-            'profiles'   => 'Perfiles Administrativos',
+            'table' => [
 
+                'profile'     => 'PERFIL',
+
+                'description' => 'DESCRIPCIÓN',
+
+                'roles'       => 'ROLES',
+
+                'employees'   => 'EMPLEADOS',
+            ],
+
+            'events' => [
+
+                'create' => 'Nuevo Perfil Administrativo',
+
+                'edit'   => 'Actualizar Perfil Administrativo',
+
+                'config' => 'Configurar roles a Perfil Administrativo',
+            ],
+
+            'select' => [
+
+                'available' => 'Roles Disponibles',
+
+                'config'    => 'Roles Configurados al Perfil',
+            ],
         ],
 
-        'sub_title' => [
+        'actions' => [
 
-            'create'      => 'Nuevo',
+            'title'       => 'Acciones',
 
-            'edit'        => 'Modificar',
+            'edit'        => 'Actualizar',
 
-            'assign'      => 'Asignación',
+            'delete'      => 'Eliminar',
 
-            'credentials' => 'Credenciales',
-
-            'select'      => 'Por favor seleccione una opción'
+            'config'      => 'Configurar',
 
         ],
 
@@ -135,6 +155,14 @@ return [
             'remove'  => 'REMOVER',
 
             'search'  => 'BUSCAR',
+
+        ],
+
+        'paginate' => [
+
+            'page' => 'PÁGINA',
+
+            'of'   => 'DE'
 
         ],
 

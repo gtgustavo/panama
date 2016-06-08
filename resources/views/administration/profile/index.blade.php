@@ -16,6 +16,8 @@
             <!-- dashboard tiles -->
             @include('administration.profile.partials.tiles')
 
+            @include('a_templates.partials.messages')
+
             @include('administration.profile.partials.table')
 
         </div>
@@ -23,12 +25,5 @@
 
     </section>
     <!-- End: Content -->
-
-@endsection
-
-
-@section('script')
-
-    {!! Html::script('assets/js/app/init.js') !!}
 
 @endsection

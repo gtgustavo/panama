@@ -44,7 +44,21 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function(){
 // Routes Profiles
 Route::group(['prefix' => 'profile', 'namespace' => 'Administration'], function(){
 
-    Route::get('/', ['uses' => 'ProfileController@index',   'as' => 'profile_home']);
+    Route::get('/',           ['uses' => 'ProfileController@index',   'as' => 'profile_home']);
+
+    Route::get('create',      ['uses' => 'ProfileController@create',  'as' => 'profile_create']);
+
+    Route::post('create',     ['uses' => 'ProfileController@store',   'as' => 'profile_create']);
+
+    Route::get('{id}/edit',   ['uses' => 'ProfileController@edit',    'as' => 'profile_edit']);
+
+    Route::put('{id}/update', ['uses' => 'ProfileController@update',  'as' => 'profile_update']);
+
+    Route::get('{id}/config', ['uses' => 'ProfileController@show',    'as' => 'profile_config']);
+
+    Route::put('{id}/assign', ['uses' => 'ProfileController@assign',  'as' => 'profile_assign']);
+
+    Route::get('{id}',        ['uses' => 'ProfileController@destroy', 'as' => 'profile_delete']);
 });
 
 // Routes Employees

@@ -139,12 +139,12 @@ return [
         'subject'               => 'Asunto',
         'message'               => 'Mensaje',
         'ced_id'                => 'Cédula de identidad',
-        'position'              => 'Cargo',
         'profile'               => 'Pefil',
+        'profiles'              => 'Pefiles',
         'status'                => 'Estatus',
         'employees'             => 'Empleados',
         'employee'              => 'Empleado',
-        'roles'                 => 'Reglas',
+        'rules'                 => 'Reglas',
         'event'                 => 'Evento',
         'module'                => 'Modulo',
         'search'                => 'Buscar',
@@ -157,9 +157,6 @@ return [
         'current_existence'     => 'Existencia actual',
         'company'               => 'Empresa',
         'rif'                   => 'RIF.',
-        'contact_name'          => 'Nombre de Contacto',
-        'contact_phone'         => 'Teléfono de Contacto',
-
     ],
 
 ];

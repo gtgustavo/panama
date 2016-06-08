@@ -95,7 +95,7 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="{{ route('home') }}">
+                                <a href="{{ route('profile_create') }}">
                                     {{ trans('front.sidebar.sub_sub_title.create_profile') }}
                                 </a>
                             </li>

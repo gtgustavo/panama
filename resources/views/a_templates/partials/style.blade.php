@@ -10,4 +10,7 @@
 <!-- Favicon -->
 <link href="{!! asset('assets/img/favicon.ico') !!}" rel="stylesheet">
 
+<!-- Select Multiple -->
+{!! Html::style('assets/select-multiple/multi-select.css') !!}
+
 @yield('style')

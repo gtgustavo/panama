@@ -5,11 +5,11 @@
         <div class="col-sm-7 pr30">
 
             <div class="section">
-                {!! Field::email('email', ['class' => 'gui-input', 'i' => 'field-icon', 'ph' => trans('validation.attributes.email')]) !!}
+                {!! Field::email('email',       ['class' => 'gui-input', 'ph' => trans('validation.attributes.email')]) !!}
             </div>
 
             <div class="section">
-                {!! Field::password('password', ['class' => 'gui-input',  'ph' => trans('validation.attributes.password')]) !!}
+                {!! Field::password('password', ['class' => 'gui-input', 'ph' => trans('validation.attributes.password')]) !!}
             </div>
 
         </div>

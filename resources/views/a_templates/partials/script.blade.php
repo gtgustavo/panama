@@ -13,4 +13,10 @@
 {!! Html::script('assets/js/demo/demo.js') !!}
 {!! Html::script('assets/js/main.js') !!}
 
+<!-- Init style and effects -->
+{!! Html::script('assets/js/app/init.js') !!}
+
+<!-- Select Multiple -->
+{!! Html::script('assets/select-multiple/jquery.multi-select.js') !!}
+
 @yield('script')
