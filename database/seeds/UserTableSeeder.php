@@ -22,7 +22,7 @@ class UserTableSeeder extends Seeder
             'email'      => 'admin1@admin.com',
             'password'   => bcrypt('gt123456'),
             'status'     => 'active',
-            'role_id'    => '1',
+            'profile_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
 

@@ -11,9 +11,12 @@
 |
 */
 
-
-Route::get('test', function () {
-    return view('auth.form_login');
+// Language
+Route::group(['middleware' => 'language'], function () {
+    Route::get('language/{language}', function ($language) {
+        Session::set('lang', $language);
+        return Redirect::back();
+    });
 });
 
 // Authentication and Password reset Routes...
@@ -35,12 +38,17 @@ Route::group(['prefix' => '/', 'namespace' => 'Auth'], function(){
 // Routes Dashboard
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function(){
 
-    Route::get('/', ['uses' => 'DashboardController@index',   'as' => 'home']);
+    Route::get('/', ['uses' => 'DashboardController@admin',   'as' => 'home']);
 });
 
-Route::group(['middleware' => 'language'], function () {
-    Route::get('language/{language}', function ($language) {
-        Session::set('lang', $language);
-        return Redirect::back();
-    });
+// Routes Profiles
+Route::group(['prefix' => 'profile', 'namespace' => 'Administration'], function(){
+
+    Route::get('/', ['uses' => 'ProfileController@index',   'as' => 'profile_home']);
+});
+
+// Routes Employees
+Route::group(['prefix' => 'employee', 'namespace' => 'Administration'], function(){
+
+    Route::get('/', ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
 });

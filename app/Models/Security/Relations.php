@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Relations extends Model
 {
-    protected $table = 'permission_role';
+    protected $table = 'profile_role';
 
-    protected $fillable = ['role_id', 'permission_id'];
+    protected $fillable = ['profile_id', 'role_id'];
 }

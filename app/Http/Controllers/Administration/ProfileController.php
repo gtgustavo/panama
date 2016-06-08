@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Administration;
 
+use App\Models\Security\Profile;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class ProfileController extends Controller
 {
     public function __construct()
     {
@@ -19,9 +20,11 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function admin()
+    public function index()
     {
-        return view('dashboard.admin');
+        $profiles = Profile::with('roles')->get();
+
+        return view('administration.profile.index');
     }
 
     /**

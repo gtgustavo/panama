@@ -19,7 +19,7 @@ $factory->define(App\Models\User::class, function ($faker) {
         'ced_id'     => $faker->unique()->ean8,
         'phone'      => '04161234567',
         'email'      => $faker->unique()->email,
-        'role_id'    => '2',
+        'profile_id' => '2',
     ];
 
 });

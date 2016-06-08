@@ -2,145 +2,141 @@
 
 return [
 
-    'author'  => '2016 - Yanis Perez Castillo',
+    'author'  => '2016 - Gustavo Perez',
 
     'head'    => [
 
-        'title' => 'Cachapas Masis C.A.',
+        'title' => 'AdminDesigns',
+
+    ],
+
+    'header' => [
+
+        'top' => [
+
+            'language' => [
+
+                'language' => 'Idioma',
+
+                'es'       => 'Español',
+
+                'en'       => 'Ingles',
+            ],
+        ],
+
+        'below' => [
+
+
+
+        ],
 
     ],
 
     'sidebar' => [
 
+        'label' => [
+
+            'menu'     => 'Menú',
+
+            'security' => 'Seguridad',
+
+            'package'  => 'Paquetes',
+        ],
+
         'title' => [
 
+            'board'          => 'Dashboard',
+
             'administration' => 'Administración',
+        ],
 
-            'employees'      => 'Empleados',
+        'sub_title' => [
 
-            'products'       => 'Productos',
+            'employees' => 'Empleados',
 
-            'category'       => 'Categorías',
+            'profiles'  => 'Perfiles',
 
-            'provider'       => 'Proveedores',
+            'packages'  => 'Paquetes',
+        ],
 
-            'order_payment'  => 'Orden de Compra',
+        'sub_sub_title' => [
 
-            'order_output'   => 'Orden de Salida',
+            'create_employee' => 'Crear Empleado',
 
-            'statistics'     => 'Estadísticas',
+            'list_employee'   => 'Todos los Empleados',
+
+            'create_profile'  => 'Crear Perfil',
+
+            'list_profile'    => 'Todos los Perfiles',
+
+            'new_package'     => 'Nuevo Paquete',
+        ],
+
+    ],
+
+    'form' => [
+
+        /*
+         * Translations from title of form and principal label title
+         */
+
+        'title' => [
+
+            'welcome'    => 'Bienvenido',
+
+            'sing'       => 'Iniciar Sesión',
+
+            'forget'     => '¿Se te olvidó tu contraseña?',
+
+            'reset'      => 'Restablecer la Contraseña',
+
+            'return'     => 'Regresar al inicio',
+
+            'employees'  => 'Empleados',
+
+            'profiles'   => 'Perfiles Administrativos',
 
         ],
 
         'sub_title' => [
 
-            // Administration
+            'create'      => 'Nuevo',
 
-            'create_profile'  => 'Crear Perfil',
+            'edit'        => 'Modificar',
 
-            'list_profile'    => 'Listar Perfiles',
+            'assign'      => 'Asignación',
 
-            'audit'           => 'Auditoría',
+            'credentials' => 'Credenciales',
 
-            'create_measure'  => 'Crear Medida',
-
-            'list_measure'    => 'Listar Medidas',
-
-            'create_position' => 'Crear Cargo',
-
-            'list_position'   => 'Listar Cargos',
-
-            // Generic
-
-            'new'            => 'Nuevo',
-
-            'list'           => 'Listar',
+            'select'      => 'Por favor seleccione una opción'
 
         ],
 
-    ],
+        /*
+         * Translations from buttons
+         */
 
-    /*
-     * Translations from title of form and principal label title
-     */
+        'button' => [
 
-    'title' => [
+            'login'   => 'Iniciar Sesión',
 
-        'welcome'    => 'Bienvenido',
+            'logout'  => 'Cerrar Sesión',
 
-        'sing'       => 'Iniciar Sesión',
+            'reset'   => 'RESTABLECER',
 
-        'forget'     => '¿Se te olvidó tu contraseña?',
+            'cancel'  => 'CANCELAR',
 
-        'reset'      => 'Restablecer la Contraseña',
+            'sign_up' => 'Registro',
 
-        'return'     => 'Regresar al inicio',
+            'update'  => 'ACTUALIZAR',
 
-        'employees'  => 'Empleados',
+            'assign'  => 'ASIGNAR',
 
-        'profiles'   => 'Perfiles Administrativos',
+            'remove'  => 'REMOVER',
 
-        'measure'    => 'Medidas de Productos',
+            'search'  => 'BUSCAR',
 
-        'position'   => 'Cargos de Empleados',
-
-        'audit'      => 'Auditoría del Sistema',
-
-        'category'   => 'Categorías de Productos',
-
-        'product'    => 'Productos',
-
-        'provider'   => 'Proveedores',
-
-    ],
-
-    'sub_title' => [
-
-        'create'      => 'Nuevo',
-
-        'edit'        => 'Modificar',
-
-        'assign'      => 'Asignación',
-
-        'credentials' => 'Credenciales',
-
-        'select'      => 'Por favor seleccione una opción'
-
-    ],
-
-    /*
-     * Translations from buttons
-     */
-
-    'button' => [
-
-        'login'   => 'ENTRAR',
-
-        'logout'  => 'SALIR',
-
-        'reset'   => 'RESTABLECER',
-
-        'cancel'  => 'CANCELAR',
-
-        'new'     => 'REGISTRAR',
-
-        'update'  => 'ACTUALIZAR',
-
-        'assign'  => 'ASIGNAR',
-
-        'remove'  => 'REMOVER',
-
-        'search'  => 'BUSCAR',
-
-    ],
-
-    'button_ico' => [
-
-        'assign'  => 'Asignar',
-
-        'edit'    => 'Editar',
-
-        'delete'  => 'Eliminar',
+        ],
 
     ],
 

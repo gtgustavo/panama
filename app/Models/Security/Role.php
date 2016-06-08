@@ -8,15 +8,10 @@ class Role extends Model
 {
     protected $table = 'role';
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'display_name'];
 
-    public function permissions() {
+    public function profile() {
 
-        return $this->belongsToMany('App\Models\Security\Permission');
-    }
-
-    public function users()
-    {
-        return $this->hasMany('App\Models\User');
+        return $this->belongsToMany('App\Models\Security\Profile');
     }
 }

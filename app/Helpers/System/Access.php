@@ -4,7 +4,7 @@ namespace App\Helpers\System;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Security\Permission;
+use App\Models\Security\Role;
 use App\Models\Security\Relations;
 use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
@@ -16,9 +16,9 @@ class Access extends Controller
         $this->middleware('auth');
     }
 
-    public static function allow($permission)
+    public static function allow($role)
     {
-        $exists = self::validate_permission($permission);
+        $exists = self::validate_role($role);
 
         return $exists;
     }
@@ -30,13 +30,13 @@ class Access extends Controller
         return redirect()->back();
     }
 
-    private static function validate_permission($permission)
+    private static function validate_role($role)
     {
-        $role = self::role();
+        $profile = self::profile();
 
-        $permission_id = self::permission($permission);
+        $role_id = self::role($role);
 
-        $data = Relations::where('permission_id', $permission_id)->where('role_id', $role)->get();
+        $data = Relations::where('role_id', $role_id)->where('profile_id', $profile)->get();
 
         $count = count($data);
 
@@ -51,27 +51,27 @@ class Access extends Controller
     }
 
 
-    private static function role()
+    private static function profile()
     {
-        return Auth::user()->role_id;
+        return Auth::user()->profile_id;
     }
 
-    private static function permission($permission)
+    private static function role($role)
     {
-        $data = Permission::where('name', $permission)->get();
+        $data = Role::where('name', $role)->get();
 
         $count = count($data);
 
-        $id_permission = null;
+        $id_role = null;
 
         if($count > 0)
         {
-            foreach($data as $permission_role)
+            foreach($data as $data_role)
             {
-                $id_permission = $permission_role->id;
+                $id_role = $data_role->id;
             }
         }
 
-        return $id_permission;
+        return $id_role;
     }
 }

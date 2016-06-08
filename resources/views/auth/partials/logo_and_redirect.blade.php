@@ -8,9 +8,9 @@
 
     <div class="col-xs-6 text-right va-b pr5">
         <div class="login-links">
-            <a href="{{ route('auth') }}" class="active" title="Sign In">Sign In</a>
+            <a href="{{ route('auth') }}" class="active" title="{{ trans('front.form.button.login') }}"> {{ trans('front.form.button.login') }} </a>
             <span class="text-white"> | </span>
-            <a href="{{ route('home') }}" class="" title="Register">Register</a>
+            <a href="{{ route('home') }}" class="" title="{{ trans('front.form.button.sign_up') }}"> {{ trans('front.form.button.sign_up') }} </a>
         </div>
 
     </div>
