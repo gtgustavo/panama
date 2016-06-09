@@ -64,5 +64,15 @@ Route::group(['prefix' => 'profile', 'namespace' => 'Administration'], function(
 // Routes Employees
 Route::group(['prefix' => 'employee', 'namespace' => 'Administration'], function(){
 
-    Route::get('/', ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
+    Route::get('/',            ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
+
+    Route::get('create',       ['uses' => 'EmployeeController@create',  'as' => 'employee_create']);
+
+    Route::post('create',      ['uses' => 'EmployeeController@store',   'as' => 'employee_create']);
+
+    Route::get('{id}/edit',    ['uses' => 'EmployeeController@edit',    'as' => 'employee_edit']);
+
+    Route::put('{id}/update',  ['uses' => 'EmployeeController@update',  'as' => 'employee_update']);
+
+    Route::get('{id}',         ['uses' => 'EmployeeController@destroy', 'as' => 'employee_delete']);
 });

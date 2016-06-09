@@ -16,8 +16,9 @@ $factory->define(App\Models\User::class, function ($faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name'  => $faker->lastName,
-        'ced_id'     => $faker->unique()->ean8,
-        'phone'      => '04161234567',
+        'dni'        => $faker->unique()->ean8,
+        'phone_c'    => '04161234567',
+        'phone_h'    => '02431234567',
         'email'      => $faker->unique()->email,
         'profile_id' => '2',
     ];

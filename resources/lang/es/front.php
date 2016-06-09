@@ -120,16 +120,44 @@ return [
             ],
         ],
 
+        'employee' => [
+
+            'title' => 'EMPLEADOS',
+
+            'create' => 'Nuevo Empleado',
+
+            'table' => [
+
+                'name'    => 'NOMBRE',
+
+                'dni'     => 'DNI',
+
+                'email'   => 'EMAIL',
+
+                'profile' => 'PERFIL',
+
+                'phone_c' => 'TLF. MÓVIL',
+
+                'phone_h' => 'TLF. HABITACIÓN',
+            ],
+
+            'events' => [
+
+                'create' => 'Nuevo Empleado',
+
+                'edit'   => 'Actualizar Empleado',
+            ],
+        ],
+
         'actions' => [
 
-            'title'       => 'Acciones',
+            'title'   => 'Acciones',
 
-            'edit'        => 'Actualizar',
+            'edit'    => 'Actualizar',
 
-            'delete'      => 'Eliminar',
+            'delete'  => 'Eliminar',
 
-            'config'      => 'Configurar',
-
+            'config'  => 'Configurar',
         ],
 
         /*

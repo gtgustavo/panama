@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administration;
 
 use App\Helpers\Helper;
+use App\Helpers\System\Access;
 use App\Http\Requests\Security\ProfileRequest;
 use App\Http\Requests\Security\RelationsRequest;
 use App\Models\Security\Profile;
@@ -28,15 +29,20 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '2')->paginate();
+        if(Access::allow('view-profiles'))
+        {
+            $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '2')->paginate();
 
-        $cant_profiles = count(Profile::where('id', '!=', '2')->get());
+            $cant_profiles = count(Profile::where('id', '!=', '2')->get());
 
-        $roles         = count(Role::where('id', '>', 2)->get());
+            $roles         = count(Role::where('id', '>', 2)->get());
 
-        $users         = count(User::where('profile_id', '!=', 2)->get());
+            $users         = count(User::where('profile_id', '!=', 2)->get());
 
-        return view('administration.profile.index', compact('profiles', 'roles', 'users', 'cant_profiles'));
+            return view('administration.profile.index', compact('profiles', 'roles', 'users', 'cant_profiles'));
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -46,7 +52,12 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('administration.profile.create');
+        if(Access::allow('create-profiles'))
+        {
+            return view('administration.profile.create');
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -57,13 +68,18 @@ class ProfileController extends Controller
      */
     public function store(ProfileRequest $request)
     {
-        $collection = Helper::convert_to_uppercase($request->all());
+        if(Access::allow('create-profiles'))
+        {
+            $collection = Helper::convert_to_uppercase($request->all());
 
-        $profile = Profile::create($collection->all());
+            $profile = Profile::create($collection->all());
 
-        Alert::message(trans('messages.system.profile_create', ['profile' => $profile->name]), 'success');
+            Alert::message(trans('messages.system.profile_create', ['profile' => $profile->name]), 'success');
 
-        return $this->redirectDefault();
+            return $this->redirectDefault();
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -74,48 +90,58 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $profile = Profile::findOrFail($id);
-
-        if($id > 2) // Protection profile administration
+        if(Access::allow('permissions-profiles'))
         {
-            $profile_role = Profile::findOrFail($id)->roles()->lists('role_id')->toArray();
+            $profile = Profile::findOrFail($id);
 
-            $roles = Role::where('id', '>', 2)->lists('display_name', 'id');
-
-            return view('administration.profile.role', compact('profile', 'profile_role', 'roles'));
-        }
-
-        Alert::message(trans('messages.system.profile_danger', ['profile' => $profile->name]), 'danger');
-
-        return $this->redirectDefault();
-    }
-
-    public function assign($id, RelationsRequest $request)
-    {
-        $profile = Profile::findOrFail($id);
-
-        if($id > 2) // Protection profile administration
-        {
-            Relations::where('profile_id', $id)->delete();
-
-            $roles = $request->input('role_id');
-
-            foreach ($roles as $role)
+            if($id > 2) // Protection profile administration
             {
-                Relations::create([
-                    'profile_id' => $id,
-                    'role_id'    => $role
-                ]);
+                $profile_role = Profile::findOrFail($id)->roles()->lists('role_id')->toArray();
+
+                $roles = Role::where('id', '>', 2)->lists('display_name', 'id');
+
+                return view('administration.profile.role', compact('profile', 'profile_role', 'roles'));
             }
 
-            Alert::message(trans('messages.system.profile_assign', ['profile' => $profile->name]), 'success');
+            Alert::message(trans('messages.system.profile_danger', ['profile' => $profile->name]), 'danger');
 
             return $this->redirectDefault();
         }
 
-        Alert::message(trans('messages.system.profile_danger', ['profile' => $profile->name]), 'danger');
+        return Access::redirectDefault();
+    }
 
-        return $this->redirectDefault();
+    public function assign($id, RelationsRequest $request)
+    {
+        if(Access::allow('permissions-profiles'))
+        {
+            $profile = Profile::findOrFail($id);
+
+            if($id > 2) // Protection profile administration
+            {
+                Relations::where('profile_id', $id)->delete();
+
+                $roles = $request->input('role_id');
+
+                foreach ($roles as $role)
+                {
+                    Relations::create([
+                        'profile_id' => $id,
+                        'role_id'    => $role
+                    ]);
+                }
+
+                Alert::message(trans('messages.system.profile_assign', ['profile' => $profile->name]), 'success');
+
+                return $this->redirectDefault();
+            }
+
+            Alert::message(trans('messages.system.profile_danger', ['profile' => $profile->name]), 'danger');
+
+            return $this->redirectDefault();
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -126,9 +152,14 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::findOrFail($id);
+        if(Access::allow('edit-profiles'))
+        {
+            $profile = Profile::findOrFail($id);
 
-        return view('administration.profile.edit', compact('profile'));
+            return view('administration.profile.edit', compact('profile'));
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -140,15 +171,20 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request, $id)
     {
-        $collection = Helper::convert_to_uppercase($request->all());
+        if(Access::allow('edit-profiles'))
+        {
+            $collection = Helper::convert_to_uppercase($request->all());
 
-        $profile = Profile::findOrFail($id);
+            $profile = Profile::findOrFail($id);
 
-        $profile->update($collection->all());
+            $profile->update($collection->all());
 
-        Alert::message(trans('messages.system.profile_update', ['profile' => $profile->name]), 'info');
+            Alert::message(trans('messages.system.profile_update', ['profile' => $profile->name]), 'info');
 
-        return $this->redirectDefault();
+            return $this->redirectDefault();
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -159,20 +195,25 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        $profile = Profile::findOrFail($id);
-
-        if($id > 2) // Protection profile administration
+        if(Access::allow('delete-profiles'))
         {
-            Profile::destroy($id);
+            $profile = Profile::findOrFail($id);
 
-            Alert::message(trans('messages.system.profile_delete', ['profile' => $profile->name]), 'warning');
+            if($id > 2) // Protection profile administration
+            {
+                Profile::destroy($id);
 
-        } else {
+                Alert::message(trans('messages.system.profile_delete', ['profile' => $profile->name]), 'warning');
 
-            Alert::message(trans('messages.system.profile_danger', ['profile' => $profile->name]), 'danger');
+            } else {
+
+                Alert::message(trans('messages.system.profile_danger', ['profile' => $profile->name]), 'danger');
+            }
+
+            return $this->redirectDefault();
         }
 
-        return $this->redirectDefault();
+        return Access::redirectDefault();
     }
 
     /**

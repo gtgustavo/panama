@@ -20,15 +20,16 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('client', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name', 30);
             $table->string('last_name', 30);
-            $table->integer('ced_id')->length(9)->unsigned()->unique();
-            $table->string('phone', 11);
+            $table->integer('dni')->length(10)->unsigned()->unique();
+            $table->string('phone_c', 15);
+            $table->string('phone_h', 15)->nullable();
             $table->string('email', 30)->unique();
             $table->string('password', 60)->nullable();
-            $table->enum('status', ['active', 'disabled', 'locked'])->default('disabled');
+            //$table->enum('status', ['active', 'disabled', 'locked'])->default('disabled');
             $table->integer('profile_id')->unsigned();
             $table->rememberToken();
 
@@ -68,7 +69,7 @@ class CreateUsersTable extends Migration
     {
         Schema::drop('profile_role');
         Schema::drop('role');
-        Schema::drop('client');
+        Schema::drop('users');
         Schema::drop('profile');
     }
 }

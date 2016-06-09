@@ -17,14 +17,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var string
      */
-    protected $table = 'client';
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'ced_id', 'phone', 'email', 'password', 'status', 'profile_id'];
+    protected $fillable = ['first_name', 'last_name', 'dni', 'phone_c', 'phone_h', 'email', 'password', 'profile_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -38,14 +38,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->first_name . " " . $this->last_name;
     }
 
-    public function roles()
+    public function profile()
     {
-        return $this->hasMany('App\Models\Security\Role', 'id', 'role_id');
+        return $this->hasMany('App\Models\Security\Profile', 'id', 'profile_id');
     }
 
     public static function FilterAndPaginate($search, $field)
     {
         return User::name($search, $field)
+            ->where('profile_id', '!=', '2')
             ->orderBy('id', 'ASC')
             ->paginate();
     }

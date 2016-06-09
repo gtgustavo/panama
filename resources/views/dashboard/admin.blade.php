@@ -16,6 +16,8 @@
                 <!-- dashboard tiles -->
                 @include('dashboard.partials.tiles')
 
+                @include('a_templates.partials.messages')
+
                 @include('dashboard.partials.table')
 
             </div>

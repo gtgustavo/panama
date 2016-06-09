@@ -125,18 +125,11 @@ class PermissionsTableSeeder extends Seeder
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));
-
-        DB::table('role')->insert(array(
-            'name'         => 'credentials-employees',
-            'display_name' => 'Agregar / Remover Credenciales de Acceso',
-            'created_at'   => Carbon::now(),
-            'updated_at'   => Carbon::now(),
-        ));
     }
 
     private function add_roles()
     {
-        for($i=3; $i < 13; $i++)
+        for($i=3; $i < 12; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

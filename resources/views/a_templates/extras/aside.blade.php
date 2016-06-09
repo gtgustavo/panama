@@ -75,12 +75,12 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="{{ route('home') }}">
+                                <a href="{{ route('employee_create') }}">
                                     {{ trans('front.sidebar.sub_sub_title.create_employee') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('home') }}">
+                                <a href="{{ route('employee_home') }}">
                                     {{ trans('front.sidebar.sub_sub_title.list_employee') }}
                                 </a>
                             </li>
