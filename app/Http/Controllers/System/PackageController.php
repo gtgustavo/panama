@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\System;
 
+use App\Helpers\System\Access;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class PackageController extends Controller
 {
     public function __construct()
     {
@@ -19,9 +20,14 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function admin()
+    public function index()
     {
-        return view('dashboard.admin.index');
+        if(Access::allow('view-package'))
+        {
+            return 'Package';
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -31,7 +37,12 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        if(Access::allow('create-package'))
+        {
+            return 'create package';
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -42,7 +53,12 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Access::allow('create-package'))
+        {
+            //
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -53,7 +69,12 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Access::allow('profiles-package'))
+        {
+            //
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -64,7 +85,12 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(Access::allow('edit-package'))
+        {
+            //
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -76,7 +102,12 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(Access::allow('edit-package'))
+        {
+            //
+        }
+
+        return Access::redirectDefault();
     }
 
     /**
@@ -87,6 +118,19 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Access::allow('delete-package'))
+        {
+            //
+        }
+
+        return Access::redirectDefault();
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function redirectDefault()
+    {
+        return redirect()->route('package_home');
     }
 }

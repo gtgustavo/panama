@@ -76,3 +76,35 @@ Route::group(['prefix' => 'employee', 'namespace' => 'Administration'], function
 
     Route::get('{id}',         ['uses' => 'EmployeeController@destroy', 'as' => 'employee_delete']);
 });
+
+// Routes Client
+Route::group(['prefix' => 'client', 'namespace' => 'System'], function(){
+
+    Route::get('/',            ['uses' => 'ClientController@index',   'as' => 'client_home']);
+
+    Route::get('create',       ['uses' => 'ClientController@create',  'as' => 'client_create']);
+
+    Route::post('create',      ['uses' => 'ClientController@store',   'as' => 'client_create']);
+
+    Route::get('{id}/edit',    ['uses' => 'ClientController@edit',    'as' => 'client_edit']);
+
+    Route::put('{id}/update',  ['uses' => 'ClientController@update',  'as' => 'client_update']);
+
+    Route::get('{id}',         ['uses' => 'ClientController@destroy', 'as' => 'client_delete']);
+});
+
+// Routes Package
+Route::group(['prefix' => 'package', 'namespace' => 'System'], function(){
+
+    Route::get('/',            ['uses' => 'PackageController@index',   'as' => 'package_home']);
+
+    Route::get('create',       ['uses' => 'PackageController@create',  'as' => 'package_create']);
+
+    Route::post('create',      ['uses' => 'PackageController@store',   'as' => 'package_create']);
+
+    Route::get('{id}/edit',    ['uses' => 'PackageController@edit',    'as' => 'package_edit']);
+
+    Route::put('{id}/update',  ['uses' => 'PackageController@update',  'as' => 'package_update']);
+
+    Route::get('{id}',         ['uses' => 'PackageController@destroy', 'as' => 'package_delete']);
+});

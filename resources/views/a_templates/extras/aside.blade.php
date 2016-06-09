@@ -76,7 +76,7 @@
                         <ul class="nav sub-nav">
                             <li>
                                 <a href="{{ route('employee_create') }}">
-                                    {{ trans('front.sidebar.sub_sub_title.create_employee') }}
+                                    {!! trans('front.form.employee.create') !!}
                                 </a>
                             </li>
                             <li>
@@ -96,7 +96,7 @@
                         <ul class="nav sub-nav">
                             <li>
                                 <a href="{{ route('profile_create') }}">
-                                    {{ trans('front.sidebar.sub_sub_title.create_profile') }}
+                                    {!! trans('front.form.profile.create') !!}
                                 </a>
                             </li>
                             <li>
@@ -110,7 +110,7 @@
                 </ul>
             </li>
 
-            <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.package') !!} </li>
+            <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>
 
             <li>
                 <a class="accordion-toggle" href="#">
@@ -120,8 +120,28 @@
                 </a>
                 <ul class="nav sub-nav">
                     <li>
-                        <a href="{{ route('home') }}">
-                            <span class="fa fa-cube"></span> {{ trans('front.sidebar.sub_sub_title.new_package') }}
+                        <a href="{{ route('package_create') }}">
+                            <span class="fa fa-cube"></span> {!! trans('front.form.package.create') !!}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="accordion-toggle" href="#">
+                    <span class="fa fa-users"></span>
+                    <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.clients') }} </span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="nav sub-nav">
+                    <li>
+                        <a href="{{ route('client_create') }}">
+                            <span class="fa fa-user-plus"></span> {!! trans('front.form.client.create') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('client_home') }}">
+                            <span class="fa fa-users"></span>     {{ trans('front.sidebar.sub_sub_title.list_client') }}
                         </a>
                     </li>
                 </ul>

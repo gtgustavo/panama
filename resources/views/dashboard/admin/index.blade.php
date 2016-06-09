@@ -2,7 +2,7 @@
 
 @section('header_menu')
 
-    @include('dashboard.partials.header')
+    @include('dashboard.admin.partials.header')
 
 @endsection
 
@@ -14,11 +14,11 @@
             <div class="tray tray-center">
 
                 <!-- dashboard tiles -->
-                @include('dashboard.partials.tiles')
+                @include('dashboard.admin.partials.tiles')
 
                 @include('a_templates.partials.messages')
 
-                @include('dashboard.partials.table')
+                @include('dashboard.admin.partials.table')
 
             </div>
             <!-- end: .tray-center -->

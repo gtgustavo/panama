@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Security;
+namespace App\Http\Requests\System;
 
 use App\Http\Requests\Request;
 use Illuminate\Routing\Route;
 
-class EmployeesRequest extends Request
+class ClientsRequest extends Request
 {
     /**
      * @var Route
@@ -47,8 +47,6 @@ class EmployeesRequest extends Request
             'phone_c'    => 'required|digits_between:10,15',
 
             'phone_h'    => 'digits_between:10,15',
-
-            'password'   => 'required|confirmed|min:8',
         ];
     }
 }

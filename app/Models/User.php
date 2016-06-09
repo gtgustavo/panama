@@ -51,6 +51,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             ->paginate();
     }
 
+    public static function FilterAndPaginateClient($search, $field)
+    {
+        return User::name($search, $field)
+            ->where('profile_id', '2')
+            ->orderBy('id', 'DES')
+            ->paginate();
+    }
+
     public function scopeName($query, $search, $field)
     {
         if ((trim($search) != "") AND (trim($field) != "")){

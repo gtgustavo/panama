@@ -15,6 +15,7 @@ class PermissionsTableSeeder extends Seeder
     {
         $this->profile();
         $this->role_administrations();
+        $this->role_warehouse();
         $this->add_roles();
     }
 
@@ -127,9 +128,73 @@ class PermissionsTableSeeder extends Seeder
         ));
     }
 
+    // WAREHOUSE
+    private function role_warehouse()
+    {
+        // PACKAGE
+
+        DB::table('role')->insert(array(
+            'name'         => 'view-package',
+            'display_name' => 'Leer Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-package',
+            'display_name' => 'Crear Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-package',
+            'display_name' => 'Modificar Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-package',
+            'display_name' => 'Borrar Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        //CLIENTS
+
+        DB::table('role')->insert(array(
+            'name'         => 'view-client',
+            'display_name' => 'Leer Clientes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-client',
+            'display_name' => 'Crear Clientes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-client',
+            'display_name' => 'Modificar Clientes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-client',
+            'display_name' => 'Borrar Clientes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+    }
+
     private function add_roles()
     {
-        for($i=3; $i < 12; $i++)
+        for($i=3; $i < 20; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
