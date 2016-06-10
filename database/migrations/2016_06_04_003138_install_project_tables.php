@@ -41,12 +41,17 @@ class InstallProjectTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('agenda', function (Blueprint $table) {
+        Schema::create('consigning', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id')->unsigned();
-            $table->string('pointer', 50);
+            $table->integer('client_id')->unsigned();
+            $table->string('country', 50);
+            $table->string('province', 50);
+            $table->string('city', 50);
+            $table->string('postal_code', 10);
+            $table->string('address', 150);
+            $table->string('reference_point', 50);
 
-            $table->foreign('users_id')->references('id')->on('users')
+            $table->foreign('client_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
@@ -75,7 +80,7 @@ class InstallProjectTables extends Migration
     public function down()
     {
         Schema::drop('package');
-        Schema::drop('agenda');
+        Schema::drop('consigning');
         Schema::drop('provider_road');
         Schema::drop('road');
         Schema::drop('provider');

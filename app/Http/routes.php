@@ -93,6 +93,22 @@ Route::group(['prefix' => 'client', 'namespace' => 'System'], function(){
     Route::get('{id}',         ['uses' => 'ClientController@destroy', 'as' => 'client_delete']);
 });
 
+// Routes Consigning Client
+Route::group(['prefix' => 'consigning/{client}', 'namespace' => 'System'], function(){
+
+    Route::get('/',            ['uses' => 'ConsigningController@index',   'as' => 'consigning_home']);
+
+    Route::get('create',       ['uses' => 'ConsigningController@create',  'as' => 'consigning_create']);
+
+    Route::post('create',      ['uses' => 'ConsigningController@store',   'as' => 'consigning_create']);
+
+    Route::get('{id}/edit',    ['uses' => 'ConsigningController@edit',    'as' => 'consigning_edit']);
+
+    Route::put('{id}/update',  ['uses' => 'ConsigningController@update',  'as' => 'consigning_update']);
+
+    Route::get('{id}',         ['uses' => 'ConsigningController@destroy', 'as' => 'consigning_delete']);
+});
+
 // Routes Package
 Route::group(['prefix' => 'package', 'namespace' => 'System'], function(){
 

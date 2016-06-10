@@ -60,7 +60,15 @@ return [
         'delete'    => 'Paquete: :package, eliminado satisfactoriamente',
 
         'error_dni' => 'El DNI: :dni, no se encuentra en nuestros registros.',
+    ],
 
+    'consigning' => [
+
+        'create' => 'Ha sido agregada una dirección de envío al País :consign',
+
+        'update' => 'Ha sido actualizada una dirección de envío al País :consign',
+
+        'delete' => 'Ha sido eliminada una dirección de envío al País :consign',
     ],
 
 ];

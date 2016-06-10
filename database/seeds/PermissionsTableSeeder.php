@@ -190,11 +190,42 @@ class PermissionsTableSeeder extends Seeder
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));
+
+        // consigning
+
+        DB::table('role')->insert(array(
+            'name'         => 'view-consigning',
+            'display_name' => 'Leer Agenda de Cliente',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-consigning',
+            'display_name' => 'Crear Agenda de Cliente',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-consigning',
+            'display_name' => 'Modificar Agenda de Cliente',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-consigning',
+            'display_name' => 'Borrar Agenda de Cliente',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
     }
 
     private function add_roles()
     {
-        for($i=3; $i < 20; $i++)
+        for($i=3; $i < 24; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

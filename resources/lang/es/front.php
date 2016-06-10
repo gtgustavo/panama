@@ -184,6 +184,43 @@ return [
             ],
         ],
 
+        'consigning' => [
+
+            'title' => 'DIRECCIONES DE ENVÍO',
+
+            'create' => 'Nueva Dirección de Envío',
+
+            'tile' => [
+
+                'consigning' => 'DIRECCIONES DE ENVÍO',
+
+                'stop'       => 'stop',
+
+            ],
+
+            'table' => [
+
+                'country'         => 'PAÍS',
+
+                'province'        => 'PROVINCIA',
+
+                'city'            => 'CIUDAD',
+
+                'postal_code'     => 'CÓDIGO POSTAL',
+
+                'address'         => 'DIRECCIÓN',
+
+                'reference_point' => 'PUNTO DE REFERENCIA',
+            ],
+
+            'events' => [
+
+                'create' => 'Nueva Dirección de Envío',
+
+                'edit'   => 'Actualizar Dirección de Envío',
+            ],
+        ],
+
         'package' => [
 
             'title' => 'PAQUETES',
@@ -219,13 +256,15 @@ return [
 
         'actions' => [
 
-            'title'   => 'Acciones',
+            'title'      => 'Acciones',
 
-            'edit'    => 'Actualizar',
+            'edit'       => 'Actualizar',
 
-            'delete'  => 'Eliminar',
+            'delete'     => 'Eliminar',
 
-            'config'  => 'Configurar',
+            'config'     => 'Configurar',
+
+            'consigning' => 'Agenda',
         ],
 
         /*

@@ -55,13 +55,19 @@
 
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a href="{{ route('client_edit',   [$client->id]) }}">{!! trans('front.form.actions.edit') !!}</a>
+                                            <a href="{{ route('consigning_home', [$client->id]) }}">{!! trans('front.form.actions.consigning') !!}</a>
                                         </li>
 
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="{{ route('client_delete', [$client->id]) }}" onclick="return confirm('{!! trans('messages.confirm.delete_register') !!}')">{!! trans('front.form.actions.delete') !!}</a>
+                                            <a href="{{ route('client_edit',     [$client->id]) }}">{!! trans('front.form.actions.edit') !!}</a>
+                                        </li>
+
+                                        <li class="divider"></li>
+
+                                        <li>
+                                            <a href="{{ route('client_delete',   [$client->id]) }}" onclick="return confirm('{!! trans('messages.confirm.delete_register') !!}')">{!! trans('front.form.actions.delete') !!}</a>
                                         </li>
                                     </ul>
 

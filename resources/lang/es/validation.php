@@ -117,7 +117,7 @@ return [
         'password'              => 'Contraseña',
         'password_confirmation' => 'Confirmación de la contraseña',
         'city'                  => 'Ciudad',
-        'country'               => 'país',
+        'country'               => 'País',
         'address'               => 'Dirección',
         'phone_h'               => 'Tlf. Habitación',
         'phone_c'               => 'Tlf. Móvil',
@@ -154,6 +154,11 @@ return [
         'cost'                  => 'Costo',
         'type'                  => 'Tipo de Caja',
         'note'                  => 'Nota',
+        'province'              => 'Estado / Provincia',
+        'postal_code'           => 'Código Postal',
+        'reference_point'       => 'Punto de Referencia',
+
+
     ],
 
 ];
