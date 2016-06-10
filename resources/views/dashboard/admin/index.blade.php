@@ -18,7 +18,7 @@
 
                 @include('a_templates.partials.messages')
 
-                @include('dashboard.admin.partials.table')
+                @include('system.package.partials.table')
 
             </div>
             <!-- end: .tray-center -->

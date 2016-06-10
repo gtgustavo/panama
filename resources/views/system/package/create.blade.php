@@ -2,7 +2,7 @@
 
 @section('header_menu')
 
-    @include('administration.a_partials.header')
+    @include('dashboard.admin.partials.header')
 
 @endsection
 
@@ -19,18 +19,20 @@
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.profile.events.create') !!} </span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.package.events.create') !!} </span>
                 </div>
 
                 <div class="panel-body p25 pb5">
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::open(['route' => 'profile_create', 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'package_create', 'method' => 'POST']) !!}
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        @include('administration.profile.partials.fields', ['button' => trans('front.form.profile.create')])
+                        <input type="hidden" name="wr" value="{{ $wr_code }}">
+
+                        @include('system.package.partials.fields', ['button' => trans('front.form.package.create')])
 
                         {!! Form::Close() !!}
 

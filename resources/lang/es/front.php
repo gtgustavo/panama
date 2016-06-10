@@ -190,19 +190,23 @@ return [
 
             'create' => 'Nuevo Paquete',
 
+            'tile' => [
+
+                'packages' => 'PAQUETES REGISTRADOS',
+
+            ],
+
             'table' => [
 
-                'name'    => 'NOMBRE',
+                'name' => 'NOMBRE',
 
-                'dni'     => 'DNI',
+                'dni'  => 'DNI',
 
-                'email'   => 'EMAIL',
+                'wr'   => 'WR',
 
-                'profile' => 'PERFIL',
+                'type' => 'TIPO DE CAJA',
 
-                'phone_c' => 'TLF. MÓVIL',
-
-                'phone_h' => 'TLF. HABITACIÓN',
+                'cost' => 'COSTO',
             ],
 
             'events' => [

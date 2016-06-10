@@ -51,4 +51,16 @@ return [
         'delete' => 'Cliente: :client, eliminado satisfactoriamente',
     ],
 
+    'package' => [
+
+        'create'    => 'Paquete: :package, creado satisfactoriamente',
+
+        'update'    => 'Paquete: :package, actualizado satisfactoriamente',
+
+        'delete'    => 'Paquete: :package, eliminado satisfactoriamente',
+
+        'error_dni' => 'El DNI: :dni, no se encuentra en nuestros registros.',
+
+    ],
+
 ];

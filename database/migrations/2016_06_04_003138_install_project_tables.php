@@ -55,16 +55,12 @@ class InstallProjectTables extends Migration
         Schema::create('package', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('users_id')->unsigned();
-            $table->integer('provider_id')->unsigned();
-            $table->string('wr', 50)->unique();
-            $table->date('date');
+            $table->string('wr', 20)->unique();
             $table->string('type', 50);
-            $table->string('note', 100);
+            $table->string('note', 150);
             $table->decimal('cost', 10, 2);
 
             $table->foreign('users_id')->references('id')->on('users')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('provider_id')->references('id')->on('provider')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

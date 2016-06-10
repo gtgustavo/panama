@@ -150,6 +150,10 @@ return [
         'products'              => 'Productos',
         'company'               => 'Empresa',
         'rif'                   => 'RIF.',
+        'wr'                    => 'Warehouse',
+        'cost'                  => 'Costo',
+        'type'                  => 'Tipo de Caja',
+        'note'                  => 'Nota',
     ],
 
 ];

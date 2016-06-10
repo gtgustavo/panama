@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\System\Package;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,7 +22,11 @@ class DashboardController extends Controller
      */
     public function admin()
     {
-        return view('dashboard.admin.index');
+        $packages      = Package::with('client')->paginate();
+
+        $cant_packages = count(Package::all());
+
+        return view('dashboard.admin.index', compact('packages', 'cant_packages'));
     }
 
     /**

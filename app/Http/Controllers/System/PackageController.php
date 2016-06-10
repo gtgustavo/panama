@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\System;
 
+use App\Helpers\Barcode\Barcode;
+use App\Helpers\Helper;
+use App\Helpers\Package\Package;
 use App\Helpers\System\Access;
+use App\Http\Requests\System\PackageRequest;
+use App\Models\System\Package as PackageModel;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Styde\Html\Facades\Alert;
 
 class PackageController extends Controller
 {
@@ -24,7 +30,7 @@ class PackageController extends Controller
     {
         if(Access::allow('view-package'))
         {
-            return 'Package';
+            return redirect()->route('home');
         }
 
         return Access::redirectDefault();
@@ -39,7 +45,11 @@ class PackageController extends Controller
     {
         if(Access::allow('create-package'))
         {
-            return 'create package';
+            $wr_code = Package::make_wr_code();
+
+            $barcode = Barcode::BarcodeHTML($wr_code);
+
+            return view('system.package.create', compact('wr_code', 'barcode'));
         }
 
         return Access::redirectDefault();
@@ -48,14 +58,35 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param PackageRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PackageRequest $request)
     {
         if(Access::allow('create-package'))
         {
-            //
+            $client = Package::validate_client($request->input('dni'));
+
+            if($client != false)
+            {
+                $collection = Helper::convert_to_uppercase($request->all());
+
+                $package = new PackageModel($collection->all());
+
+                $package->users_id = $client;
+
+                $package->save();
+
+                Alert::message(trans('messages.package.create', ['package' => $package->wr]), 'success');
+
+            } else {
+
+                Alert::message(trans('messages.package.error_dni', ['dni' => $request->input('dni')]), 'danger');
+
+                return redirect()->back();
+            }
+
+            return $this->redirectDefault();
         }
 
         return Access::redirectDefault();
