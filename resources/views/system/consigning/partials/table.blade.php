@@ -25,6 +25,7 @@
                         <th class="">{!! trans('front.form.consigning.table.city') !!}            </th>
                         <th class="">{!! trans('front.form.consigning.table.postal_code') !!}     </th>
                         <th class="">{!! trans('front.form.consigning.table.reference_point') !!} </th>
+                        <th class=""></th>
                     </tr>
                 </thead>
 

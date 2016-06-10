@@ -23,6 +23,7 @@
                         <th class="">{!! trans('front.form.package.table.dni') !!}  </th>
                         <th class="">{!! trans('front.form.package.table.type') !!} </th>
                         <th class="">{!! trans('front.form.package.table.cost') !!} </th>
+                        <th class=""></th>
                     </tr>
                 </thead>
 

@@ -24,6 +24,7 @@
                         <th class="">{!! trans('front.form.employee.table.profile') !!} </th>
                         <th class="">{!! trans('front.form.employee.table.phone_c') !!} </th>
                         <th class="">{!! trans('front.form.employee.table.phone_h') !!} </th>
+                        <th class=""></th>
                     </tr>
                 </thead>
 

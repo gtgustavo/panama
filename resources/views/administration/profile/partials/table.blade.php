@@ -22,6 +22,7 @@
                         <th class="">{!! trans('front.form.profile.table.description') !!} </th>
                         <th class="">{!! trans('front.form.profile.table.roles') !!}       </th>
                         <th class="">{!! trans('front.form.profile.table.employees') !!}   </th>
+                        <th class=""></th>
                     </tr>
                 </thead>
 
