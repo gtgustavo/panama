@@ -40,9 +40,9 @@ class EmployeesRequest extends Request
 
             'last_name'  => 'required|string|max:30|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
 
-            'dni'        => 'required|digits_between:6,10|unique:users,dni,'. $this->route->getParameter('id'),
+            'dni'        => 'required|digits_between:6,10|unique:user,dni,'. $this->route->getParameter('id'),
 
-            'email'      => 'required|email|max:30|unique:users,email,'. $this->route->getParameter('id'),
+            'email'      => 'required|email|max:30|unique:user,email,'. $this->route->getParameter('id'),
 
             'phone_c'    => 'required|digits_between:10,15',
 

@@ -22,7 +22,7 @@ class DashboardController extends Controller
      */
     public function admin()
     {
-        $packages      = Package::with('client')->paginate();
+        $packages      = Package::with('client')->with('consigning')->paginate();
 
         $cant_packages = count(Package::all());
 

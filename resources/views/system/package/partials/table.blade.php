@@ -19,6 +19,7 @@
                     <tr class="bg-light">
                         <th class="">ID</th>
                         <th class="">{!! trans('front.form.package.table.wr') !!}   </th>
+                        <th class="">{!! trans('front.form.package.table.consigning') !!}   </th>
                         <th class="">{!! trans('front.form.package.table.name') !!} </th>
                         <th class="">{!! trans('front.form.package.table.dni') !!}  </th>
                         <th class="">{!! trans('front.form.package.table.type') !!} </th>
@@ -34,6 +35,11 @@
                         <tr>
                             <td class=""> {{ $package->id }}   </td>
                             <td class=""> {{ $package->wr }}   </td>
+                            <td class="">
+                                @foreach($package->consigning as $consigning)
+                                    {{ $consigning->country }}
+                                @endforeach
+                            </td>
                             <td class="">
                                 @foreach($package->client as $client)
                                     {{ $client->full_name }}

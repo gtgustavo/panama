@@ -74,8 +74,6 @@ class EmployeeController extends Controller
         {
             $collection = Helper::convert_to_uppercase($request->all());
 
-            //$employee = User::create($collection->all());
-
             $employee = new User($collection->all());
 
             $employee->password = bcrypt($request->input('password'));

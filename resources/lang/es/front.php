@@ -235,15 +235,17 @@ return [
 
             'table' => [
 
-                'name' => 'NOMBRE',
+                'name'       => 'NOMBRE',
 
-                'dni'  => 'DNI',
+                'dni'        => 'DNI',
 
-                'wr'   => 'WR',
+                'wr'         => 'WR',
 
-                'type' => 'TIPO DE CAJA',
+                'consigning' => 'RUTA DE ENVÍO',
 
-                'cost' => 'COSTO',
+                'type'       => 'TIPO DE CAJA',
+
+                'cost'       => 'COSTO',
             ],
 
             'events' => [

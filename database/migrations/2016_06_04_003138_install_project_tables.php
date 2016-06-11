@@ -43,7 +43,7 @@ class InstallProjectTables extends Migration
 
         Schema::create('consigning', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('client_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('country', 50);
             $table->string('province', 50);
             $table->string('city', 50);
@@ -51,7 +51,7 @@ class InstallProjectTables extends Migration
             $table->string('address', 150);
             $table->string('reference_point', 50);
 
-            $table->foreign('client_id')->references('id')->on('users')
+            $table->foreign('user_id')->references('id')->on('user')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
@@ -59,13 +59,16 @@ class InstallProjectTables extends Migration
 
         Schema::create('package', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('consigning_id')->unsigned();
             $table->string('wr', 20)->unique();
             $table->string('type', 50);
             $table->string('note', 150);
             $table->decimal('cost', 10, 2);
 
-            $table->foreign('users_id')->references('id')->on('users')
+            $table->foreign('user_id')->references('id')->on('user')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('consigning_id')->references('id')->on('consigning')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

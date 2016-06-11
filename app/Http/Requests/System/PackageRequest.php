@@ -25,13 +25,15 @@ class PackageRequest extends Request
     {
         return [
 
-            'dni'  => 'required|digits_between:6,10',
+            'dni'           => 'required|digits_between:6,10',
 
-            'type' => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]+$/i',
+            'consigning_id' => 'required',
 
-            'cost' => 'required|numeric|between:0,999999.99',
+            'type'          => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]+$/i',
 
-            'note' => 'required|string|max:150|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]+$/i',
+            'cost'          => 'required|numeric|between:0,999999.99',
+
+            'note'          => 'required|string|max:150|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]+$/i',
 
         ];
     }

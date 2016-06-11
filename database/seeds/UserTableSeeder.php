@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(array(
+        DB::table('user')->insert(array(
 
             'first_name' => 'System',
             'last_name'  => 'Admin',

@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name', 30);
             $table->string('last_name', 30);
@@ -69,7 +69,7 @@ class CreateUsersTable extends Migration
     {
         Schema::drop('profile_role');
         Schema::drop('role');
-        Schema::drop('users');
+        Schema::drop('user');
         Schema::drop('profile');
     }
 }

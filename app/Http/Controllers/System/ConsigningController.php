@@ -7,7 +7,6 @@ use App\Helpers\System\Access;
 use App\Http\Requests\System\ConsigningRequest;
 use App\Models\System\Consigning;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -30,7 +29,7 @@ class ConsigningController extends Controller
     {
         if(Access::allow('view-consigning'))
         {
-            $consigning = Consigning::where('client_id', $client)->paginate();
+            $consigning = Consigning::where('user_id', $client)->paginate();
 
             $client     = User::findOrFail($client);
 
@@ -73,7 +72,7 @@ class ConsigningController extends Controller
 
             $consigning = new Consigning($collection->all());
 
-            $consigning->client_id = $client;
+            $consigning->user_id = $client;
 
             $consigning->save();
 

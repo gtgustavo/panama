@@ -53,22 +53,26 @@ return [
 
     'package' => [
 
-        'create'    => 'Paquete: :package, creado satisfactoriamente',
+        'create'      => 'Paquete: :package, creado satisfactoriamente',
 
-        'update'    => 'Paquete: :package, actualizado satisfactoriamente',
+        'update'      => 'Paquete: :package, actualizado satisfactoriamente',
 
-        'delete'    => 'Paquete: :package, eliminado satisfactoriamente',
+        'delete'      => 'Paquete: :package, eliminado satisfactoriamente',
 
-        'error_dni' => 'El DNI: :dni, no se encuentra en nuestros registros.',
+        'error_dni'   => 'El DNI: :dni, no se encuentra en nuestros registros.',
+
+        'success_dni' => ':client',
     ],
 
     'consigning' => [
 
-        'create' => 'Ha sido agregada una dirección de envío al País :consign',
+        'create'        => 'Ha sido agregada una dirección de envío al País :consign',
 
-        'update' => 'Ha sido actualizada una dirección de envío al País :consign',
+        'update'        => 'Ha sido actualizada una dirección de envío al País :consign',
 
-        'delete' => 'Ha sido eliminada una dirección de envío al País :consign',
+        'delete'        => 'Ha sido eliminada una dirección de envío al País :consign',
+
+        'error_consign' => 'Este cliente no posee rutas de envío disponibles',
     ],
 
 ];

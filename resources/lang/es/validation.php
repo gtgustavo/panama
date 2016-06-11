@@ -157,7 +157,7 @@ return [
         'province'              => 'Estado / Provincia',
         'postal_code'           => 'Código Postal',
         'reference_point'       => 'Punto de Referencia',
-
+        'consigning'            => 'Ruta de Envío',
 
     ],
 

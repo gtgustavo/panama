@@ -73,7 +73,7 @@ class PackageController extends Controller
 
                 $package = new PackageModel($collection->all());
 
-                $package->users_id = $client;
+                $package->user_id = $client;
 
                 $package->save();
 

@@ -1,5 +1,5 @@
 <!-- jQuery -->
-{!! Html::script('vendor/jquery/jquery-1.11.1.min.js') !!}
+{!! Html::script('vendor/jquery/jquery-2.2.3.min.js') !!}
 {!! Html::script('vendor/jquery/jquery_ui/jquery-ui.min.js') !!}
 
 <!-- CanvasBG Plugin(creates mousehover effect) -->

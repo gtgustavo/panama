@@ -19,6 +19,7 @@ Route::group(['middleware' => 'language'], function () {
     });
 });
 
+
 // Authentication and Password reset Routes...
 Route::group(['prefix' => '/', 'namespace' => 'Auth'], function(){
 
@@ -123,4 +124,13 @@ Route::group(['prefix' => 'package', 'namespace' => 'System'], function(){
     Route::put('{id}/update',  ['uses' => 'PackageController@update',  'as' => 'package_update']);
 
     Route::get('{id}',         ['uses' => 'PackageController@destroy', 'as' => 'package_delete']);
+});
+
+// Routes AJAX
+Route::group(['prefix' => 'ajax', 'namespace' => 'System'], function(){
+
+    Route::get('client',     ['uses' => 'AjaxController@validate_client',   'as' => 'ajax_dni_client']);
+
+    Route::get('consigning', ['uses' => 'AjaxController@consigning_client', 'as' => 'ajax_consigning_client']);
+
 });

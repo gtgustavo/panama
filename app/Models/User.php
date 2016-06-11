@@ -17,7 +17,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +41,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function profile()
     {
         return $this->hasMany('App\Models\Security\Profile', 'id', 'profile_id');
+    }
+
+    public function consigning()
+    {
+        return $this->hasMany('App\Models\System\Consigning');
     }
 
     public static function FilterAndPaginate($search, $field)
