@@ -1,0 +1,1 @@
+{{ trans('front.email.reset') }}: {{ url('reset/'.$token) }}

@@ -279,19 +279,11 @@ return [
 
             'logout'  => 'Cerrar Sesión',
 
-            'reset'   => 'RESTABLECER',
+            'reset'   => 'Restablecer',
 
-            'cancel'  => 'CANCELAR',
+            'sign_up' => 'Crea una Cuenta',
 
-            'sign_up' => 'Registro',
-
-            'update'  => 'ACTUALIZAR',
-
-            'assign'  => 'ASIGNAR',
-
-            'remove'  => 'REMOVER',
-
-            'search'  => 'BUSCAR',
+            'forget'  => '¿Olvido su contraseña?',
 
         ],
 

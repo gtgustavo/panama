@@ -31,6 +31,8 @@ Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'Auth'], 
 
     Route::get('logout',        ['uses' => 'AuthController@getLogout',     'as' => 'logout']);
 
+    Route::get('password',      ['uses' => 'PasswordController@getEmail',  'as' => 'password']);
+
     Route::post('password',     ['uses' => 'PasswordController@postEmail', 'as' => 'password']);
 
     Route::get('reset/{token}', ['uses' => 'PasswordController@getReset',  'as' => 'reset']);

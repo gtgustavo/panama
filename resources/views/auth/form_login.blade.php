@@ -2,47 +2,25 @@
 
 @section('content')
 
-    <!-- Start: Main -->
-    <div id="main" class="animated fadeIn">
+    <div class="admin-form theme-info" id="login1">
 
-        <!-- Start: Content-Wrapper -->
-        <section id="content_wrapper">
+        @include('auth.partials.logo')
 
-            <!-- begin canvas animation bg -->
-            <div id="canvas-wrapper">
-                <canvas id="demo-canvas"></canvas>
-            </div>
+        <div class="panel panel-info mt10 br-n">
 
-            <!-- Begin: Content -->
-            <section id="content">
+            @include('auth.partials.social_networks')
 
-                <div class="admin-form theme-info" id="login1">
+            {!! Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'form-login']) !!}
 
-                    @include('auth.partials.logo_and_redirect')
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <div class="panel panel-info mt10 br-n">
+                @include('auth.partials.fields')
 
-                        @include('auth.partials.social_networks')
+                @include('auth.partials.footer_login')
 
-                        {!! Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'form-login']) !!}
+            {!! Form::Close() !!}
 
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            @include('auth.partials.fields')
-
-                            @include('auth.partials.footer_login')
-
-                        {!! Form::Close() !!}
-
-                    </div>
-
-                </div>
-
-            </section>
-            <!-- End: Content -->
-
-        </section>
-        <!-- End: Content-Wrapper -->
+        </div>
 
     </div>
 
@@ -50,18 +28,6 @@
 
 @section('script')
 
-    <script>
-        jQuery(document).ready(function() {
-
-            // Init CanvasBG and pass target starting location
-            CanvasBG.init({
-                Loc: {
-                    x: window.innerWidth / 2,
-                    y: window.innerHeight / 3.3
-                },
-            });
-
-        });
-    </script>
+    {!! Html::script('assets/js/app/CanvasBG.js') !!}
 
 @endsection
