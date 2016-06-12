@@ -10,12 +10,6 @@ use App\Models\System\Package as PackageModel;
 
 class Package extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public static function make_wr_code()
     {
         $id = self::next_id();

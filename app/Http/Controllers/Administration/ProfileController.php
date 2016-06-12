@@ -17,11 +17,6 @@ use Styde\Html\Facades\Alert;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -98,7 +93,7 @@ class ProfileController extends Controller
             {
                 $profile_role = Profile::findOrFail($id)->roles()->lists('role_id')->toArray();
 
-                $roles = Role::where('id', '>', 2)->lists('display_name', 'id');
+                $roles = Role::where('id', '>', 11)->lists('display_name', 'id');
 
                 return view('administration.profile.role', compact('profile', 'profile_role', 'roles'));
             }

@@ -57,95 +57,103 @@
                 </a>
             </li>
 
-            <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.security') !!} </li>
+            @can('admin')
 
-            <li>
-                <a class="accordion-toggle" href="#">
-                    <span class="fa fa-unlock-alt"></span>
-                    <span class="sidebar-title"> {!! trans('front.sidebar.title.administration') !!} </span>
-                    <span class="caret"></span>
-                </a>
-                <ul class="nav sub-nav">
+                @can('super_admin')
+
+                    <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.security') !!} </li>
 
                     <li>
                         <a class="accordion-toggle" href="#">
-                            <span class="fa fa fa-users"></span>
-                            {{ trans('front.sidebar.sub_title.employees') }}
+                            <span class="fa fa-unlock-alt"></span>
+                            <span class="sidebar-title"> {!! trans('front.sidebar.title.administration') !!} </span>
                             <span class="caret"></span>
                         </a>
                         <ul class="nav sub-nav">
+
                             <li>
-                                <a href="{{ route('employee_create') }}">
-                                    {!! trans('front.form.employee.create') !!}
+                                <a class="accordion-toggle" href="#">
+                                    <span class="fa fa fa-users"></span>
+                                    {{ trans('front.sidebar.sub_title.employees') }}
+                                    <span class="caret"></span>
                                 </a>
+                                <ul class="nav sub-nav">
+                                    <li>
+                                        <a href="{{ route('employee_create') }}">
+                                            {!! trans('front.form.employee.create') !!}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('employee_home') }}">
+                                            {{ trans('front.sidebar.sub_sub_title.list_employee') }}
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
+
                             <li>
-                                <a href="{{ route('employee_home') }}">
-                                    {{ trans('front.sidebar.sub_sub_title.list_employee') }}
+                                <a class="accordion-toggle" href="#">
+                                    <span class="fa fa-code-fork"></span>
+                                    {{ trans('front.sidebar.sub_title.profiles') }}
+                                    <span class="caret"></span>
                                 </a>
+                                <ul class="nav sub-nav">
+                                    <li>
+                                        <a href="{{ route('profile_create') }}">
+                                            {!! trans('front.form.profile.create') !!}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('profile_home') }}">
+                                            {{ trans('front.sidebar.sub_sub_title.list_profile') }}
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
+
                         </ul>
                     </li>
 
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-code-fork"></span>
-                            {{ trans('front.sidebar.sub_title.profiles') }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="{{ route('profile_create') }}">
-                                    {!! trans('front.form.profile.create') !!}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('profile_home') }}">
-                                    {{ trans('front.sidebar.sub_sub_title.list_profile') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                @endcan
 
-                </ul>
-            </li>
+                <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>
 
-            <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-cubes"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.packages') }} </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{ route('package_create') }}">
+                                <span class="fa fa-cube"></span> {!! trans('front.form.package.create') !!}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-            <li>
-                <a class="accordion-toggle" href="#">
-                    <span class="fa fa-cubes"></span>
-                    <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.packages') }} </span>
-                    <span class="caret"></span>
-                </a>
-                <ul class="nav sub-nav">
-                    <li>
-                        <a href="{{ route('package_create') }}">
-                            <span class="fa fa-cube"></span> {!! trans('front.form.package.create') !!}
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-users"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.clients') }} </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{ route('client_create') }}">
+                                <span class="fa fa-user-plus"></span> {!! trans('front.form.client.create') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('client_home') }}">
+                                <span class="fa fa-users"></span>     {{ trans('front.sidebar.sub_sub_title.list_client') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-            <li>
-                <a class="accordion-toggle" href="#">
-                    <span class="fa fa-users"></span>
-                    <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.clients') }} </span>
-                    <span class="caret"></span>
-                </a>
-                <ul class="nav sub-nav">
-                    <li>
-                        <a href="{{ route('client_create') }}">
-                            <span class="fa fa-user-plus"></span> {!! trans('front.form.client.create') !!}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('client_home') }}">
-                            <span class="fa fa-users"></span>     {{ trans('front.sidebar.sub_sub_title.list_client') }}
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            @endcan
 
         </ul>
         <!-- End: Sidebar Menu -->

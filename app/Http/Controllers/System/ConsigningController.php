@@ -14,11 +14,6 @@ use Styde\Html\Facades\Alert;
 
 class ConsigningController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *

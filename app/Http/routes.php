@@ -38,16 +38,32 @@ Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'Auth'], 
     Route::get('reset/{token}', ['uses' => 'PasswordController@getReset',  'as' => 'reset']);
 
     Route::post('reset',        ['uses' => 'PasswordController@postReset', 'as' => 'reset']);
+
+    Route::get('create',        ['uses' => 'RegisterController@create',    'as' => 'new_client']);
+
+    Route::post('create',       ['uses' => 'RegisterController@store',     'as' => 'new_client']);
 });
 
 // Routes Dashboard
-Route::group(['prefix' => 'dashboard', 'middleware' => ['web'], 'namespace' => 'Dashboard'], function(){
+Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth'], 'namespace' => 'Dashboard'], function(){
 
-    Route::get('/', ['uses' => 'DashboardController@admin',   'as' => 'home']);
+    Route::get('/',      ['uses' => 'DashboardController@index',  'as' => 'index']);
+
+    Route::get('admin',  ['uses' => 'DashboardController@admin',  'as' => 'home']);
+
+    Route::get('client', ['uses' => 'DashboardController@client', 'as' => 'home_client']);
+});
+
+// Routes AJAX
+Route::group(['prefix' => 'ajax', 'middleware' => ['web', 'auth'], 'namespace' => 'System'], function(){
+
+    Route::get('client',     ['uses' => 'AjaxController@validate_client',   'as' => 'ajax_dni_client']);
+
+    Route::get('consigning', ['uses' => 'AjaxController@consigning_client', 'as' => 'ajax_consigning_client']);
 });
 
 // Routes Profiles
-Route::group(['prefix' => 'profile', 'middleware' => ['web'], 'namespace' => 'Administration'], function(){
+Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Administration'], function(){
 
     Route::get('/',           ['uses' => 'ProfileController@index',   'as' => 'profile_home']);
 
@@ -67,7 +83,7 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web'], 'namespace' => 'Ad
 });
 
 // Routes Employees
-Route::group(['prefix' => 'employee', 'middleware' => ['web'], 'namespace' => 'Administration'], function(){
+Route::group(['prefix' => 'employee', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Administration'], function(){
 
     Route::get('/',            ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
 
@@ -83,7 +99,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['web'], 'namespace' => 'A
 });
 
 // Routes Client
-Route::group(['prefix' => 'client', 'middleware' => ['web'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
 
     Route::get('/',            ['uses' => 'ClientController@index',   'as' => 'client_home']);
 
@@ -99,7 +115,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['web'], 'namespace' => 'Sys
 });
 
 // Routes Consigning Client
-Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
 
     Route::get('/',            ['uses' => 'ConsigningController@index',   'as' => 'consigning_home']);
 
@@ -115,7 +131,7 @@ Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web'], 'names
 });
 
 // Routes Package
-Route::group(['prefix' => 'package', 'middleware' => ['web'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
 
     Route::get('/',            ['uses' => 'PackageController@index',   'as' => 'package_home']);
 
@@ -128,13 +144,4 @@ Route::group(['prefix' => 'package', 'middleware' => ['web'], 'namespace' => 'Sy
     Route::put('{id}/update',  ['uses' => 'PackageController@update',  'as' => 'package_update']);
 
     Route::get('{id}',         ['uses' => 'PackageController@destroy', 'as' => 'package_delete']);
-});
-
-// Routes AJAX
-Route::group(['prefix' => 'ajax', 'middleware' => ['web'], 'namespace' => 'System'], function(){
-
-    Route::get('client',     ['uses' => 'AjaxController@validate_client',   'as' => 'ajax_dni_client']);
-
-    Route::get('consigning', ['uses' => 'AjaxController@consigning_client', 'as' => 'ajax_consigning_client']);
-
 });

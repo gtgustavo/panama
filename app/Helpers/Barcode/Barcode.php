@@ -65,7 +65,6 @@ use Picqer\Barcode\BarcodeGeneratorSVG;
 
 class Barcode
 {
-
     public static function BarcodeHTML($patter)
     {
         $generator = new BarcodeGeneratorHTML();

@@ -6,6 +6,8 @@
 
         @include('auth.partials.logo')
 
+        @include('a_templates.partials.messages')
+
         <div class="panel panel-info mt10 br-n">
 
             @include('auth.partials.social_networks')

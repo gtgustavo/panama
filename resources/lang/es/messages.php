@@ -44,11 +44,13 @@ return [
 
     'client' => [
 
-        'create' => 'Cliente: :client, creado satisfactoriamente',
+        'create'  => 'Cliente: :client, creado satisfactoriamente',
 
-        'update' => 'Cliente: :client, actualizado satisfactoriamente',
+        'update'  => 'Cliente: :client, actualizado satisfactoriamente',
 
-        'delete' => 'Cliente: :client, eliminado satisfactoriamente',
+        'delete'  => 'Cliente: :client, eliminado satisfactoriamente',
+
+        'account' => 'Su cuanta ha sido creada satisfactoriamente',
     ],
 
     'package' => [
