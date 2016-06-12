@@ -12,16 +12,18 @@
 */
 
 // Language
-Route::group(['middleware' => 'language'], function () {
-    Route::get('language/{language}', function ($language) {
-        Session::set('lang', $language);
-        return Redirect::back();
-    });
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('lang/{lang}', function ($lang) {
+        session(['lang' => $lang]);
+        return \Redirect::back();
+    })->where([
+        'lang' => 'en|es'
+    ]);
 });
 
-
 // Authentication and Password reset Routes...
-Route::group(['prefix' => '/', 'namespace' => 'Auth'], function(){
+Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'Auth'], function(){
 
     Route::get('/',             ['uses' => 'AuthController@getLogin',      'as' => 'auth']);
 
@@ -37,13 +39,13 @@ Route::group(['prefix' => '/', 'namespace' => 'Auth'], function(){
 });
 
 // Routes Dashboard
-Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function(){
+Route::group(['prefix' => 'dashboard', 'middleware' => ['web'], 'namespace' => 'Dashboard'], function(){
 
     Route::get('/', ['uses' => 'DashboardController@admin',   'as' => 'home']);
 });
 
 // Routes Profiles
-Route::group(['prefix' => 'profile', 'namespace' => 'Administration'], function(){
+Route::group(['prefix' => 'profile', 'middleware' => ['web'], 'namespace' => 'Administration'], function(){
 
     Route::get('/',           ['uses' => 'ProfileController@index',   'as' => 'profile_home']);
 
@@ -63,7 +65,7 @@ Route::group(['prefix' => 'profile', 'namespace' => 'Administration'], function(
 });
 
 // Routes Employees
-Route::group(['prefix' => 'employee', 'namespace' => 'Administration'], function(){
+Route::group(['prefix' => 'employee', 'middleware' => ['web'], 'namespace' => 'Administration'], function(){
 
     Route::get('/',            ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
 
@@ -79,7 +81,7 @@ Route::group(['prefix' => 'employee', 'namespace' => 'Administration'], function
 });
 
 // Routes Client
-Route::group(['prefix' => 'client', 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'client', 'middleware' => ['web'], 'namespace' => 'System'], function(){
 
     Route::get('/',            ['uses' => 'ClientController@index',   'as' => 'client_home']);
 
@@ -95,7 +97,7 @@ Route::group(['prefix' => 'client', 'namespace' => 'System'], function(){
 });
 
 // Routes Consigning Client
-Route::group(['prefix' => 'consigning/{client}', 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web'], 'namespace' => 'System'], function(){
 
     Route::get('/',            ['uses' => 'ConsigningController@index',   'as' => 'consigning_home']);
 
@@ -111,7 +113,7 @@ Route::group(['prefix' => 'consigning/{client}', 'namespace' => 'System'], funct
 });
 
 // Routes Package
-Route::group(['prefix' => 'package', 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'package', 'middleware' => ['web'], 'namespace' => 'System'], function(){
 
     Route::get('/',            ['uses' => 'PackageController@index',   'as' => 'package_home']);
 
@@ -127,7 +129,7 @@ Route::group(['prefix' => 'package', 'namespace' => 'System'], function(){
 });
 
 // Routes AJAX
-Route::group(['prefix' => 'ajax', 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'ajax', 'middleware' => ['web'], 'namespace' => 'System'], function(){
 
     Route::get('client',     ['uses' => 'AjaxController@validate_client',   'as' => 'ajax_dni_client']);
 
