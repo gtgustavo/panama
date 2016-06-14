@@ -3,6 +3,8 @@
 Homestead.yaml
 Homestead.json
 .env
+.env.luiciano
+.env.publired
 .idea/
 .DS_Store
 Thumbs.db

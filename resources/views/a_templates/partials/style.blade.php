@@ -8,7 +8,7 @@
 {!! Html::style('assets/admin-tools/admin-forms/css/admin-forms.css') !!}
 
 <!-- Favicon -->
-<link href="{!! asset('assets/img/favicon.ico') !!}" rel="stylesheet">
+<link href="{!! asset('assets/img/favicon.ico') !!}" rel="shortcut icon">
 
 <!-- Select Multiple -->
 {!! Html::style('assets/select-multiple/multi-select.css') !!}
