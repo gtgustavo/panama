@@ -1,6 +1,18 @@
 <div class="section row">
 
     <div class="col-md-6">
+        {!! Field::text('name', ['class' => 'gui-input', 'ph' => trans('validation.attributes.name'), 'max' => '30']) !!}
+    </div>
+
+    <div class="col-md-6">
+        {!! Field::text('phone', ['class' => 'gui-input', 'ph' => trans('validation.attributes.phone'), 'max' => '15']) !!}
+    </div>
+
+</div>
+
+<div class="section row">
+
+    <div class="col-md-6">
         {!! Field::text('country',  ['class' => 'gui-input', 'ph' => trans('validation.attributes.country'), 'max' => '50']) !!}
     </div>
 

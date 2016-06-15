@@ -14,4 +14,10 @@ class People extends Model
     {
         return $this->hasMany('App\Models\Credentials\User');
     }
+
+    public function getFullNameAttribute(){
+
+        return $this->full_name = $this->first_name . ' ' . $this->last_name;
+
+    }
 }

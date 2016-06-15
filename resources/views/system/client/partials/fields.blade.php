@@ -13,7 +13,7 @@
 <div class="section row">
 
     <div class="col-md-6">
-        {!! Field::text('dni',    ['class' => 'gui-input', 'ph' => trans('validation.attributes.dni'),  'max' => '10']) !!}
+        {!! Field::text('dni',    ['class' => 'gui-input', 'ph' => trans('validation.attributes.dni'),  'max' => '15']) !!}
     </div>
 
     <div class="col-md-6">
@@ -31,6 +31,36 @@
     <div class="col-md-6">
         {!! Field::text('phone_h', ['class' => 'gui-input', 'ph' => trans('validation.attributes.phone_h'), 'max' => '15']) !!}
     </div>
+
+</div>
+
+<div class="section row">
+
+    <div class="col-md-6">
+        {!! Field::text('country',  ['class' => 'gui-input', 'ph' => trans('validation.attributes.country'), 'max' => '50']) !!}
+    </div>
+
+    <div class="col-md-6">
+        {!! Field::text('province', ['class' => 'gui-input', 'ph' => trans('validation.attributes.province'),  'max' => '50']) !!}
+    </div>
+
+</div>
+
+<div class="section row">
+
+    <div class="col-md-6">
+        {!! Field::text('city',        ['class' => 'gui-input', 'ph' => trans('validation.attributes.city'),        'max' => '30']) !!}
+    </div>
+
+    <div class="col-md-6">
+        {!! Field::text('postal_code', ['class' => 'gui-input', 'ph' => trans('validation.attributes.postal_code'), 'max' => '10']) !!}
+    </div>
+
+</div>
+
+<div class="section">
+
+    {!! Field::text('address',         ['class' => 'gui-input', 'ph' => trans('validation.attributes.address'),         'max' => '150']) !!}
 
 </div>
 

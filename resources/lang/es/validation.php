@@ -121,6 +121,7 @@ return [
         'address'               => 'Dirección',
         'phone_h'               => 'Tlf. Habitación',
         'phone_c'               => 'Tlf. Móvil',
+        'phone'                 => 'Teléfono',
         'age'                   => 'Edad',
         'sex'                   => 'Sexo',
         'gender'                => 'Género',

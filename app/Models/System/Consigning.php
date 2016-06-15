@@ -8,7 +8,7 @@ class Consigning extends Model
 {
     protected $table = 'consigning';
 
-    protected $fillable = ['user_id', 'country', 'province', 'city', 'postal_code', 'address', 'reference_point'];
+    protected $fillable = ['user_id', 'name', 'phone', 'country', 'province', 'city', 'postal_code', 'address', 'reference_point'];
 
     public function client()
     {
@@ -17,6 +17,6 @@ class Consigning extends Model
 
     public function getConsignAttribute()
     {
-        return $this->consign = $this->country . ' - ' . $this->province . ' - ' . $this->city . ' - ' . $this->postal_code . ' - ' . $this->reference_point;
+        return $this->consign = $this->name . ' - ' . $this->country . ' - ' . $this->province . ' - ' . $this->city . ' - ' . $this->reference_point;
     }
 }

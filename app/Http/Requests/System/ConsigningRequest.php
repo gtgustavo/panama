@@ -25,13 +25,17 @@ class ConsigningRequest extends Request
     {
         return [
 
+            'name'            => 'required|string|max:30|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+
+            'phone'           => 'required|digits_between:10,15',
+
             'country'         => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
 
             'province'        => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
 
             'city'            => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
 
-            'postal_code'     => 'required|digits_between:4,10|',
+            'postal_code'     => 'max:10|min:4|regex:/^[a-zA-Z0-9\-]+$/i',
 
             'address'         => 'required|string|max:150|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\,\&\-\/ ]+$/i',
 

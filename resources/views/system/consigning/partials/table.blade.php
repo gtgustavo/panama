@@ -20,10 +20,11 @@
                 <thead>
                     <tr class="bg-light">
                         <th class="">ID</th>
+                        <th class="">{!! trans('front.form.consigning.table.name') !!}            </th>
+                        <th class="">{!! trans('front.form.consigning.table.phone') !!}           </th>
                         <th class="">{!! trans('front.form.consigning.table.country') !!}         </th>
                         <th class="">{!! trans('front.form.consigning.table.province') !!}        </th>
                         <th class="">{!! trans('front.form.consigning.table.city') !!}            </th>
-                        <th class="">{!! trans('front.form.consigning.table.postal_code') !!}     </th>
                         <th class="">{!! trans('front.form.consigning.table.reference_point') !!} </th>
                         <th class=""></th>
                     </tr>
@@ -35,10 +36,11 @@
 
                         <tr>
                             <td class=""> {{ $consign->id }}              </td>
+                            <td class=""> {{ $consign->name }}            </td>
+                            <td class=""> {{ $consign->phone }}           </td>
                             <td class=""> {{ $consign->country }}         </td>
                             <td class=""> {{ $consign->province }}        </td>
                             <td class=""> {{ $consign->city }}            </td>
-                            <td class=""> {{ $consign->postal_code }}     </td>
                             <td class=""> {{ $consign->reference_point }} </td>
 
                             <td class="text-right">

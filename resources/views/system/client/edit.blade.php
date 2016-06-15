@@ -26,9 +26,9 @@
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::model($client, ['route' => ['client_update', $client], 'method' => 'PUT']) !!}
+                        {!! Form::model($client->toArray() + $people->toArray(), ['route' => ['client_update', $client, $people], 'method' => 'PUT']) !!}
 
-                        @include('system.client.partials.fields', ['button' => trans('front.form.actions.edit')])
+                            @include('system.client.partials.fields', ['button' => trans('front.form.actions.edit')])
 
                         {!! Form::Close() !!}
 

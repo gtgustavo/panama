@@ -227,6 +227,10 @@ return [
 
             'table' => [
 
+                'name'            => 'RECEPTOR',
+
+                'phone'           => 'TELÉFONO',
+
                 'country'         => 'PAÍS',
 
                 'province'        => 'PROVINCIA',

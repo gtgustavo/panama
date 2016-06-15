@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\System;
 
-use App\Models\Credentials\User;
+use App\Models\Credentials\People;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +16,7 @@ class AjaxController extends Controller
         {
             $dni = $request->input('dni');
 
-            $client = User::where('dni', $dni)->get();
+            $client = People::where('dni', $dni)->get();
 
             $count = count($client);
 
@@ -54,7 +54,7 @@ class AjaxController extends Controller
         {
             $dni = $request->input('dni');
 
-            $client = User::where('dni', $dni)->get();
+            $client = People::where('dni', $dni)->get();
 
             $count = count($client);
 
@@ -62,11 +62,14 @@ class AjaxController extends Controller
             {
                 foreach($client as $data)
                 {
-                    foreach($data->consigning as $consigning)
+                    foreach($data->user as $user)
                     {
-                        $view = '<option value="'.$consigning->id.'">'.$consigning->consign.'</option>';
+                        foreach($user->consigning as $consigning)
+                        {
+                            $view = '<option value="'.$consigning->id.'">'.$consigning->consign.'</option>';
 
-                        echo $view;
+                            echo $view;
+                        }
                     }
                 }
 

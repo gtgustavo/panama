@@ -62,7 +62,7 @@
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="{{ route('employee_delete', [$employee->id]) }}" onclick="return confirm('{!! trans('messages.confirm.delete_register') !!}')">{!! trans('front.form.actions.delete') !!}</a>
+                                            <a href="{{ route('employee_delete', [$employee->id, $employee->people_id]) }}" onclick="return confirm('{!! trans('messages.confirm.delete_register') !!}')">{!! trans('front.form.actions.delete') !!}</a>
                                         </li>
                                     </ul>
 

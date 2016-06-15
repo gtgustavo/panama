@@ -16,4 +16,14 @@ class Helper
         return $ToUpper;
     }
 
+    public static function generate_random_password($cant)
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+
+        $disorder   = str_shuffle($characters);
+
+        $password   = substr($disorder, 1, $cant);
+
+        return $password;
+    }
 }

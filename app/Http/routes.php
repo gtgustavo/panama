@@ -11,17 +11,6 @@
 |
 */
 
-// Language
-Route::group(['middleware' => ['web']], function () {
-
-    Route::get('lang/{lang}', function ($lang) {
-        session(['lang' => $lang]);
-        return \Redirect::back();
-    })->where([
-        'lang' => 'en|es'
-    ]);
-});
-
 // Authentication and Password reset Routes...
 Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'Auth'], function(){
 
@@ -95,7 +84,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['web', 'auth', 'admin'], 
 
     Route::put('{id}/{people}/update', ['uses' => 'EmployeeController@update',  'as' => 'employee_update']);
 
-    Route::get('{id}',                 ['uses' => 'EmployeeController@destroy', 'as' => 'employee_delete']);
+    Route::get('{id}/{people}',        ['uses' => 'EmployeeController@destroy', 'as' => 'employee_delete']);
 });
 
 // Routes Reception Centers
@@ -127,7 +116,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'n
 
     Route::put('{id}/{people}/update', ['uses' => 'ClientController@update',  'as' => 'client_update']);
 
-    Route::get('{id}',                 ['uses' => 'ClientController@destroy', 'as' => 'client_delete']);
+    Route::get('{id}/{people}',        ['uses' => 'ClientController@destroy', 'as' => 'client_delete']);
 });
 
 // Routes Consigning Client
@@ -160,4 +149,15 @@ Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], '
     Route::put('{id}/update', ['uses' => 'PackageController@update',  'as' => 'package_update']);
 
     Route::get('{id}',        ['uses' => 'PackageController@destroy', 'as' => 'package_delete']);
+});
+
+// Language
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('lang/{lang}', function ($lang) {
+        session(['lang' => $lang]);
+        return Redirect::back();
+    })->where([
+        'lang' => 'en|es'
+    ]);
 });

@@ -61,7 +61,7 @@ class EmployeeController extends Controller
             // list all user reception centers by name and id
             $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
 
-            // return a view with lists
+            // return the form view with lists
             return view('administration.employee.create', compact('profile', 'reception_center'));
         }
 
@@ -140,7 +140,7 @@ class EmployeeController extends Controller
             // obtain registration of personal data
             $people = People::findOrFail($people);
 
-            // return a view with variables
+            // return the form view with variables
             return view('administration.employee.edit', compact('employee', 'people', 'profile', 'reception_center'));
         }
 
@@ -218,10 +218,11 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     * @param  int $people
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $people)
     {
         // validate if you have permission to perform this action
         if(Access::allow('delete-employees'))
@@ -232,7 +233,7 @@ class EmployeeController extends Controller
             if($id != 1) // Protection User administration
             {
                 // delete record
-                User::destroy($id);
+                People::destroy($people);
 
                 // build message operation
                 Alert::message(trans('messages.employee.delete', ['employee' => $employee->full_name]), 'warning');

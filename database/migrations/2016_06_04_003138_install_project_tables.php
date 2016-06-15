@@ -16,6 +16,8 @@ class InstallProjectTables extends Migration
         Schema::create('consigning', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('name', 50);
+            $table->string('phone', 15);
             $table->string('country', 50);
             $table->string('province', 50);
             $table->string('city', 50);
@@ -56,8 +58,5 @@ class InstallProjectTables extends Migration
     {
         Schema::drop('package');
         Schema::drop('consigning');
-        //Schema::drop('provider_road');
-        //Schema::drop('road');
-        //Schema::drop('provider');
     }
 }

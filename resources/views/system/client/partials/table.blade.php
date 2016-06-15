@@ -32,18 +32,20 @@
 
                     @foreach($clients as $client)
 
+                        @foreach($client->people as $people)@endforeach
+
+                        @foreach($client->profile as $profile)@endforeach
+
+                        @foreach($client->reception as $reception)@endforeach
+
                         <tr>
-                            <td class=""> {{ $client->id }}            </td>
-                            <td class=""> {{ $client->full_name }}     </td>
-                            <td class=""> {{ $client->dni }}           </td>
-                            <td class=""> {{ $client->email }}         </td>
-                            <td class="">
-                                @foreach($client->profile as $profile)
-                                    {{ $profile->name }}
-                                @endforeach
-                            </td>
-                            <td class=""> {{ $client->phone_c }}        </td>
-                            <td class=""> {{ $client->phone_h }}        </td>
+                            <td class=""> {{ $client->id }}        </td>
+                            <td class=""> {{ $client->full_name }} </td>
+                            <td class=""> {{ $people->dni }}       </td>
+                            <td class=""> {{ $client->email }}     </td>
+                            <td class=""> {{ $profile->name }}     </td>
+                            <td class=""> {{ $people->phone_c }}   </td>
+                            <td class=""> {{ $people->phone_h }}   </td>
 
                             <td class="text-right">
 
@@ -62,13 +64,13 @@
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="{{ route('client_edit',     [$client->id]) }}">{!! trans('front.form.actions.edit') !!}</a>
+                                            <a href="{{ route('client_edit',     [$client->id, $client->people_id]) }}">{!! trans('front.form.actions.edit') !!}</a>
                                         </li>
 
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="{{ route('client_delete',   [$client->id]) }}" onclick="return confirm('{!! trans('messages.confirm.delete_register') !!}')">{!! trans('front.form.actions.delete') !!}</a>
+                                            <a href="{{ route('client_delete',   [$client->id, $client->people_id]) }}" onclick="return confirm('{!! trans('messages.confirm.delete_register') !!}')">{!! trans('front.form.actions.delete') !!}</a>
                                         </li>
                                     </ul>
 
