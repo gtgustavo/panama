@@ -13,7 +13,7 @@
 <div class="section row">
 
     <div class="col-md-6">
-        {!! Field::text('dni',    ['class' => 'gui-input', 'ph' => trans('validation.attributes.dni'),  'max' => '10']) !!}
+        {!! Field::text('dni',    ['class' => 'gui-input', 'ph' => trans('validation.attributes.dni'),  'max' => '15']) !!}
     </div>
 
     <div class="col-md-6">
@@ -48,16 +48,29 @@
 
 <!-- Protection user admin -->
 
-@if(isset($employee->profile_id))
+<div class="section row">
 
-    @if($employee->profile_id > 2)
+    @if(isset($employee->profile_id))
+
+        @if($employee->profile_id > 2)
+
+            @include('administration.employee.partials.field_profile')
+
+            @include('administration.employee.partials.field_reception_center')
+
+        @endif
+
+    @else
 
         @include('administration.employee.partials.field_profile')
-    @endif
-@else
 
-    @include('administration.employee.partials.field_profile')
-@endif
+        @include('administration.employee.partials.field_reception_center')
+
+    @endif
+
+</div>
+
+
 
 <div class="section row mbn">
 

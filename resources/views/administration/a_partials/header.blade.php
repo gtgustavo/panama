@@ -15,6 +15,10 @@
             <li>
                 <a href="{{ route('profile_home') }}">  {{ trans('front.sidebar.sub_title.profiles') }}  </a>
             </li>
+
+            <li>
+                <a href="{{ route('reception_center_home') }}">  {{ trans('front.sidebar.sub_title.reception_centers') }}  </a>
+            </li>
         </ul>
 
     </div>
@@ -26,6 +30,9 @@
 
         <a href="{{ route('employee_create') }}" class="btn btn-default btn-sm light fw600 ml10">
             <span class="fa fa-user pr5"></span> {!! trans('front.form.employee.create') !!} </a>
+
+        <a href="{{ route('reception_center_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+            <span class="fa fa-plus pr5"></span> {!! trans('front.form.reception_center.create') !!} </a>
 
     </div>
 

@@ -13,34 +13,6 @@ class InstallProjectTables extends Migration
      */
     public function up()
     {
-        Schema::create('provider', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('company', 50);
-            $table->string('rif', 12)->unique();
-            $table->string('tracking', 25)->unique();
-            $table->string('phone', 11);
-            $table->timestamps();
-        });
-
-        Schema::create('road', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('route', 100);
-            $table->timestamps();
-        });
-
-        Schema::create('provider_road', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('provider_id')->unsigned();
-            $table->integer('road_id')->unsigned();
-
-            $table->foreign('provider_id')->references('id')->on('provider')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('road_id')->references('id')->on('road')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->timestamps();
-        });
-
         Schema::create('consigning', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
@@ -84,8 +56,8 @@ class InstallProjectTables extends Migration
     {
         Schema::drop('package');
         Schema::drop('consigning');
-        Schema::drop('provider_road');
-        Schema::drop('road');
-        Schema::drop('provider');
+        //Schema::drop('provider_road');
+        //Schema::drop('road');
+        //Schema::drop('provider');
     }
 }

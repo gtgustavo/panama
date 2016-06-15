@@ -85,63 +85,79 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'admin'], '
 // Routes Employees
 Route::group(['prefix' => 'employee', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Administration'], function(){
 
-    Route::get('/',            ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
+    Route::get('/',                    ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
 
-    Route::get('create',       ['uses' => 'EmployeeController@create',  'as' => 'employee_create']);
+    Route::get('create',               ['uses' => 'EmployeeController@create',  'as' => 'employee_create']);
 
-    Route::post('create',      ['uses' => 'EmployeeController@store',   'as' => 'employee_create']);
+    Route::post('create',              ['uses' => 'EmployeeController@store',   'as' => 'employee_create']);
 
-    Route::get('{id}/edit',    ['uses' => 'EmployeeController@edit',    'as' => 'employee_edit']);
+    Route::get('{id}/{people}/edit',   ['uses' => 'EmployeeController@edit',    'as' => 'employee_edit']);
 
-    Route::put('{id}/update',  ['uses' => 'EmployeeController@update',  'as' => 'employee_update']);
+    Route::put('{id}/{people}/update', ['uses' => 'EmployeeController@update',  'as' => 'employee_update']);
 
-    Route::get('{id}',         ['uses' => 'EmployeeController@destroy', 'as' => 'employee_delete']);
+    Route::get('{id}',                 ['uses' => 'EmployeeController@destroy', 'as' => 'employee_delete']);
+});
+
+// Routes Reception Centers
+Route::group(['prefix' => 'reception_center', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Administration'], function(){
+
+    Route::get('/',           ['uses' => 'ReceptionCenterController@index',   'as' => 'reception_center_home']);
+
+    Route::get('create',      ['uses' => 'ReceptionCenterController@create',  'as' => 'reception_center_create']);
+
+    Route::post('create',     ['uses' => 'ReceptionCenterController@store',   'as' => 'reception_center_create']);
+
+    Route::get('{id}/edit',   ['uses' => 'ReceptionCenterController@edit',    'as' => 'reception_center_edit']);
+
+    Route::put('{id}/update', ['uses' => 'ReceptionCenterController@update',  'as' => 'reception_center_update']);
+
+    Route::get('{id}',        ['uses' => 'ReceptionCenterController@destroy', 'as' => 'reception_center_delete']);
 });
 
 // Routes Client
 Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
 
-    Route::get('/',            ['uses' => 'ClientController@index',   'as' => 'client_home']);
+    Route::get('/',                    ['uses' => 'ClientController@index',   'as' => 'client_home']);
 
-    Route::get('create',       ['uses' => 'ClientController@create',  'as' => 'client_create']);
+    Route::get('create',               ['uses' => 'ClientController@create',  'as' => 'client_create']);
 
-    Route::post('create',      ['uses' => 'ClientController@store',   'as' => 'client_create']);
+    Route::post('create',              ['uses' => 'ClientController@store',   'as' => 'client_create']);
 
-    Route::get('{id}/edit',    ['uses' => 'ClientController@edit',    'as' => 'client_edit']);
+    Route::get('{id}/{people}/edit',   ['uses' => 'ClientController@edit',    'as' => 'client_edit']);
 
-    Route::put('{id}/update',  ['uses' => 'ClientController@update',  'as' => 'client_update']);
+    Route::put('{id}/{people}/update', ['uses' => 'ClientController@update',  'as' => 'client_update']);
 
-    Route::get('{id}',         ['uses' => 'ClientController@destroy', 'as' => 'client_delete']);
+    Route::get('{id}',                 ['uses' => 'ClientController@destroy', 'as' => 'client_delete']);
 });
 
 // Routes Consigning Client
 Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
 
-    Route::get('/',            ['uses' => 'ConsigningController@index',   'as' => 'consigning_home']);
+    Route::get('/',           ['uses' => 'ConsigningController@index',   'as' => 'consigning_home']);
 
-    Route::get('create',       ['uses' => 'ConsigningController@create',  'as' => 'consigning_create']);
+    Route::get('create',      ['uses' => 'ConsigningController@create',  'as' => 'consigning_create']);
 
-    Route::post('create',      ['uses' => 'ConsigningController@store',   'as' => 'consigning_create']);
+    Route::post('create',     ['uses' => 'ConsigningController@store',   'as' => 'consigning_create']);
 
-    Route::get('{id}/edit',    ['uses' => 'ConsigningController@edit',    'as' => 'consigning_edit']);
+    Route::get('{id}/edit',   ['uses' => 'ConsigningController@edit',    'as' => 'consigning_edit']);
 
-    Route::put('{id}/update',  ['uses' => 'ConsigningController@update',  'as' => 'consigning_update']);
+    Route::put('{id}/update', ['uses' => 'ConsigningController@update',  'as' => 'consigning_update']);
 
-    Route::get('{id}',         ['uses' => 'ConsigningController@destroy', 'as' => 'consigning_delete']);
+    Route::get('{id}',        ['uses' => 'ConsigningController@destroy', 'as' => 'consigning_delete']);
 });
 
 // Routes Package
 Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
 
-    Route::get('/',            ['uses' => 'PackageController@index',   'as' => 'package_home']);
+    Route::get('/',           ['uses' => 'PackageController@index',   'as' => 'package_home']);
 
-    Route::get('create',       ['uses' => 'PackageController@create',  'as' => 'package_create']);
+    Route::get('create',      ['uses' => 'PackageController@create',  'as' => 'package_create']);
 
-    Route::post('create',      ['uses' => 'PackageController@store',   'as' => 'package_create']);
+    Route::post('create',     ['uses' => 'PackageController@store',   'as' => 'package_create']);
 
-    Route::get('{id}/edit',    ['uses' => 'PackageController@edit',    'as' => 'package_edit']);
+    Route::get('{id}/edit',   ['uses' => 'PackageController@edit',    'as' => 'package_edit']);
 
-    Route::put('{id}/update',  ['uses' => 'PackageController@update',  'as' => 'package_update']);
+    Route::put('{id}/update', ['uses' => 'PackageController@update',  'as' => 'package_update']);
 
-    Route::get('{id}',         ['uses' => 'PackageController@destroy', 'as' => 'package_delete']);
+    Route::get('{id}',        ['uses' => 'PackageController@destroy', 'as' => 'package_delete']);
 });

@@ -18,12 +18,11 @@
                 <thead>
                     <tr class="bg-light">
                         <th class="">ID</th>
-                        <th class="">{!! trans('front.form.employee.table.name') !!}    </th>
-                        <th class="">{!! trans('front.form.employee.table.dni') !!}     </th>
-                        <th class="">{!! trans('front.form.employee.table.email') !!}   </th>
-                        <th class="">{!! trans('front.form.employee.table.profile') !!} </th>
-                        <th class="">{!! trans('front.form.employee.table.phone_c') !!} </th>
-                        <th class="">{!! trans('front.form.employee.table.phone_h') !!} </th>
+                        <th class="">{!! trans('front.form.employee.table.name') !!}             </th>
+                        <th class="">{!! trans('front.form.employee.table.dni') !!}              </th>
+                        <th class="">{!! trans('front.form.employee.table.email') !!}            </th>
+                        <th class="">{!! trans('front.form.employee.table.profile') !!}          </th>
+                        <th class="">{!! trans('front.form.employee.table.reception_center') !!} </th>
                         <th class=""></th>
                     </tr>
                 </thead>
@@ -32,18 +31,19 @@
 
                     @foreach($employees as $employee)
 
+                        @foreach($employee->people as $people)@endforeach
+
+                        @foreach($employee->profile as $profile)@endforeach
+
+                        @foreach($employee->reception as $reception)@endforeach
+
                         <tr>
-                            <td class=""> {{ $employee->id }}            </td>
-                            <td class=""> {{ $employee->full_name }}     </td>
-                            <td class=""> {{ $employee->dni }}           </td>
-                            <td class=""> {{ $employee->email }}         </td>
-                            <td class="">
-                                @foreach($employee->profile as $profile)
-                                    {{ $profile->name }}
-                                @endforeach
-                            </td>
-                            <td class=""> {{ $employee->phone_c }}        </td>
-                            <td class=""> {{ $employee->phone_h }}        </td>
+                            <td class=""> {{ $employee->id }}        </td>
+                            <td class=""> {{ $employee->full_name }} </td>
+                            <td class=""> {{ $people->dni }}         </td>
+                            <td class=""> {{ $employee->email }}     </td>
+                            <td class=""> {{ $profile->name }}       </td>
+                            <td class=""> {{ $reception->name }}     </td>
 
                             <td class="text-right">
 
@@ -56,7 +56,7 @@
 
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a href="{{ route('employee_edit',   [$employee->id]) }}">{!! trans('front.form.actions.edit') !!}</a>
+                                            <a href="{{ route('employee_edit',   [$employee->id, $employee->people_id]) }}">{!! trans('front.form.actions.edit') !!}</a>
                                         </li>
 
                                         <li class="divider"></li>

@@ -26,9 +26,9 @@
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::model($employee, ['route' => ['employee_update', $employee], 'method' => 'PUT']) !!}
+                        {!! Form::model($employee->toArray() + $people->toArray(), ['route' => ['employee_update', $employee, $people], 'method' => 'PUT']) !!}
 
-                        @include('administration.employee.partials.fields', ['profile' => $profile, 'button' => trans('front.form.actions.edit')])
+                        @include('administration.employee.partials.fields', ['profile' => $profile, 'reception_center' => $reception_center, 'button' => trans('front.form.actions.edit')])
 
                         {!! Form::Close() !!}
 

@@ -158,6 +158,7 @@ return [
         'postal_code'           => 'Código Postal',
         'reference_point'       => 'Punto de Referencia',
         'consigning'            => 'Ruta de Envío',
+        'reception'             => 'Centro de Recepción',
 
     ],
 

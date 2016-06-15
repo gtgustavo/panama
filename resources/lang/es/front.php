@@ -52,22 +52,26 @@ return [
 
         'sub_title' => [
 
-            'employees' => 'Empleados',
+            'employees'         => 'Empleados',
 
-            'profiles'  => 'Perfiles',
+            'profiles'          => 'Perfiles',
 
-            'packages'  => 'Paquetes',
+            'packages'          => 'Paquetes',
 
-            'clients'   => 'Clientes',
+            'clients'           => 'Clientes',
+
+            'reception_centers' => 'Centros de Recepción',
         ],
 
         'sub_sub_title' => [
 
-            'list_employee'   => 'Todos los Empleados',
+            'list_employee'         => 'Todos los Empleados',
 
-            'list_profile'    => 'Todos los Perfiles',
+            'list_profile'          => 'Todos los Perfiles',
 
-            'list_client'     => 'Todos los Clientes',
+            'list_client'           => 'Todos los Clientes',
+
+            'list_reception_center' => 'Centros de Recepción'
         ],
 
     ],
@@ -118,6 +122,31 @@ return [
             ],
         ],
 
+        'reception_center' => [
+
+            'title' => 'CENTROS DE RECEPCIÓN',
+
+            'create' => 'Nuevo Centro de Recepción',
+
+            'table' => [
+
+                'name'     => 'NOMBRE',
+
+                'country'  => 'PAÍS',
+
+                'province' => 'PROVINCIA',
+
+                'city'     => 'CIUDAD',
+            ],
+
+            'events' => [
+
+                'create' => 'Nuevo Centro de Recepción',
+
+                'edit'   => 'Actualizar Centro de Recepción',
+            ],
+        ],
+
         'employee' => [
 
             'title' => 'EMPLEADOS',
@@ -126,17 +155,15 @@ return [
 
             'table' => [
 
-                'name'    => 'NOMBRE',
+                'name'             => 'NOMBRE',
 
-                'dni'     => 'DNI',
+                'dni'              => 'DNI',
 
-                'email'   => 'EMAIL',
+                'email'            => 'EMAIL',
 
-                'profile' => 'PERFIL',
+                'profile'          => 'PERFIL',
 
-                'phone_c' => 'TLF. MÓVIL',
-
-                'phone_h' => 'TLF. HABITACIÓN',
+                'reception_center' => 'CENTRO DE RECEPCIÓN'
             ],
 
             'events' => [

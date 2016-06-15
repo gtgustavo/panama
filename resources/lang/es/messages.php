@@ -77,4 +77,15 @@ return [
         'error_consign' => 'Este cliente no posee rutas de envío disponibles',
     ],
 
+    'reception_center' => [
+
+        'create' => 'Centro de Recepción :center, creado satisfactoriamente',
+
+        'update' => 'Centro de Recepción :center, actualizado satisfactoriamente',
+
+        'delete' => 'Centro de Recepción :center, eliminado satisfactoriamente',
+
+        'danger' => 'No puede realizar la opción seleccionada sobre el Centro de Recepción: :center',
+    ],
+
 ];

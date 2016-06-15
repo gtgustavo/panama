@@ -13,21 +13,39 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('reception')->insert(array(
+            'name'        => 'ONLINE',
+            'country'     => 'ONLINE',
+            'province'    => 'ONLINE',
+            'city'        => 'ONLINE',
+            'postal_code' => 'ONLINE',
+            'address'     => 'ONLINE',
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+        ));
+
+        DB::table('people')->insert(array(
+            'first_name'  => 'System',
+            'last_name'   => 'Admin',
+            'dni'         => '12345678',
+            'phone_c'     => '55558888888',
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+        ));
+
         DB::table('user')->insert(array(
 
-            'first_name' => 'System',
-            'last_name'  => 'Admin',
-            'dni'        => '12345678',
-            'phone_c'    => '04161234567',
-            'email'      => 'admin1@admin.com',
-            'password'   => bcrypt('gt123456'),
-            //'status'     => 'active',
-            'profile_id' => '1',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'full_name'    => 'System Admin',
+            'email'        => 'admin1@admin.com',
+            'password'     => bcrypt('gt123456'),
+            'profile_id'   => 1,
+            'people_id'    => 1,
+            'reception_id' => 1,
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
 
         ));
 
-        factory(App\Models\User::class, 29)->create();
+        //factory(App\Models\User::class, 29)->create();
     }
 }

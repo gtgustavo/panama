@@ -12,7 +12,7 @@ class Package extends Model
 
     public function client()
     {
-        return $this->hasMany('App\Models\User', 'id', 'user_id');
+        return $this->hasMany('App\Models\Credentials\User', 'id', 'user_id');
     }
 
     public function consigning()

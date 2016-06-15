@@ -9,7 +9,7 @@ use App\Http\Requests\Security\RelationsRequest;
 use App\Models\Security\Profile;
 use App\Models\Security\Relations;
 use App\Models\Security\Role;
-use App\Models\User;
+use App\Models\Credentials\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -93,7 +93,7 @@ class ProfileController extends Controller
             {
                 $profile_role = Profile::findOrFail($id)->roles()->lists('role_id')->toArray();
 
-                $roles = Role::where('id', '>', 11)->lists('display_name', 'id');
+                $roles = Role::where('id', '>', 15)->lists('display_name', 'id');
 
                 return view('administration.profile.role', compact('profile', 'profile_role', 'roles'));
             }

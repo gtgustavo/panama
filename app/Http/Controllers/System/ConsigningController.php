@@ -6,7 +6,7 @@ use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\ConsigningRequest;
 use App\Models\System\Consigning;
-use App\Models\User;
+use App\Models\Credentials\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

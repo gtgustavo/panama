@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Credentials;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'dni', 'phone_c', 'phone_h', 'email', 'password', 'profile_id'];
+    protected $fillable = ['full_name' ,'email', 'password', 'people_id', 'profile_id', 'reception_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -37,24 +37,29 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function getFullNameAttribute()
-    {
-        return $this->first_name . " " . $this->last_name;
-    }
-
     public function isSuperAdmin()
     {
-        return $this->profile_id === 1;
+        return $this->profile_id == 1;
     }
 
     public function isAdmin()
     {
-        return $this->profile_id !== 2;
+        return $this->profile_id != 2;
+    }
+
+    public function people()
+    {
+        return $this->hasMany('App\Models\Credentials\People', 'id', 'people_id');
     }
 
     public function profile()
     {
         return $this->hasMany('App\Models\Security\Profile', 'id', 'profile_id');
+    }
+
+    public function reception()
+    {
+        return $this->hasMany('App\Models\Administration\ReceptionCenter', 'id', 'reception_id');
     }
 
     public function consigning()

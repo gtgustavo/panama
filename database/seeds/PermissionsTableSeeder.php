@@ -19,7 +19,6 @@ class PermissionsTableSeeder extends Seeder
         $this->add_roles();
     }
 
-
     private function profile()
     {
         DB::table('profile')->insert(array(
@@ -93,6 +92,36 @@ class PermissionsTableSeeder extends Seeder
         DB::table('role')->insert(array(
             'name'         => 'permissions-profiles',
             'display_name' => 'Asignar Permisos a Perfiles',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        // RECEPTION CENTER
+
+        DB::table('role')->insert(array(
+            'name'         => 'view-reception-center',
+            'display_name' => 'Leer Centro de Recepción',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-reception-center',
+            'display_name' => 'Crear Centro de Recepción',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-reception-center',
+            'display_name' => 'Modificar Centro de Recepción',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-reception-center',
+            'display_name' => 'Borrar Centro de Recepción',
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));
@@ -225,7 +254,7 @@ class PermissionsTableSeeder extends Seeder
 
     private function add_roles()
     {
-        for($i=3; $i < 24; $i++)
+        for($i=3; $i < 28; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

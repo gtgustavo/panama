@@ -5,7 +5,7 @@ namespace App\Http\Controllers\System;
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\ClientsRequest;
-use App\Models\User;
+use App\Models\Credentials\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
