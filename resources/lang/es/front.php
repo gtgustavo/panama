@@ -190,17 +190,21 @@ return [
 
             'table' => [
 
-                'name'    => 'NOMBRE',
+                'name'             => 'NOMBRE',
 
-                'dni'     => 'DNI',
+                'dni'              => 'DNI',
 
-                'email'   => 'EMAIL',
+                'country'          => 'PAÍS',
 
-                'profile' => 'PERFIL',
+                'email'            => 'EMAIL',
 
-                'phone_c' => 'TLF. MÓVIL',
+                'profile'          => 'PERFIL',
 
-                'phone_h' => 'TLF. HABITACIÓN',
+                'phone_c'          => 'TLF. MÓVIL',
+
+                'phone_h'          => 'TLF. HABITACIÓN',
+
+                'reception_center' => 'CENTRO DE RECEPCIÓN',
             ],
 
             'events' => [
@@ -266,17 +270,21 @@ return [
 
             'table' => [
 
-                'name'       => 'NOMBRE',
+                'name_e'     => 'EMISOR',
+
+                'name_r'     => 'RECEPTOR',
 
                 'dni'        => 'DNI',
 
                 'wr'         => 'WR',
 
-                'consigning' => 'RUTA DE ENVÍO',
+                'consigning' => 'PAÍS DESTINO',
 
                 'type'       => 'TIPO DE CAJA',
 
                 'cost'       => 'COSTO',
+
+                'status'     => 'ESTATUS',
             ],
 
             'events' => [
@@ -337,6 +345,8 @@ return [
         'reset'   => 'Enlace de restablecimiento',
 
         'subject' => 'Enlace de restablecimiento',
+
+        'subject_credentials' => 'Credenciales de Acceso',
 
     ],
 

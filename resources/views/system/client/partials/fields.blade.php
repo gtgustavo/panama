@@ -22,6 +22,12 @@
 
 </div>
 
+@if(! Auth::check())
+
+    @include('system.client.partials.field_password')
+
+@endif
+
 <div class="section row">
 
     <div class="col-md-6">
@@ -64,11 +70,15 @@
 
 </div>
 
-<div class="section row mbn">
+@if(Auth::check())
 
-    <div class="col-sm-12">
-        <p class="text-right">
-            {!! Form::submit($button, ['class' => 'btn btn-primary']) !!}
-        </p>
+    <div class="section row mbn">
+
+        <div class="col-sm-12">
+            <p class="text-right">
+                {!! Form::submit($button, ['class' => 'btn btn-primary']) !!}
+            </p>
+        </div>
     </div>
-</div>
+
+@endif

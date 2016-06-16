@@ -20,7 +20,7 @@
                             <span> {!! trans('front.form.button.sign_up') !!} </span>
                         </div>
 
-                        @include('auth.partials.fields_register')
+                        @include('system.client.partials.fields')
 
                     </div>
 

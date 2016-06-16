@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Styde\Html\Facades\Alert;
 
 class ClientController extends Controller
@@ -94,6 +95,9 @@ class ClientController extends Controller
 
             // create log access credentials
             $client = User::create($credentials);
+
+            // send email to the customer with your credentials
+            $this->send_mail($client->full_name, $client->email, $password);
 
             // build message operation
             Alert::message(trans('messages.client.create', ['client' => $client->full_name]), 'success');
@@ -206,6 +210,22 @@ class ClientController extends Controller
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
         return Access::redirectDefault();
+    }
+
+
+    /**
+     * send mail to client
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     */
+    private function send_mail($name, $email, $password)
+    {
+        Mail::send('emails.credentials', compact('name', 'email', 'password'), function ($message) use ($email) {
+
+            $message->to($email)->subject(trans('front.email.subject_credentials'));
+
+        });
     }
 
     /**

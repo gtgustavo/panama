@@ -18,12 +18,14 @@
                 <thead>
                     <tr class="bg-light">
                         <th class="">ID</th>
-                        <th class="">{!! trans('front.form.package.table.wr') !!}   </th>
-                        <th class="">{!! trans('front.form.package.table.consigning') !!}   </th>
-                        <th class="">{!! trans('front.form.package.table.name') !!} </th>
-                        <th class="">{!! trans('front.form.package.table.dni') !!}  </th>
-                        <th class="">{!! trans('front.form.package.table.type') !!} </th>
-                        <th class="">{!! trans('front.form.package.table.cost') !!} </th>
+                        <th class="">{!! trans('front.form.package.table.wr') !!}         </th>
+                        <th class="">{!! trans('front.form.package.table.consigning') !!} </th>
+                        <th class="">{!! trans('front.form.package.table.name_e') !!}     </th>
+                        <th class="">{!! trans('front.form.package.table.dni') !!}        </th>
+                        <th class="">{!! trans('front.form.package.table.name_r') !!}     </th>
+                        <th class="">{!! trans('front.form.package.table.type') !!}       </th>
+                        <th class="">{!! trans('front.form.package.table.cost') !!}       </th>
+                        <th class="">{!! trans('front.form.package.table.status') !!}     </th>
                         <th class=""></th>
                     </tr>
                 </thead>
@@ -32,26 +34,22 @@
 
                     @foreach($packages as $package)
 
+                        @foreach($package->client as $client)@endforeach
+
+                        @foreach($client->people as $people)@endforeach
+
+                        @foreach($package->consigning as $consigning)@endforeach
+
                         <tr>
-                            <td class=""> {{ $package->id }}   </td>
-                            <td class=""> {{ $package->wr }}   </td>
-                            <td class="">
-                                @foreach($package->consigning as $consigning)
-                                    {{ $consigning->country }}
-                                @endforeach
-                            </td>
-                            <td class="">
-                                @foreach($package->client as $client)
-                                    {{ $client->full_name }}
-                                @endforeach
-                            </td>
-                            <td class="">
-                                @foreach($package->client as $client)
-                                    {{ $client->dni }}
-                                @endforeach
-                            </td>
-                            <td class=""> {{ $package->type }} </td>
-                            <td class=""> {{ $package->cost }} </td>
+                            <td class=""> {{ $package->id }}         </td>
+                            <td class=""> {{ $package->wr }}         </td>
+                            <td class=""> {{ $consigning->country }} </td>
+                            <td class=""> {{ $client->full_name }}   </td>
+                            <td class=""> {{ $people->dni }}         </td>
+                            <td class=""> {{ $consigning->name }}    </td>
+                            <td class=""> {{ $package->type }}       </td>
+                            <td class=""> {{ $package->cost }}       </td>
+                            <td class=""> {{ $package->cost }}       </td>
 
                             <td class="text-right">
 

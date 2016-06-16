@@ -3,7 +3,8 @@
 namespace App\Helpers\Package;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Credentials\People;
+use App\Models\Credentials\User;
 use Carbon\Carbon;
 
 use App\Models\System\Package as PackageModel;
@@ -64,7 +65,7 @@ class Package extends Controller
 
     public static function validate_client($dni)
     {
-        $client = User::where('dni', $dni)->get();
+        $client = People::where('dni', $dni)->get();
 
         $count = count($client);
 

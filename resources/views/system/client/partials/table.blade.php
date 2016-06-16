@@ -18,12 +18,12 @@
                 <thead>
                     <tr class="bg-light">
                         <th class="">ID</th>
-                        <th class="">{!! trans('front.form.client.table.name') !!}    </th>
-                        <th class="">{!! trans('front.form.client.table.dni') !!}     </th>
-                        <th class="">{!! trans('front.form.client.table.email') !!}   </th>
-                        <th class="">{!! trans('front.form.client.table.profile') !!} </th>
-                        <th class="">{!! trans('front.form.client.table.phone_c') !!} </th>
-                        <th class="">{!! trans('front.form.client.table.phone_h') !!} </th>
+                        <th class="">{!! trans('front.form.client.table.name') !!}             </th>
+                        <th class="">{!! trans('front.form.client.table.dni') !!}              </th>
+                        <th class="">{!! trans('front.form.client.table.country') !!}          </th>
+                        <th class="">{!! trans('front.form.client.table.email') !!}            </th>
+                        <th class="">{!! trans('front.form.client.table.phone_c') !!}          </th>
+                        <th class="">{!! trans('front.form.client.table.reception_center') !!} </th>
                         <th class=""></th>
                     </tr>
                 </thead>
@@ -34,18 +34,16 @@
 
                         @foreach($client->people as $people)@endforeach
 
-                        @foreach($client->profile as $profile)@endforeach
-
                         @foreach($client->reception as $reception)@endforeach
 
                         <tr>
                             <td class=""> {{ $client->id }}        </td>
                             <td class=""> {{ $client->full_name }} </td>
                             <td class=""> {{ $people->dni }}       </td>
+                            <td class=""> {{ $people->country }}   </td>
                             <td class=""> {{ $client->email }}     </td>
-                            <td class=""> {{ $profile->name }}     </td>
-                            <td class=""> {{ $people->phone_c }}   </td>
                             <td class=""> {{ $people->phone_h }}   </td>
+                            <td class=""> {{ $reception->name }}   </td>
 
                             <td class="text-right">
 
