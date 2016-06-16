@@ -31,11 +31,11 @@
                     @foreach($profiles as $profile)
 
                         <tr>
-                            <td class=""> {{ $profile->id }}            </td>
-                            <td class=""> {{ $profile->name }}          </td>
-                            <td class=""> {{ $profile->description }}   </td>
-                            <td><strong>  {{ count($profile->roles) }}  </strong> {{ trans('front.form.profile.table.roles') }}     </td>
-                            <td><strong>  {{ count($profile->users) }}  </strong> {{ trans('front.form.profile.table.employees') }} </td>
+                            <td class=""> {{ $profile->id }}              </td>
+                            <td class=""> {{ $profile->name }}            </td>
+                            <td class=""> {{ $profile->description }}     </td>
+                            <td><strong>  {{ $profile->roles->count() }}  </strong> {{ trans('front.form.profile.table.roles') }}     </td>
+                            <td><strong>  {{ $profile->users->count() }}  </strong> {{ trans('front.form.profile.table.employees') }} </td>
 
                             <td class="text-right">
 

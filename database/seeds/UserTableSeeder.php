@@ -46,6 +46,10 @@ class UserTableSeeder extends Seeder
 
         ));
 
-        //factory(App\Models\User::class, 29)->create();
+        factory(App\Models\Administration\ReceptionCenter::class, 49)->create();
+
+        factory(App\Models\Credentials\People::class, 200)->create();
+
+        factory(App\Models\Credentials\User::class, 200)->create();
     }
 }
