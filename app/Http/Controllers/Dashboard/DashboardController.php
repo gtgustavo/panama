@@ -21,9 +21,9 @@ class DashboardController extends Controller
 
     public function admin()
     {
-        $packages      = Package::with('client')->with('consigning')->paginate();
+        $packages      = Package::with('client')->with('consigning')->with('latestStatus')->paginate();
 
-        $cant_packages = count(Package::all());
+        $cant_packages = Package::all()->count();
 
         return view('dashboard.admin.index', compact('packages', 'cant_packages'));
     }

@@ -19,4 +19,9 @@ class Package extends Model
     {
         return $this->hasMany('App\Models\System\Consigning', 'id', 'consigning_id');
     }
+
+    public function latestStatus()
+    {
+        return $this->hasOne('App\Models\System\ChangeStatus')->latest()->with('status');
+    }
 }

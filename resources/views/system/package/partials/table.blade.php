@@ -23,8 +23,6 @@
                         <th class="">{!! trans('front.form.package.table.name_e') !!}     </th>
                         <th class="">{!! trans('front.form.package.table.dni') !!}        </th>
                         <th class="">{!! trans('front.form.package.table.name_r') !!}     </th>
-                        <th class="">{!! trans('front.form.package.table.type') !!}       </th>
-                        <th class="">{!! trans('front.form.package.table.cost') !!}       </th>
                         <th class="">{!! trans('front.form.package.table.status') !!}     </th>
                         <th class=""></th>
                     </tr>
@@ -40,6 +38,8 @@
 
                         @foreach($package->consigning as $consigning)@endforeach
 
+                        @foreach($package->latestStatus->status as $status)@endforeach
+
                         <tr>
                             <td class=""> {{ $package->id }}         </td>
                             <td class=""> {{ $package->wr }}         </td>
@@ -47,9 +47,7 @@
                             <td class=""> {{ $client->full_name }}   </td>
                             <td class=""> {{ $people->dni }}         </td>
                             <td class=""> {{ $consigning->name }}    </td>
-                            <td class=""> {{ $package->type }}       </td>
-                            <td class=""> {{ $package->cost }}       </td>
-                            <td class=""> {{ $package->cost }}       </td>
+                            <td class=""> {{ $status->name }}        </td>
 
                             <td class="text-right">
 

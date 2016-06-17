@@ -7,6 +7,7 @@ use App\Helpers\Helper;
 use App\Helpers\Package\Package;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\PackageRequest;
+use App\Models\System\ChangeStatus;
 use App\Models\System\Package as PackageModel;
 use Illuminate\Http\Request;
 
@@ -71,6 +72,11 @@ class PackageController extends Controller
                 $package->user_id = $client;
 
                 $package->save();
+
+                ChangeStatus::create([
+                    'package_id' => $package->id,
+                    'status_id'  => 2
+                ]);
 
                 Alert::message(trans('messages.package.create', ['package' => $package->wr]), 'success');
 

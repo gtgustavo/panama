@@ -75,7 +75,14 @@ class Package extends Controller
         {
             foreach($client as $data)
             {
-                $validate = $data->id;
+                //$validate = $data->id;
+
+                $users = User::where('people_id', $data->id)->get();
+
+                foreach($users as $user)
+                {
+                    $validate = $user->id;
+                }
             }
         }
 
