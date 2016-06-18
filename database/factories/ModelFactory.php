@@ -57,13 +57,11 @@ $factory->define(App\Models\Credentials\User::class, function ($faker) {
 
     return [
 
-        'full_name'    => $faker->firstName ." ". $faker->lastName,
-
         'email'        => $faker->unique()->email,
 
         'password'     => bcrypt('gt123456'),
 
-        'profile_id'   => $faker->randomElement($array = array (2,3)),
+        'profile_id'   => $faker->randomElement($array = array (2,3,4,5)),
 
         'people_id'    => $faker->unique()->numberBetween($min = 2, $max = 201),
 

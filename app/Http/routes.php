@@ -36,11 +36,12 @@ Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'Auth'], 
 // Routes Dashboard
 Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth'], 'namespace' => 'Dashboard'], function(){
 
-    Route::get('/',      ['uses' => 'DashboardController@index',  'as' => 'index']);
+    Route::get('/',      ['uses' => 'DashboardController@index',  'as' => 'home']);
 
-    Route::get('admin',  ['uses' => 'DashboardController@admin',  'as' => 'home']);
+    Route::get('client', ['uses' => 'DashboardController@client', 'as' => 'dashboard_client']);
 
-    Route::get('client', ['uses' => 'DashboardController@client', 'as' => 'home_client']);
+    Route::get('admin',  ['uses' => 'DashboardController@admin',  'as' => 'dashboard_admin']);
+
 });
 
 // Routes AJAX

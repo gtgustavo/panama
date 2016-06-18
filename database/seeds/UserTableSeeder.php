@@ -35,7 +35,6 @@ class UserTableSeeder extends Seeder
 
         DB::table('user')->insert(array(
 
-            'full_name'    => 'System Admin',
             'email'        => 'admin1@admin.com',
             'password'     => bcrypt('gt123456'),
             'profile_id'   => 1,

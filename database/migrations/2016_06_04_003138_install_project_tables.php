@@ -39,6 +39,16 @@ class InstallProjectTables extends Migration
             $table->string('type', 50);
             $table->string('note', 150);
             $table->decimal('cost', 10, 2);
+            $table->enum('status', [
+                                        'PRECHEQUEADO',
+                                        'ENTREGADO EN CENTRO',
+                                        'ENVIADO A CENTRO DE EMBARQUE',
+                                        'RECIBIDO EN CENTRO DE EMBARQUE',
+                                        'EMBARCADO',
+                                        'RECIBIDO EN CENTRO PAÍS DESTINO',
+                                        'ENTREGADO'
+                                    ])->default('PRECHEQUEADO');
+
 
             $table->foreign('user_id')->references('id')->on('user')
                 ->onUpdate('cascade')->onDelete('cascade');
@@ -48,21 +58,20 @@ class InstallProjectTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('status', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50);
-            $table->string('description', 100);
-            $table->timestamps();
-        });
-
         Schema::create('package_status', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('package_id')->unsigned();
-            $table->integer('status_id')->unsigned();
+            $table->enum('status', [
+                                        'PRECHEQUEADO',
+                                        'ENTREGADO EN CENTRO',
+                                        'ENVIADO A CENTRO DE EMBARQUE',
+                                        'RECIBIDO EN CENTRO DE EMBARQUE',
+                                        'EMBARCADO',
+                                        'RECIBIDO EN CENTRO PAÍS DESTINO',
+                                        'ENTREGADO'
+                                    ])->default('PRECHEQUEADO');
 
             $table->foreign('package_id')->references('id')->on('package')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('status_id')->references('id')->on('status')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
@@ -77,7 +86,6 @@ class InstallProjectTables extends Migration
     public function down()
     {
         Schema::drop('package_status');
-        Schema::drop('status');
         Schema::drop('package');
         Schema::drop('consigning');
     }

@@ -38,7 +38,7 @@ class Admin
             }
             else
             {
-                return redirect()->route('home_client');
+                return redirect()->route('dashboard_client');
             }
         }
 

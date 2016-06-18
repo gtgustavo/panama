@@ -17,7 +17,9 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
+                        <th class="">
+                            {!! Form::checkbox('select_all', null, null, ['id' => 'select_all', 'class' => 'checkbox', 'title' => 'select all']) !!}
+                        </th>
                         <th class="">{!! trans('front.form.package.table.wr') !!}         </th>
                         <th class="">{!! trans('front.form.package.table.consigning') !!} </th>
                         <th class="">{!! trans('front.form.package.table.name_e') !!}     </th>
@@ -32,22 +34,16 @@
 
                     @foreach($packages as $package)
 
-                        @foreach($package->client as $client)@endforeach
-
-                        @foreach($client->people as $people)@endforeach
-
-                        @foreach($package->consigning as $consigning)@endforeach
-
-                        @foreach($package->latestStatus->status as $status)@endforeach
-
                         <tr>
-                            <td class=""> {{ $package->id }}         </td>
-                            <td class=""> {{ $package->wr }}         </td>
-                            <td class=""> {{ $consigning->country }} </td>
-                            <td class=""> {{ $client->full_name }}   </td>
-                            <td class=""> {{ $people->dni }}         </td>
-                            <td class=""> {{ $consigning->name }}    </td>
-                            <td class=""> {{ $status->name }}        </td>
+                            <td class="">
+                                {!! Form::checkbox('package_id[]', $package->id, null, ['class' => 'checkbox', 'title' => $package->id]) !!}
+                            </td>
+                            <td class=""> {{ $package->wr }}                        </td>
+                            <td class=""> {{ $package->consigning->country }}       </td>
+                            <td class=""> {{ $package->client->people->full_name }} </td>
+                            <td class=""> {{ $package->client->people->dni }}       </td>
+                            <td class=""> {{ $package->consigning->name }}          </td>
+                            <td class=""> {{ $package->status }}                    </td>
 
                             <td class="text-right">
 
@@ -86,3 +82,9 @@
     </div>
 
 </div>
+
+@section('script')
+
+    {!! Html::script('assets/js/app/select_all.js') !!}
+
+@endsection

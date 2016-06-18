@@ -31,19 +31,13 @@
 
                     @foreach($employees as $employee)
 
-                        @foreach($employee->people as $people)@endforeach
-
-                        @foreach($employee->profile as $profile)@endforeach
-
-                        @foreach($employee->reception as $reception)@endforeach
-
                         <tr>
-                            <td class=""> {{ $employee->id }}        </td>
-                            <td class=""> {{ $employee->full_name }} </td>
-                            <td class=""> {{ $people->dni }}         </td>
-                            <td class=""> {{ $employee->email }}     </td>
-                            <td class=""> {{ $profile->name }}       </td>
-                            <td class=""> {{ $reception->name }}     </td>
+                            <td class=""> {{ $employee->id }}                </td>
+                            <td class=""> {{ $employee->people->full_name }} </td>
+                            <td class=""> {{ $employee->people->dni }}       </td>
+                            <td class=""> {{ $employee->email }}             </td>
+                            <td class=""> {{ $employee->profile->name }}     </td>
+                            <td class=""> {{ $employee->reception->name }}   </td>
 
                             <td class="text-right">
 

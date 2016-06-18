@@ -6,6 +6,8 @@ use App\Models\System\Package;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -14,18 +16,63 @@ class DashboardController extends Controller
         $this->middleware('admin', ['except' => 'client']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return redirect()->route('home');
+        $profile = Auth::user()->profile_id;
+
+        switch ($profile)
+        {
+            case 1:
+
+                $default = 'ENTREGADO';
+
+                return $this->admin($request, $default);
+
+                break;
+
+            case 3:
+
+                $default = 'ENTREGADO EN CENTRO';
+
+                return $this->admin($request, $default);
+
+                break;
+
+            case 4:
+
+                $default = 'RECIBIDO EN CENTRO DE EMBARQUE';
+
+                return $this->admin($request, $default);
+
+                break;
+
+            default:
+
+               return "UNKNOWN PROFILE";
+        }
     }
 
-    public function admin()
+    private function packages(Request $request, $default)
     {
-        $packages      = Package::with('client')->with('consigning')->with('latestStatus')->paginate();
+        if($request->get('status') == null)
+        {
+            $search = $default;
 
-        $cant_packages = Package::all()->count();
+        } else {
 
-        return view('dashboard.admin.index', compact('packages', 'cant_packages'));
+            $search = $request->get('status');
+        }
+
+        return $search;
+    }
+
+    public function admin(Request $request, $default)
+    {
+        $search = $this->packages($request, $default);
+
+        $packages = Package::FilterAndPaginateStatus($search);
+
+        return view('dashboard.admin.index', compact('packages'));
     }
 
     public function client()

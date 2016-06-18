@@ -80,8 +80,6 @@ class ClientController extends Controller
             // build data access credentials
             $credentials = [
 
-                'full_name'    => $collection['first_name'] . ' ' .$collection['last_name'],
-
                 'email'        => $collection['email'],
 
                 'password'     => bcrypt($password),
@@ -97,10 +95,10 @@ class ClientController extends Controller
             $client = User::create($credentials);
 
             // send email to the customer with your credentials
-            $this->send_mail($client->full_name, $client->email, $password);
+            $this->send_mail($people->full_name, $client->email, $password);
 
             // build message operation
-            Alert::message(trans('messages.client.create', ['client' => $client->full_name]), 'success');
+            Alert::message(trans('messages.client.create', ['client' => $client->people->full_name]), 'success');
 
             // back to the main page
             return $this->redirectDefault();
@@ -164,8 +162,6 @@ class ClientController extends Controller
             // build data access credentials
             $credentials = [
 
-                'full_name' => $collection['first_name'] . ' ' .$collection['last_name'],
-
                 'email'     => $collection['email'],
             ];
 
@@ -173,7 +169,7 @@ class ClientController extends Controller
             $client->update($credentials);
 
             // build message operation
-            Alert::message(trans('messages.client.update', ['client' => $client->full_name]), 'info');
+            Alert::message(trans('messages.client.update', ['client' => $client->people->full_name]), 'info');
 
             // back to the main page
             return $this->redirectDefault();
@@ -198,11 +194,14 @@ class ClientController extends Controller
             // obtain registration of user credentials
             $client = User::findOrFail($id);
 
+            // Get name people
+            $name = $client->people->full_name;
+
             // delete record
             People::destroy($people);
 
             // build message operation
-            Alert::message(trans('messages.client.delete', ['client' => $client->full_name]), 'warning');
+            Alert::message(trans('messages.client.delete', ['client' => $name]), 'warning');
 
             // back to the main page
             return $this->redirectDefault();

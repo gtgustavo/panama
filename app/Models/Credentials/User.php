@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['full_name' ,'email', 'password', 'people_id', 'profile_id', 'reception_id'];
+    protected $fillable = ['email', 'password', 'people_id', 'profile_id', 'reception_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -49,17 +49,17 @@ class User extends Model implements AuthenticatableContract,
 
     public function people()
     {
-        return $this->hasMany('App\Models\Credentials\People', 'id', 'people_id');
+        return $this->hasOne('App\Models\Credentials\People', 'id', 'people_id');
     }
 
     public function profile()
     {
-        return $this->hasMany('App\Models\Security\Profile', 'id', 'profile_id');
+        return $this->hasOne('App\Models\Security\Profile', 'id', 'profile_id');
     }
 
     public function reception()
     {
-        return $this->hasMany('App\Models\Administration\ReceptionCenter', 'id', 'reception_id');
+        return $this->hasOne('App\Models\Administration\ReceptionCenter', 'id', 'reception_id');
     }
 
     public function consigning()

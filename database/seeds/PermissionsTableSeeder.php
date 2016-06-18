@@ -36,8 +36,22 @@ class PermissionsTableSeeder extends Seeder
         ));
 
         DB::table('profile')->insert(array(
-            'name'         => 'EMPLEADO',
-            'description'  => 'EMPLEADO',
+            'name'         => 'EMPLEADO CENTRO DE RECEPCIÓN',
+            'description'  => 'EMPLEADO CENTRO DE RECEPCIÓN',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('profile')->insert(array(
+            'name'         => 'EMPLEADO CENTRO DE EMBARCACIÓN',
+            'description'  => 'EMPLEADO CENTRO DE EMBARCACIÓN',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('profile')->insert(array(
+            'name'         => 'EMPLEADO PAÍS DE RECEPCIÓN',
+            'description'  => 'EMPLEADO PAÍS DE RECEPCIÓN',
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));

@@ -2,7 +2,7 @@
     <div class="col-sm-4 col-xl-3">
         <div class="panel panel-tile text-center br-a br-grey">
             <div class="panel-body">
-                <h1 class="fs30 mt5 mbn"> {{ $cant_packages }} </h1>
+                <h1 class="fs30 mt5 mbn"> {{ $packages->count() }} </h1>
                 <h6 class="text-system">  {!! trans('front.form.package.tile.packages') !!} </h6>
             </div>
             <div class="panel-footer br-t p12">

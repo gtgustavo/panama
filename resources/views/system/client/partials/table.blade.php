@@ -21,8 +21,8 @@
                         <th class="">{!! trans('front.form.client.table.name') !!}             </th>
                         <th class="">{!! trans('front.form.client.table.dni') !!}              </th>
                         <th class="">{!! trans('front.form.client.table.country') !!}          </th>
-                        <th class="">{!! trans('front.form.client.table.email') !!}            </th>
                         <th class="">{!! trans('front.form.client.table.phone_c') !!}          </th>
+                        <th class="">{!! trans('front.form.client.table.consigning') !!}       </th>
                         <th class="">{!! trans('front.form.client.table.reception_center') !!} </th>
                         <th class=""></th>
                     </tr>
@@ -32,18 +32,14 @@
 
                     @foreach($clients as $client)
 
-                        @foreach($client->people as $people)@endforeach
-
-                        @foreach($client->reception as $reception)@endforeach
-
                         <tr>
-                            <td class=""> {{ $client->id }}        </td>
-                            <td class=""> {{ $client->full_name }} </td>
-                            <td class=""> {{ $people->dni }}       </td>
-                            <td class=""> {{ $people->country }}   </td>
-                            <td class=""> {{ $client->email }}     </td>
-                            <td class=""> {{ $people->phone_h }}   </td>
-                            <td class=""> {{ $reception->name }}   </td>
+                            <td class=""> {{ $client->id }}                  </td>
+                            <td class=""> {{ $client->people->full_name }}   </td>
+                            <td class=""> {{ $client->people->dni }}         </td>
+                            <td class=""> {{ $client->people->country }}     </td>
+                            <td class=""> {{ $client->people->phone_h }}     </td>
+                            <td class=""> {{ $client->consigning->count() }} </td>
+                            <td class=""> {{ $client->reception->name }}     </td>
 
                             <td class="text-right">
 

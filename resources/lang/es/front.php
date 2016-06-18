@@ -137,6 +137,8 @@ return [
                 'province' => 'PROVINCIA',
 
                 'city'     => 'CIUDAD',
+
+                'employee' => 'EMPLEADO',
             ],
 
             'events' => [
@@ -203,6 +205,8 @@ return [
                 'phone_c'          => 'TLF. MÓVIL',
 
                 'phone_h'          => 'TLF. HABITACIÓN',
+
+                'consigning'       => 'CONSIGNING',
 
                 'reception_center' => 'CENTRO DE RECEPCIÓN',
             ],

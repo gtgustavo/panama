@@ -71,11 +71,13 @@ class PackageController extends Controller
 
                 $package->user_id = $client;
 
+                $package->status = 'ENTREGADO EN CENTRO';
+
                 $package->save();
 
                 ChangeStatus::create([
                     'package_id' => $package->id,
-                    'status_id'  => 2
+                    'status'     => $package->status
                 ]);
 
                 Alert::message(trans('messages.package.create', ['package' => $package->wr]), 'success');

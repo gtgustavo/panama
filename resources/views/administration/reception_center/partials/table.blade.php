@@ -22,6 +22,7 @@
                         <th class="">{!! trans('front.form.reception_center.table.country') !!}  </th>
                         <th class="">{!! trans('front.form.reception_center.table.province') !!} </th>
                         <th class="">{!! trans('front.form.reception_center.table.city') !!}     </th>
+                        <th class="">{!! trans('front.form.reception_center.table.employee') !!} </th>
                         <th class=""></th>
                     </tr>
                 </thead>
@@ -31,11 +32,12 @@
                     @foreach($reception_center as $reception)
 
                         <tr>
-                            <td class=""> {{ $reception->id }}       </td>
-                            <td class=""> {{ $reception->name }}     </td>
-                            <td class=""> {{ $reception->country }}  </td>
-                            <td class=""> {{ $reception->province }} </td>
-                            <td class=""> {{ $reception->city }}     </td>
+                            <td class=""> {{ $reception->id }}             </td>
+                            <td class=""> {{ $reception->name }}           </td>
+                            <td class=""> {{ $reception->country }}        </td>
+                            <td class=""> {{ $reception->province }}       </td>
+                            <td class=""> {{ $reception->city }}           </td>
+                            <td class=""> {{ $reception->users->count() }} </td>
 
                             <td class="text-right">
 

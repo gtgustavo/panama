@@ -89,8 +89,6 @@ class EmployeeController extends Controller
             // build data access credentials
             $credentials = [
 
-                'full_name'    => $collection['first_name'] . ' ' .$collection['last_name'],
-
                 'email'        => $collection['email'],
 
                 'password'     => bcrypt($request->input('password')),
@@ -106,7 +104,7 @@ class EmployeeController extends Controller
             $employee = User::create($credentials);
 
             // build message operation
-            Alert::message(trans('messages.employee.create', ['employee' => $employee->full_name]), 'success');
+            Alert::message(trans('messages.employee.create', ['employee' => $people->full_name]), 'success');
 
             // back to the main page
             return $this->redirectDefault();
@@ -178,8 +176,6 @@ class EmployeeController extends Controller
             {
                 $credentials = [
 
-                    'full_name'    => $collection['first_name'] . ' ' .$collection['last_name'],
-
                     'email'        => $collection['email'],
 
                     'password'     => bcrypt($request->input('password')),
@@ -188,8 +184,6 @@ class EmployeeController extends Controller
             } else { // other users
 
                 $credentials = [
-
-                    'full_name'    => $collection['first_name'] . ' ' .$collection['last_name'],
 
                     'email'        => $collection['email'],
 
@@ -205,7 +199,7 @@ class EmployeeController extends Controller
             $employee->update($credentials);
 
             // build message operation
-            Alert::message(trans('messages.employee.update', ['employee' => $employee->full_name]), 'info');
+            Alert::message(trans('messages.employee.update', ['employee' => $people->full_name]), 'info');
 
             // back to the main page
             return $this->redirectDefault();
@@ -230,18 +224,21 @@ class EmployeeController extends Controller
             // obtain registration of user credentials
             $employee = User::findOrFail($id);
 
+            // Get name people
+            $name = $employee->people->full_name;
+
             if($id != 1) // Protection User administration
             {
                 // delete record
                 People::destroy($people);
 
                 // build message operation
-                Alert::message(trans('messages.employee.delete', ['employee' => $employee->full_name]), 'warning');
+                Alert::message(trans('messages.employee.delete', ['employee' => $name]), 'warning');
 
             } else { // Operation invalid
 
                 // build message operation invalid
-                Alert::message(trans('messages.employee.danger', ['employee' => $employee->full_name]), 'danger');
+                Alert::message(trans('messages.employee.danger', ['employee' => $name]), 'danger');
             }
 
             // back to the main page
