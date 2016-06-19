@@ -70,7 +70,7 @@ class DashboardController extends Controller
     {
         $search = $this->packages($request, $default);
 
-        $packages = Package::FilterAndPaginateStatus($search);
+        $packages = Package::FilterAndPaginateStatus($search, $request->get('wr'));
 
         return view('dashboard.admin.index', compact('packages'));
     }

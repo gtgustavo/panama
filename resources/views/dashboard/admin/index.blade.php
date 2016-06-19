@@ -18,6 +18,8 @@
 
                 @include('a_templates.partials.messages')
 
+                @include('dashboard.admin.partials.filter')
+
                 @include('system.package.partials.table')
 
             </div>

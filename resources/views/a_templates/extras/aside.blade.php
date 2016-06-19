@@ -136,6 +136,28 @@
 
             @can('admin')
 
+                <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.attention') !!} </li>
+
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-users"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.clients') }} </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{ route('client_create') }}">
+                                <span class="fa fa-user-plus"></span> {!! trans('front.form.client.create') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('client_home') }}">
+                                <span class="fa fa-users"></span>     {{ trans('front.sidebar.sub_sub_title.list_client') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>
 
                 <li>
@@ -153,21 +175,24 @@
                     </ul>
                 </li>
 
+
+                <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.shipment') !!} </li>
+
                 <li>
                     <a class="accordion-toggle" href="#">
-                        <span class="fa fa-users"></span>
-                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.clients') }} </span>
+                        <span class="fa fa-ship"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.shipment') }} </span>
                         <span class="caret"></span>
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="{{ route('client_create') }}">
-                                <span class="fa fa-user-plus"></span> {!! trans('front.form.client.create') !!}
+                            <a href="{{ route('home') }}">
+                                <span class="fa fa-plus"></span> {!! trans('front.form.shipment.create') !!}
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('client_home') }}">
-                                <span class="fa fa-users"></span>     {{ trans('front.sidebar.sub_sub_title.list_client') }}
+                            <a href="{{ route('home') }}">
+                                <span class="fa fa-ship"></span> {{ trans('front.sidebar.sub_sub_title.list_shipment') }}
                             </a>
                         </li>
                     </ul>

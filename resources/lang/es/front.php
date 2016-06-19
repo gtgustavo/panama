@@ -40,7 +40,11 @@ return [
 
             'security'  => 'Seguridad',
 
+            'attention' => 'Atención',
+
             'warehouse' => 'Warehouse',
+
+            'shipment'  => 'shipment',
         ],
 
         'title' => [
@@ -60,6 +64,8 @@ return [
 
             'clients'           => 'Clientes',
 
+            'shipment'          => 'Embarques',
+
             'reception_centers' => 'Centros de Recepción',
         ],
 
@@ -70,6 +76,8 @@ return [
             'list_profile'          => 'Todos los Perfiles',
 
             'list_client'           => 'Todos los Clientes',
+
+            'list_shipment'         => 'Todos los Embarques',
 
             'list_reception_center' => 'Centros de Recepción'
         ],
@@ -268,7 +276,7 @@ return [
 
             'tile' => [
 
-                'packages' => 'PAQUETES REGISTRADOS',
+                'packages' => 'PAQUETES EN LA CATEGORÍA',
 
             ],
 
@@ -294,6 +302,20 @@ return [
             'events' => [
 
                 'create' => 'Nuevo Paquete',
+
+                'edit'   => 'Actualizar Paquete',
+            ],
+        ],
+
+        'shipment' => [
+
+            'title' => 'EMBARQUEs',
+
+            'create' => 'Nuevo Embarque',
+
+            'events' => [
+
+                'create' => 'Nuevo Embarque',
 
                 'edit'   => 'Actualizar Paquete',
             ],
@@ -327,6 +349,8 @@ return [
             'sign_up' => 'Crea una Cuenta',
 
             'forget'  => '¿Olvido su contraseña?',
+
+            'search'  => 'BUSCAR',
 
         ],
 
