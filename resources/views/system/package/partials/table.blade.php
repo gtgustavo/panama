@@ -32,8 +32,6 @@
 
                 <tbody>
 
-                {!! Form::open(['route' => ['package_change_status'], 'method' => 'POST', 'id' => 'form-status']) !!}
-
                     @foreach($packages as $package)
 
                         <tr>
@@ -68,8 +66,6 @@
                         </tr>
 
                     @endforeach
-
-                {!! Form::Close() !!}
 
                 </tbody>
 

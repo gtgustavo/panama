@@ -352,6 +352,8 @@ return [
 
             'search'  => 'BUSCAR',
 
+            'status'  => 'CAMBIAR ESTATUS',
+
         ],
 
         'paginate' => [

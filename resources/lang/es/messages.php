@@ -10,10 +10,17 @@ return [
 
     'confirm' => [
 
-        'delete_register'    => '¿DESEA ELIMINAR EL REGISTRO SELECCIONADO?',
+        'delete_register'     => '¿DESEA ELIMINAR EL REGISTRO SELECCIONADO?',
 
-        'remove_credentials' => '¿ESTA SEGURO DE ELIMINAR LAS CREDENCIALES DE ACCESO DE ESTE EMPLEADO?',
+        'remove_credentials'  => '¿ESTA SEGURO DE ELIMINAR LAS CREDENCIALES DE ACCESO DE ESTE EMPLEADO?',
 
+        'change_status'       => '¿ESTA SEGURO DE CAMBIAR EL ESTATUS?',
+
+        'error_change_status' => 'HA OCURRIDO UN ERROR AL CAMBIAR LOS ESTATUS DE PAQUETES, POR FAVOR COMUNIQUES CON EL ADMINISTRADOR DEL SISTEMA',
+
+        'select_status'       => 'DEBE SELECCIONAR EL ESTATUS AL QUE DESEA CAMBIAR LOS PAQUETES',
+
+        'select_package'      => 'DEBE SELECCIONAR AL MENOS UN PAQUETE ',
     ],
 
     'system' => [
@@ -64,6 +71,8 @@ return [
         'error_dni'   => 'El DNI: :dni, no se encuentra en nuestros registros.',
 
         'success_dni' => ':client',
+
+        'change'      => 'Estatus cambiado a: :status',
     ],
 
     'consigning' => [

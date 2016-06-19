@@ -14,8 +14,9 @@ class StatusPackageController extends Controller
 
     public function change_status(Request $request)
     {
-        $packages = $request->input('package_id');
+        $packages   = $request->input('package_id');
 
+        $new_status = $request->input('change_status');
 
         foreach($packages as $package)
         {
@@ -23,7 +24,7 @@ class StatusPackageController extends Controller
 
             $status = [
 
-                'status' => 'ENVIADO A CENTRO DE EMBARQUE',
+                'status' => $new_status,
             ];
 
             $register->update($status);
@@ -34,18 +35,16 @@ class StatusPackageController extends Controller
 
                 'status'     => $register->status
             ]);
-
-            $message = 'CAMBIO EXITOSO';
-
-            if ($request->ajax()) {
-
-                return $message;
-
-            }
         }
 
+        $message = trans('messages.package.change', ['status' => $new_status]);
 
+        if ($request->ajax())
+        {
+            return $message;
+        }
 
+        return 'EL REQUEST NO ES AJAX';
     }
 
 }

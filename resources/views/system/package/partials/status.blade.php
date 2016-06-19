@@ -1,23 +1,8 @@
+<div class="col-md-4">
 
+    {!! Form::select('change_status', config('options.status_package'), null, ['class' => 'form-control', 'id' => 'change_status']) !!}
 
-    <div class="col-md-4">
-        <div class="section">
-            <label class="field select">
-                <select id="selectID" name="selectID">
-                    <option value="">Select with double arrows</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                </select>
-                <i class="arrow double"></i>
-            </label>
-        </div>
-    </div>
+</div>
 
-    <select class="form-control">
-        <option value="">Option 1</option>
-        <option value="">Option 2</option>
-        <option value="">Option 3</option>
-    </select>
-
-    <button type="button" class="btn btn-danger btn-status" > send </button>
+<button type="button" class="btn btn-primary btn-status" > {!! trans('front.form.button.status') !!} </button>
 

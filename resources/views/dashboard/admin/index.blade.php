@@ -20,9 +20,13 @@
 
                 @include('dashboard.admin.partials.filter')
 
-                @include('system.package.partials.table')
+                {!! Form::open(['route' => ['package_change_status'], 'method' => 'POST', 'id' => 'form-status']) !!}
 
-                @include('system.package.partials.status')
+                    @include('system.package.partials.table')
+
+                    @include('system.package.partials.status')
+
+                {!! Form::Close() !!}
 
             </div>
             <!-- end: .tray-center -->
@@ -36,39 +40,6 @@
 
     {!! Html::script('assets/js/app/select_all.js') !!}
 
-    <script>
-
-        $(document).ready(function(){
-
-            $('.btn-status').click(function(){
-
-                var form = $('#form-status');
-
-                var url = form.attr('action');
-
-                var data = form.serialize();
-
-                var resp = window.confirm("¿cambiar estatus?");
-
-                if (resp)
-                {
-                    $.post(url, data, function(result){
-
-                        alert(result);
-
-                        location.reload();
-
-                    }).fail(function(){
-
-                        alert('Seleccione los paqutes !!!');
-
-                    });
-                }
-
-            });
-
-        });
-
-    </script>
+    @include('dashboard.admin.partials.status_change')
 
 @endsection
