@@ -32,6 +32,8 @@
 
                 <tbody>
 
+                {!! Form::open(['route' => ['package_change_status'], 'method' => 'POST', 'id' => 'form-status']) !!}
+
                     @foreach($packages as $package)
 
                         <tr>
@@ -67,6 +69,8 @@
 
                     @endforeach
 
+                {!! Form::Close() !!}
+
                 </tbody>
 
             </table>
@@ -77,14 +81,8 @@
 
     <div align="center">
 
-        {!! $packages->appends(Request::only(['name', 'type']))->render() !!}
+        {!! $packages->appends(Request::only(['wr', 'status']))->render() !!}
 
     </div>
 
 </div>
-
-@section('script')
-
-    {!! Html::script('assets/js/app/select_all.js') !!}
-
-@endsection

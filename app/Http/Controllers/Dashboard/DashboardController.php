@@ -46,6 +46,14 @@ class DashboardController extends Controller
 
                 break;
 
+            case 5:
+
+                $default = 'RECIBIDO EN CENTRO PAÍS DESTINO';
+
+                return $this->admin($request, $default);
+
+                break;
+
             default:
 
                return "UNKNOWN PROFILE";

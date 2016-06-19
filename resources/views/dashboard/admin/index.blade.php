@@ -22,10 +22,53 @@
 
                 @include('system.package.partials.table')
 
+                @include('system.package.partials.status')
+
             </div>
             <!-- end: .tray-center -->
 
         </section>
         <!-- End: Content -->
+
+@endsection
+
+@section('script')
+
+    {!! Html::script('assets/js/app/select_all.js') !!}
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('.btn-status').click(function(){
+
+                var form = $('#form-status');
+
+                var url = form.attr('action');
+
+                var data = form.serialize();
+
+                var resp = window.confirm("¿cambiar estatus?");
+
+                if (resp)
+                {
+                    $.post(url, data, function(result){
+
+                        alert(result);
+
+                        location.reload();
+
+                    }).fail(function(){
+
+                        alert('Seleccione los paqutes !!!');
+
+                    });
+                }
+
+            });
+
+        });
+
+    </script>
 
 @endsection

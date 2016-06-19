@@ -27,7 +27,34 @@ class UserTableSeeder extends Seeder
         DB::table('people')->insert(array(
             'first_name'  => 'System',
             'last_name'   => 'Admin',
-            'dni'         => '12345678',
+            'dni'         => '12345670',
+            'phone_c'     => '55558888888',
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+        ));
+
+        DB::table('people')->insert(array(
+            'first_name'  => 'RECEPTION',
+            'last_name'   => 'CENTER',
+            'dni'         => '12345671',
+            'phone_c'     => '55558888888',
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+        ));
+
+        DB::table('people')->insert(array(
+            'first_name'  => 'SHIPMENT',
+            'last_name'   => 'CENTER',
+            'dni'         => '12345672',
+            'phone_c'     => '55558888888',
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+        ));
+
+        DB::table('people')->insert(array(
+            'first_name'  => 'in construction',
+            'last_name'   => 'Admin',
+            'dni'         => '12345673',
             'phone_c'     => '55558888888',
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
@@ -42,7 +69,39 @@ class UserTableSeeder extends Seeder
             'reception_id' => 1,
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
+        ));
 
+        DB::table('user')->insert(array(
+
+            'email'        => 'admin2@admin.com',
+            'password'     => bcrypt('gt123456'),
+            'profile_id'   => 3,
+            'people_id'    => 2,
+            'reception_id' => 1,
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('user')->insert(array(
+
+            'email'        => 'admin3@admin.com',
+            'password'     => bcrypt('gt123456'),
+            'profile_id'   => 4,
+            'people_id'    => 3,
+            'reception_id' => 1,
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('user')->insert(array(
+
+            'email'        => 'admin4@admin.com',
+            'password'     => bcrypt('gt123456'),
+            'profile_id'   => 5,
+            'people_id'    => 4,
+            'reception_id' => 1,
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
         ));
 
         factory(App\Models\Administration\ReceptionCenter::class, 49)->create();

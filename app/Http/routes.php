@@ -139,17 +139,19 @@ Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth',
 // Routes Package
 Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
 
-    Route::get('/',           ['uses' => 'PackageController@index',   'as' => 'package_home']);
+    Route::get('/',              ['uses' => 'PackageController@index',               'as' => 'package_home']);
 
-    Route::get('create',      ['uses' => 'PackageController@create',  'as' => 'package_create']);
+    Route::get('create',         ['uses' => 'PackageController@create',              'as' => 'package_create']);
 
-    Route::post('create',     ['uses' => 'PackageController@store',   'as' => 'package_create']);
+    Route::post('create',        ['uses' => 'PackageController@store',               'as' => 'package_create']);
 
-    Route::get('{id}/edit',   ['uses' => 'PackageController@edit',    'as' => 'package_edit']);
+    Route::get('{id}/edit',      ['uses' => 'PackageController@edit',                'as' => 'package_edit']);
 
-    Route::put('{id}/update', ['uses' => 'PackageController@update',  'as' => 'package_update']);
+    Route::put('{id}/update',    ['uses' => 'PackageController@update',              'as' => 'package_update']);
 
-    Route::get('{id}',        ['uses' => 'PackageController@destroy', 'as' => 'package_delete']);
+    Route::get('{id}',           ['uses' => 'PackageController@destroy',             'as' => 'package_delete']);
+
+    Route::post('change_status', ['uses' => 'StatusPackageController@change_status', 'as' => 'package_change_status']);
 });
 
 // Language
