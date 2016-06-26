@@ -1,5 +1,6 @@
 <div class="panel-heading heading-border bg-white">
 
+    <!--
     <span class="panel-title hidden"> <i class="fa fa-sign-in"></i>Register</span>
 
     <div class="section row mn">
@@ -26,5 +27,6 @@
         </div>
 
     </div>
+    -->
 
 </div>

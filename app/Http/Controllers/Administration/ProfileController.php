@@ -26,7 +26,7 @@ class ProfileController extends Controller
     {
         if(Access::allow('view-profiles'))
         {
-            $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '2')->paginate();
+            $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '2')->get();
 
             $cant_profiles = count(Profile::where('id', '!=', '2')->get());
 

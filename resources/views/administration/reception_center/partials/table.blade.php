@@ -2,18 +2,16 @@
 <div class="panel">
 
     <div class="panel-heading">
-
-        <span class="panel-title hidden-xs"> {!! trans('front.form.reception_center.title') !!} </span>   --
-
-        {!! trans('front.form.paginate.page') !!} {{ $reception_center->currentPage() }} {!! trans('front.form.paginate.of') !!} {{ $reception_center->lastPage() }}.
-
+        <span class="panel-title hidden-xs"> {!! trans('front.form.reception_center.title') !!} </span>
     </div>
 
     <div class="panel-body pn">
 
+        <br/>
+
         <div class="table-responsive">
 
-            <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+            <table class="table admin-form theme-warning tc-checkbox-1 fs13" id="dynamic-table">
 
                 <thead>
                     <tr class="bg-light">
@@ -69,15 +67,21 @@
 
                 </tbody>
 
+                <tfoot>
+                <tr class="bg-light">
+                    <th class="">ID</th>
+                    <th class="">{!! trans('front.form.reception_center.table.name') !!}     </th>
+                    <th class="">{!! trans('front.form.reception_center.table.country') !!}  </th>
+                    <th class="">{!! trans('front.form.reception_center.table.province') !!} </th>
+                    <th class="">{!! trans('front.form.reception_center.table.city') !!}     </th>
+                    <th class="">{!! trans('front.form.reception_center.table.employee') !!} </th>
+                    <th class=""></th>
+                </tr>
+                </tfoot>
+
             </table>
 
         </div>
-
-    </div>
-
-    <div align="center">
-
-        {!! $reception_center->appends(Request::only(['name', 'type']))->render() !!}
 
     </div>
 

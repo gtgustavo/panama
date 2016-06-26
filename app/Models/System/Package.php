@@ -20,12 +20,12 @@ class Package extends Model
         return $this->hasOne('App\Models\System\Consigning', 'id', 'consigning_id');
     }
 
-    public static function FilterAndPaginateStatus($search, $wr)
+    public static function FilterAndPaginateStatus($search) //$wr
     {
         return Package::status($search)
-            ->wr($wr)
+            //->wr($wr)
             ->orderBy('id', 'ASC')
-            ->paginate();
+            ->get();
     }
 
     public function scopeStatus($query, $search)
@@ -36,6 +36,7 @@ class Package extends Model
         }
     }
 
+    /*
     public function scopeWr($query, $wr)
     {
         if (trim($wr) != "")
@@ -43,4 +44,5 @@ class Package extends Model
             $query->where("wr", "LIKE", "%$wr%");
         }
     }
+    */
 }

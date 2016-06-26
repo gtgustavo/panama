@@ -2,11 +2,12 @@
 
     <div class="navbar-branding">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <b>Admin</b>Designs
+            <b> {!! trans('front.head.title') !!} </b>
         </a>
         <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
     </div>
 
+    <!--
     <ul class="nav navbar-nav navbar-left">
         <li>
             <a class="sidebar-menu-toggle" href="#">
@@ -24,21 +25,20 @@
             </a>
         </li>
     </ul>
-
-    <form class="navbar-form navbar-left navbar-search" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search..." value="Search...">
-        </div>
-    </form>
+    -->
 
     <ul class="nav navbar-nav navbar-right">
-
-        @include('a_templates.extras.notifications')
 
         @include('a_templates.extras.lang')
 
         <li class="menu-divider hidden-xs">
-            <i class="fa fa-circle"></i>
+            @if(Auth::check())
+
+                <i class="fa fa-circle up"></i>
+            @else
+
+                <i class="fa fa-circle"></i>
+            @endif
         </li>
 
         @include('a_templates.extras.profile')

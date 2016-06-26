@@ -26,7 +26,7 @@ class ReceptionCenterController extends Controller
     {
         if(Access::allow('view-reception-center'))
         {
-            $reception_center = ReceptionCenter::paginate();
+            $reception_center = ReceptionCenter::all();
 
             $cant_profiles    = count(Profile::where('id', '!=', '2')->get());
 

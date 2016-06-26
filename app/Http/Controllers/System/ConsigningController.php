@@ -24,7 +24,7 @@ class ConsigningController extends Controller
     {
         if(Access::allow('view-consigning'))
         {
-            $consigning = Consigning::where('user_id', $client)->paginate();
+            $consigning = Consigning::where('user_id', $client)->get();
 
             $client     = User::findOrFail($client);
 

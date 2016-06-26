@@ -2,18 +2,16 @@
 <div class="panel">
 
     <div class="panel-heading">
-
-        <span class="panel-title hidden-xs"> {!! trans('front.form.client.title') !!} </span>   --
-
-        {!! trans('front.form.paginate.page') !!} {{ $clients->currentPage() }} {!! trans('front.form.paginate.of') !!} {{ $clients->lastPage() }}.
-
+        <span class="panel-title hidden-xs"> {!! trans('front.form.client.title') !!} </span>
     </div>
 
     <div class="panel-body pn">
 
+        <br/>
+
         <div class="table-responsive">
 
-            <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+            <table class="table admin-form theme-warning tc-checkbox-1 fs13" id="dynamic-table">
 
                 <thead>
                     <tr class="bg-light">
@@ -80,12 +78,6 @@
             </table>
 
         </div>
-
-    </div>
-
-    <div align="center">
-
-        {!! $clients->appends(Request::only(['name', 'type']))->render() !!}
 
     </div>
 

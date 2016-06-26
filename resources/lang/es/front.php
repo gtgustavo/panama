@@ -6,7 +6,7 @@ return [
 
     'head'    => [
 
-        'title' => 'AdminDesigns',
+        'title' => 'ALL-U-CAN SHIP',
 
     ],
 

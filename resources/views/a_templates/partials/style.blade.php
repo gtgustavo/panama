@@ -13,4 +13,7 @@
 <!-- Select Multiple -->
 {!! Html::style('assets/select-multiple/multi-select.css') !!}
 
+<!-- Tables Dynamic -->
+{!! Html::script('assets/js/app/dynamic_table/dataTables.bootstrap.min.css') !!}
+
 @yield('style')

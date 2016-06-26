@@ -4,8 +4,6 @@
 
     <div class="form-group">
 
-        {!! Form::text('wr', null, ['class' => 'form-control', 'placeholder' => 'WR']) !!}
-
         {!! Form::select('status', config('options.status_package'), null, ['class' => 'form-control']) !!}
 
     </div>

@@ -24689,3 +24689,11 @@ body.timeline-page .panel-clone {
     min-width: 0 !important;
   }
 }
+
+.up
+{
+  background: #11ff0d;
+  border-radius: 50%;
+  height: 1em;
+  width: 1em;
+}

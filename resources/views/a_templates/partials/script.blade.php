@@ -19,4 +19,9 @@
 <!-- Select Multiple -->
 {!! Html::script('assets/select-multiple/jquery.multi-select.js') !!}
 
+<!-- Tables Dynamic -->
+{!! Html::script('assets/js/app/dynamic_table/dataTables.min.js') !!}
+{!! Html::script('assets/js/app/dynamic_table/dataTables.bootstrap.min.js') !!}
+{!! Html::script('assets/js/app/dynamic_table/init_dynamic_table.js') !!}
+
 @yield('script')

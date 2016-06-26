@@ -24,7 +24,7 @@ class DashboardController extends Controller
         {
             case 1:
 
-                $default = 'ENTREGADO';
+                $default = '';
 
                 return $this->admin($request, $default);
 
@@ -78,7 +78,7 @@ class DashboardController extends Controller
     {
         $search = $this->packages($request, $default);
 
-        $packages = Package::FilterAndPaginateStatus($search, $request->get('wr'));
+        $packages = Package::FilterAndPaginateStatus($search);
 
         return view('dashboard.admin.index', compact('packages'));
     }
