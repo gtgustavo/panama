@@ -19,7 +19,7 @@
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.consigning.events.edit') !!} -- {{ $client->full_name }} </span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.consigning.events.edit') !!} -- {{ $client->people->full_name }} </span>
                 </div>
 
                 <div class="panel-body p25 pb5">
