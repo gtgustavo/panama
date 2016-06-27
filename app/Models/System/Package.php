@@ -8,7 +8,7 @@ class Package extends Model
 {
     protected $table = 'package';
 
-    protected $fillable = ['user_id', 'wr', 'consigning_id', 'type', 'note', 'cost', 'status'];
+    protected $fillable = ['user_id', 'shipment_id', 'wr', 'consigning_id', 'type', 'note', 'cost', 'status'];
 
     public function client()
     {
@@ -18,6 +18,11 @@ class Package extends Model
     public function consigning()
     {
         return $this->hasOne('App\Models\System\Consigning', 'id', 'consigning_id');
+    }
+
+    public function shipment()
+    {
+        return $this->hasOne('App\Models\System\Shipment', 'id', 'shipment_id');
     }
 
     public static function FilterAndPaginateStatus($search) //$wr

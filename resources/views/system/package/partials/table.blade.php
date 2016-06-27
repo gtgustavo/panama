@@ -19,6 +19,7 @@
                             {!! Form::checkbox('select_all', null, null, ['id' => 'select_all', 'class' => 'checkbox', 'title' => 'select all']) !!}
                         </th>
                         <th class="">{!! trans('front.form.package.table.wr') !!}         </th>
+                        <th class="">{!! trans('front.form.package.table.wb') !!}         </th>
                         <th class="">{!! trans('front.form.package.table.consigning') !!} </th>
                         <th class="">{!! trans('front.form.package.table.name_e') !!}     </th>
                         <th class="">{!! trans('front.form.package.table.dni') !!}        </th>
@@ -37,6 +38,7 @@
                                 {!! Form::checkbox('package_id[]', $package->id, null, ['class' => 'checkbox', 'title' => $package->id]) !!}
                             </td>
                             <td class=""> {{ $package->wr }}                        </td>
+                            <td class=""> {{ $package->shipment['wb'] }}            </td>
                             <td class=""> {{ $package->consigning->country }}       </td>
                             <td class=""> {{ $package->client->people->full_name }} </td>
                             <td class=""> {{ $package->client->people->dni }}       </td>

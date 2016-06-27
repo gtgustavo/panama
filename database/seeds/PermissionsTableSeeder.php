@@ -16,6 +16,7 @@ class PermissionsTableSeeder extends Seeder
         $this->profile();
         $this->role_administrations();
         $this->role_warehouse();
+        $this->role_shipment();
         $this->add_roles();
     }
 
@@ -266,9 +267,43 @@ class PermissionsTableSeeder extends Seeder
 
     }
 
+    // Shipment
+    private function role_shipment()
+    {
+        // Shipment
+
+        DB::table('role')->insert(array(
+            'name'         => 'view-shipment',
+            'display_name' => 'Leer Embarques',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-shipment',
+            'display_name' => 'Crear Embarques',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-shipment',
+            'display_name' => 'Modificar Embarques',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-shipment',
+            'display_name' => 'Borrar Embarques',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+    }
+
     private function add_roles()
     {
-        for($i=3; $i < 28; $i++)
+        for($i=3; $i < 32; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

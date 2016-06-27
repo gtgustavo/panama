@@ -160,6 +160,7 @@ return [
         'reference_point'       => 'Punto de Referencia',
         'consigning'            => 'Ruta de Envío',
         'reception'             => 'Centro de Recepción',
+        'departure_date'        => 'Fecha de Salida',
 
     ],
 

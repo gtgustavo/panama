@@ -36,6 +36,8 @@ class InstallProjectTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('consigning_id')->unsigned();
             $table->string('wr', 20)->unique();
+            $table->integer('shipment_id')->unsigned();
+            $table->string('magaya', 50);
             $table->string('type', 50);
             $table->string('note', 150);
             $table->decimal('cost', 10, 2);
@@ -76,6 +78,15 @@ class InstallProjectTables extends Migration
 
             $table->timestamps();
         });
+
+        Schema::create('shipment', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('wb', 20)->unique();
+            $table->string('magaya', 50);
+            $table->timestamp('departure_date');
+            $table->enum('status', ['ABIERTO', 'CERRADO'])->default('ABIERTO');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -85,6 +96,7 @@ class InstallProjectTables extends Migration
      */
     public function down()
     {
+        Schema::drop('shipment');
         Schema::drop('package_status');
         Schema::drop('package');
         Schema::drop('consigning');

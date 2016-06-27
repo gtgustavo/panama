@@ -186,12 +186,12 @@
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="{{ route('home') }}">
+                            <a href="{{ route('shipment_create') }}">
                                 <span class="fa fa-plus"></span> {!! trans('front.form.shipment.create') !!}
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('home') }}">
+                            <a href="{{ route('shipment_home') }}">
                                 <span class="fa fa-ship"></span> {{ trans('front.sidebar.sub_sub_title.list_shipment') }}
                             </a>
                         </li>

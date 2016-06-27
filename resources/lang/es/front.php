@@ -290,6 +290,8 @@ return [
 
                 'wr'         => 'WR',
 
+                'wb'         => 'WB',
+
                 'consigning' => 'PAÍS DESTINO',
 
                 'type'       => 'TIPO DE CAJA',
@@ -309,9 +311,21 @@ return [
 
         'shipment' => [
 
-            'title' => 'EMBARQUEs',
+            'title' => 'EMBARQUES',
 
             'create' => 'Nuevo Embarque',
+
+            'table' => [
+
+                'wb'         => 'WB',
+
+                'status'     => 'ESTATUS',
+
+                'date_s'     => 'Fecha de Salida',
+
+                'packages'   => 'Paquetes',
+
+            ],
 
             'events' => [
 

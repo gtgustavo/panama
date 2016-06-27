@@ -8,6 +8,10 @@
 <!-- HighCharts Plugin -->
 {!! Html::script('vendor/plugins/highcharts/highcharts.js') !!}
 
+<!-- Calendar date picker -->
+{!! Html::script('assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js') !!}
+{!! Html::script('assets/admin-tools/admin-forms/js/i18n/datepicker-es.js') !!}
+
 <!-- Theme Javascript -->
 {!! Html::script('assets/js/utility/utility.js') !!}
 {!! Html::script('assets/js/demo/demo.js') !!}

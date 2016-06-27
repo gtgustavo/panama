@@ -75,6 +75,14 @@ return [
         'change'      => 'Estatus cambiado a: :status',
     ],
 
+    'shipment' => [
+
+        'create'      => 'Guía de embarque: :shipment, creado satisfactoriamente',
+
+        'exist'       => 'No puede crear una nueva guía de embarque hasta cerrar la existente',
+
+    ],
+
     'consigning' => [
 
         'create'        => 'Ha sido agregada una dirección de envío al País :consign',
