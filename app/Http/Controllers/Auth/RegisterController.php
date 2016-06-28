@@ -68,7 +68,7 @@ class RegisterController extends Controller
         $client = User::create($credentials);
 
         // send email to the customer with your credentials
-        $this->send_mail($client->full_name, $client->email, $password);
+        $this->send_mail($people->full_name, $client->email, $password);
 
         Alert::message(trans('messages.client.account'), 'success');
 
