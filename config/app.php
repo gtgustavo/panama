@@ -147,6 +147,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Styde\Html\HtmlServiceProvider::class,
+        Siallez\Mailjet\MailjetServiceProvider::class,
 
     ],
 

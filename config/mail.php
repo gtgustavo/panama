@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'noreply@domain.com' , 'name' => 'Publired' ],
+    'from' => ['address' => 'admin@publired24.com', 'name' => 'admin@publired24.com'],
 
     /*
     |--------------------------------------------------------------------------
