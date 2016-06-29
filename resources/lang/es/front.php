@@ -335,6 +335,14 @@ return [
             ],
         ],
 
+        'profile_panel' => [
+
+            'change_password'    => 'Cambiar Contraseña',
+
+            'update_information' => 'Actualizar Informacion',
+
+        ],
+
         'actions' => [
 
             'title'      => 'Acciones',
@@ -354,20 +362,21 @@ return [
 
         'button' => [
 
-            'login'   => 'Iniciar Sesión',
+            'login'            => 'Iniciar Sesión',
 
-            'logout'  => 'Cerrar Sesión',
+            'logout'           => 'Cerrar Sesión',
 
-            'reset'   => 'Restablecer',
+            'reset'            => 'Restablecer',
 
-            'sign_up' => 'Crea una Cuenta',
+            'sign_up'          => 'Crea una Cuenta',
 
-            'forget'  => '¿Olvido su contraseña?',
+            'forget'           => '¿Olvido su contraseña?',
 
-            'search'  => 'BUSCAR',
+            'search'           => 'BUSCAR',
 
-            'status'  => 'CAMBIAR ESTATUS',
+            'status'           => 'CAMBIAR ESTATUS',
 
+            'account_settings' => 'Configuraciones de la Cuenta',
         ],
 
         'paginate' => [

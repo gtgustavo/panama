@@ -53,6 +53,7 @@ class CreateUsersTable extends Migration
             $table->integer('people_id')->unsigned();
             $table->integer('profile_id')->unsigned();
             $table->integer('reception_id')->unsigned();
+            $table->enum('file', ['true', 'false'])->default('false');
             $table->rememberToken();
 
             $table->foreign('people_id')->references('id')->on('people')

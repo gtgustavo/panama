@@ -105,4 +105,13 @@ return [
         'danger' => 'No puede realizar la opción seleccionada sobre el Centro de Recepción: :center',
     ],
 
+    'panel' => [
+
+        'password'  => 'Su contraseña ha sido actualizada satisfactoriamente',
+
+        'personal'  => 'Su información personal ha sido actualizada satisfactoriamente',
+
+        'image'     => 'Ha actualizado su imagen de perfil satisfactoriamente',
+    ],
+
 ];

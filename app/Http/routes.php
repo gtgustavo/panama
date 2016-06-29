@@ -166,6 +166,24 @@ Route::group(['prefix' => 'shipment', 'middleware' => ['web', 'auth', 'admin'], 
     Route::put('{id}/update', ['uses' => 'ShipmentController@update', 'as' => 'shipment_update']);
 });
 
+// Routes Profile Panel
+Route::group(['prefix' => 'panel', 'middleware' => ['web', 'auth'], 'namespace' => 'Panel'], function(){
+
+    Route::get('/',                    ['uses' => 'AccountController@index',  'as' => 'panel_home']);
+
+    Route::get('password',             ['uses' => 'AccountController@create', 'as' => 'panel_password']);
+
+    Route::post('password',            ['uses' => 'AccountController@store',  'as' => 'panel_password']);
+
+    Route::get('personal',             ['uses' => 'AccountController@edit',   'as' => 'panel_personal']);
+
+    Route::put('{id}/{people}/update', ['uses' => 'AccountController@update', 'as' => 'panel_update']);
+
+    Route::get('image_profile',        ['uses' => 'AccountController@show',   'as' => 'panel_image']);
+
+    Route::post('image_profile',       ['uses' => 'AccountController@file',   'as' => 'panel_image']);
+});
+
 // Language
 Route::group(['middleware' => ['web']], function () {
 
