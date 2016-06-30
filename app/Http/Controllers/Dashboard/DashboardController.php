@@ -30,9 +30,9 @@ class DashboardController extends Controller
 
                 break;
 
-            case 3:
+            case 2:
 
-                $default = 'ENTREGADO EN CENTRO';
+                $default = '';
 
                 return $this->admin($request, $default);
 
@@ -40,13 +40,21 @@ class DashboardController extends Controller
 
             case 4:
 
-                $default = 'RECIBIDO EN CENTRO DE EMBARQUE';
+                $default = 'ENTREGADO EN CENTRO';
 
                 return $this->admin($request, $default);
 
                 break;
 
             case 5:
+
+                $default = 'RECIBIDO EN CENTRO DE EMBARQUE';
+
+                return $this->admin($request, $default);
+
+                break;
+
+            case 6:
 
                 $default = 'RECIBIDO EN CENTRO PAÍS DESTINO';
 

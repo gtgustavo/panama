@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Panel;
+namespace App\Http\Controllers\System\Panel;
 
 use App\Helpers\Helper;
 use App\Http\Requests\Panel\PasswordRequest;

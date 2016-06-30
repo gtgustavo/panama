@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class Admin
+class SuperAdmin
 {
     /**
      * The Guard implementation.
@@ -29,7 +29,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if( ! $this->auth->user()->isEmployee())
+        if( ! $this->auth->user()->isSuperAdmin())
         {
 
             if ($request->ajax())
@@ -38,7 +38,7 @@ class Admin
             }
             else
             {
-                return redirect()->route('dashboard_client');
+                return redirect()->route('home');
             }
         }
 

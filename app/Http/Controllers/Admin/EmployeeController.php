@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
-use App\Http\Requests\System\ClientsRequest;
+use App\Http\Requests\Security\EmployeesRequest;
+use App\Models\Administration\ReceptionCenter;
 use App\Models\Credentials\People;
+use App\Models\Security\Profile;
+use App\Models\Security\Role;
 use App\Models\Credentials\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Styde\Html\Facades\Alert;
 
-class ClientController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,13 +27,18 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         // validate if you have permission to perform this action
-        if(Access::allow('view-client'))
+        if(Access::allow('view-employees'))
         {
-            $clients      = User::FilterAndPaginateClient($request->get('search'), $request->get('type'));
+            //
+            $employees     = User::FilterAndPaginate($request->get('search'), $request->get('type'));
 
-            $cant_clients = count(User::where('profile_id', 2)->get());
+            $cant_profiles = count(Profile::where('id', '!=', '3')->get());
 
-            return view('system.client.index', compact('clients', 'cant_clients'));
+            $roles         = count(Role::where('id', '>', 2)->get());
+
+            $users         = count(User::where('profile_id', '!=', 3)->get());
+
+            return view('administration.employee.index', compact('employees', 'roles', 'users', 'cant_profiles'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -47,10 +53,16 @@ class ClientController extends Controller
     public function create()
     {
         // validate if you have permission to perform this action
-        if(Access::allow('create-client'))
+        if(Access::allow('create-employees'))
         {
-            // return the form view
-            return view('system.client.create');
+            // list all user profiles by name and id
+            $profile = Profile::where('id', '>', 3)->lists('name', 'id');
+
+            // list all user reception centers by name and id
+            $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
+
+            // return the form view with lists
+            return view('administration.employee.create', compact('profile', 'reception_center'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -60,13 +72,13 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ClientsRequest $request
+     * @param EmployeesRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientsRequest $request)
+    public function store(EmployeesRequest $request)
     {
         // validate if you have permission to perform this action
-        if(Access::allow('create-client'))
+        if(Access::allow('create-employees'))
         {
             // transform all data received to capital letter
             $collection = Helper::convert_to_uppercase($request->all());
@@ -74,31 +86,25 @@ class ClientController extends Controller
             // create record personal information
             $people = People::create($collection->all());
 
-            // generate random password
-            $password = Helper::generate_random_password(15);
-
             // build data access credentials
             $credentials = [
 
                 'email'        => $collection['email'],
 
-                'password'     => bcrypt($password),
+                'password'     => bcrypt($request->input('password')),
 
                 'people_id'    => $people->id,
 
-                'profile_id'   => 2,
+                'profile_id'   => $request->input('profile_id'),
 
-                'reception_id' => Auth::user()->reception_id,
+                'reception_id' => $request->input('reception_id'),
             ];
 
             // create log access credentials
-            $client = User::create($credentials);
-
-            // send email to the customer with your credentials
-            $this->send_mail($people->full_name, $client->email, $password);
+            $employee = User::create($credentials);
 
             // build message operation
-            Alert::message(trans('messages.client.create', ['client' => $client->people->full_name]), 'success');
+            Alert::message(trans('messages.employee.create', ['employee' => $people->full_name]), 'success');
 
             // back to the main page
             return $this->redirectDefault();
@@ -118,16 +124,22 @@ class ClientController extends Controller
     public function edit($id, $people)
     {
         // validate if you have permission to perform this action
-        if(Access::allow('edit-client'))
+        if(Access::allow('edit-employees'))
         {
+            // list all user profiles by name and id
+            $profile = Profile::where('id', '>', 3)->lists('name', 'id');
+
+            // list all user reception centers by name and id
+            $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
+
             // obtain registration of user credentials
-            $client = User::findOrFail($id);
+            $employee = User::findOrFail($id);
 
             // obtain registration of personal data
             $people = People::findOrFail($people);
 
             // return the form view with variables
-            return view('system.client.edit', compact('client', 'people'));
+            return view('administration.employee.edit', compact('employee', 'people', 'profile', 'reception_center'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -137,21 +149,21 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ClientsRequest $request
+     * @param EmployeesRequest $request
      * @param  int $id
-     * @param  int $people
+     * @param int $people
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientsRequest $request, $id, $people)
+    public function update(EmployeesRequest $request, $id, $people)
     {
         // validate if you have permission to perform this action
-        if(Access::allow('edit-client'))
+        if(Access::allow('edit-employees'))
         {
             // transform all data received to capital letter
             $collection = Helper::convert_to_uppercase($request->all());
 
             // obtain registration of user credentials
-            $client = User::findOrFail($id);
+            $employee = User::findOrFail($id);
 
             // obtain registration of personal data
             $people = People::findOrFail($people);
@@ -160,16 +172,34 @@ class ClientController extends Controller
             $people->update($collection->all());
 
             // build data access credentials
-            $credentials = [
+            if($id == 1) // Super Admin
+            {
+                $credentials = [
 
-                'email'     => $collection['email'],
-            ];
+                    'email'        => $collection['email'],
+
+                    'password'     => bcrypt($request->input('password')),
+                ];
+
+            } else { // other users
+
+                $credentials = [
+
+                    'email'        => $collection['email'],
+
+                    'password'     => bcrypt($request->input('password')),
+
+                    'profile_id'   => $request->input('profile_id'),
+
+                    'reception_id' => $request->input('reception_id'),
+                ];
+            }
 
             // update access credentials
-            $client->update($credentials);
+            $employee->update($credentials);
 
             // build message operation
-            Alert::message(trans('messages.client.update', ['client' => $client->people->full_name]), 'info');
+            Alert::message(trans('messages.employee.update', ['employee' => $people->full_name]), 'info');
 
             // back to the main page
             return $this->redirectDefault();
@@ -189,19 +219,27 @@ class ClientController extends Controller
     public function destroy($id, $people)
     {
         // validate if you have permission to perform this action
-        if(Access::allow('delete-client'))
+        if(Access::allow('delete-employees'))
         {
             // obtain registration of user credentials
-            $client = User::findOrFail($id);
+            $employee = User::findOrFail($id);
 
             // Get name people
-            $name = $client->people->full_name;
+            $name = $employee->people->full_name;
 
-            // delete record
-            People::destroy($people);
+            if($id != 1) // Protection User administration
+            {
+                // delete record
+                People::destroy($people);
 
-            // build message operation
-            Alert::message(trans('messages.client.delete', ['client' => $name]), 'warning');
+                // build message operation
+                Alert::message(trans('messages.employee.delete', ['employee' => $name]), 'warning');
+
+            } else { // Operation invalid
+
+                // build message operation invalid
+                Alert::message(trans('messages.employee.danger', ['employee' => $name]), 'danger');
+            }
 
             // back to the main page
             return $this->redirectDefault();
@@ -211,28 +249,12 @@ class ClientController extends Controller
         return Access::redirectDefault();
     }
 
-
-    /**
-     * send mail to client
-     * @param string $name
-     * @param string $email
-     * @param string $password
-     */
-    private function send_mail($name, $email, $password)
-    {
-        Mail::send('emails.credentials', compact('name', 'email', 'password'), function ($message) use ($email) {
-
-            $message->to($email)->subject(trans('front.email.subject_credentials'));
-
-        });
-    }
-
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
     private function redirectDefault()
     {
         // redirect to a home page after completing an operation
-        return redirect()->route('client_home');
+        return redirect()->route('employee_home');
     }
 }

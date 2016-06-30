@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Panel;
+namespace App\Http\Controllers\System\Panel;
 
 use App\Helpers\Barcode\Barcode;
 use App\Http\Requests\Panel\PackageClientRequest;

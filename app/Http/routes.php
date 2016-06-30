@@ -11,6 +11,7 @@
 |
 */
 
+// AUTHENTICATING
 // Authentication and Password reset Routes...
 Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'Auth'], function(){
 
@@ -33,6 +34,7 @@ Route::group(['prefix' => '/', 'middleware' => ['web'], 'namespace' => 'Auth'], 
     Route::post('create',       ['uses' => 'RegisterController@store',     'as' => 'new_client']);
 });
 
+// DASHBOARD
 // Routes Dashboard
 Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth'], 'namespace' => 'Dashboard'], function(){
 
@@ -44,16 +46,25 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth'], 'namespa
 
 });
 
-// Routes AJAX
-Route::group(['prefix' => 'ajax', 'middleware' => ['web', 'auth'], 'namespace' => 'System'], function(){
+// SUPER ADMIN
+// Routes Administrator
+Route::group(['prefix' => 'administrator', 'middleware' => ['web', 'auth', 'super_admin'], 'namespace' => 'Super'], function(){
 
-    Route::get('client',     ['uses' => 'AjaxController@validate_client',   'as' => 'ajax_dni_client']);
+    Route::get('/',           ['uses' => 'AdministratorController@index',   'as' => 'administrator_home']);
 
-    Route::get('consigning', ['uses' => 'AjaxController@consigning_client', 'as' => 'ajax_consigning_client']);
+    Route::get('create',      ['uses' => 'AdministratorController@create',  'as' => 'administrator_create']);
+
+    Route::post('create',     ['uses' => 'AdministratorController@store',   'as' => 'administrator_create']);
+
+    Route::get('{id}/edit',   ['uses' => 'AdministratorController@edit',    'as' => 'administrator_edit']);
+
+    Route::put('{id}/update', ['uses' => 'AdministratorController@update',  'as' => 'administrator_update']);
+
+    Route::get('{id}',        ['uses' => 'AdministratorController@destroy', 'as' => 'administrator_delete']);
 });
 
 // Routes Profiles
-Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Administration'], function(){
+Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'super_admin'], 'namespace' => 'Super'], function(){
 
     Route::get('/',           ['uses' => 'ProfileController@index',   'as' => 'profile_home']);
 
@@ -72,8 +83,9 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'admin'], '
     Route::get('{id}',        ['uses' => 'ProfileController@destroy', 'as' => 'profile_delete']);
 });
 
+// ADMIN
 // Routes Employees
-Route::group(['prefix' => 'employee', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Administration'], function(){
+Route::group(['prefix' => 'employee', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Admin'], function(){
 
     Route::get('/',                    ['uses' => 'EmployeeController@index',   'as' => 'employee_home']);
 
@@ -89,7 +101,7 @@ Route::group(['prefix' => 'employee', 'middleware' => ['web', 'auth', 'admin'], 
 });
 
 // Routes Reception Centers
-Route::group(['prefix' => 'reception_center', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Administration'], function(){
+Route::group(['prefix' => 'reception_center', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Admin'], function(){
 
     Route::get('/',           ['uses' => 'ReceptionCenterController@index',   'as' => 'reception_center_home']);
 
@@ -104,8 +116,9 @@ Route::group(['prefix' => 'reception_center', 'middleware' => ['web', 'auth', 'a
     Route::get('{id}',        ['uses' => 'ReceptionCenterController@destroy', 'as' => 'reception_center_delete']);
 });
 
+// CLIENT
 // Routes Client
-Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System\Client'], function(){
 
     Route::get('/',                    ['uses' => 'ClientController@index',   'as' => 'client_home']);
 
@@ -121,7 +134,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'n
 });
 
 // Routes Consigning Client
-Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth'], 'namespace' => 'System\Client'], function(){
 
     Route::get('/',           ['uses' => 'ConsigningController@index',   'as' => 'consigning_home']);
 
@@ -136,8 +149,9 @@ Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth']
     Route::get('{id}',        ['uses' => 'ConsigningController@destroy', 'as' => 'consigning_delete']);
 });
 
+// PACKAGE
 // Routes Package
-Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System\Package'], function(){
 
     Route::get('/',           ['uses' => 'PackageController@index',        'as' => 'package_home']);
 
@@ -153,7 +167,7 @@ Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], '
 });
 
 // Routes Shipment
-Route::group(['prefix' => 'shipment', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'shipment', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System\Package'], function(){
 
     Route::get('/',           ['uses' => 'ShipmentController@index',  'as' => 'shipment_home']);
 
@@ -166,8 +180,9 @@ Route::group(['prefix' => 'shipment', 'middleware' => ['web', 'auth', 'admin'], 
     Route::put('{id}/update', ['uses' => 'ShipmentController@update', 'as' => 'shipment_update']);
 });
 
+// PANEL
 // Routes Profile Panel
-Route::group(['prefix' => 'panel', 'middleware' => ['web', 'auth'], 'namespace' => 'Panel'], function(){
+Route::group(['prefix' => 'panel', 'middleware' => ['web', 'auth'], 'namespace' => 'System\Panel'], function(){
 
     Route::get('/',                    ['uses' => 'AccountController@index',  'as' => 'panel_home']);
 
@@ -185,7 +200,7 @@ Route::group(['prefix' => 'panel', 'middleware' => ['web', 'auth'], 'namespace' 
 });
 
 // Routes Panel Package Client
-Route::group(['prefix' => 'my_package', 'middleware' => ['web', 'auth'], 'namespace' => 'Panel'], function(){
+Route::group(['prefix' => 'my_package', 'middleware' => ['web', 'auth'], 'namespace' => 'System\Panel'], function(){
 
     Route::get('/',           ['uses' => 'PackageController@index',   'as' => 'my_package_home']);
 
@@ -198,6 +213,15 @@ Route::group(['prefix' => 'my_package', 'middleware' => ['web', 'auth'], 'namesp
     Route::put('{id}/update', ['uses' => 'PackageController@update',  'as' => 'my_package_update']);
 
     Route::get('{id}',        ['uses' => 'PackageController@destroy', 'as' => 'my_package_delete']);
+});
+
+// AJAX
+// Routes AJAX
+Route::group(['prefix' => 'ajax', 'middleware' => ['web', 'auth'], 'namespace' => 'System'], function(){
+
+    Route::get('client',     ['uses' => 'AjaxController@validate_client',   'as' => 'ajax_dni_client']);
+
+    Route::get('consigning', ['uses' => 'AjaxController@consigning_client', 'as' => 'ajax_consigning_client']);
 });
 
 // Language

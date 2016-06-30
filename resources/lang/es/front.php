@@ -40,6 +40,8 @@ return [
 
             'security'  => 'Seguridad',
 
+            'management' => 'Gestión',
+
             'attention' => 'Atención',
 
             'warehouse' => 'Warehouse',
@@ -54,9 +56,13 @@ return [
             'board'          => 'Dashboard',
 
             'administration' => 'Administración',
+
+            'credentials'    => 'Credenciales'
         ],
 
         'sub_title' => [
+
+            'administrator'     => 'Administratores',
 
             'employees'         => 'Empleados',
 

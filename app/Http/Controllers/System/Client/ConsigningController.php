@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\System\Client;
 
 use App\Helpers\Helper;
 use App\Helpers\System\Access;

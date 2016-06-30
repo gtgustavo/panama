@@ -51,15 +51,13 @@ class RegisterController extends Controller
         // build data access credentials
         $credentials = [
 
-            'full_name'    => $collection['first_name'] . ' ' .$collection['last_name'],
-
             'email'        => $collection['email'],
 
             'password'     => bcrypt($password),
 
             'people_id'    => $people->id,
 
-            'profile_id'   => 2,
+            'profile_id'   => 3,
 
             'reception_id' => 1,
         ];

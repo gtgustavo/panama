@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Administration;
+namespace App\Http\Controllers\Super;
 
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
@@ -26,13 +26,13 @@ class ProfileController extends Controller
     {
         if(Access::allow('view-profiles'))
         {
-            $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '2')->get();
+            $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '3')->get();
 
-            $cant_profiles = count(Profile::where('id', '!=', '2')->get());
+            $cant_profiles = count(Profile::where('id', '!=', '3')->get());
 
             $roles         = count(Role::where('id', '>', 2)->get());
 
-            $users         = count(User::where('profile_id', '!=', 2)->get());
+            $users         = count(User::where('profile_id', '!=', 3)->get());
 
             return view('administration.profile.index', compact('profiles', 'roles', 'users', 'cant_profiles'));
         }
@@ -89,11 +89,11 @@ class ProfileController extends Controller
         {
             $profile = Profile::findOrFail($id);
 
-            if($id > 2) // Protection profile administration
+            if($id > 3) // Protection profile administration
             {
                 $profile_role = Profile::findOrFail($id)->roles()->lists('role_id')->toArray();
 
-                $roles = Role::where('id', '>', 15)->lists('display_name', 'id');
+                $roles = Role::where('id', '>', 19)->lists('display_name', 'id');
 
                 return view('administration.profile.role', compact('profile', 'profile_role', 'roles'));
             }
@@ -112,7 +112,7 @@ class ProfileController extends Controller
         {
             $profile = Profile::findOrFail($id);
 
-            if($id > 2) // Protection profile administration
+            if($id > 3) // Protection profile administration
             {
                 Relations::where('profile_id', $id)->delete();
 
@@ -194,7 +194,7 @@ class ProfileController extends Controller
         {
             $profile = Profile::findOrFail($id);
 
-            if($id > 2) // Protection profile administration
+            if($id > 6) // Protection profile administration
             {
                 Profile::destroy($id);
 

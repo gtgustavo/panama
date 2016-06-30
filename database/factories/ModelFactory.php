@@ -61,9 +61,9 @@ $factory->define(App\Models\Credentials\User::class, function ($faker) {
 
         'password'     => bcrypt('gt123456'),
 
-        'profile_id'   => $faker->randomElement($array = array (2,3,4,5)),
+        'profile_id'   => $faker->randomElement($array = array (3,4,5,6)),
 
-        'people_id'    => $faker->unique()->numberBetween($min = 5, $max = 204),
+        'people_id'    => $faker->unique()->numberBetween($min = 6, $max = 205),
 
         'reception_id' => $faker->numberBetween($min = 2, $max = 50),
     ];

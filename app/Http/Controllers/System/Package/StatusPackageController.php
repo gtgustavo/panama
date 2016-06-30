@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\System\Package;
 
 use App\Models\System\ChangeStatus;
 use App\Models\System\Package;

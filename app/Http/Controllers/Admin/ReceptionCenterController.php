@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Administration;
+namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
@@ -9,7 +9,6 @@ use App\Models\Administration\ReceptionCenter;
 use App\Models\Security\Profile;
 use App\Models\Security\Role;
 use App\Models\Credentials\User;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -28,11 +27,11 @@ class ReceptionCenterController extends Controller
         {
             $reception_center = ReceptionCenter::all();
 
-            $cant_profiles    = count(Profile::where('id', '!=', '2')->get());
+            $cant_profiles    = count(Profile::where('id', '!=', '3')->get());
 
             $roles            = count(Role::where('id', '>', 2)->get());
 
-            $users            = count(User::where('profile_id', '!=', 2)->get());
+            $users            = count(User::where('profile_id', '!=', 3)->get());
 
             return view('administration.reception_center.index', compact('reception_center', 'roles', 'users', 'cant_profiles'));
         }

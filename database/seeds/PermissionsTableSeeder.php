@@ -14,6 +14,8 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         $this->profile();
+        $this->role_login();
+        $this->role_super_admin();
         $this->role_administrations();
         $this->role_warehouse();
         $this->role_shipment();
@@ -23,8 +25,15 @@ class PermissionsTableSeeder extends Seeder
     private function profile()
     {
         DB::table('profile')->insert(array(
-            'name'         => 'ADMIN',
-            'description'  => 'ADMIN',
+            'name'         => 'SUPER ADMINISTRADOR',
+            'description'  => 'SUPER ADMINISTRADOR',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('profile')->insert(array(
+            'name'         => 'ADMINISTRADOR',
+            'description'  => 'ADMINISTRADOR',
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));
@@ -58,7 +67,7 @@ class PermissionsTableSeeder extends Seeder
         ));
     }
 
-    private function role_administrations()
+    private function role_login()
     {
         DB::table('role')->insert(array(
             'name'         => 'login-users',
@@ -73,9 +82,40 @@ class PermissionsTableSeeder extends Seeder
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));
+    }
+
+    private function role_super_admin()
+    {
+        // ADMINISTRATOR
+        DB::table('role')->insert(array(
+            'name'         => 'view-administrator',
+            'display_name' => 'Leer Administradores',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-administrator',
+            'display_name' => 'Crear Administradores',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-administrator',
+            'display_name' => 'Modificar Administradores',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-administrator',
+            'display_name' => 'Borrar Administradores',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
 
         // PROFILES
-
         DB::table('role')->insert(array(
             'name'         => 'view-profiles',
             'display_name' => 'Leer Perfiles',
@@ -110,9 +150,11 @@ class PermissionsTableSeeder extends Seeder
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));
+    }
 
+    private function role_administrations()
+    {
         // RECEPTION CENTER
-
         DB::table('role')->insert(array(
             'name'         => 'view-reception-center',
             'display_name' => 'Leer Centro de Recepción',
@@ -142,7 +184,6 @@ class PermissionsTableSeeder extends Seeder
         ));
 
         // EMPLOYEES
-
         DB::table('role')->insert(array(
             'name'         => 'view-employees',
             'display_name' => 'Leer Empleados',
@@ -176,7 +217,6 @@ class PermissionsTableSeeder extends Seeder
     private function role_warehouse()
     {
         // PACKAGE
-
         DB::table('role')->insert(array(
             'name'         => 'view-package',
             'display_name' => 'Leer Paquetes',
@@ -206,7 +246,6 @@ class PermissionsTableSeeder extends Seeder
         ));
 
         //CLIENTS
-
         DB::table('role')->insert(array(
             'name'         => 'view-client',
             'display_name' => 'Leer Clientes',
@@ -236,7 +275,6 @@ class PermissionsTableSeeder extends Seeder
         ));
 
         // consigning
-
         DB::table('role')->insert(array(
             'name'         => 'view-consigning',
             'display_name' => 'Leer Agenda de Cliente',
@@ -271,7 +309,6 @@ class PermissionsTableSeeder extends Seeder
     private function role_shipment()
     {
         // Shipment
-
         DB::table('role')->insert(array(
             'name'         => 'view-shipment',
             'display_name' => 'Leer Embarques',
@@ -304,7 +341,7 @@ class PermissionsTableSeeder extends Seeder
     private function add_roles()
     {
         // SUPER ADMIN
-        for($i=3; $i < 32; $i++)
+        for($i=3; $i < 36; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -314,12 +351,23 @@ class PermissionsTableSeeder extends Seeder
             ));
         }
 
-        // CLIENT
-        for($i=24; $i < 28; $i++)
+        // ADMIN
+        for($i=12; $i < 36; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
                 'profile_id' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ));
+        }
+
+        // CLIENT
+        for($i=28; $i < 32; $i++)
+        {
+            DB::table('profile_role')->insert(array(
+                'role_id'    => $i,
+                'profile_id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ));

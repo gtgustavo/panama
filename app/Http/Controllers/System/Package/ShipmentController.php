@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\System\Package;
 
 use App\Helpers\Package\Package as PackageHelper;
 use App\Helpers\System\Access;

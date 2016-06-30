@@ -44,12 +44,17 @@ class User extends Model implements AuthenticatableContract,
 
     public function isAdmin()
     {
-        return $this->profile_id != 2;
+        return $this->profile_id <= 2;
+    }
+
+    public function isEmployee()
+    {
+        return $this->profile_id != 3;
     }
 
     public function isClient()
     {
-        return $this->profile_id == 2;
+        return $this->profile_id == 3;
     }
 
     public function people()
