@@ -158,10 +158,9 @@ return [
         'province'              => 'Estado / Provincia',
         'postal_code'           => 'Código Postal',
         'reference_point'       => 'Punto de Referencia',
-        'consigning'            => 'Ruta de Envío',
+        'consigning'            => 'Destinatario',
         'reception'             => 'Centro de Recepción',
         'departure_date'        => 'Fecha de Salida',
-
     ],
 
 ];

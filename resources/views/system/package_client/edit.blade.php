@@ -2,7 +2,7 @@
 
 @section('header_menu')
 
-    @include('dashboard.admin.partials.header')
+    @include('dashboard.client.partials.header')
 
 @endsection
 
@@ -19,16 +19,16 @@
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.client.events.edit') !!} - {{ $client->full_name }}</span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.package.events.edit') !!} </span>
                 </div>
 
                 <div class="panel-body p25 pb5">
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::model($client, ['route' => ['client_update', $client], 'method' => 'PUT']) !!}
+                        {!! Form::model($package, ['route' => ['my_package_update', $package], 'method' => 'PUT']) !!}
 
-                        @include('system.client.partials.fields', ['button' => trans('front.form.actions.edit')])
+                        @include('system.package.partials.fields', ['consign' => $consign , 'button' => trans('front.form.actions.edit')])
 
                         {!! Form::Close() !!}
 

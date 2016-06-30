@@ -121,7 +121,7 @@ Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'n
 });
 
 // Routes Consigning Client
-Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth'], 'namespace' => 'System'], function(){
 
     Route::get('/',           ['uses' => 'ConsigningController@index',   'as' => 'consigning_home']);
 
@@ -182,6 +182,22 @@ Route::group(['prefix' => 'panel', 'middleware' => ['web', 'auth'], 'namespace' 
     Route::get('image_profile',        ['uses' => 'AccountController@show',   'as' => 'panel_image']);
 
     Route::post('image_profile',       ['uses' => 'AccountController@file',   'as' => 'panel_image']);
+});
+
+// Routes Panel Package Client
+Route::group(['prefix' => 'my_package', 'middleware' => ['web', 'auth'], 'namespace' => 'Panel'], function(){
+
+    Route::get('/',           ['uses' => 'PackageController@index',   'as' => 'my_package_home']);
+
+    Route::get('create',      ['uses' => 'PackageController@create',  'as' => 'my_package_create']);
+
+    Route::post('create',     ['uses' => 'PackageController@store',   'as' => 'my_package_create']);
+
+    Route::get('{id}/edit',   ['uses' => 'PackageController@edit',    'as' => 'my_package_edit']);
+
+    Route::put('{id}/update', ['uses' => 'PackageController@update',  'as' => 'my_package_update']);
+
+    Route::get('{id}',        ['uses' => 'PackageController@destroy', 'as' => 'my_package_delete']);
 });
 
 // Language

@@ -21,6 +21,8 @@ return [
         'select_status'       => 'DEBE SELECCIONAR EL ESTATUS AL QUE DESEA CAMBIAR LOS PAQUETES',
 
         'select_package'      => 'DEBE SELECCIONAR AL MENOS UN PAQUETE ',
+
+        'annular_package'     => '¿ESTA SEGURO DE ANULAR ESTE PAQUETE?',
     ],
 
     'system' => [
@@ -67,6 +69,12 @@ return [
         'update'      => 'Paquete: :package, actualizado satisfactoriamente',
 
         'delete'      => 'Paquete: :package, eliminado satisfactoriamente',
+
+        'annular'     => 'Paquete: :package, anulado satisfactoriamente',
+
+        'not_action'  => 'No puede ejecutar la opción seleccionada sobre el paquete: :package, después de pasar el estatus a: enviado a centro de embarque',
+
+        'null'        => 'Paquete: :package, se encuentra anulado y no puede ejecutar la opción seleccionada',
 
         'error_dni'   => 'El DNI: :dni, no se encuentra en nuestros registros.',
 

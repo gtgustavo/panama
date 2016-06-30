@@ -15,9 +15,12 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">
-                            {!! Form::checkbox('select_all', null, null, ['id' => 'select_all', 'class' => 'checkbox', 'title' => 'select all']) !!}
-                        </th>
+                        @can('admin')
+                            <th class="">
+                                {!! Form::checkbox('select_all', null, null, ['id' => 'select_all', 'class' => 'checkbox', 'title' => 'select all']) !!}
+                            </th>
+                        @endcan
+
                         <th class="">{!! trans('front.form.package.table.wr') !!}         </th>
                         <th class="">{!! trans('front.form.package.table.wb') !!}         </th>
                         <th class="">{!! trans('front.form.package.table.consigning') !!} </th>
@@ -34,9 +37,11 @@
                     @foreach($packages as $package)
 
                         <tr>
-                            <td class="">
-                                {!! Form::checkbox('package_id[]', $package->id, null, ['class' => 'checkbox', 'title' => $package->id]) !!}
-                            </td>
+                            @can('admin')
+                                <th class="">
+                                    {!! Form::checkbox('package_id[]', $package->id, null, ['class' => 'checkbox', 'title' => $package->id]) !!}
+                                </th>
+                            @endcan
                             <td class=""> {{ $package->wr }}                        </td>
                             <td class=""> {{ $package->shipment['wb'] }}            </td>
                             <td class=""> {{ $package->consigning->country }}       </td>
@@ -55,9 +60,21 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <a href="{{ route('package_edit',   [$package->id]) }}">{!! trans('front.form.actions.edit') !!}</a>
-                                        </li>
+
+                                        @can('admin')
+                                            <li>
+                                                <a href="{{ route('package_edit',    [$package->id]) }}"> {!! trans('front.form.actions.edit') !!}</a>
+                                            </li>
+                                        @else
+                                            <li>
+                                                <a href="{{ route('my_package_edit', [$package->id]) }}"> {!! trans('front.form.actions.edit') !!}</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ route('my_package_delete', [$package->id]) }}" onclick="return confirm('{!! trans('messages.confirm.annular_package') !!}')"> {!! trans('front.form.actions.annular') !!}</a>
+                                            </li>
+                                        @endcan
+
                                     </ul>
 
                                 </div>

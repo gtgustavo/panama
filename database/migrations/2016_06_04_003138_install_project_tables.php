@@ -42,6 +42,7 @@ class InstallProjectTables extends Migration
             $table->string('note', 150);
             $table->decimal('cost', 10, 2);
             $table->enum('status', [
+                                        'ANULADO',
                                         'PRECHEQUEADO',
                                         'ENTREGADO EN CENTRO',
                                         'ENVIADO A CENTRO DE EMBARQUE',
@@ -64,6 +65,7 @@ class InstallProjectTables extends Migration
             $table->increments('id');
             $table->integer('package_id')->unsigned();
             $table->enum('status', [
+                                        'ANULADO',
                                         'PRECHEQUEADO',
                                         'ENTREGADO EN CENTRO',
                                         'ENVIADO A CENTRO DE EMBARQUE',

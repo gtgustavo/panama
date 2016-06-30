@@ -83,8 +83,10 @@ class DashboardController extends Controller
         return view('dashboard.admin.index', compact('packages'));
     }
 
-    public function client()
+    public function client(Request $request)
     {
-        return view('dashboard.client.index');
+        $packages = Package::FilterAndPaginateStatusClient($request->get('status'), Auth::user()->id);
+
+        return view('dashboard.client.index', compact('packages'));
     }
 }

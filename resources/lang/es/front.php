@@ -45,6 +45,8 @@ return [
             'warehouse' => 'Warehouse',
 
             'shipment'  => 'shipment',
+
+            'recipient' => 'Destinatarios',
         ],
 
         'title' => [
@@ -67,6 +69,8 @@ return [
             'shipment'          => 'Embarques',
 
             'reception_centers' => 'Centros de Recepción',
+
+            'diary'             => 'Agenda'
         ],
 
         'sub_sub_title' => [
@@ -79,12 +83,20 @@ return [
 
             'list_shipment'         => 'Todos los Embarques',
 
-            'list_reception_center' => 'Centros de Recepción'
+            'list_reception_center' => 'Centros de Recepción',
+
+            'list_recipient'        => 'Direcciones de Envío',
         ],
 
     ],
 
     'form' => [
+
+        'element' => [
+
+            'option' => 'Seleccione un elemento de la lista',
+
+        ],
 
         'profile' => [
 
@@ -229,7 +241,7 @@ return [
 
         'consigning' => [
 
-            'title' => 'DIRECCIONES DE ENVÍO',
+            'title'  => 'DIRECCIONES DE ENVÍO',
 
             'create' => 'Nueva Dirección de Envío',
 
@@ -354,6 +366,8 @@ return [
             'config'     => 'Configurar',
 
             'consigning' => 'Agenda',
+
+            'annular'    => 'Anular',
         ],
 
         /*

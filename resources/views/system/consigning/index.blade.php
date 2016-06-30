@@ -2,7 +2,13 @@
 
 @section('header_menu')
 
-    @include('system.consigning.partials.header')
+    @can('admin')
+
+        @include('system.consigning.partials.header')
+    @else
+
+        @include('dashboard.client.partials.header')
+    @endcan
 
 @endsection
 

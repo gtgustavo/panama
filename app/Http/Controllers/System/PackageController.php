@@ -4,11 +4,11 @@ namespace App\Http\Controllers\System;
 
 use App\Helpers\Barcode\Barcode;
 use App\Helpers\Helper;
-use App\Helpers\Package\Package;
+use App\Helpers\Package\Package as PackageHelper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\PackageRequest;
 use App\Models\System\ChangeStatus;
-use App\Models\System\Package as PackageModel;
+use App\Models\System\Package;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -41,7 +41,7 @@ class PackageController extends Controller
     {
         if(Access::allow('create-package'))
         {
-            $wr_code = Package::make_wr_code();
+            $wr_code = PackageHelper::make_wr_code();
 
             $barcode = Barcode::BarcodeHTML($wr_code);
 
@@ -61,13 +61,13 @@ class PackageController extends Controller
     {
         if(Access::allow('create-package'))
         {
-            $client = Package::validate_client($request->input('dni'));
+            $client = PackageHelper::validate_client($request->input('dni'));
 
             if($client != false)
             {
                 $collection = Helper::convert_to_uppercase($request->all());
 
-                $package = new PackageModel($collection->all());
+                $package = new Package($collection->all());
 
                 $package->user_id = $client;
 

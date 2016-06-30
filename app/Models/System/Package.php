@@ -33,6 +33,14 @@ class Package extends Model
             ->get();
     }
 
+    public static function FilterAndPaginateStatusClient($search, $client) //$wr
+    {
+        return Package::status($search)
+            ->where('user_id' ,$client)
+            ->orderBy('id', 'ASC')
+            ->get();
+    }
+
     public function scopeStatus($query, $search)
     {
         if ((trim($search) != ""))

@@ -2,13 +2,7 @@
 
 @section('header_menu')
 
-    @can('admin')
-
-        @include('system.consigning.partials.header')
-    @else
-
-        @include('dashboard.client.partials.header')
-    @endcan
+    @include('dashboard.client.partials.header')
 
 @endsection
 
@@ -25,16 +19,20 @@
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.consigning.events.edit') !!} -- {{ $client->people->full_name }} </span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.package.events.create') !!} </span>
                 </div>
 
                 <div class="panel-body p25 pb5">
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::model($client->toArray() + $consigning->toArray(), ['route' => ['consigning_update', $client, $consigning], 'method' => 'PUT']) !!}
+                        {!! Form::open(['route' => 'my_package_create', 'method' => 'POST']) !!}
 
-                        @include('system.consigning.partials.fields', ['button' => trans('front.form.actions.edit')])
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        <input type="hidden" name="wr" value="{{ $wr_code }}">
+
+                        @include('system.package.partials.fields', ['consign' => $consign ,'button' => trans('front.form.package.create')])
 
                         {!! Form::Close() !!}
 

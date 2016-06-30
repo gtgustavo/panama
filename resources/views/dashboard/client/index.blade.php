@@ -18,7 +18,9 @@
 
                 @include('a_templates.partials.messages')
 
-                @include('dashboard.client.partials.table')
+                @include('dashboard.client.partials.filter')
+
+                @include('system.package.partials.table')
 
             </div>
             <!-- end: .tray-center -->

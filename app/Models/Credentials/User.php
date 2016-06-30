@@ -47,6 +47,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->profile_id != 2;
     }
 
+    public function isClient()
+    {
+        return $this->profile_id == 2;
+    }
+
     public function people()
     {
         return $this->hasOne('App\Models\Credentials\People', 'id', 'people_id');

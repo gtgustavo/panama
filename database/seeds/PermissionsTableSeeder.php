@@ -303,11 +303,23 @@ class PermissionsTableSeeder extends Seeder
 
     private function add_roles()
     {
+        // SUPER ADMIN
         for($i=3; $i < 32; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
                 'profile_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ));
+        }
+
+        // CLIENT
+        for($i=24; $i < 28; $i++)
+        {
+            DB::table('profile_role')->insert(array(
+                'role_id'    => $i,
+                'profile_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ));

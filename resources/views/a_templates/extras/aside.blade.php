@@ -200,6 +200,49 @@
 
             @endcan
 
+            @can('client')
+
+                <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.recipient') !!} </li>
+
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-calendar"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.diary') }} </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{ route('consigning_create', Auth::user()->id) }}">
+                                <span class="fa fa-plus"></span> {!! trans('front.form.consigning.create') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('consigning_home', Auth::user()->id) }}">
+                                <span class="fa fa-users"></span> {{ trans('front.sidebar.sub_sub_title.list_recipient') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>
+
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-cubes"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.packages') }} </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{ route('my_package_create') }}">
+                                <span class="fa fa-cube"></span> {!! trans('front.form.package.create') !!}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            @endcan
+
         </ul>
         <!-- End: Sidebar Menu -->
 
