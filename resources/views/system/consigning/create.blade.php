@@ -19,6 +19,11 @@
         <!-- begin: .tray-center -->
         <div class="tray tray-center">
 
+            @can('client')
+                @include('dashboard.client.partials.tiles')
+                <br>
+            @endcan
+
             <!-- dashboard tiles -->
             @include('a_templates.partials.messages')
 

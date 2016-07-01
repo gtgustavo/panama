@@ -20,7 +20,14 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
-            @include('system.consigning.partials.tiles')
+            @can('client')
+
+                @include('dashboard.client.partials.tiles')
+                <br>
+            @else
+
+                @include('system.consigning.partials.tiles')
+            @endcan
 
             @include('a_templates.partials.messages')
 
