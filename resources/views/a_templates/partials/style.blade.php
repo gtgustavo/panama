@@ -16,4 +16,7 @@
 <!-- Tables Dynamic -->
 {!! Html::script('assets/js/app/dynamic_table/dataTables.bootstrap.min.css') !!}
 
+<!-- Slider -->
+{!! Html::style('assets/js/app/slider/slider.css') !!}
+
 @yield('style')

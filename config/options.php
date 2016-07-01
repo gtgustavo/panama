@@ -6,7 +6,7 @@ return [
 
         ''                                => 'ESTATUS DE PAQUETES',
         'ANULADO'                         => 'ANULADO',
-        'PRECHEQUEADO'                    => 'PRECHEQUEADO',
+        'PRECHEQUEADO'                    => 'WEB CHECK IN',
         'ENTREGADO EN CENTRO'             => 'ENTREGADO EN CENTRO',
         'ENVIADO A CENTRO DE EMBARQUE'    => 'ENVIADO A CENTRO DE EMBARQUE',
         'RECIBIDO EN CENTRO DE EMBARQUE'  => 'RECIBIDO EN CENTRO DE EMBARQUE',

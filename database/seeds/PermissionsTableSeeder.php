@@ -352,7 +352,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // ADMIN
-        for($i=12; $i < 36; $i++)
+        for($i=7; $i < 36; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

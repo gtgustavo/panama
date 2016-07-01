@@ -77,33 +77,13 @@
                             </a>
                             <ul class="nav sub-nav">
                                 <li>
-                                    <a href="{{ route('employee_create') }}">
-                                        {!! trans('front.form.employee.create') !!}
+                                    <a href="{{ route('administrator_create') }}">
+                                        {!! trans('front.form.administrator.create') !!}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('employee_home') }}">
-                                        {{ trans('front.sidebar.sub_sub_title.list_employee') }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class="accordion-toggle" href="#">
-                                <span class="fa fa-code-fork"></span>
-                                {{ trans('front.sidebar.sub_title.profiles') }}
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="nav sub-nav">
-                                <li>
-                                    <a href="{{ route('profile_create') }}">
-                                        {!! trans('front.form.profile.create') !!}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('profile_home') }}">
-                                        {{ trans('front.sidebar.sub_sub_title.list_profile') }}
+                                    <a href="{{ route('administrator_home') }}">
+                                        {{ trans('front.sidebar.sub_sub_title.list_administrator') }}
                                     </a>
                                 </li>
                             </ul>
@@ -125,6 +105,26 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="nav sub-nav">
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-code-fork"></span>
+                            {{ trans('front.sidebar.sub_title.profiles') }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ route('profile_create') }}">
+                                    {!! trans('front.form.profile.create') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('profile_home') }}">
+                                    {{ trans('front.sidebar.sub_sub_title.list_profile') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li>
                         <a class="accordion-toggle" href="#">
@@ -261,12 +261,12 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>
+                <li class="sidebar-label pt20"> {!! trans('front.form.other.wed') !!} </li>
 
                 <li>
                     <a class="accordion-toggle" href="#">
                         <span class="fa fa-cubes"></span>
-                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.packages') }} </span>
+                        <span class="sidebar-title"> {{ trans('front.form.other.wed') }} </span>
                         <span class="caret"></span>
                     </a>
                     <ul class="nav sub-nav">

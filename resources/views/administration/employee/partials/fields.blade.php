@@ -52,7 +52,7 @@
 
     @if(isset($employee->profile_id))
 
-        @if($employee->profile_id > 2)
+        @if($employee->profile_id > 3)
 
             @include('administration.employee.partials.field_profile')
 

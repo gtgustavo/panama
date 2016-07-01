@@ -50,21 +50,21 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['web', 'auth'], 'namespa
 // Routes Administrator
 Route::group(['prefix' => 'administrator', 'middleware' => ['web', 'auth', 'super_admin'], 'namespace' => 'Super'], function(){
 
-    Route::get('/',           ['uses' => 'AdministratorController@index',   'as' => 'administrator_home']);
+    Route::get('/',                    ['uses' => 'AdministratorController@index',   'as' => 'administrator_home']);
 
-    Route::get('create',      ['uses' => 'AdministratorController@create',  'as' => 'administrator_create']);
+    Route::get('create',               ['uses' => 'AdministratorController@create',  'as' => 'administrator_create']);
 
-    Route::post('create',     ['uses' => 'AdministratorController@store',   'as' => 'administrator_create']);
+    Route::post('create',              ['uses' => 'AdministratorController@store',   'as' => 'administrator_create']);
 
-    Route::get('{id}/edit',   ['uses' => 'AdministratorController@edit',    'as' => 'administrator_edit']);
+    Route::get('{id}/{people}/edit',   ['uses' => 'AdministratorController@edit',    'as' => 'administrator_edit']);
 
-    Route::put('{id}/update', ['uses' => 'AdministratorController@update',  'as' => 'administrator_update']);
+    Route::put('{id}/{people}/update', ['uses' => 'AdministratorController@update',  'as' => 'administrator_update']);
 
-    Route::get('{id}',        ['uses' => 'AdministratorController@destroy', 'as' => 'administrator_delete']);
+    Route::get('{id}/{people}',        ['uses' => 'AdministratorController@destroy', 'as' => 'administrator_delete']);
 });
 
 // Routes Profiles
-Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'super_admin'], 'namespace' => 'Super'], function(){
+Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Super'], function(){
 
     Route::get('/',           ['uses' => 'ProfileController@index',   'as' => 'profile_home']);
 

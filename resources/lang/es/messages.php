@@ -51,6 +51,19 @@ return [
         'danger' => 'No puede realizar la opción seleccionada sobre el Empleado: :employee',
     ],
 
+    'administrator' => [
+
+        'create' => 'Administrador: :employee, creado satisfactoriamente',
+
+        'update' => 'Administrador: :employee, actualizado satisfactoriamente',
+
+        'delete' => 'Administrador: :employee, eliminado satisfactoriamente',
+
+        'assign' => 'Asignación de permisos realizado satisfactoriamente, al Administrador: :employee',
+
+        'danger' => 'No puede realizar la opción seleccionada sobre el Administrador: :employee',
+    ],
+
     'client' => [
 
         'create'  => 'Cliente: :client, creado satisfactoriamente',

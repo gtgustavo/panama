@@ -34,7 +34,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('panel.index');
+        return view('panel.index')->with('user', $this->user)->with('people', $this->people);
     }
 
     /**

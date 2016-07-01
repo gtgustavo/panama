@@ -16,9 +16,7 @@
 
         <div class="row">
 
-            @include('panel.partials.activity')
-
-            <div class="col-md-8">
+            <div class="col-md-12">
 
                 <div class="tab-block">
 
@@ -26,7 +24,7 @@
 
                         {!! Form::model($user->toArray() + $people->toArray(), ['route' => ['panel_update', $user, $people], 'method' => 'PUT']) !!}
 
-                            @include('system.client.partials.fields', ['button' => trans('front.form.actions.edit')])
+                        @include('system.client.partials.fields', ['button' => trans('front.form.actions.edit')])
 
                         {!! Form::Close() !!}
 

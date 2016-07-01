@@ -9,11 +9,11 @@
             </li>
 
             <li>
-                <a href="{{ route('employee_home') }}"> {{ trans('front.sidebar.sub_title.employees') }} </a>
+                <a href="{{ route('profile_home') }}">  {{ trans('front.sidebar.sub_title.profiles') }}  </a>
             </li>
 
             <li>
-                <a href="{{ route('profile_home') }}">  {{ trans('front.sidebar.sub_title.profiles') }}  </a>
+                <a href="{{ route('employee_home') }}"> {{ trans('front.sidebar.sub_title.employees') }} </a>
             </li>
 
             <li>

@@ -30,7 +30,7 @@ class ClientController extends Controller
         {
             $clients      = User::FilterAndPaginateClient($request->get('search'), $request->get('type'));
 
-            $cant_clients = count(User::where('profile_id', 2)->get());
+            $cant_clients = count(User::where('profile_id', 3)->get());
 
             return view('system.client.index', compact('clients', 'cant_clients'));
         }
@@ -86,7 +86,7 @@ class ClientController extends Controller
 
                 'people_id'    => $people->id,
 
-                'profile_id'   => 2,
+                'profile_id'   => 3,
 
                 'reception_id' => Auth::user()->reception_id,
             ];

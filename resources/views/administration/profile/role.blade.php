@@ -2,7 +2,13 @@
 
 @section('header_menu')
 
-    @include('administration.a_partials.header')
+    @can('super_admin')
+
+        @include('administration.a_partials.header_super')
+    @else
+
+        @include('administration.a_partials.header')
+    @endcan
 
 @endsection
 

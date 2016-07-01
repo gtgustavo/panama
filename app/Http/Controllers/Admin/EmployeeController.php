@@ -172,7 +172,7 @@ class EmployeeController extends Controller
             $people->update($collection->all());
 
             // build data access credentials
-            if($id == 1) // Super Admin
+            if($employee->profile_id < 3) // Super Admin, Admin, Client
             {
                 $credentials = [
 
@@ -227,7 +227,7 @@ class EmployeeController extends Controller
             // Get name people
             $name = $employee->people->full_name;
 
-            if($id != 1) // Protection User administration
+            if($employee->profile_id > 3) // Protection User administration
             {
                 // delete record
                 People::destroy($people);

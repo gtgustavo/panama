@@ -81,6 +81,7 @@ class User extends Model implements AuthenticatableContract,
     {
         return User::name($search, $field)
             ->where('profile_id', '!=', '3')
+            ->where('profile_id', '!=', '1')
             ->orderBy('id', 'ASC')
             ->get();
     }
@@ -89,6 +90,14 @@ class User extends Model implements AuthenticatableContract,
     {
         return User::name($search, $field)
             ->where('profile_id', '3')
+            ->orderBy('id', 'DES')
+            ->get();
+    }
+
+    public static function FilterAndPaginateAdministrator($search, $field)
+    {
+        return User::name($search, $field)
+            ->where('profile_id', '2')
             ->orderBy('id', 'DES')
             ->get();
     }

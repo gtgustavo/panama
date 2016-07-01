@@ -28,4 +28,8 @@
 {!! Html::script('assets/js/app/dynamic_table/dataTables.bootstrap.min.js') !!}
 {!! Html::script('assets/js/app/dynamic_table/init_dynamic_table.js') !!}
 
+<!-- Slider -->
+{!! Html::script('assets/js/app/slider/jssor.slider.min.js') !!}
+{!! Html::script('assets/js/app/slider/slider.js') !!}
+
 @yield('script')

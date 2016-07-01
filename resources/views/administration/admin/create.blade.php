@@ -2,13 +2,7 @@
 
 @section('header_menu')
 
-    @can('super_admin')
-
-        @include('administration.a_partials.header_super')
-    @else
-
-        @include('administration.a_partials.header')
-    @endcan
+    @include('administration.a_partials.header_super')
 
 @endsection
 
@@ -25,18 +19,18 @@
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.profile.events.create') !!} </span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.administrator.events.create') !!} </span>
                 </div>
 
                 <div class="panel-body p25 pb5">
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::open(['route' => 'profile_create', 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'administrator_create', 'method' => 'POST']) !!}
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        @include('administration.profile.partials.fields', ['button' => trans('front.form.profile.create')])
+                        @include('administration.employee.partials.fields', ['profile' => $profile, 'reception_center' => $reception_center, 'button' => trans('front.form.employee.create')])
 
                         {!! Form::Close() !!}
 

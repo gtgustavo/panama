@@ -2,13 +2,7 @@
 
 @section('header_menu')
 
-    @can('super_admin')
-
-        @include('administration.a_partials.header_super')
-    @else
-
-        @include('administration.a_partials.header')
-    @endcan
+    @include('administration.a_partials.header_super')
 
 @endsection
 
@@ -24,7 +18,7 @@
 
             @include('a_templates.partials.messages')
 
-            @include('administration.profile.partials.table')
+            @include('administration.admin.partials.table')
 
         </div>
         <!-- end: .tray-center -->

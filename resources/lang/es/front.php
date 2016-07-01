@@ -92,6 +92,8 @@ return [
             'list_reception_center' => 'Centros de Recepción',
 
             'list_recipient'        => 'Direcciones de Envío',
+
+            'list_administrator'    => 'Todos los Administradores',
         ],
 
     ],
@@ -148,6 +150,12 @@ return [
             ],
         ],
 
+        'other' => [
+
+            'wed' => 'Web Check In',
+
+        ],
+
         'reception_center' => [
 
             'title' => 'CENTROS DE RECEPCIÓN',
@@ -199,6 +207,33 @@ return [
                 'create' => 'Nuevo Empleado',
 
                 'edit'   => 'Actualizar Empleado',
+            ],
+        ],
+
+        'administrator' => [
+
+            'title' => 'ADMINISTRADORES',
+
+            'create' => 'Nuevo Administrador',
+
+            'table' => [
+
+                'name'             => 'NOMBRE',
+
+                'dni'              => 'DNI',
+
+                'email'            => 'EMAIL',
+
+                'profile'          => 'PERFIL',
+
+                'reception_center' => 'CENTRO DE RECEPCIÓN'
+            ],
+
+            'events' => [
+
+                'create' => 'Nuevo Administrador',
+
+                'edit'   => 'Actualizar Administrador',
             ],
         ],
 
