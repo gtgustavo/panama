@@ -80,7 +80,7 @@ class User extends Model implements AuthenticatableContract,
     public static function FilterAndPaginate($search, $field)
     {
         return User::name($search, $field)
-            ->where('profile_id', '!=', '2')
+            ->where('profile_id', '!=', '3')
             ->orderBy('id', 'ASC')
             ->get();
     }
@@ -88,7 +88,7 @@ class User extends Model implements AuthenticatableContract,
     public static function FilterAndPaginateClient($search, $field)
     {
         return User::name($search, $field)
-            ->where('profile_id', '2')
+            ->where('profile_id', '3')
             ->orderBy('id', 'DES')
             ->get();
     }
