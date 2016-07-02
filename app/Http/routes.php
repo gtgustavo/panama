@@ -116,6 +116,38 @@ Route::group(['prefix' => 'reception_center', 'middleware' => ['web', 'auth', 'a
     Route::get('{id}',        ['uses' => 'ReceptionCenterController@destroy', 'as' => 'reception_center_delete']);
 });
 
+// Routes Support Tickets
+Route::group(['prefix' => 'ticket', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Support'], function(){
+
+    Route::get('/',           ['uses' => 'TicketsController@index',   'as' => 'ticket_home']);
+
+    Route::get('create',      ['uses' => 'TicketsController@create',  'as' => 'ticket_create']);
+
+    Route::post('create',     ['uses' => 'TicketsController@store',   'as' => 'ticket_create']);
+
+    Route::get('{id}/edit',   ['uses' => 'TicketsController@edit',    'as' => 'ticket_edit']);
+
+    Route::put('{id}/update', ['uses' => 'TicketsController@update',  'as' => 'ticket_update']);
+
+    Route::get('{id}',        ['uses' => 'TicketsController@destroy', 'as' => 'ticket_delete']);
+});
+
+// Routes Support Answer
+Route::group(['prefix' => 'answer', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Support'], function(){
+
+    Route::get('/',           ['uses' => 'TicketsController@index',   'as' => 'answer_home']);
+
+    Route::get('create',      ['uses' => 'TicketsController@create',  'as' => 'answer_create']);
+
+    Route::post('create',     ['uses' => 'TicketsController@store',   'as' => 'answer_create']);
+
+    Route::get('{id}/edit',   ['uses' => 'TicketsController@edit',    'as' => 'answer_edit']);
+
+    Route::put('{id}/update', ['uses' => 'TicketsController@update',  'as' => 'answer_update']);
+
+    Route::get('{id}',        ['uses' => 'TicketsController@destroy', 'as' => 'answer_delete']);
+});
+
 // CLIENT
 // Routes Client
 Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System\Client'], function(){
@@ -213,6 +245,16 @@ Route::group(['prefix' => 'my_package', 'middleware' => ['web', 'auth'], 'namesp
     Route::put('{id}/update', ['uses' => 'PackageController@update',  'as' => 'my_package_update']);
 
     Route::get('{id}',        ['uses' => 'PackageController@destroy', 'as' => 'my_package_delete']);
+});
+
+// Routes Support
+Route::group(['prefix' => 'support', 'middleware' => ['web', 'auth'], 'namespace' => 'Support'], function(){
+
+    Route::get('/',       ['uses' => 'SupportController@index',   'as' => 'support_home']);
+
+    Route::get('create',  ['uses' => 'SupportController@create',  'as' => 'support_create']);
+
+    Route::post('create', ['uses' => 'SupportController@store',   'as' => 'support_create']);
 });
 
 // AJAX

@@ -77,6 +77,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Models\System\Consigning');
     }
 
+    public function support()
+    {
+        return $this->hasMany('App\Models\Support\Support');
+    }
+
     public static function FilterAndPaginate($search, $field)
     {
         return User::name($search, $field)

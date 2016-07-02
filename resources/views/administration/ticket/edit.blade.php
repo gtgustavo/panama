@@ -2,13 +2,7 @@
 
 @section('header_menu')
 
-    @can('super_admin')
-
-        @include('administration.a_partials.header_super')
-    @else
-
-        @include('administration.a_partials.header_employee')
-    @endcan
+    @include('administration.a_partials.header_support')
 
 @endsection
 
@@ -25,16 +19,16 @@
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.profile.events.edit') !!} - {{ $profile->name }}</span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.ticket.events.edit') !!} - {{ $ticket->theme }}</span>
                 </div>
 
                 <div class="panel-body p25 pb5">
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::model($profile, ['route' => ['profile_update', $profile], 'method' => 'PUT']) !!}
+                        {!! Form::model($ticket, ['route' => ['ticket_update', $ticket], 'method' => 'PUT']) !!}
 
-                        @include('administration.profile.partials.fields', ['button' => trans('front.form.actions.edit')])
+                        @include('administration.ticket.partials.fields', ['button' => trans('front.form.actions.edit')])
 
                         {!! Form::Close() !!}
 

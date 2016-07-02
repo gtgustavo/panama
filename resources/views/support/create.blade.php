@@ -2,13 +2,7 @@
 
 @section('header_menu')
 
-    @can('super_admin')
-
-        @include('administration.a_partials.header_super')
-    @else
-
-        @include('administration.a_partials.header_employee')
-    @endcan
+    @include('dashboard.client.partials.header')
 
 @endsection
 
@@ -20,21 +14,27 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
+            @include('dashboard.client.partials.tiles')
+
+            <br>
+
             @include('a_templates.partials.messages')
 
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.profile.events.edit') !!} - {{ $profile->name }}</span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.support.events.create') !!} </span>
                 </div>
 
                 <div class="panel-body p25 pb5">
 
                     <div class="tab-content pn br-n admin-form">
 
-                        {!! Form::model($profile, ['route' => ['profile_update', $profile], 'method' => 'PUT']) !!}
+                        {!! Form::open(['route' => 'support_create', 'method' => 'POST']) !!}
 
-                        @include('administration.profile.partials.fields', ['button' => trans('front.form.actions.edit')])
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        @include('support.partials.fields', ['theme' => $theme, 'button' => trans('front.form.support.create')])
 
                         {!! Form::Close() !!}
 

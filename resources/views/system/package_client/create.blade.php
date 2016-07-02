@@ -14,6 +14,10 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
+            @include('dashboard.client.partials.tiles')
+
+            <br>
+
             @include('a_templates.partials.messages')
 
             <div class="panel mb25 mt5">

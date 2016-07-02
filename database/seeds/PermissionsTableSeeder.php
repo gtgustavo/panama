@@ -183,6 +183,35 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'   => Carbon::now(),
         ));
 
+        // SUPPORT TICKET
+        DB::table('role')->insert(array(
+            'name'         => 'view-tickets',
+            'display_name' => 'Leer Tickes de Soporte',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-tickets',
+            'display_name' => 'Crear Tickes de Soporte',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-tickets',
+            'display_name' => 'Modificar Tickes de Soporte',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-tickets',
+            'display_name' => 'Borrar Tickes de Soporte',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
         // EMPLOYEES
         DB::table('role')->insert(array(
             'name'         => 'view-employees',
@@ -341,7 +370,7 @@ class PermissionsTableSeeder extends Seeder
     private function add_roles()
     {
         // SUPER ADMIN
-        for($i=3; $i < 36; $i++)
+        for($i=3; $i < 40; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -352,7 +381,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // ADMIN
-        for($i=7; $i < 36; $i++)
+        for($i=7; $i < 40; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -363,7 +392,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // CLIENT
-        for($i=28; $i < 32; $i++)
+        for($i=32; $i < 36; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

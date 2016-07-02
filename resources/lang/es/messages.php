@@ -135,4 +135,24 @@ return [
         'image'     => 'Ha actualizado su imagen de perfil satisfactoriamente',
     ],
 
+    'ticket' => [
+
+        'create' => 'Ticket: :ticket, creado satisfactoriamente',
+
+        'update' => 'Ticket: :ticket, actualizado satisfactoriamente',
+
+        'delete' => 'Ticket: :ticket, eliminado satisfactoriamente',
+    ],
+
+    'support' => [
+
+        'create' => 'Solicitud: :ticket, creada satisfactoriamente',
+
+        'update' => 'Solicitud: :ticket, actualizada satisfactoriamente',
+
+        'delete' => 'Solicitud: :ticket, eliminada satisfactoriamente',
+
+        'close'  => 'No puede crear mas solicitudes hasta finalizar la que se encuentra pendiente'
+    ],
+
 ];

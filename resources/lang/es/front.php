@@ -36,28 +36,32 @@ return [
 
         'label' => [
 
-            'menu'      => 'Menú',
+            'menu'           => 'Menú',
 
-            'security'  => 'Seguridad',
+            'security'       => 'Seguridad',
 
-            'management' => 'Gestión',
+            'administration' => 'Administración',
 
-            'attention' => 'Atención',
+            'attention'      => 'Atención',
 
-            'warehouse' => 'Warehouse',
+            'warehouse'      => 'Warehouse',
 
-            'shipment'  => 'shipment',
+            'shipment'       => 'shipment',
 
-            'recipient' => 'Destinatarios',
+            'recipient'      => 'Destinatarios',
+
+            'support'        => 'Soporte',
         ],
 
         'title' => [
 
             'board'          => 'Dashboard',
 
-            'administration' => 'Administración',
+            'employees'      => 'Empleados',
 
-            'credentials'    => 'Credenciales'
+            'credentials'    => 'Credenciales',
+
+            'support'        => 'Soporte',
         ],
 
         'sub_title' => [
@@ -76,7 +80,11 @@ return [
 
             'reception_centers' => 'Centros de Recepción',
 
-            'diary'             => 'Agenda'
+            'diary'             => 'Agenda',
+
+            'tickets'           => 'Tickets de Soporte',
+
+            'support'           => 'Soporte',
         ],
 
         'sub_sub_title' => [
@@ -93,7 +101,9 @@ return [
 
             'list_recipient'        => 'Direcciones de Envío',
 
-            'list_administrator'    => 'Todos los Administradores',
+            'list_administrator'    => 'Administradores',
+
+            'list_ticket'           => 'Tickets de Soporte'
         ],
 
     ],
@@ -208,6 +218,52 @@ return [
 
                 'edit'   => 'Actualizar Empleado',
             ],
+        ],
+
+        'ticket' => [
+
+            'title' => 'TICKETS DE SOPORTE',
+
+            'create' => 'Nuevo Ticket',
+
+            'table' => [
+
+                'theme'     => 'TEMA',
+
+                'pending'   => 'PENDIENTES',
+
+                'responded' => 'RESPONDIDOS',
+            ],
+
+            'events' => [
+
+                'create' => 'Nuevo Ticket',
+
+                'edit'   => 'Actualizar Ticket',
+            ],
+
+        ],
+
+        'support' => [
+
+            'title' => 'SOPORTE',
+
+            'create' => 'Crear Solicitud',
+
+            'table' => [
+
+                'theme'  => 'TEMA',
+
+                'status' => 'ESTATUS',
+
+                'date'   => 'FECHA',
+            ],
+
+            'events' => [
+
+                'create' => 'Crear Solicitud de Soporte',
+            ],
+
         ],
 
         'administrator' => [

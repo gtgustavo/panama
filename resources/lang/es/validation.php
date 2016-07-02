@@ -161,6 +161,8 @@ return [
         'consigning'            => 'Destinatario',
         'reception'             => 'Centro de Recepción',
         'departure_date'        => 'Fecha de Salida',
+        'theme'                 => 'Tema',
+        'problem'               => 'Problema',
     ],
 
 ];

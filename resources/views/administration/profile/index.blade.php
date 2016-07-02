@@ -7,7 +7,7 @@
         @include('administration.a_partials.header_super')
     @else
 
-        @include('administration.a_partials.header')
+        @include('administration.a_partials.header_employee')
     @endcan
 
 @endsection

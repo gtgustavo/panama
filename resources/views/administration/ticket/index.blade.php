@@ -18,7 +18,7 @@
 
             @include('a_templates.partials.messages')
 
-            @include('administration.reception_center.partials.table')
+            @include('administration.ticket.partials.table')
 
         </div>
         <!-- end: .tray-center -->

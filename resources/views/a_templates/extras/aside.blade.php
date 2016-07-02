@@ -64,31 +64,20 @@
                 <li>
                     <a class="accordion-toggle" href="#">
                         <span class="fa fa-unlock-alt"></span>
-                        <span class="sidebar-title"> {!! trans('front.sidebar.title.credentials') !!} </span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.administrator') }} </span>
                         <span class="caret"></span>
                     </a>
                     <ul class="nav sub-nav">
-
                         <li>
-                            <a class="accordion-toggle" href="#">
-                                <span class="fa fa fa-users"></span>
-                                {{ trans('front.sidebar.sub_title.administrator') }}
-                                <span class="caret"></span>
+                            <a href="{{ route('administrator_create') }}">
+                                <span class="fa fa-user-plus"></span> {!! trans('front.form.administrator.create') !!}
                             </a>
-                            <ul class="nav sub-nav">
-                                <li>
-                                    <a href="{{ route('administrator_create') }}">
-                                        {!! trans('front.form.administrator.create') !!}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('administrator_home') }}">
-                                        {{ trans('front.sidebar.sub_sub_title.list_administrator') }}
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
+                        <li>
+                            <a href="{{ route('administrator_home') }}">
+                                <span class="fa fa-users"></span>     {{ trans('front.sidebar.sub_sub_title.list_administrator') }}
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -96,12 +85,12 @@
 
             @can('admin')
 
-            <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.management') !!} </li>
+            <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.administration') !!} </li>
 
             <li>
                 <a class="accordion-toggle" href="#">
                     <span class="fa fa-suitcase"></span>
-                    <span class="sidebar-title"> {!! trans('front.sidebar.title.administration') !!} </span>
+                    <span class="sidebar-title"> {!! trans('front.sidebar.title.employees') !!} </span>
                     <span class="caret"></span>
                 </a>
                 <ul class="nav sub-nav">
@@ -121,26 +110,6 @@
                             <li>
                                 <a href="{{ route('profile_home') }}">
                                     {{ trans('front.sidebar.sub_sub_title.list_profile') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-university"></span>
-                            {{ trans('front.sidebar.sub_title.reception_centers') }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="{{ route('reception_center_create') }}">
-                                    {!! trans('front.form.reception_center.create') !!}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reception_center_home') }}">
-                                    {{ trans('front.sidebar.sub_sub_title.list_reception_center') }}
                                 </a>
                             </li>
                         </ul>
@@ -168,6 +137,58 @@
 
                 </ul>
             </li>
+
+            <li>
+                <a class="accordion-toggle" href="#">
+                    <span class="fa fa-life-ring"></span>
+                    <span class="sidebar-title"> {!! trans('front.sidebar.title.support') !!} </span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="nav sub-nav">
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-university"></span>
+                            {{ trans('front.sidebar.sub_title.reception_centers') }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ route('reception_center_create') }}">
+                                    {!! trans('front.form.reception_center.create') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('reception_center_home') }}">
+                                    {{ trans('front.sidebar.sub_sub_title.list_reception_center') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-ticket"></span>
+                            {{ trans('front.sidebar.sub_title.tickets') }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ route('ticket_create') }}">
+                                    {!! trans('front.form.ticket.create') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('ticket_home') }}">
+                                    {{ trans('front.sidebar.sub_sub_title.list_ticket') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
 
             @endcan
 
@@ -273,6 +294,28 @@
                         <li>
                             <a href="{{ route('my_package_create') }}">
                                 <span class="fa fa-cube"></span> {!! trans('front.form.package.create') !!}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.support') !!} </li>
+
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-life-ring"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.support') }} </span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{ route('support_create') }}">
+                                <span class="fa fa-plus"></span> {!! trans('front.form.support.create') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('support_home') }}">
+                                <span class="fa fa-ticket"></span> {{ trans('front.sidebar.sub_sub_title.list_ticket') }}
                             </a>
                         </li>
                     </ul>
