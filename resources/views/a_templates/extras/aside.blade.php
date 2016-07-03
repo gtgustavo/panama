@@ -216,6 +216,12 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="{{ route('answer_home') }}">
+                        <span class="fa fa-life-ring"></span> {!! trans('front.sidebar.title.support') !!}
+                    </a>
+                </li>
+
                 <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>
 
                 <li>

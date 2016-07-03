@@ -16,6 +16,12 @@
                 <thead>
                     <tr class="bg-light">
                         <th class="">ID</th>
+
+                        @can('admin')
+                            <th class="">{!! trans('front.form.support.table.name') !!}     </th>
+                            <th class="">{!! trans('front.form.support.table.dni') !!}    </th>
+                        @endcan
+
                         <th class="">{!! trans('front.form.support.table.theme') !!}     </th>
                         <th class="">{!! trans('front.form.support.table.status') !!}    </th>
                         <th class="">{!! trans('front.form.support.table.date') !!} </th>
@@ -29,6 +35,12 @@
 
                         <tr>
                             <td class=""> {{ $support->id }}                              </td>
+
+                            @can('admin')
+                                <td class=""> {{ $support->client->people->full_name }}                   </td>
+                                <td class=""> {{ $support->client->people->dni }}                          </td>
+                            @endcan
+
                             <td class=""> {{ $support->ticket->theme }}                   </td>
                             <td class=""> {{ $support->status }}                          </td>
                             <td class=""> {{ $support->created_at->format('d / m / Y') }} </td>
@@ -42,17 +54,21 @@
                                         <span class="caret ml5"></span>
                                     </button>
 
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <a href="{{ route('support_home',   [$support->id]) }}">{!! trans('front.form.actions.edit') !!}</a>
-                                        </li>
+                                    @can('admin')
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="{{ route('answer_create',   [$support->id]) }}">{!! trans('front.form.actions.answer') !!}</a>
+                                            </li>
+                                        </ul>
+                                    @endcan
 
-                                        <li class="divider"></li>
-
-                                        <li>
-                                            <a href="{{ route('support_home', [$support->id]) }}" onclick="return confirm('{!! trans('messages.confirm.delete_register') !!}')">{!! trans('front.form.actions.delete') !!}</a>
-                                        </li>
-                                    </ul>
+                                    @can('client')
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="{{ route('support_answer',  [$support->id]) }}">{!! trans('front.form.actions.answer') !!}</a>
+                                            </li>
+                                        </ul>
+                                    @endcan
 
                                 </div>
 
@@ -66,6 +82,12 @@
                 <tfoot>
                 <tr class="bg-light">
                     <th class="">ID</th>
+
+                    @can('admin')
+                        <th class="">{!! trans('front.form.support.table.name') !!}     </th>
+                        <th class="">{!! trans('front.form.support.table.dni') !!}    </th>
+                    @endcan
+
                     <th class="">{!! trans('front.form.support.table.theme') !!}     </th>
                     <th class="">{!! trans('front.form.support.table.status') !!}   </th>
                     <th class="">{!! trans('front.form.support.table.date') !!} </th>

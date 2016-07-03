@@ -135,17 +135,11 @@ Route::group(['prefix' => 'ticket', 'middleware' => ['web', 'auth', 'admin'], 'n
 // Routes Support Answer
 Route::group(['prefix' => 'answer', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Support'], function(){
 
-    Route::get('/',           ['uses' => 'TicketsController@index',   'as' => 'answer_home']);
+    Route::get('/',            ['uses' => 'AnswerController@index',  'as' => 'answer_home']);
 
-    Route::get('create',      ['uses' => 'TicketsController@create',  'as' => 'answer_create']);
+    Route::get('{id}/create',  ['uses' => 'AnswerController@create', 'as' => 'answer_create']);
 
-    Route::post('create',     ['uses' => 'TicketsController@store',   'as' => 'answer_create']);
-
-    Route::get('{id}/edit',   ['uses' => 'TicketsController@edit',    'as' => 'answer_edit']);
-
-    Route::put('{id}/update', ['uses' => 'TicketsController@update',  'as' => 'answer_update']);
-
-    Route::get('{id}',        ['uses' => 'TicketsController@destroy', 'as' => 'answer_delete']);
+    Route::post('{id}/create', ['uses' => 'AnswerController@store',  'as' => 'answer_create']);
 });
 
 // CLIENT
@@ -250,11 +244,13 @@ Route::group(['prefix' => 'my_package', 'middleware' => ['web', 'auth'], 'namesp
 // Routes Support
 Route::group(['prefix' => 'support', 'middleware' => ['web', 'auth'], 'namespace' => 'Support'], function(){
 
-    Route::get('/',       ['uses' => 'SupportController@index',   'as' => 'support_home']);
+    Route::get('/',           ['uses' => 'SupportController@index',   'as' => 'support_home']);
 
-    Route::get('create',  ['uses' => 'SupportController@create',  'as' => 'support_create']);
+    Route::get('create',      ['uses' => 'SupportController@create',  'as' => 'support_create']);
 
-    Route::post('create', ['uses' => 'SupportController@store',   'as' => 'support_create']);
+    Route::post('create',     ['uses' => 'SupportController@store',   'as' => 'support_create']);
+
+    Route::get('{id}/answer', ['uses' => 'SupportController@view',    'as' => 'support_answer']);
 });
 
 // AJAX

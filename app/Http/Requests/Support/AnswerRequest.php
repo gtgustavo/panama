@@ -4,7 +4,7 @@ namespace App\Http\Requests\Support;
 
 use App\Http\Requests\Request;
 
-class SupportRequest extends Request
+class AnswerRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class SupportRequest extends Request
     {
         return [
 
-            'problem' => 'required|string|max:255|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\,\&\-\/ ]+$/i',
+            'answer' => 'required|string|max:255|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\,\&\-\/ ]+$/i',
 
         ];
     }

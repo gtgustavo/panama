@@ -163,6 +163,7 @@ return [
         'departure_date'        => 'Fecha de Salida',
         'theme'                 => 'Tema',
         'problem'               => 'Problema',
+        'answer'                => 'Respuesta',
     ],
 
 ];

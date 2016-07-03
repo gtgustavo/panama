@@ -250,7 +250,13 @@ return [
 
             'create' => 'Crear Solicitud',
 
+            'answer' => 'Responder Solicitud',
+
             'table' => [
+
+                'name'   => 'NOMBRE',
+
+                'dni'    => 'DNI',
 
                 'theme'  => 'TEMA',
 
@@ -262,6 +268,8 @@ return [
             'events' => [
 
                 'create' => 'Crear Solicitud de Soporte',
+
+                'answer' => 'Respuesta Solicitud de Soporte',
             ],
 
         ],
@@ -465,6 +473,8 @@ return [
             'consigning' => 'Agenda',
 
             'annular'    => 'Anular',
+
+            'answer'     => 'Respuesta',
         ],
 
         /*

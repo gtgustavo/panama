@@ -148,9 +148,7 @@ return [
 
         'create' => 'Solicitud: :ticket, creada satisfactoriamente',
 
-        'update' => 'Solicitud: :ticket, actualizada satisfactoriamente',
-
-        'delete' => 'Solicitud: :ticket, eliminada satisfactoriamente',
+        'answer' => 'Solicitud: :ticket, respondida satisfactoriamente',
 
         'close'  => 'No puede crear mas solicitudes hasta finalizar la que se encuentra pendiente'
     ],

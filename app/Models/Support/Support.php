@@ -17,6 +17,23 @@ class Support extends Model
 
     public function client()
     {
-        return $this->hasMany('App\Models\Credentials\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\Credentials\User', 'id', 'user_id');
+    }
+
+    public static function FilterAndPaginate($search)
+    {
+        return Support::name($search)
+            ->where('status', 'PENDIENTE')
+            ->orderBy('id', 'DES')
+            ->get();
+    }
+
+    public function scopeName($query, $search)
+    {
+        if (trim($search) != ""){
+
+            $query->where('ticket_id', $search);
+
+        }
     }
 }

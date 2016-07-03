@@ -17,6 +17,7 @@ class PermissionsTableSeeder extends Seeder
         $this->role_login();
         $this->role_super_admin();
         $this->role_administrations();
+        $this->role_client();
         $this->role_warehouse();
         $this->role_shipment();
         $this->add_roles();
@@ -242,38 +243,8 @@ class PermissionsTableSeeder extends Seeder
         ));
     }
 
-    // WAREHOUSE
-    private function role_warehouse()
+    private function role_client()
     {
-        // PACKAGE
-        DB::table('role')->insert(array(
-            'name'         => 'view-package',
-            'display_name' => 'Leer Paquetes',
-            'created_at'   => Carbon::now(),
-            'updated_at'   => Carbon::now(),
-        ));
-
-        DB::table('role')->insert(array(
-            'name'         => 'create-package',
-            'display_name' => 'Crear Paquetes',
-            'created_at'   => Carbon::now(),
-            'updated_at'   => Carbon::now(),
-        ));
-
-        DB::table('role')->insert(array(
-            'name'         => 'edit-package',
-            'display_name' => 'Modificar Paquetes',
-            'created_at'   => Carbon::now(),
-            'updated_at'   => Carbon::now(),
-        ));
-
-        DB::table('role')->insert(array(
-            'name'         => 'delete-package',
-            'display_name' => 'Borrar Paquetes',
-            'created_at'   => Carbon::now(),
-            'updated_at'   => Carbon::now(),
-        ));
-
         //CLIENTS
         DB::table('role')->insert(array(
             'name'         => 'view-client',
@@ -332,6 +303,53 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'   => Carbon::now(),
         ));
 
+        //SUPPORT
+        DB::table('role')->insert(array(
+            'name'         => 'view-support',
+            'display_name' => 'Leer Solicitudes de Soporte',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-support',
+            'display_name' => 'Responder Solicitudes de Soporte',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+    }
+
+    // WAREHOUSE
+    private function role_warehouse()
+    {
+        // PACKAGE
+        DB::table('role')->insert(array(
+            'name'         => 'view-package',
+            'display_name' => 'Leer Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-package',
+            'display_name' => 'Crear Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-package',
+            'display_name' => 'Modificar Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-package',
+            'display_name' => 'Borrar Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
     }
 
     // Shipment
@@ -370,7 +388,7 @@ class PermissionsTableSeeder extends Seeder
     private function add_roles()
     {
         // SUPER ADMIN
-        for($i=3; $i < 40; $i++)
+        for($i=3; $i < 42; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -381,7 +399,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // ADMIN
-        for($i=7; $i < 40; $i++)
+        for($i=7; $i < 42; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -392,7 +410,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // CLIENT
-        for($i=32; $i < 36; $i++)
+        for($i=28; $i < 32; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

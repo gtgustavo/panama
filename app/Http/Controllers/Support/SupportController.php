@@ -7,7 +7,6 @@ use App\Http\Requests\Support\SupportRequest;
 use App\Models\Credentials\User;
 use App\Models\Support\Support;
 use App\Models\Support\Ticket;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -32,7 +31,7 @@ class SupportController extends Controller
     {
         $help = Support::where('user_id', $this->user->id)->get();
 
-        return view('support.index', compact('help'));
+        return view('support.client.index', compact('help'));
     }
 
     /**
@@ -48,7 +47,7 @@ class SupportController extends Controller
         {
             $theme = Ticket::lists('theme', 'id');
 
-            return view('support.create', compact('theme'));
+            return view('support.client.create', compact('theme'));
         }
 
         Alert::message(trans('messages.support.close'), 'info');
@@ -75,6 +74,13 @@ class SupportController extends Controller
         Alert::message(trans('messages.support.create', ['ticket' => $support->ticket->theme]), 'success');
 
         return $this->redirectDefault();
+    }
+
+    public function view($id)
+    {
+        $support = Support::findOrFail($id);
+
+        return view('support.client.answer', compact('support'));
     }
 
     /**
