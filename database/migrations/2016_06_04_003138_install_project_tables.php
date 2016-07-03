@@ -49,8 +49,8 @@ class InstallProjectTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name', 50);
             $table->string('phone', 15);
-            $table->string('country', 50);
-            $table->string('province', 50);
+            $table->integer('road_id')->unsigned();
+            $table->integer('city_id')->unsigned();
             $table->string('city', 50);
             $table->string('postal_code', 10);
             $table->string('address', 150);
@@ -58,20 +58,54 @@ class InstallProjectTables extends Migration
 
             $table->foreign('user_id')->references('id')->on('user')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('road_id')->references('id')->on('road')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('city')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+
+        Schema::create('coin', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->string('iso', 5)->unique();
+            $table->string('symbol', 5);
+            $table->timestamps();
+        });
+
+        Schema::create('box', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('box', 50);
+            $table->string('dimensions', 20);
+            $table->string('maximum_poundage', 20);
+            $table->decimal('cost_extra_pound', 10, 2);
+            $table->decimal('cost_standard', 10, 2);
+            $table->decimal('cost_express', 10, 2);
+            $table->integer('coin_id')->unsigned();
+            $table->enum('status', ['ACTIVO', 'OCULTO'])->default('OCULTO');
+            $table->foreign('coin_id')->references('id')->on('coin')
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
 
         Schema::create('package', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('consigning_id')->unsigned();
+
             $table->string('wr', 20)->unique();
             $table->integer('shipment_id')->unsigned();
+
+            $table->integer('user_id')->unsigned();
+            $table->integer('consigning_id')->unsigned();
+            $table->integer('box_id')->unsigned();
+
             $table->string('magaya', 50);
-            $table->string('type', 50);
-            $table->string('note', 150);
+
+            $table->enum('shipping_type', ['STANDARD', 'EXPRESS']);
+            $table->string('extra_pounds', 10);
             $table->decimal('cost', 10, 2);
+
             $table->enum('status', [
                                         'ANULADO',
                                         'PRECHEQUEADO',
@@ -83,10 +117,13 @@ class InstallProjectTables extends Migration
                                         'ENTREGADO'
                                     ])->default('PRECHEQUEADO');
 
+            $table->string('note', 150);
 
             $table->foreign('user_id')->references('id')->on('user')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('consigning_id')->references('id')->on('consigning')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('box_id')->references('id')->on('box')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
