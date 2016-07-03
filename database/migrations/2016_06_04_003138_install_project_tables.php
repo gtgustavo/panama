@@ -13,6 +13,37 @@ class InstallProjectTables extends Migration
      */
     public function up()
     {
+        Schema::create('country', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->string('iso', 2)->unique();
+            $table->timestamps();
+        });
+
+        Schema::create('city', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->integer('country_id')->unsigned();
+
+            $table->foreign('country_id')->references('id')->on('country')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+
+        Schema::create('road', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('origin_id')->unsigned();
+            $table->integer('destination_id')->unsigned();
+
+            $table->foreign('origin_id')->references('id')->on('country')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('destination_id')->references('id')->on('country')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+
         Schema::create('consigning', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();

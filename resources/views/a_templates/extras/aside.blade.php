@@ -90,6 +90,58 @@
             <li>
                 <a class="accordion-toggle" href="#">
                     <span class="fa fa-suitcase"></span>
+                    <span class="sidebar-title"> {!! trans('front.sidebar.title.deal') !!} </span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="nav sub-nav">
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-road"></span>
+                            {{ trans('front.sidebar.sub_title.roads') }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ route('road_create') }}">
+                                    {!! trans('front.form.road.create') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('road_home') }}">
+                                    {{ trans('front.sidebar.sub_sub_title.list_road') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-cubes"></span>
+                            {{ trans('front.sidebar.sub_title.box') }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ route('box_create') }}">
+                                    {!! trans('front.form.box.create') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('box_home') }}">
+                                    {{ trans('front.sidebar.sub_sub_title.list_box') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li>
+                <a class="accordion-toggle" href="#">
+                    <span class="fa fa-users"></span>
                     <span class="sidebar-title"> {!! trans('front.sidebar.title.employees') !!} </span>
                     <span class="caret"></span>
                 </a>
@@ -117,7 +169,7 @@
 
                     <li>
                         <a class="accordion-toggle" href="#">
-                            <span class="fa fa fa-users"></span>
+                            <span class="fa fa-users"></span>
                             {{ trans('front.sidebar.sub_title.employees') }}
                             <span class="caret"></span>
                         </a>
@@ -137,6 +189,7 @@
 
                 </ul>
             </li>
+
 
             <li>
                 <a class="accordion-toggle" href="#">

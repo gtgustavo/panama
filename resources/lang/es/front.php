@@ -62,6 +62,8 @@ return [
             'credentials'    => 'Credenciales',
 
             'support'        => 'Soporte',
+
+            'deal'           => 'Negocio',
         ],
 
         'sub_title' => [
@@ -85,6 +87,10 @@ return [
             'tickets'           => 'Tickets de Soporte',
 
             'support'           => 'Soporte',
+
+            'roads'             => 'Rutas',
+
+            'box'               => 'Cajas',
         ],
 
         'sub_sub_title' => [
@@ -103,7 +109,11 @@ return [
 
             'list_administrator'    => 'Administradores',
 
-            'list_ticket'           => 'Tickets de Soporte'
+            'list_ticket'           => 'Tickets de Soporte',
+
+            'list_road'             => 'Todas las Rutas',
+
+            'list_box'              => 'Todas las Cajas',
         ],
 
     ],
@@ -217,6 +227,60 @@ return [
                 'create' => 'Nuevo Empleado',
 
                 'edit'   => 'Actualizar Empleado',
+            ],
+        ],
+
+        'road' => [
+
+            'title' => 'RUTAS',
+
+            'create' => 'Nueva Ruta',
+
+            'table' => [
+
+                'name'             => 'NOMBRE',
+
+                'dni'              => 'DNI',
+
+                'email'            => 'EMAIL',
+
+                'profile'          => 'PERFIL',
+
+                'reception_center' => 'CENTRO DE RECEPCIÓN'
+            ],
+
+            'events' => [
+
+                'create' => 'Nueva Ruta',
+
+                'edit'   => 'Actualizar Ruta',
+            ],
+        ],
+
+        'box' => [
+
+            'title' => 'CAJAS',
+
+            'create' => 'Nueva Caja',
+
+            'table' => [
+
+                'name'             => 'NOMBRE',
+
+                'dni'              => 'DNI',
+
+                'email'            => 'EMAIL',
+
+                'profile'          => 'PERFIL',
+
+                'reception_center' => 'CENTRO DE RECEPCIÓN'
+            ],
+
+            'events' => [
+
+                'create' => 'Nueva Caja',
+
+                'edit'   => 'Actualizar Caja',
             ],
         ],
 

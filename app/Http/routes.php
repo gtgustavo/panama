@@ -142,6 +142,38 @@ Route::group(['prefix' => 'answer', 'middleware' => ['web', 'auth', 'admin'], 'n
     Route::post('{id}/create', ['uses' => 'AnswerController@store',  'as' => 'answer_create']);
 });
 
+// Routes Roads
+Route::group(['prefix' => 'road', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Admin'], function(){
+
+    Route::get('/',                    ['uses' => 'EmployeeController@index',   'as' => 'road_home']);
+
+    Route::get('create',               ['uses' => 'EmployeeController@create',  'as' => 'road_create']);
+
+    Route::post('create',              ['uses' => 'EmployeeController@store',   'as' => 'road_create']);
+
+    Route::get('{id}/{people}/edit',   ['uses' => 'EmployeeController@edit',    'as' => 'road_edit']);
+
+    Route::put('{id}/{people}/update', ['uses' => 'EmployeeController@update',  'as' => 'road_update']);
+
+    Route::get('{id}/{people}',        ['uses' => 'EmployeeController@destroy', 'as' => 'road_delete']);
+});
+
+// Routes Box
+Route::group(['prefix' => 'box', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Admin'], function(){
+
+    Route::get('/',                    ['uses' => 'EmployeeController@index',   'as' => 'box_home']);
+
+    Route::get('create',               ['uses' => 'EmployeeController@create',  'as' => 'box_create']);
+
+    Route::post('create',              ['uses' => 'EmployeeController@store',   'as' => 'box_create']);
+
+    Route::get('{id}/{people}/edit',   ['uses' => 'EmployeeController@edit',    'as' => 'box_edit']);
+
+    Route::put('{id}/{people}/update', ['uses' => 'EmployeeController@update',  'as' => 'box_update']);
+
+    Route::get('{id}/{people}',        ['uses' => 'EmployeeController@destroy', 'as' => 'box_delete']);
+});
+
 // CLIENT
 // Routes Client
 Route::group(['prefix' => 'client', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System\Client'], function(){

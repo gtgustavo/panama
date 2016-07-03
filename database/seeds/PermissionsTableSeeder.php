@@ -241,6 +241,71 @@ class PermissionsTableSeeder extends Seeder
             'created_at'   => Carbon::now(),
             'updated_at'   => Carbon::now(),
         ));
+
+        // ROADS
+        DB::table('role')->insert(array(
+            'name'         => 'view-road',
+            'display_name' => 'Leer Rutas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-road',
+            'display_name' => 'Crear Rutas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-road',
+            'display_name' => 'Modificar Rutas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-road',
+            'display_name' => 'Borrar Rutas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        // BOX
+        DB::table('role')->insert(array(
+            'name'         => 'view-box',
+            'display_name' => 'Leer Cajas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'create-box',
+            'display_name' => 'Crear Cajas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'edit-box',
+            'display_name' => 'Modificar Cajas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'delete-box',
+            'display_name' => 'Borrar Cajas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'status-box',
+            'display_name' => 'Estatus de Cajas',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
     }
 
     private function role_client()
@@ -388,7 +453,7 @@ class PermissionsTableSeeder extends Seeder
     private function add_roles()
     {
         // SUPER ADMIN
-        for($i=3; $i < 42; $i++)
+        for($i=3; $i < 51; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -399,7 +464,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // ADMIN
-        for($i=7; $i < 42; $i++)
+        for($i=7; $i < 51; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -410,7 +475,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // CLIENT
-        for($i=28; $i < 32; $i++)
+        for($i=37; $i < 41; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
