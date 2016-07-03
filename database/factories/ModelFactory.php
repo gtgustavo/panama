@@ -42,9 +42,7 @@ $factory->define(App\Models\Credentials\People::class, function ($faker) {
 
         'phone_h'     => $faker->e164PhoneNumber,
 
-        'country'     => $faker->country,
-
-        'province'    => $faker->state,
+        'province_id' => $faker->numberBetween($min = 1, $max = 36),
 
         'city'        => $faker->city,
 

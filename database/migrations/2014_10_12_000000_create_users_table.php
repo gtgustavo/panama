@@ -31,6 +31,24 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('country', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->string('iso', 2)->unique();
+            $table->timestamps();
+        });
+
+        Schema::create('province', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->integer('country_id')->unsigned();
+
+            $table->foreign('country_id')->references('id')->on('country')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name', 30);
@@ -38,11 +56,14 @@ class CreateUsersTable extends Migration
             $table->string('dni', 15)->unique();
             $table->string('phone_c', 15);
             $table->string('phone_h', 15)->nullable();
-            $table->string('country', 50)->nullable();
-            $table->string('province', 50)->nullable();
+            $table->integer('province_id')->unsigned();
             $table->string('city', 50)->nullable();
             $table->string('postal_code', 10)->nullable();
             $table->string('address', 150)->nullable();
+
+            $table->foreign('province_id')->references('id')->on('province')
+                ->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
 
@@ -98,6 +119,8 @@ class CreateUsersTable extends Migration
         Schema::drop('role');
         Schema::drop('user');
         Schema::drop('people');
+        Schema::drop('province');
+        Schema::drop('country');
         Schema::drop('reception');
         Schema::drop('profile');
     }

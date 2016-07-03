@@ -13,24 +13,6 @@ class InstallProjectTables extends Migration
      */
     public function up()
     {
-        Schema::create('country', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50);
-            $table->string('iso', 2)->unique();
-            $table->timestamps();
-        });
-
-        Schema::create('city', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50);
-            $table->integer('country_id')->unsigned();
-
-            $table->foreign('country_id')->references('id')->on('country')
-                ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->timestamps();
-        });
-
         Schema::create('road', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('origin_id')->unsigned();
@@ -50,7 +32,7 @@ class InstallProjectTables extends Migration
             $table->string('name', 50);
             $table->string('phone', 15);
             $table->integer('road_id')->unsigned();
-            $table->integer('city_id')->unsigned();
+            $table->integer('province_id')->unsigned();
             $table->string('city', 50);
             $table->string('postal_code', 10);
             $table->string('address', 150);
@@ -60,7 +42,7 @@ class InstallProjectTables extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('road_id')->references('id')->on('road')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('city_id')->references('id')->on('city')
+            $table->foreign('province_id')->references('id')->on('province')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
@@ -169,6 +151,9 @@ class InstallProjectTables extends Migration
         Schema::drop('shipment');
         Schema::drop('package_status');
         Schema::drop('package');
+        Schema::drop('box');
+        Schema::drop('coin');
         Schema::drop('consigning');
+        Schema::drop('road');
     }
 }

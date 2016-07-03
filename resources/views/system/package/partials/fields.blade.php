@@ -32,7 +32,7 @@
                 {!! trans('validation.attributes.consigning') !!}
             </label>
 
-            <select name="consigning_id" id="consigning" class="gui-input"></select>
+            <select name="consigning_id" id="consigning" class="form-control"></select>
 
         </div>
 
@@ -79,7 +79,7 @@
                 {!! trans('validation.attributes.consigning') !!}
             </label>
 
-            <select name="consigning_id" class="gui-input" required>
+            <select name="consigning_id" class="form-control" required>
 
                 <option value=""> {!! trans('front.form.element.option') !!} </option>
 

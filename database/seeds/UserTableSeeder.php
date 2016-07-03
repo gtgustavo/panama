@@ -29,6 +29,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'Admin',
             'dni'         => '12345660',
             'phone_c'     => '55558888888',
+            'province_id' => 17,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -38,6 +39,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'Allucanship',
             'dni'         => '12345670',
             'phone_c'     => '55558888888',
+            'province_id' => 17,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -47,6 +49,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'CENTER',
             'dni'         => '12345671',
             'phone_c'     => '55558888888',
+            'province_id' => 17,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -56,6 +59,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'CENTER',
             'dni'         => '12345672',
             'phone_c'     => '55558888888',
+            'province_id' => 17,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -65,6 +69,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'Admin',
             'dni'         => '12345673',
             'phone_c'     => '55558888888',
+            'province_id' => 17,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
