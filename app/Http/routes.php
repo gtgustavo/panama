@@ -145,33 +145,35 @@ Route::group(['prefix' => 'answer', 'middleware' => ['web', 'auth', 'admin'], 'n
 // Routes Roads
 Route::group(['prefix' => 'road', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Admin'], function(){
 
-    Route::get('/',                    ['uses' => 'EmployeeController@index',   'as' => 'road_home']);
+    Route::get('/',           ['uses' => 'RoadController@index',   'as' => 'road_home']);
 
-    Route::get('create',               ['uses' => 'EmployeeController@create',  'as' => 'road_create']);
+    Route::get('create',      ['uses' => 'RoadController@create',  'as' => 'road_create']);
 
-    Route::post('create',              ['uses' => 'EmployeeController@store',   'as' => 'road_create']);
+    Route::post('create',     ['uses' => 'RoadController@store',   'as' => 'road_create']);
 
-    Route::get('{id}/{people}/edit',   ['uses' => 'EmployeeController@edit',    'as' => 'road_edit']);
+    Route::get('{id}/edit',   ['uses' => 'RoadController@edit',    'as' => 'road_edit']);
 
-    Route::put('{id}/{people}/update', ['uses' => 'EmployeeController@update',  'as' => 'road_update']);
+    Route::put('{id}/update', ['uses' => 'RoadController@update',  'as' => 'road_update']);
 
-    Route::get('{id}/{people}',        ['uses' => 'EmployeeController@destroy', 'as' => 'road_delete']);
+    Route::get('{id}',        ['uses' => 'RoadController@destroy', 'as' => 'road_delete']);
 });
 
 // Routes Box
 Route::group(['prefix' => 'box', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'Admin'], function(){
 
-    Route::get('/',                    ['uses' => 'EmployeeController@index',   'as' => 'box_home']);
+    Route::get('/',           ['uses' => 'BoxController@index',   'as' => 'box_home']);
 
-    Route::get('create',               ['uses' => 'EmployeeController@create',  'as' => 'box_create']);
+    Route::get('create',      ['uses' => 'BoxController@create',  'as' => 'box_create']);
 
-    Route::post('create',              ['uses' => 'EmployeeController@store',   'as' => 'box_create']);
+    Route::post('create',     ['uses' => 'BoxController@store',   'as' => 'box_create']);
 
-    Route::get('{id}/{people}/edit',   ['uses' => 'EmployeeController@edit',    'as' => 'box_edit']);
+    Route::get('{id}/status', ['uses' => 'BoxController@show',    'as' => 'box_status']);
 
-    Route::put('{id}/{people}/update', ['uses' => 'EmployeeController@update',  'as' => 'box_update']);
+    Route::get('{id}/edit',   ['uses' => 'BoxController@edit',    'as' => 'box_edit']);
 
-    Route::get('{id}/{people}',        ['uses' => 'EmployeeController@destroy', 'as' => 'box_delete']);
+    Route::put('{id}/update', ['uses' => 'BoxController@update',  'as' => 'box_update']);
+
+    Route::get('{id}',        ['uses' => 'BoxController@destroy', 'as' => 'box_delete']);
 });
 
 // CLIENT

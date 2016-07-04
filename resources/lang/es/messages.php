@@ -153,4 +153,24 @@ return [
         'close'  => 'No puede crear mas solicitudes hasta finalizar la que se encuentra pendiente'
     ],
 
+    'road' => [
+
+        'create' => 'Ruta: :road, creada satisfactoriamente',
+
+        'update' => 'Ruta: :road, actualizada satisfactoriamente',
+
+        'delete' => 'Ruta: :road, eliminada satisfactoriamente',
+    ],
+
+    'box' => [
+
+        'create' => 'Caja: :box, creada satisfactoriamente',
+
+        'update' => 'Caja: :box, actualizada satisfactoriamente',
+
+        'delete' => 'Caja: :box, eliminada satisfactoriamente',
+
+        'status' => 'Se ha cambiado el estatus de la caja: :box, a: :status satisfactoriamente',
+    ],
+
 ];

@@ -3,5 +3,5 @@
         {!! trans('validation.attributes.profile') !!}
     </label>
 
-    {!! Form::select('profile_id', $profile, isset($employee->profile_id) ? $employee->profile_id : null, ['class'=> 'gui-input']) !!}
+    {!! Form::select('profile_id', $profile, isset($employee->profile_id) ? $employee->profile_id : null, ['class'=> 'form-control']) !!}
 </div>

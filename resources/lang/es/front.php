@@ -238,15 +238,8 @@ return [
 
             'table' => [
 
-                'name'             => 'NOMBRE',
+                'name'             => 'RUTA',
 
-                'dni'              => 'DNI',
-
-                'email'            => 'EMAIL',
-
-                'profile'          => 'PERFIL',
-
-                'reception_center' => 'CENTRO DE RECEPCIÓN'
             ],
 
             'events' => [
@@ -265,15 +258,21 @@ return [
 
             'table' => [
 
-                'name'             => 'NOMBRE',
+                'box'              => 'CAJA',
 
-                'dni'              => 'DNI',
+                'dimensions'       => 'DIMENSIONES',
 
-                'email'            => 'EMAIL',
+                'maximum_poundage' => 'PESO',
 
-                'profile'          => 'PERFIL',
+                'measure'          => 'LB',
 
-                'reception_center' => 'CENTRO DE RECEPCIÓN'
+                'cost_extra_pound' => 'LIBRA EXTRA',
+
+                'cost_standard'    => 'PRECIO ESTÁNDAR',
+
+                'cost_express'     => 'PRECIO EXPRÉS',
+
+                'status'           => 'ESTATUS',
             ],
 
             'events' => [
@@ -539,6 +538,8 @@ return [
             'annular'    => 'Anular',
 
             'answer'     => 'Respuesta',
+
+            'status'     => 'Cambiar',
         ],
 
         /*

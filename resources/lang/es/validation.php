@@ -164,6 +164,15 @@ return [
         'theme'                 => 'Tema',
         'problem'               => 'Problema',
         'answer'                => 'Respuesta',
+        'country_o'             => 'País Origen',
+        'country_d'             => 'Pis Destino',
+        'box'                   => 'Caja',
+        'dimensions'            => 'Dimensiones',
+        'maximum_poundage'      => 'Peso Máximo (Libras)',
+        'cost_extra_pound'      => 'Costo Libra Extra',
+        'cost_standard'         => 'Precio Estándar',
+        'cost_express'          => 'Precio Exprés',
+        'coin'                  => 'Moneda',
     ],
 
 ];

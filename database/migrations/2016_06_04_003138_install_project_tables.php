@@ -66,6 +66,7 @@ class InstallProjectTables extends Migration
             $table->decimal('cost_express', 10, 2);
             $table->integer('coin_id')->unsigned();
             $table->enum('status', ['ACTIVO', 'OCULTO'])->default('OCULTO');
+
             $table->foreign('coin_id')->references('id')->on('coin')
                 ->onUpdate('cascade')->onDelete('cascade');
 
