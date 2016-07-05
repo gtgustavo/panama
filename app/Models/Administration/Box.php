@@ -14,4 +14,9 @@ class Box extends Model
     {
         return $this->hasOne('App\Models\Administration\Coin', 'id', 'coin_id');
     }
+
+    public function getFullBoxAttribute()
+    {
+        return $this->full_box = 'CAJA: ' . $this->box . ' - DIMENSIONES: ' . $this->dimensions;
+    }
 }

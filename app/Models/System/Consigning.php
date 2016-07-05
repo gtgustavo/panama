@@ -27,6 +27,6 @@ class Consigning extends Model
 
     public function getConsignAttribute()
     {
-        return $this->consign = $this->name . ' - ' . $this->city . ' - ' . $this->reference_point;
+        return $this->consign = ' RUTA: ' . $this->road->road . ' -- BENEFICIARIO: ' .$this->name . ' - ' . $this->city . ' - ' . $this->reference_point;
     }
 }

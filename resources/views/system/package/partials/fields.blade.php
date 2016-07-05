@@ -41,14 +41,46 @@
     <div class="section row">
 
         <div class="col-md-6">
-            {!! Field::text('type',  ['class' => 'gui-input', 'ph' => trans('validation.attributes.type'), 'max' => '50']) !!}
+
+            <label for="client" class="field-label text-muted fs18 mb10">
+                {!! trans('validation.attributes.type') !!}
+            </label>
+
+            <select name="box_id" id="box" class="form-control" required>
+
+                @foreach($boxes as $data)
+
+                    <option value="{!! $data->id !!}"> {!! $data->full_box !!} </option>
+
+                @endforeach
+
+            </select>
+
         </div>
 
         <div class="col-md-6">
-            {!! Field::text('cost', ['class' => 'gui-input', 'ph' => trans('validation.attributes.cost'), 'max' => '13']) !!}
+
+            <label for="client" class="field-label text-muted fs18 mb10">
+                {!! trans('validation.attributes.shipping_type') !!}
+            </label>
+
+            {!! Form::select('shipping_type', config('options.shipping_type'), null, ['class' => 'form-control', 'id' => 'shipping_type']) !!}
+
         </div>
 
     </div>
+
+<div class="section row">
+
+    <div class="col-md-6">
+        {!! Field::number('extra_pounds',  ['min' => '0.00', 'step' => '0.01', 'class' => 'gui-input', 'ph' => trans('validation.attributes.extra_pounds'), 'max' => '5']) !!}
+    </div>
+
+    <div class="col-md-6">
+        {!! Field::text('cost',  ['class' => 'gui-input', 'ph' => trans('validation.attributes.cost'), 'max' => '10']) !!}
+    </div>
+
+</div>
 
     <div class="section">
         {!! Field::text('note', ['class' => 'gui-input', 'ph' => trans('validation.attributes.note'), 'max' => '150']) !!}

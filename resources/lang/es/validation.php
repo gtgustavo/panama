@@ -153,6 +153,7 @@ return [
         'rif'                   => 'RIF.',
         'wr'                    => 'Warehouse',
         'cost'                  => 'Costo',
+        'shipping_type'         => 'Tipo de Envío',
         'type'                  => 'Tipo de Caja',
         'note'                  => 'Nota',
         'province'              => 'Estado / Provincia',
@@ -173,6 +174,7 @@ return [
         'cost_standard'         => 'Precio Estándar',
         'cost_express'          => 'Precio Exprés',
         'coin'                  => 'Moneda',
+        'extra_pounds'          => 'Libras Extras',
     ],
 
 ];

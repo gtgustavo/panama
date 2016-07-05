@@ -299,7 +299,7 @@ Route::group(['prefix' => 'ajax', 'middleware' => ['web'], 'namespace' => 'Syste
 
     Route::get('road',       ['uses' => 'AjaxController@road_consigning',   'as' => 'ajax_road_consigning']);
 
-
+    Route::get('cost',       ['uses' => 'AjaxController@cost_shipment',     'as' => 'ajax_cost_shipment']);
 });
 
 // Language

@@ -2,12 +2,14 @@
 
     $(document).ready(function() {
 
+        // GET client and consigning
         $('#dni').blur(function() {
 
             $('#info').html('<img src="/../assets/img/loader.gif" alt="" />').fadeOut(1000);
 
             var dni = $(this).val();
 
+            // GET name the dni
             $.ajax({
 
                 type: "GET",
@@ -24,6 +26,7 @@
 
             });
 
+            // GET consigning DNI
             $.ajax({
 
                 type: "GET",
@@ -42,5 +45,55 @@
 
         });
 
+        // Calculate cost
+        $('#extra_pounds').blur(function() {
+
+            var extra = $(this).val();
+
+            var box = $('#box').val();
+
+            var shipping_type = $('#shipping_type').val();
+
+            if(extra == '')
+            {
+                extra = 0;
+
+                $.ajax({
+
+                    type: "GET",
+
+                    url: "{{ route('ajax_cost_shipment') }}",
+
+                    data: {box: box, extra: extra, shipping_type: shipping_type},
+
+                    success: function(data) {
+
+                        $('#cost').fadeIn(1000).html(data);
+
+                    }
+
+                });
+
+            } else {
+
+                $.ajax({
+
+                    type: "GET",
+
+                    url: "{{ route('ajax_cost_shipment') }}",
+
+                    data: {box: box, extra: extra, shipping_type: shipping_type},
+
+                    success: function(data) {
+
+                        $('#cost').fadeIn(1000).html(data);
+
+                    }
+
+                });
+            }
+
+
+        });
     });
 </script>

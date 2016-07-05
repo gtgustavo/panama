@@ -15,4 +15,11 @@ return [
         'ENTREGADO'                       => 'ENTREGADO',
     ],
 
+    'shipping_type' => [
+
+        'STANDARD' => 'STANDARD',
+        'EXPRESS'  => 'EXPRESS',
+
+    ],
+
 ];

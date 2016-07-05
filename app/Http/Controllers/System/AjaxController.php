@@ -145,4 +145,33 @@ class AjaxController extends Controller
         }
     }
 
+
+    public function cost_shipment(Request $request)
+    {
+        if($request->ajax())
+        {
+            $extra = $request->input('extra');
+
+            $shipping_type = $request->input('shipping_type');
+
+            $box_id = $request->input('box');
+
+            $road = Road::where('origin_id', $country_o)->where('destination_id', $country_d)->get();
+
+            $count = count($road);
+
+            if($count > 0)
+            {
+                foreach($road as $data)
+                {
+                    echo $data->id;
+                }
+
+            } else {
+
+                echo trans('front.form.element.not_country');
+            }
+        }
+    }
+
 }

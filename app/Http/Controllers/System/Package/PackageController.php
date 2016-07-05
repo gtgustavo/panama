@@ -7,6 +7,7 @@ use App\Helpers\Helper;
 use App\Helpers\Package\Package as PackageHelper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\PackageRequest;
+use App\Models\Administration\Box;
 use App\Models\System\ChangeStatus;
 use App\Models\System\Package;
 use Illuminate\Http\Request;
@@ -45,7 +46,9 @@ class PackageController extends Controller
 
             $barcode = Barcode::BarcodeHTML($wr_code);
 
-            return view('system.package.create', compact('wr_code', 'barcode'));
+            $boxes   = Box::where('status', 'ACTIVO')->get();
+
+            return view('system.package.create', compact('wr_code', 'barcode', 'boxes'));
         }
 
         return Access::redirectDefault();
