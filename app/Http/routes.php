@@ -289,7 +289,7 @@ Route::group(['prefix' => 'support', 'middleware' => ['web', 'auth'], 'namespace
 
 // AJAX
 // Routes AJAX
-Route::group(['prefix' => 'ajax', 'middleware' => ['web', 'auth'], 'namespace' => 'System'], function(){
+Route::group(['prefix' => 'ajax', 'middleware' => ['web'], 'namespace' => 'System'], function(){
 
     Route::get('client',     ['uses' => 'AjaxController@validate_client',   'as' => 'ajax_dni_client']);
 

@@ -12,6 +12,11 @@ use App\Http\Controllers\Controller;
 
 class AjaxController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'province_country']);
+    }
+
     public function validate_client(Request $request)
     {
         if ($request->ajax())
