@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\System;
 
 use App\Models\Administration\Province;
+use App\Models\Administration\Road;
 use App\Models\Credentials\People;
 use Illuminate\Http\Request;
 
@@ -108,6 +109,33 @@ class AjaxController extends Controller
                 $option = '<option value="">'. trans('front.form.element.not_country') .'</option>';
 
                 echo $option;
+            }
+        }
+    }
+
+
+    public function road_consigning(Request $request)
+    {
+        if($request->ajax())
+        {
+            $country_o = $request->input('origin');
+
+            $country_d = $request->input('country');
+
+            $road = Road::where('origin_id', $country_o)->where('destination_id', $country_d)->get();
+
+            $count = count($road);
+
+            if($count > 0)
+            {
+                foreach($road as $data)
+                {
+                    echo $data->id;
+                }
+
+            } else {
+
+                echo trans('front.form.element.not_country');
             }
         }
     }

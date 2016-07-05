@@ -74,7 +74,7 @@ class ConsigningController extends Controller
 
             $consigning->save();
 
-            Alert::message(trans('messages.consigning.create', ['consign' => $consigning->country]), 'success');
+            Alert::message(trans('messages.consigning.create', ['consign' => $consigning->road->road]), 'success');
 
             return $this->redirectDefault($client);
         }
@@ -97,7 +97,9 @@ class ConsigningController extends Controller
 
             $client     = User::findOrFail($client);
 
-            return view('system.consigning.edit', compact('consigning', 'client'));
+            $road = Road::where('origin_id', $client->people->province->country->id)->get();
+
+            return view('system.consigning.edit', compact('consigning', 'client', 'road'));
         }
 
         return Access::redirectDefault();
@@ -121,7 +123,7 @@ class ConsigningController extends Controller
 
             $consigning->update($collection->all());
 
-            Alert::message(trans('messages.consigning.update', ['consign' => $consigning->country]), 'info');
+            Alert::message(trans('messages.consigning.update', ['consign' => $consigning->road->road]), 'info');
 
             return $this->redirectDefault($client);
         }
@@ -144,7 +146,7 @@ class ConsigningController extends Controller
 
             Consigning::destroy($id);
 
-            Alert::message(trans('messages.consigning.delete', ['consign' => $consigning->country]), 'warning');
+            Alert::message(trans('messages.consigning.delete', ['consign' => $consigning->road->road]), 'warning');
 
             return $this->redirectDefault($client);
         }

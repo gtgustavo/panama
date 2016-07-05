@@ -296,6 +296,10 @@ Route::group(['prefix' => 'ajax', 'middleware' => ['web', 'auth'], 'namespace' =
     Route::get('consigning', ['uses' => 'AjaxController@consigning_client', 'as' => 'ajax_consigning_client']);
 
     Route::get('country',    ['uses' => 'AjaxController@province_country',  'as' => 'ajax_province_country']);
+
+    Route::get('road',       ['uses' => 'AjaxController@road_consigning',   'as' => 'ajax_road_consigning']);
+
+
 });
 
 // Language

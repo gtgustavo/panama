@@ -106,11 +106,11 @@ return [
 
     'consigning' => [
 
-        'create'        => 'Ha sido agregada una dirección de envío al País :consign',
+        'create'        => 'Ha sido agregada una dirección de envío a la ruta: :consign',
 
-        'update'        => 'Ha sido actualizada una dirección de envío al País :consign',
+        'update'        => 'Ha sido actualizada una dirección de envío a la ruta: :consign',
 
-        'delete'        => 'Ha sido eliminada una dirección de envío al País :consign',
+        'delete'        => 'Ha sido eliminada una dirección de envío a la ruta: :consign',
 
         'error_consign' => 'Este cliente no posee rutas de envío disponibles',
     ],

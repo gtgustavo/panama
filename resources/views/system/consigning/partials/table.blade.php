@@ -36,8 +36,8 @@
                             <td class=""> {{ $consign->id }}              </td>
                             <td class=""> {{ $consign->name }}            </td>
                             <td class=""> {{ $consign->phone }}           </td>
-                            <td class=""> {{ $consign->country }}         </td>
-                            <td class=""> {{ $consign->province }}        </td>
+                            <td class=""> {{ $consign->province->country->name }}         </td>
+                            <td class=""> {{ $consign->province->name }}        </td>
                             <td class=""> {{ $consign->city }}            </td>
                             <td class=""> {{ $consign->reference_point }} </td>
 
