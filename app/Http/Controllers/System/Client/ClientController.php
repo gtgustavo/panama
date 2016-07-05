@@ -4,7 +4,8 @@ namespace App\Http\Controllers\System\Client;
 
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
-use App\Http\Requests\System\ClientsRequest;
+use App\Http\Requests\Security\EmployeesRequest;
+use App\Models\Administration\Country;
 use App\Models\Credentials\People;
 use App\Models\Credentials\User;
 use Illuminate\Http\Request;
@@ -49,8 +50,14 @@ class ClientController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('create-client'))
         {
+            //view profiles and reception centers
+            $isEmployee = false;
+
+            // List of country
+            $country = Country::all();
+
             // return the form view
-            return view('system.client.create');
+            return view('system.client.create', compact('isEmployee', 'country'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -60,10 +67,10 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ClientsRequest $request
+     * @param EmployeesRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientsRequest $request)
+    public function store(EmployeesRequest $request)
     {
         // validate if you have permission to perform this action
         if(Access::allow('create-client'))
@@ -120,6 +127,12 @@ class ClientController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('edit-client'))
         {
+            //view profiles and reception centers
+            $isEmployee = false;
+
+            // List of country
+            $country = Country::all();
+
             // obtain registration of user credentials
             $client = User::findOrFail($id);
 
@@ -127,7 +140,7 @@ class ClientController extends Controller
             $people = People::findOrFail($people);
 
             // return the form view with variables
-            return view('system.client.edit', compact('client', 'people'));
+            return view('system.client.edit', compact('isEmployee', 'country', 'client', 'people'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -137,12 +150,12 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ClientsRequest $request
+     * @param EmployeesRequest $request
      * @param  int $id
      * @param  int $people
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientsRequest $request, $id, $people)
+    public function update(EmployeesRequest $request, $id, $people)
     {
         // validate if you have permission to perform this action
         if(Access::allow('edit-client'))

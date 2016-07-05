@@ -122,7 +122,11 @@ return [
 
         'element' => [
 
-            'option' => 'Seleccione un elemento de la lista',
+            'option'         => 'Seleccione un elemento de la lista',
+
+            'not_country'    => 'No existe data disponible para el país seleccionado',
+
+            'not_consigning' => 'No existen direcciones de envío para este cliente',
 
         ],
 

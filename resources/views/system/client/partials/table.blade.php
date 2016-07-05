@@ -34,7 +34,7 @@
                             <td class=""> {{ $client->id }}                  </td>
                             <td class=""> {{ $client->people->full_name }}   </td>
                             <td class=""> {{ $client->people->dni }}         </td>
-                            <td class=""> {{ $client->people->country }}     </td>
+                            <td class=""> {{ $client->people->province->country->name }}     </td>
                             <td class=""> {{ $client->people->phone_h }}     </td>
                             <td class=""> {{ $client->consigning->count() }} </td>
                             <td class=""> {{ $client->reception->name }}     </td>

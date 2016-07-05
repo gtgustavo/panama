@@ -5,6 +5,7 @@ namespace App\Http\Controllers\System\Client;
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\ConsigningRequest;
+use App\Models\Administration\Road;
 use App\Models\System\Consigning;
 use App\Models\Credentials\User;
 
@@ -46,7 +47,9 @@ class ConsigningController extends Controller
         {
             $client = User::findOrFail($client);
 
-            return view('system.consigning.create', compact('client'));
+            $road = Road::where('origin_id', $client->people->province->country->id)->get();
+
+            return view('system.consigning.create', compact('client', 'road'));
         }
 
         return Access::redirectDefault();

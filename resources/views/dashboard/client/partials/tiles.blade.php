@@ -44,9 +44,3 @@
     </div>
 
 </div>
-
-@section('script')
-    <script>
-        jssor_1_slider_init();
-    </script>
-@endsection

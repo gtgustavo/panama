@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\System\RegisterRequest;
+use App\Models\Administration\Country;
 use App\Models\Credentials\People;
 use App\Models\Credentials\User;
 use Illuminate\Support\Facades\Mail;
@@ -28,7 +29,13 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        //view profiles and reception centers
+        $isEmployee = false;
+
+        // List of country
+        $country = Country::all();
+
+        return view('auth.register', compact('isEmployee', 'country'));
     }
 
     /**

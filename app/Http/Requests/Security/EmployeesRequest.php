@@ -48,7 +48,11 @@ class EmployeesRequest extends Request
 
             'phone_h'    => 'digits_between:10,15',
 
-            'password'   => 'required|confirmed|min:8',
+            'city'        => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+
+            'postal_code' => 'max:10|min:4|regex:/^[a-zA-Z0-9\-]+$/i',
+
+            'address'     => 'required|string|max:150|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\,\&\-\/ ]+$/i',
         ];
     }
 }

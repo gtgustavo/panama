@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Super;
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\Security\EmployeesRequest;
+use App\Models\Administration\Country;
 use App\Models\Administration\ReceptionCenter;
 use App\Models\Credentials\People;
 use App\Models\Credentials\User;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Styde\Html\Facades\Alert;
 
 class AdministratorController extends Controller
@@ -51,6 +53,12 @@ class AdministratorController extends Controller
     {
         if(Access::allow('create-administrator'))
         {
+            //view profiles and reception centers
+            $isEmployee = true;
+
+            // List of country
+            $country = Country::all();
+
             // list all user profiles by name and id
             $profile = Profile::where('id', 2)->lists('name', 'id');
 
@@ -58,7 +66,7 @@ class AdministratorController extends Controller
             $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
 
             // return the form view with lists
-            return view('administration.admin.create', compact('profile', 'reception_center'));
+            return view('administration.admin.create', compact('isEmployee', 'country', 'profile', 'reception_center'));
         }
 
         return Access::redirectDefault();
@@ -80,12 +88,13 @@ class AdministratorController extends Controller
             // create record personal information
             $people = People::create($collection->all());
 
+            // generate random password
+            $password = Helper::generate_random_password(15);
+
             // build data access credentials
             $credentials = [
 
                 'email'        => $collection['email'],
-
-                'password'     => bcrypt($request->input('password')),
 
                 'people_id'    => $people->id,
 
@@ -96,6 +105,9 @@ class AdministratorController extends Controller
 
             // create log access credentials
             $employee = User::create($credentials);
+
+            // send email to the customer with your credentials
+            $this->send_mail($people->full_name, $employee->email, $password);
 
             // build message operation
             Alert::message(trans('messages.administrator.create', ['employee' => $people->full_name]), 'success');
@@ -118,6 +130,12 @@ class AdministratorController extends Controller
     {
         if(Access::allow('edit-administrator'))
         {
+            //view profiles and reception centers
+            $isEmployee = true;
+
+            // List of country
+            $country = Country::all();
+
             // list all user profiles by name and id
             $profile = Profile::where('id', 2)->lists('name', 'id');
 
@@ -131,7 +149,7 @@ class AdministratorController extends Controller
             $people = People::findOrFail($people);
 
             // return the form view with variables
-            return view('administration.admin.edit', compact('employee', 'people', 'profile', 'reception_center'));
+            return view('administration.admin.edit', compact('isEmployee', 'country', 'employee', 'people', 'profile', 'reception_center'));
         }
 
         return Access::redirectDefault();
@@ -164,8 +182,6 @@ class AdministratorController extends Controller
             $credentials = [
 
                 'email'        => $collection['email'],
-
-                'password'     => bcrypt($request->input('password')),
             ];
 
             // update access credentials
@@ -217,6 +233,21 @@ class AdministratorController extends Controller
         }
 
         return Access::redirectDefault();
+    }
+
+    /**
+     * send mail to client
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     */
+    private function send_mail($name, $email, $password)
+    {
+        Mail::send('emails.credentials', compact('name', 'email', 'password'), function ($message) use ($email) {
+
+            $message->to($email)->subject(trans('front.email.subject_credentials'));
+
+        });
     }
 
     /**

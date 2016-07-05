@@ -39,10 +39,6 @@ class RegisterRequest extends Request
 
             'password'    => 'required|confirmed|min:8',
 
-            'country'     => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
-
-            'province'    => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
-
             'city'        => 'required|string|max:50|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
 
             'postal_code' => 'max:10|min:4|regex:/^[a-zA-Z0-9\-]+$/i',

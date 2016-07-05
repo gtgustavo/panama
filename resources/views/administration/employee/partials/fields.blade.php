@@ -22,6 +22,12 @@
 
 </div>
 
+@if(! Auth::check())
+
+    @include('administration.employee.partials.field_password')
+
+@endif
+
 <div class="section row">
 
     <div class="col-md-6">
@@ -37,13 +43,49 @@
 <div class="section row">
 
     <div class="col-md-6">
-        {!! Field::password('password',               ['class' => 'gui-input', 'ph' => trans('validation.attributes.password')]) !!}
+
+        <label for="client" class="field-label text-muted fs18 mb10">
+            {!! trans('validation.attributes.country') !!}
+        </label>
+
+        <select name="country_id" id="country" class="form-control" required>
+
+            <option value=""> {!! trans('front.form.element.option') !!} </option>
+
+            @foreach($country as $data)
+
+                <option value="{!! $data->id !!}"> {!! $data->name !!} </option>
+
+            @endforeach
+
+        </select>
+
     </div>
 
     <div class="col-md-6">
-        {!! Field::password('password_confirmation',  ['class' => 'gui-input', 'ph' => trans('validation.attributes.password_confirmation')]) !!}
+        <label for="client" class="field-label text-muted fs18 mb10">
+            {!! trans('validation.attributes.province') !!}
+        </label>
+
+        <select name="province_id" id="province" class="form-control" required></select>
     </div>
 
+</div>
+
+<div class="section row">
+
+    <div class="col-md-6">
+        {!! Field::text('city',        ['class' => 'gui-input', 'ph' => trans('validation.attributes.city'),        'max' => '30']) !!}
+    </div>
+
+    <div class="col-md-6">
+        {!! Field::text('postal_code', ['class' => 'gui-input', 'ph' => trans('validation.attributes.postal_code'), 'max' => '10']) !!}
+    </div>
+
+</div>
+
+<div class="section">
+    {!! Field::text('address', ['class' => 'form-control', 'ph' => trans('validation.attributes.address'), 'max' => '150']) !!}
 </div>
 
 <!-- Protection user admin -->
@@ -62,21 +104,34 @@
 
     @else
 
-        @include('administration.employee.partials.field_profile')
+        @if($isEmployee)
 
-        @include('administration.employee.partials.field_reception_center')
+            @include('administration.employee.partials.field_profile')
+
+            @include('administration.employee.partials.field_reception_center')
+
+        @endif
 
     @endif
 
 </div>
 
 
+@if(Auth::check())
 
-<div class="section row mbn">
+    <div class="section row mbn">
 
-    <div class="col-sm-12">
-        <p class="text-right">
-            {!! Form::submit($button, ['class' => 'btn btn-primary']) !!}
-        </p>
+        <div class="col-sm-12">
+            <p class="text-right">
+                {!! Form::submit($button, ['class' => 'btn btn-primary']) !!}
+            </p>
+        </div>
     </div>
-</div>
+
+@endif
+
+@section('script')
+
+    @include('administration.employee.partials.ajax_country')
+
+@endsection

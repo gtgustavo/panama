@@ -13,11 +13,31 @@
 <div class="section row">
 
     <div class="col-md-6">
-        {!! Field::text('country',  ['class' => 'gui-input', 'ph' => trans('validation.attributes.country'), 'max' => '50']) !!}
+
+        <label for="client" class="field-label text-muted fs18 mb10">
+            {!! trans('validation.attributes.country_d') !!}
+        </label>
+
+        <select name="country_id" id="country" class="form-control" required>
+
+            <option value=""> {!! trans('front.form.element.option') !!} </option>
+
+            @foreach($road as $data)
+
+                <option value="{!! $data->country_destination->id !!}"> {!! $data->country_destination->name !!} </option>
+
+            @endforeach
+
+        </select>
+
     </div>
 
     <div class="col-md-6">
-        {!! Field::text('province', ['class' => 'gui-input', 'ph' => trans('validation.attributes.province'),  'max' => '50']) !!}
+        <label for="client" class="field-label text-muted fs18 mb10">
+            {!! trans('validation.attributes.province') !!}
+        </label>
+
+        <select name="province_id" id="province" class="form-control" required></select>
     </div>
 
 </div>
@@ -54,3 +74,14 @@
         </p>
     </div>
 </div>
+
+@section('script')
+
+    @include('administration.employee.partials.ajax_country')
+
+    <!-- Slider panel clients -->
+    <script>
+        jssor_1_slider_init();
+    </script>
+
+@endsection

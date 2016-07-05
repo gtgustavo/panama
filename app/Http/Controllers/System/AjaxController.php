@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\System;
 
+use App\Models\Administration\Province;
 use App\Models\Credentials\People;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,38 @@ class AjaxController extends Controller
 
             } else {
 
-                return null;
+                $option = '<option value="">'. trans('front.form.element.not_consigning') .'</option>';
+
+                echo $option;
+            }
+        }
+    }
+
+
+    public function province_country(Request $request)
+    {
+        if($request->ajax())
+        {
+            $country = $request->input('country');
+
+            $province = Province::where('country_id', $country)->get();
+
+            $count = count($province);
+
+            if($count > 0)
+            {
+                foreach($province as $data)
+                {
+                    $option = '<option value="'.$data->id.'">'.$data->name.'</option>';
+
+                    echo $option;
+                }
+
+            } else {
+
+                $option = '<option value="">'. trans('front.form.element.not_country') .'</option>';
+
+                echo $option;
             }
         }
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\Security\EmployeesRequest;
+use App\Models\Administration\Country;
 use App\Models\Administration\ReceptionCenter;
 use App\Models\Credentials\People;
 use App\Models\Security\Profile;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Styde\Html\Facades\Alert;
 
 class EmployeeController extends Controller
@@ -55,6 +57,12 @@ class EmployeeController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('create-employees'))
         {
+            //view profiles and reception centers
+            $isEmployee = true;
+
+            // List of country
+            $country = Country::all();
+
             // list all user profiles by name and id
             $profile = Profile::where('id', '>', 3)->lists('name', 'id');
 
@@ -62,7 +70,7 @@ class EmployeeController extends Controller
             $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
 
             // return the form view with lists
-            return view('administration.employee.create', compact('profile', 'reception_center'));
+            return view('administration.employee.create', compact('isEmployee', 'country', 'profile', 'reception_center'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -86,12 +94,15 @@ class EmployeeController extends Controller
             // create record personal information
             $people = People::create($collection->all());
 
+            // generate random password
+            $password = Helper::generate_random_password(15);
+
             // build data access credentials
             $credentials = [
 
                 'email'        => $collection['email'],
 
-                'password'     => bcrypt($request->input('password')),
+                'password'     => bcrypt($password),
 
                 'people_id'    => $people->id,
 
@@ -102,6 +113,9 @@ class EmployeeController extends Controller
 
             // create log access credentials
             $employee = User::create($credentials);
+
+            // send email to the customer with your credentials
+            $this->send_mail($people->full_name, $employee->email, $password);
 
             // build message operation
             Alert::message(trans('messages.employee.create', ['employee' => $people->full_name]), 'success');
@@ -126,6 +140,12 @@ class EmployeeController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('edit-employees'))
         {
+            //view profiles and reception centers
+            $isEmployee = true;
+
+            // List of country
+            $country = Country::all();
+
             // list all user profiles by name and id
             $profile = Profile::where('id', '>', 3)->lists('name', 'id');
 
@@ -139,7 +159,7 @@ class EmployeeController extends Controller
             $people = People::findOrFail($people);
 
             // return the form view with variables
-            return view('administration.employee.edit', compact('employee', 'people', 'profile', 'reception_center'));
+            return view('administration.employee.edit', compact('isEmployee', 'country', 'employee', 'people', 'profile', 'reception_center'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -177,8 +197,6 @@ class EmployeeController extends Controller
                 $credentials = [
 
                     'email'        => $collection['email'],
-
-                    'password'     => bcrypt($request->input('password')),
                 ];
 
             } else { // other users
@@ -186,8 +204,6 @@ class EmployeeController extends Controller
                 $credentials = [
 
                     'email'        => $collection['email'],
-
-                    'password'     => bcrypt($request->input('password')),
 
                     'profile_id'   => $request->input('profile_id'),
 
@@ -247,6 +263,21 @@ class EmployeeController extends Controller
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
         return Access::redirectDefault();
+    }
+
+    /**
+     * send mail to client
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     */
+    private function send_mail($name, $email, $password)
+    {
+        Mail::send('emails.credentials', compact('name', 'email', 'password'), function ($message) use ($email) {
+
+            $message->to($email)->subject(trans('front.email.subject_credentials'));
+
+        });
     }
 
     /**

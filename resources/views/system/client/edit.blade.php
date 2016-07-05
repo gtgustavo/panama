@@ -19,7 +19,7 @@
             <div class="panel mb25 mt5">
 
                 <div class="panel-heading">
-                    <span class="panel-title hidden-xs"> {!! trans('front.form.client.events.edit') !!} - {{ $client->full_name }}</span>
+                    <span class="panel-title hidden-xs"> {!! trans('front.form.client.events.edit') !!} - {{ $client->people->full_name }}</span>
                 </div>
 
                 <div class="panel-body p25 pb5">
@@ -28,7 +28,7 @@
 
                         {!! Form::model($client->toArray() + $people->toArray(), ['route' => ['client_update', $client, $people], 'method' => 'PUT']) !!}
 
-                            @include('system.client.partials.fields', ['button' => trans('front.form.actions.edit')])
+                            @include('administration.employee.partials.fields', ['button' => trans('front.form.actions.edit')])
 
                         {!! Form::Close() !!}
 
