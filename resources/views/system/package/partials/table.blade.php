@@ -42,13 +42,13 @@
                                     {!! Form::checkbox('package_id[]', $package->id, null, ['class' => 'checkbox', 'title' => $package->id]) !!}
                                 </th>
                             @endcan
-                            <td class=""> {{ $package->wr }}                        </td>
-                            <td class=""> {{ $package->shipment['wb'] }}            </td>
-                            <td class=""> {{ $package->consigning->country }}       </td>
-                            <td class=""> {{ $package->client->people->full_name }} </td>
-                            <td class=""> {{ $package->client->people->dni }}       </td>
-                            <td class=""> {{ $package->consigning->name }}          </td>
-                            <td class=""> {{ $package->status }}                    </td>
+                            <td class=""> {{ $package->wr }}                                  </td>
+                            <td class=""> {{ $package->shipment['wb'] }}                      </td>
+                            <td class=""> {{ $package->consigning->province->country->name }} </td>
+                            <td class=""> {{ $package->client->people->full_name }}           </td>
+                            <td class=""> {{ $package->client->people->dni }}                 </td>
+                            <td class=""> {{ $package->consigning->name }}                    </td>
+                            <td class=""> {{ $package->status }}                              </td>
 
                             <td class="text-right">
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System\Panel;
 
 use App\Helpers\Barcode\Barcode;
 use App\Http\Requests\Panel\PackageClientRequest;
+use App\Models\Administration\Box;
 use App\Models\Credentials\User;
 use App\Models\System\ChangeStatus;
 use App\Models\System\Package;
@@ -45,7 +46,9 @@ class PackageController extends Controller
 
         $consign = $this->user->consigning;
 
-        return view('system.package_client.create', compact('wr_code', 'barcode', 'consign'));
+        $boxes   = Box::where('status', 'ACTIVO')->get();
+
+        return view('system.package_client.create', compact('wr_code', 'barcode', 'consign', 'boxes'));
     }
 
     /**

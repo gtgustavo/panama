@@ -48,7 +48,22 @@
         // Calculate cost
         $('#extra_pounds').blur(function() {
 
-            var extra = $(this).val();
+            calculate_shipping_cost();
+        });
+
+        $("#box").change(function () {
+
+            calculate_shipping_cost();
+        });
+
+        $("#shipping_type").change(function () {
+
+            calculate_shipping_cost();
+        });
+
+        function calculate_shipping_cost()
+        {
+            var extra = $('#extra_pounds').val();
 
             var box = $('#box').val();
 
@@ -57,43 +72,24 @@
             if(extra == '')
             {
                 extra = 0;
-
-                $.ajax({
-
-                    type: "GET",
-
-                    url: "{{ route('ajax_cost_shipment') }}",
-
-                    data: {box: box, extra: extra, shipping_type: shipping_type},
-
-                    success: function(data) {
-
-                        $('#cost').fadeIn(1000).html(data);
-
-                    }
-
-                });
-
-            } else {
-
-                $.ajax({
-
-                    type: "GET",
-
-                    url: "{{ route('ajax_cost_shipment') }}",
-
-                    data: {box: box, extra: extra, shipping_type: shipping_type},
-
-                    success: function(data) {
-
-                        $('#cost').fadeIn(1000).html(data);
-
-                    }
-
-                });
             }
 
+            $.ajax({
 
-        });
+                type: "GET",
+
+                url: "{{ route('ajax_cost_shipment') }}",
+
+                data: {box: box, extra: extra, shipping_type: shipping_type},
+
+                success: function(data) {
+
+                    $("#cost").val(data);
+                    $("#cost_view").fadeIn(1000).html(data);
+                }
+
+            });
+        }
+
     });
 </script>

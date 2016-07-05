@@ -68,9 +68,7 @@ class PackageController extends Controller
 
             if($client != false)
             {
-                $collection = Helper::convert_to_uppercase($request->all());
-
-                $package = new Package($collection->all());
+                $package = new Package($request->all());
 
                 $package->user_id = $client;
 

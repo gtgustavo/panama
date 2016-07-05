@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\System;
 
+use App\Models\Administration\Box;
 use App\Models\Administration\Province;
 use App\Models\Administration\Road;
 use App\Models\Credentials\People;
@@ -150,27 +151,39 @@ class AjaxController extends Controller
     {
         if($request->ajax())
         {
-            $extra = $request->input('extra');
-
-            $shipping_type = $request->input('shipping_type');
-
+            // GET var of jquery
+            // Box id
             $box_id = $request->input('box');
 
-            $road = Road::where('origin_id', $country_o)->where('destination_id', $country_d)->get();
+            // Shipping type
+            $shipping_type = $request->input('shipping_type');
 
-            $count = count($road);
+            // Extra Pounds
+            $extra = $request->input('extra');
 
-            if($count > 0)
+            // Get register box
+            $box = Box::findOrFail($box_id);
+
+            // determine which field to use
+            if($shipping_type == 'STANDARD')
             {
-                foreach($road as $data)
-                {
-                    echo $data->id;
-                }
+                $field = 'cost_standard';
 
             } else {
 
-                echo trans('front.form.element.not_country');
+                $field = 'cost_express';
             }
+
+            // shipping cost single
+            $cost_single = $box->$field;
+
+            // cost extra pounds
+            $cost_extra  = $box->cost_extra_pound * $extra;
+
+            // Total to pay
+            $cost_net    = $cost_single + $cost_extra;
+
+            echo $cost_net;
         }
     }
 
