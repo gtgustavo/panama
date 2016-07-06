@@ -5,8 +5,8 @@
         <div class="panel panel-tile text-center">
 
             <div class="panel-body bg-primary light">
-                <h1 class="fs35 mbn"> {{ $cant_profiles }} </h1>
-                <h6 class="text-white"> {!! trans('front.form.profile.tile.profiles') !!} </h6>
+                <h1 class="fs35 mbn"> {{ $road }} </h1>
+                <h6 class="text-white"> {!! trans('front.form.road.tile.road') !!} </h6>
             </div>
 
             <div class="panel-footer bg-primary br-n p12">
@@ -24,8 +24,8 @@
         <div class="panel panel-tile text-center">
 
             <div class="panel-body bg-primary light">
-                <h1 class="fs35 mbn"> {{ $roles }} </h1>
-                <h6 class="text-white"> {!! trans('front.form.profile.tile.roles') !!} </h6>
+                <h1 class="fs35 mbn"> {{ $box_enabled }} </h1>
+                <h6 class="text-white"> {!! trans('front.form.box.tile.enabled') !!} </h6>
             </div>
 
             <div class="panel-footer bg-primary br-n p12">
@@ -43,8 +43,8 @@
         <div class="panel panel-tile text-center">
 
             <div class="panel-body bg-primary light">
-                <h1 class="fs35 mbn"> {{ $users }} </h1>
-                <h6 class="text-white"> {!! trans('front.form.profile.tile.users') !!} </h6>
+                <h1 class="fs35 mbn"> {{ $box_disabled }} </h1>
+                <h6 class="text-white"> {!! trans('front.form.box.tile.disabled') !!} </h6>
             </div>
 
             <div class="panel-footer bg-primary br-n p12">

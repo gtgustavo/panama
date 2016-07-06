@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Helpers\System\Access;
+use App\Models\Administration\Box;
 use App\Models\Administration\Country;
 use App\Models\Administration\Road;
-use App\Models\Credentials\User;
-use App\Models\Security\Profile;
-use App\Models\Security\Role;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,15 +23,15 @@ class RoadController extends Controller
     {
         if(Access::allow('view-road'))
         {
-            $roads = Road::all();
+            $roads        = Road::all();
 
-            $cant_profiles = count(Profile::where('id', '!=', '3')->get());
+            $road         = Road::count();
 
-            $roles         = count(Role::where('id', '>', 2)->get());
+            $box_enabled  = Box::where('status', 'ACTIVO')->count();
 
-            $users         = count(User::where('profile_id', '!=', 3)->get());
+            $box_disabled = Box::where('status', 'OCULTO')->count();
 
-            return view('administration.road.index', compact('roads', 'roles', 'users', 'cant_profiles'));
+            return view('administration.road.index', compact('roads', 'road', 'box_enabled', 'box_disabled'));
         }
 
         return Access::redirectDefault();

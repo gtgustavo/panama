@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Support;
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\Support\TicketRequest;
-use App\Models\Credentials\User;
-use App\Models\Security\Profile;
-use App\Models\Security\Role;
+use App\Models\Administration\ReceptionCenter;
+use App\Models\Support\Support;
 use App\Models\Support\Ticket;
 
 use App\Http\Requests;
@@ -25,15 +24,17 @@ class TicketsController extends Controller
     {
         if(Access::allow('view-tickets'))
         {
-            $tickets        = Ticket::with('pendingCount')->with('respondedCount')->get();
+            $tickets   = Ticket::with('pendingCount')->with('respondedCount')->get();
 
-            $cant_profiles = count(Profile::where('id', '!=', '3')->get());
+            $reception = ReceptionCenter::count();
 
-            $roles         = count(Role::where('id', '>', 2)->get());
+            $ticket    = Ticket::count();
 
-            $users         = count(User::where('profile_id', '!=', 3)->get());
+            $pending   = Support::where('status', 'PENDIENTE')->count();
 
-            return view('administration.ticket.index', compact('tickets', 'roles', 'users', 'cant_profiles'));
+            $responded = Support::where('status', 'RESPONDIDO')->count();
+
+            return view('administration.ticket.index', compact('tickets', 'reception', 'ticket', 'pending', 'responded'));
         }
 
         return Access::redirectDefault();

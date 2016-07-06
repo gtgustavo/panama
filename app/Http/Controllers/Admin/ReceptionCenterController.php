@@ -6,12 +6,11 @@ use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\Administration\ReceptionCenterRequest;
 use App\Models\Administration\ReceptionCenter;
-use App\Models\Security\Profile;
-use App\Models\Security\Role;
-use App\Models\Credentials\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Support\Support;
+use App\Models\Support\Ticket;
 use Styde\Html\Facades\Alert;
 
 class ReceptionCenterController extends Controller
@@ -27,13 +26,15 @@ class ReceptionCenterController extends Controller
         {
             $reception_center = ReceptionCenter::all();
 
-            $cant_profiles    = count(Profile::where('id', '!=', '3')->get());
+            $reception        = ReceptionCenter::count();
 
-            $roles            = count(Role::where('id', '>', 2)->get());
+            $ticket           = Ticket::count();
 
-            $users            = count(User::where('profile_id', '!=', 3)->get());
+            $pending          = Support::where('status', 'PENDIENTE')->count();
 
-            return view('administration.reception_center.index', compact('reception_center', 'roles', 'users', 'cant_profiles'));
+            $responded        = Support::where('status', 'RESPONDIDO')->count();
+
+            return view('administration.reception_center.index', compact('reception_center', 'reception', 'ticket', 'pending', 'responded'));
         }
 
         return Access::redirectDefault();

@@ -7,10 +7,7 @@ use App\Helpers\System\Access;
 use App\Http\Requests\Administration\BoxRequest;
 use App\Models\Administration\Box;
 use App\Models\Administration\Coin;
-use App\Models\Credentials\User;
-use App\Models\Security\Profile;
-use App\Models\Security\Role;
-use Illuminate\Http\Request;
+use App\Models\Administration\Road;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -27,15 +24,15 @@ class BoxController extends Controller
     {
         if(Access::allow('view-box'))
         {
-            $boxes = Box::all();
+            $boxes        = Box::all();
 
-            $cant_profiles = count(Profile::where('id', '!=', '3')->get());
+            $road         = Road::count();
 
-            $roles         = count(Role::where('id', '>', 2)->get());
+            $box_enabled  = Box::where('status', 'ACTIVO')->count();
 
-            $users         = count(User::where('profile_id', '!=', 3)->get());
+            $box_disabled = Box::where('status', 'OCULTO')->count();
 
-            return view('administration.box.index', compact('boxes', 'roles', 'users', 'cant_profiles'));
+            return view('administration.box.index', compact('boxes', 'road', 'box_enabled', 'box_disabled'));
         }
 
         return Access::redirectDefault();

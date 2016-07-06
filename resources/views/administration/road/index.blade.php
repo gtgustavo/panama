@@ -14,7 +14,7 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
-            @include('administration.a_partials.tiles')
+            @include('administration.a_partials.tiles_deal')
 
             @include('a_templates.partials.messages')
 

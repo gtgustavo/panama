@@ -186,6 +186,11 @@ return [
 
             'create' => 'Nuevo Centro de Recepción',
 
+            'tile' => [
+
+                'reception' => 'CENTROS DE RECEPCIÓN',
+            ],
+
             'table' => [
 
                 'name'     => 'NOMBRE',
@@ -240,6 +245,11 @@ return [
 
             'create' => 'Nueva Ruta',
 
+            'tile' => [
+
+                'road' => 'RUTAS DE ENVIO',
+            ],
+
             'table' => [
 
                 'name'             => 'RUTA',
@@ -259,6 +269,13 @@ return [
             'title' => 'CAJAS',
 
             'create' => 'Nueva Caja',
+
+            'tile' => [
+
+                'enabled'  => 'CAJAS ACTIVAS',
+
+                'disabled' => 'CAJAS OCULTAS',
+            ],
 
             'table' => [
 
@@ -292,6 +309,16 @@ return [
             'title' => 'TICKETS DE SOPORTE',
 
             'create' => 'Nuevo Ticket',
+
+            'tile' => [
+
+                'ticket'    => 'TICKETS DE SOPORTE',
+
+                'pending'   => 'SOLICITUDES PENDIENTES',
+
+                'responded' => 'SOLICITUDES ATENDIDAS',
+
+            ],
 
             'table' => [
 

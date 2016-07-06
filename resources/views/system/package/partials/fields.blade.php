@@ -4,7 +4,7 @@
 
 </div>
 
-@can('admin')
+@can('employee')
 
     <div class="section row">
 

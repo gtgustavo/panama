@@ -28,11 +28,11 @@ class ProfileController extends Controller
         {
             $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '3')->get();
 
-            $cant_profiles = count(Profile::where('id', '!=', '3')->get());
+            $cant_profiles = Profile::where('id', '!=', '3')->count();
 
-            $roles         = count(Role::where('id', '>', 2)->get());
+            $roles         = Role::where('id', '>', 2)->count();
 
-            $users         = count(User::where('profile_id', '!=', 3)->get());
+            $users         = User::where('profile_id', '!=', 3)->count();
 
             return view('administration.profile.index', compact('profiles', 'roles', 'users', 'cant_profiles'));
         }
@@ -93,7 +93,7 @@ class ProfileController extends Controller
             {
                 $profile_role = Profile::findOrFail($id)->roles()->lists('role_id')->toArray();
 
-                $roles = Role::where('id', '>', 19)->lists('display_name', 'id');
+                $roles = Role::where('id', '>', 32)->lists('display_name', 'id');
 
                 return view('administration.profile.role', compact('profile', 'profile_role', 'roles'));
             }
