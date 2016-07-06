@@ -59,6 +59,17 @@
 
                 </tbody>
 
+                <tfoot>
+                    <tr class="bg-light">
+                        <th class=""> ID </th>
+                        <th class="">{!! trans('front.form.shipment.table.wb') !!}         </th>
+                        <th class="">{!! trans('front.form.shipment.table.status') !!}     </th>
+                        <th class="">{!! trans('front.form.shipment.table.date_s') !!}     </th>
+                        <th class="">{!! trans('front.form.shipment.table.packages') !!}   </th>
+                        <th class=""></th>
+                    </tr>
+                </tfoot>
+
             </table>
 
         </div>

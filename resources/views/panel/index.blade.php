@@ -24,7 +24,7 @@
 
                         {!! Form::model($user->toArray() + $people->toArray(), ['route' => ['panel_update', $user, $people], 'method' => 'PUT']) !!}
 
-                        @include('system.client.partials.fields', ['button' => trans('front.form.actions.edit')])
+                        @include('administration.employee.partials.fields', ['button' => trans('front.form.actions.edit')])
 
                         {!! Form::Close() !!}
 

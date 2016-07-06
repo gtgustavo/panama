@@ -71,6 +71,17 @@
 
                 </tbody>
 
+                <tfoot>
+                    <tr class="bg-light">
+                        <th class="">ID</th>
+                        <th class="">{!! trans('front.form.profile.table.profile') !!}     </th>
+                        <th class="">{!! trans('front.form.profile.table.description') !!} </th>
+                        <th class="">{!! trans('front.form.profile.table.roles') !!}       </th>
+                        <th class="">{!! trans('front.form.profile.table.employees') !!}   </th>
+                        <th class=""></th>
+                    </tr>
+                </tfoot>
+
             </table>
 
         </div>

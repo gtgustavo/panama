@@ -67,6 +67,18 @@
 
                 </tbody>
 
+                <tfoot>
+                    <tr class="bg-light">
+                        <th class="">ID</th>
+                        <th class="">{!! trans('front.form.employee.table.name') !!}             </th>
+                        <th class="">{!! trans('front.form.employee.table.dni') !!}              </th>
+                        <th class="">{!! trans('front.form.employee.table.email') !!}            </th>
+                        <th class="">{!! trans('front.form.employee.table.profile') !!}          </th>
+                        <th class="">{!! trans('front.form.employee.table.reception_center') !!} </th>
+                        <th class=""></th>
+                    </tr>
+                </tfoot>
+
             </table>
 
         </div>

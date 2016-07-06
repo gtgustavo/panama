@@ -86,6 +86,23 @@
 
                 </tbody>
 
+                <tfoot>
+                    <tr class="bg-light">
+                        @can('admin')
+                            <th class=""></th>
+                        @endcan
+
+                        <th class="">{!! trans('front.form.package.table.wr') !!}         </th>
+                        <th class="">{!! trans('front.form.package.table.wb') !!}         </th>
+                        <th class="">{!! trans('front.form.package.table.consigning') !!} </th>
+                        <th class="">{!! trans('front.form.package.table.name_e') !!}     </th>
+                        <th class="">{!! trans('front.form.package.table.dni') !!}        </th>
+                        <th class="">{!! trans('front.form.package.table.name_r') !!}     </th>
+                        <th class="">{!! trans('front.form.package.table.status') !!}     </th>
+                        <th class=""></th>
+                    </tr>
+                </tfoot>
+
             </table>
 
         </div>

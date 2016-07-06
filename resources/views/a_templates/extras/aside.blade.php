@@ -270,9 +270,18 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('answer_home') }}">
-                        <span class="fa fa-life-ring"></span> {!! trans('front.sidebar.title.support') !!}
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-life-ring"></span>
+                        <span class="sidebar-title"> {{ trans('front.sidebar.sub_title.support') }} </span>
+                        <span class="caret"></span>
                     </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="{{ route('answer_home') }}">
+                                <span class="fa fa-life-ring"></span> {!! trans('front.sidebar.title.support') !!}
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-label pt20"> {!! trans('front.sidebar.label.warehouse') !!} </li>

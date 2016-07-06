@@ -71,6 +71,19 @@
 
                 </tbody>
 
+                <tfoot>
+                    <tr class="bg-light">
+                        <th class="">ID</th>
+                        <th class="">{!! trans('front.form.consigning.table.name') !!}            </th>
+                        <th class="">{!! trans('front.form.consigning.table.phone') !!}           </th>
+                        <th class="">{!! trans('front.form.consigning.table.country') !!}         </th>
+                        <th class="">{!! trans('front.form.consigning.table.province') !!}        </th>
+                        <th class="">{!! trans('front.form.consigning.table.city') !!}            </th>
+                        <th class="">{!! trans('front.form.consigning.table.reference_point') !!} </th>
+                        <th class=""></th>
+                    </tr>
+                </tfoot>
+
             </table>
 
         </div>

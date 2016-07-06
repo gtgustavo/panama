@@ -29,7 +29,7 @@ class PackageRequest extends Request
 
             'cost' => 'required',
 
-            'note' => 'required|string|max:150|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]+$/i',
+            'note' => 'required|string|max:150|min:10|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\,\&\-\/ ]+$/i',
 
         ];
     }

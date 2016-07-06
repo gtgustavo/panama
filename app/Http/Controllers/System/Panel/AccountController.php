@@ -4,7 +4,9 @@ namespace App\Http\Controllers\System\Panel;
 
 use App\Helpers\Helper;
 use App\Http\Requests\Panel\PasswordRequest;
+use App\Http\Requests\Security\EmployeesRequest;
 use App\Http\Requests\System\ClientsRequest;
+use App\Models\Administration\Country;
 use App\Models\Credentials\People;
 use App\Models\Credentials\User;
 use App\Http\Requests;
@@ -34,7 +36,13 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('panel.index')->with('user', $this->user)->with('people', $this->people);
+        //view profiles and reception centers
+        $isEmployee = false;
+
+        // List of country
+        $country = Country::all();
+
+        return view('panel.index', compact('isEmployee', 'country'))->with('user', $this->user)->with('people', $this->people);
     }
 
     /**
@@ -72,18 +80,24 @@ class AccountController extends Controller
      */
     public function edit()
     {
-        return view('panel.personal')->with('user', $this->user)->with('people', $this->people);
+        //view profiles and reception centers
+        $isEmployee = false;
+
+        // List of country
+        $country = Country::all();
+
+        return view('panel.personal', compact('isEmployee', 'country'))->with('user', $this->user)->with('people', $this->people);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param ClientsRequest $request
+     * @param EmployeesRequest $request
      * @param $id
      * @param $people
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientsRequest $request, $id, $people)
+    public function update(EmployeesRequest $request, $id, $people)
     {
         $collection = Helper::convert_to_uppercase($request->all());
 

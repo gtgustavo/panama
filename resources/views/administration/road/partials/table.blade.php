@@ -1,9 +1,7 @@
 <!-- recent activity table -->
 <div class="panel">
 
-    <div class="panel-heading">
-        <span class="panel-title hidden-xs"> {!! trans('front.form.road.title') !!} </span>
-    </div>
+
 
     <div class="panel-body pn">
 
@@ -15,9 +13,9 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
-                        <th class="">{!! trans('front.form.road.table.name') !!}     </th>
-                        <th class=""></th>
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.road.table.name') !!}     </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -61,9 +59,9 @@
 
                 <tfoot>
                 <tr class="bg-light">
-                    <th class="">ID</th>
-                    <th class="">{!! trans('front.form.road.table.name') !!}     </th>
-                    <th class=""></th>
+                    <th class="system">ID</th>
+                    <th class="system">{!! trans('front.form.road.table.name') !!}     </th>
+                    <th class="system"></th>
                 </tr>
                 </tfoot>
 
