@@ -460,8 +460,17 @@ return [
 
             'tile' => [
 
-                'packages' => 'PAQUETES EN LA CATEGORÍA',
+                'web_check_in'         => 'WEB CHECK IN (PRECHEQUEADO)',
 
+                'reception_center'     => 'ENTREGADO EN CENTRO',
+
+                'sent_shipping'        => 'ENVIADO A CENTRO DE EMBARQUE',
+
+                'received_shipping'    => 'RECIBIDO EN CENTRO DE EMBARQUE',
+
+                'shipment'             => 'EMBARCADO A PAÍS DESTINO',
+
+                'received_destination' => 'RECIBIDO EN CENTRO PAÍS DESTINO',
             ],
 
             'table' => [
