@@ -15,13 +15,13 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
-                        <th class="">{!! trans('front.form.reception_center.table.name') !!}     </th>
-                        <th class="">{!! trans('front.form.reception_center.table.country') !!}  </th>
-                        <th class="">{!! trans('front.form.reception_center.table.province') !!} </th>
-                        <th class="">{!! trans('front.form.reception_center.table.city') !!}     </th>
-                        <th class="">{!! trans('front.form.reception_center.table.employee') !!} </th>
-                        <th class=""></th>
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.reception_center.table.name') !!}     </th>
+                        <th class="system">{!! trans('front.form.reception_center.table.country') !!}  </th>
+                        <th class="system">{!! trans('front.form.reception_center.table.province') !!} </th>
+                        <th class="system">{!! trans('front.form.reception_center.table.city') !!}     </th>
+                        <th class="system">{!! trans('front.form.reception_center.table.employee') !!} </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -69,13 +69,13 @@
 
                 <tfoot>
                 <tr class="bg-light">
-                    <th class="">ID</th>
-                    <th class="">{!! trans('front.form.reception_center.table.name') !!}     </th>
-                    <th class="">{!! trans('front.form.reception_center.table.country') !!}  </th>
-                    <th class="">{!! trans('front.form.reception_center.table.province') !!} </th>
-                    <th class="">{!! trans('front.form.reception_center.table.city') !!}     </th>
-                    <th class="">{!! trans('front.form.reception_center.table.employee') !!} </th>
-                    <th class=""></th>
+                    <th class="system">ID</th>
+                    <th class="system">{!! trans('front.form.reception_center.table.name') !!}     </th>
+                    <th class="system">{!! trans('front.form.reception_center.table.country') !!}  </th>
+                    <th class="system">{!! trans('front.form.reception_center.table.province') !!} </th>
+                    <th class="system">{!! trans('front.form.reception_center.table.city') !!}     </th>
+                    <th class="system">{!! trans('front.form.reception_center.table.employee') !!} </th>
+                    <th class="system"></th>
                 </tr>
                 </tfoot>
 

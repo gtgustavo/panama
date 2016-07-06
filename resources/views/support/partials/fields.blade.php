@@ -9,7 +9,7 @@
                     {!! trans('validation.attributes.theme') !!}
                 </label>
 
-                {!! Form::select('ticket_id', $theme, null, ['class'=> 'gui-input']) !!}
+                {!! Form::select('ticket_id', $theme, null, ['class'=> 'form-control']) !!}
             </div>
 
         </div>

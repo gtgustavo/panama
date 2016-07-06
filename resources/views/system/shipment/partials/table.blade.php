@@ -15,12 +15,12 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class=""> ID </th>
-                        <th class="">{!! trans('front.form.shipment.table.wb') !!}         </th>
-                        <th class="">{!! trans('front.form.shipment.table.status') !!}     </th>
-                        <th class="">{!! trans('front.form.shipment.table.date_s') !!}     </th>
-                        <th class="">{!! trans('front.form.shipment.table.packages') !!}   </th>
-                        <th class=""></th>
+                        <th class="system"> ID </th>
+                        <th class="system">{!! trans('front.form.shipment.table.wb') !!}         </th>
+                        <th class="system">{!! trans('front.form.shipment.table.status') !!}     </th>
+                        <th class="system">{!! trans('front.form.shipment.table.date_s') !!}     </th>
+                        <th class="system">{!! trans('front.form.shipment.table.packages') !!}   </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -61,12 +61,12 @@
 
                 <tfoot>
                     <tr class="bg-light">
-                        <th class=""> ID </th>
-                        <th class="">{!! trans('front.form.shipment.table.wb') !!}         </th>
-                        <th class="">{!! trans('front.form.shipment.table.status') !!}     </th>
-                        <th class="">{!! trans('front.form.shipment.table.date_s') !!}     </th>
-                        <th class="">{!! trans('front.form.shipment.table.packages') !!}   </th>
-                        <th class=""></th>
+                        <th class="system"> ID </th>
+                        <th class="system">{!! trans('front.form.shipment.table.wb') !!}         </th>
+                        <th class="system">{!! trans('front.form.shipment.table.status') !!}     </th>
+                        <th class="system">{!! trans('front.form.shipment.table.date_s') !!}     </th>
+                        <th class="system">{!! trans('front.form.shipment.table.packages') !!}   </th>
+                        <th class="system"></th>
                     </tr>
                 </tfoot>
 

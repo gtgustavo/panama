@@ -15,15 +15,15 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
-                        <th class="">{!! trans('front.form.box.table.box') !!}              </th>
-                        <th class="">{!! trans('front.form.box.table.dimensions') !!}       </th>
-                        <th class="">{!! trans('front.form.box.table.maximum_poundage') !!} </th>
-                        <th class="">{!! trans('front.form.box.table.cost_extra_pound') !!} </th>
-                        <th class="">{!! trans('front.form.box.table.cost_standard') !!}    </th>
-                        <th class="">{!! trans('front.form.box.table.cost_express') !!}     </th>
-                        <th class="">{!! trans('front.form.box.table.status') !!}           </th>
-                        <th class=""></th>
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.box.table.box') !!}              </th>
+                        <th class="system">{!! trans('front.form.box.table.dimensions') !!}       </th>
+                        <th class="system">{!! trans('front.form.box.table.maximum_poundage') !!} </th>
+                        <th class="system">{!! trans('front.form.box.table.cost_extra_pound') !!} </th>
+                        <th class="system">{!! trans('front.form.box.table.cost_standard') !!}    </th>
+                        <th class="system">{!! trans('front.form.box.table.cost_express') !!}     </th>
+                        <th class="system">{!! trans('front.form.box.table.status') !!}           </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -79,15 +79,15 @@
 
                 <tfoot>
                 <tr class="bg-light">
-                    <th class="">ID</th>
-                    <th class="">{!! trans('front.form.box.table.box') !!}              </th>
-                    <th class="">{!! trans('front.form.box.table.dimensions') !!}       </th>
-                    <th class="">{!! trans('front.form.box.table.maximum_poundage') !!} </th>
-                    <th class="">{!! trans('front.form.box.table.cost_extra_pound') !!} </th>
-                    <th class="">{!! trans('front.form.box.table.cost_standard') !!}    </th>
-                    <th class="">{!! trans('front.form.box.table.cost_express') !!}     </th>
-                    <th class="">{!! trans('front.form.box.table.status') !!}           </th>
-                    <th class=""></th>
+                    <th class="system">ID</th>
+                    <th class="system">{!! trans('front.form.box.table.box') !!}              </th>
+                    <th class="system">{!! trans('front.form.box.table.dimensions') !!}       </th>
+                    <th class="system">{!! trans('front.form.box.table.maximum_poundage') !!} </th>
+                    <th class="system">{!! trans('front.form.box.table.cost_extra_pound') !!} </th>
+                    <th class="system">{!! trans('front.form.box.table.cost_standard') !!}    </th>
+                    <th class="system">{!! trans('front.form.box.table.cost_express') !!}     </th>
+                    <th class="system">{!! trans('front.form.box.table.status') !!}           </th>
+                    <th class="system"></th>
                 </tr>
                 </tfoot>
 

@@ -15,14 +15,14 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
-                        <th class="">{!! trans('front.form.client.table.name') !!}             </th>
-                        <th class="">{!! trans('front.form.client.table.dni') !!}              </th>
-                        <th class="">{!! trans('front.form.client.table.country') !!}          </th>
-                        <th class="">{!! trans('front.form.client.table.phone_c') !!}          </th>
-                        <th class="">{!! trans('front.form.client.table.consigning') !!}       </th>
-                        <th class="">{!! trans('front.form.client.table.reception_center') !!} </th>
-                        <th class=""></th>
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.client.table.name') !!}             </th>
+                        <th class="system">{!! trans('front.form.client.table.dni') !!}              </th>
+                        <th class="system">{!! trans('front.form.client.table.country') !!}          </th>
+                        <th class="system">{!! trans('front.form.client.table.phone_c') !!}          </th>
+                        <th class="system">{!! trans('front.form.client.table.consigning') !!}       </th>
+                        <th class="system">{!! trans('front.form.client.table.reception_center') !!} </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -77,14 +77,14 @@
 
                 <tfoot>
                     <tr class="bg-light">
-                        <th class="">ID</th>
-                        <th class="">{!! trans('front.form.client.table.name') !!}             </th>
-                        <th class="">{!! trans('front.form.client.table.dni') !!}              </th>
-                        <th class="">{!! trans('front.form.client.table.country') !!}          </th>
-                        <th class="">{!! trans('front.form.client.table.phone_c') !!}          </th>
-                        <th class="">{!! trans('front.form.client.table.consigning') !!}       </th>
-                        <th class="">{!! trans('front.form.client.table.reception_center') !!} </th>
-                        <th class=""></th>
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.client.table.name') !!}             </th>
+                        <th class="system">{!! trans('front.form.client.table.dni') !!}              </th>
+                        <th class="system">{!! trans('front.form.client.table.country') !!}          </th>
+                        <th class="system">{!! trans('front.form.client.table.phone_c') !!}          </th>
+                        <th class="system">{!! trans('front.form.client.table.consigning') !!}       </th>
+                        <th class="system">{!! trans('front.form.client.table.reception_center') !!} </th>
+                        <th class="system"></th>
                     </tr>
                 </tfoot>
 

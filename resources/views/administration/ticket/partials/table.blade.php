@@ -15,11 +15,11 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
-                        <th class="">{!! trans('front.form.ticket.table.theme') !!}     </th>
-                        <th class="">{!! trans('front.form.ticket.table.pending') !!}   </th>
-                        <th class="">{!! trans('front.form.ticket.table.responded') !!} </th>
-                        <th class=""></th>
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.ticket.table.theme') !!}     </th>
+                        <th class="system">{!! trans('front.form.ticket.table.pending') !!}   </th>
+                        <th class="system">{!! trans('front.form.ticket.table.responded') !!} </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -65,11 +65,11 @@
 
                 <tfoot>
                 <tr class="bg-light">
-                    <th class="">ID</th>
-                    <th class="">{!! trans('front.form.ticket.table.theme') !!}     </th>
-                    <th class="">{!! trans('front.form.ticket.table.pending') !!}   </th>
-                    <th class="">{!! trans('front.form.ticket.table.responded') !!} </th>
-                    <th class=""></th>
+                    <th class="system">ID</th>
+                    <th class="system">{!! trans('front.form.ticket.table.theme') !!}     </th>
+                    <th class="system">{!! trans('front.form.ticket.table.pending') !!}   </th>
+                    <th class="system">{!! trans('front.form.ticket.table.responded') !!} </th>
+                    <th class="system"></th>
                 </tr>
                 </tfoot>
 

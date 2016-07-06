@@ -16,19 +16,19 @@
                 <thead>
                     <tr class="bg-light">
                         @can('admin')
-                            <th class="">
+                            <th class="system">
                                 {!! Form::checkbox('select_all', null, null, ['id' => 'select_all', 'class' => 'checkbox', 'title' => 'select all']) !!}
                             </th>
                         @endcan
 
-                        <th class="">{!! trans('front.form.package.table.wr') !!}         </th>
-                        <th class="">{!! trans('front.form.package.table.wb') !!}         </th>
-                        <th class="">{!! trans('front.form.package.table.consigning') !!} </th>
-                        <th class="">{!! trans('front.form.package.table.name_e') !!}     </th>
-                        <th class="">{!! trans('front.form.package.table.dni') !!}        </th>
-                        <th class="">{!! trans('front.form.package.table.name_r') !!}     </th>
-                        <th class="">{!! trans('front.form.package.table.status') !!}     </th>
-                        <th class=""></th>
+                        <th class="system">{!! trans('front.form.package.table.wr') !!}         </th>
+                        <th class="system">{!! trans('front.form.package.table.wb') !!}         </th>
+                        <th class="system">{!! trans('front.form.package.table.consigning') !!} </th>
+                        <th class="system">{!! trans('front.form.package.table.name_e') !!}     </th>
+                        <th class="system">{!! trans('front.form.package.table.dni') !!}        </th>
+                        <th class="system">{!! trans('front.form.package.table.name_r') !!}     </th>
+                        <th class="system">{!! trans('front.form.package.table.status') !!}     </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -38,9 +38,9 @@
 
                         <tr>
                             @can('admin')
-                                <th class="">
+                                <td class="">
                                     {!! Form::checkbox('package_id[]', $package->id, null, ['class' => 'checkbox', 'title' => $package->id]) !!}
-                                </th>
+                                </td>
                             @endcan
                             <td class=""> {{ $package->wr }}                                  </td>
                             <td class=""> {{ $package->shipment['wb'] }}                      </td>
@@ -89,17 +89,17 @@
                 <tfoot>
                     <tr class="bg-light">
                         @can('admin')
-                            <th class=""></th>
+                            <th class="system"></th>
                         @endcan
 
-                        <th class="">{!! trans('front.form.package.table.wr') !!}         </th>
-                        <th class="">{!! trans('front.form.package.table.wb') !!}         </th>
-                        <th class="">{!! trans('front.form.package.table.consigning') !!} </th>
-                        <th class="">{!! trans('front.form.package.table.name_e') !!}     </th>
-                        <th class="">{!! trans('front.form.package.table.dni') !!}        </th>
-                        <th class="">{!! trans('front.form.package.table.name_r') !!}     </th>
-                        <th class="">{!! trans('front.form.package.table.status') !!}     </th>
-                        <th class=""></th>
+                        <th class="system">{!! trans('front.form.package.table.wr') !!}         </th>
+                        <th class="system">{!! trans('front.form.package.table.wb') !!}         </th>
+                        <th class="system">{!! trans('front.form.package.table.consigning') !!} </th>
+                        <th class="system">{!! trans('front.form.package.table.name_e') !!}     </th>
+                        <th class="system">{!! trans('front.form.package.table.dni') !!}        </th>
+                        <th class="system">{!! trans('front.form.package.table.name_r') !!}     </th>
+                        <th class="system">{!! trans('front.form.package.table.status') !!}     </th>
+                        <th class="system"></th>
                     </tr>
                 </tfoot>
 

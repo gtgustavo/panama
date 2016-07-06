@@ -49,3 +49,10 @@
     <!-- End: Content -->
 
 @endsection
+
+@section('script')
+    <script>
+        // slider panel clients
+        jssor_1_slider_init();
+    </script>
+@endsection

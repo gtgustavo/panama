@@ -15,17 +15,17 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
+                        <th class="system">ID</th>
 
                         @can('admin')
-                            <th class="">{!! trans('front.form.support.table.name') !!}     </th>
-                            <th class="">{!! trans('front.form.support.table.dni') !!}    </th>
+                            <th class="system">{!! trans('front.form.support.table.name') !!}     </th>
+                            <th class="system">{!! trans('front.form.support.table.dni') !!}    </th>
                         @endcan
 
-                        <th class="">{!! trans('front.form.support.table.theme') !!}     </th>
-                        <th class="">{!! trans('front.form.support.table.status') !!}    </th>
-                        <th class="">{!! trans('front.form.support.table.date') !!} </th>
-                        <th class=""></th>
+                        <th class="system">{!! trans('front.form.support.table.theme') !!}     </th>
+                        <th class="system">{!! trans('front.form.support.table.status') !!}    </th>
+                        <th class="system">{!! trans('front.form.support.table.date') !!} </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -81,17 +81,17 @@
 
                 <tfoot>
                 <tr class="bg-light">
-                    <th class="">ID</th>
+                    <th class="system">ID</th>
 
                     @can('admin')
-                        <th class="">{!! trans('front.form.support.table.name') !!}     </th>
-                        <th class="">{!! trans('front.form.support.table.dni') !!}    </th>
+                        <th class="system">{!! trans('front.form.support.table.name') !!}     </th>
+                        <th class="system">{!! trans('front.form.support.table.dni') !!}    </th>
                     @endcan
 
-                    <th class="">{!! trans('front.form.support.table.theme') !!}     </th>
-                    <th class="">{!! trans('front.form.support.table.status') !!}   </th>
-                    <th class="">{!! trans('front.form.support.table.date') !!} </th>
-                    <th class=""></th>
+                    <th class="system">{!! trans('front.form.support.table.theme') !!}     </th>
+                    <th class="system">{!! trans('front.form.support.table.status') !!}   </th>
+                    <th class="system">{!! trans('front.form.support.table.date') !!} </th>
+                    <th class="system"></th>
                 </tr>
                 </tfoot>
 

@@ -15,13 +15,13 @@
 
                 <thead>
                     <tr class="bg-light">
-                        <th class="">ID</th>
-                        <th class="">{!! trans('front.form.employee.table.name') !!}             </th>
-                        <th class="">{!! trans('front.form.employee.table.dni') !!}              </th>
-                        <th class="">{!! trans('front.form.employee.table.email') !!}            </th>
-                        <th class="">{!! trans('front.form.employee.table.profile') !!}          </th>
-                        <th class="">{!! trans('front.form.employee.table.reception_center') !!} </th>
-                        <th class=""></th>
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.employee.table.name') !!}             </th>
+                        <th class="system">{!! trans('front.form.employee.table.dni') !!}              </th>
+                        <th class="system">{!! trans('front.form.employee.table.email') !!}            </th>
+                        <th class="system">{!! trans('front.form.employee.table.profile') !!}          </th>
+                        <th class="system">{!! trans('front.form.employee.table.reception_center') !!} </th>
+                        <th class="system"></th>
                     </tr>
                 </thead>
 
@@ -66,6 +66,18 @@
                     @endforeach
 
                 </tbody>
+
+                <tfoot>
+                    <tr class="bg-light">
+                        <th class="system">ID</th>
+                        <th class="system">{!! trans('front.form.employee.table.name') !!}             </th>
+                        <th class="system">{!! trans('front.form.employee.table.dni') !!}              </th>
+                        <th class="system">{!! trans('front.form.employee.table.email') !!}            </th>
+                        <th class="system">{!! trans('front.form.employee.table.profile') !!}          </th>
+                        <th class="system">{!! trans('front.form.employee.table.reception_center') !!} </th>
+                        <th class="system"></th>
+                    </tr>
+                </tfoot>
 
             </table>
 
