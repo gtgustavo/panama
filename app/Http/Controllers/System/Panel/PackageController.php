@@ -92,7 +92,9 @@ class PackageController extends Controller
 
             $consign = $this->user->consigning;
 
-            return view('system.package_client.edit', compact('package', 'wr_code', 'barcode', 'consign'));
+            $boxes   = Box::where('status', 'ACTIVO')->get();
+
+            return view('system.package_client.edit', compact('package', 'wr_code', 'barcode', 'consign', 'boxes'));
         }
         elseif($package->status == 'ANULADO')
         {
