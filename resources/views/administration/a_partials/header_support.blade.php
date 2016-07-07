@@ -21,10 +21,10 @@
 
     <div class="topbar-right hidden-xs hidden-sm">
 
-        <a href="{{ route('reception_center_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('reception_center_create') }}" class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-university pr5"></span> {!! trans('front.form.reception_center.create') !!} </a>
 
-        <a href="{{ route('ticket_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('ticket_create') }}" class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-ticket pr5"></span> {!! trans('front.form.ticket.create') !!} </a>
 
     </div>

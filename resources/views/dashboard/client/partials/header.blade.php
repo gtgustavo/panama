@@ -26,10 +26,10 @@
     <!--
     <div class="topbar-right hidden-xs hidden-sm">
 
-        <a href="{{ route('my_package_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('my_package_create') }}" class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-plus pr5"></span> {!! trans('front.form.other.wed') !!} </a>
 
-        <a href="{{ route('consigning_create', Auth::user()->id) }}"  class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('consigning_create', Auth::user()->id) }}"  class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-user pr5"></span> {!! trans('front.form.consigning.create') !!}  </a>
 
     </div>

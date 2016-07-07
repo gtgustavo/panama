@@ -21,10 +21,10 @@
 
     <div class="topbar-right hidden-xs hidden-sm">
 
-        <a href="{{ route('road_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('road_create') }}" class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-road pr5"></span> {!! trans('front.form.road.create') !!} </a>
 
-        <a href="{{ route('box_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('box_create') }}" class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-cube pr5"></span> {!! trans('front.form.box.create') !!} </a>
 
     </div>

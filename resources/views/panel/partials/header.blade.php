@@ -15,10 +15,10 @@
 
     <div class="topbar-right hidden-xs hidden-sm">
 
-        <a href="{{ route('panel_password') }}" class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('panel_password') }}" class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-unlock-alt pr5"></span> {!! trans('front.form.profile_panel.change_password') !!} </a>
 
-        <a href="{{ route('panel_personal') }}" class="btn btn-default btn-sm light fw600 ml10">
+        <a href="{{ route('panel_personal') }}" class="btn btn-danger btn-sm light fw600 ml10">
             <span class="fa fa-pencil pr5"></span> {!! trans('front.form.profile_panel.update_information') !!} </a>
 
     </div>
