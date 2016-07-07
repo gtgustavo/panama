@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\System\Package;
 
 use App\Helpers\Barcode\Barcode;
-use App\Helpers\Helper;
 use App\Helpers\Package\Package as PackageHelper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\PackageRequest;

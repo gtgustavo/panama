@@ -6,11 +6,19 @@
         <ul class="nav nav-list nav-list-topbar pull-left">
 
             <li class="active">
-                <a href="{{ route('home') }}">        {!! trans('front.sidebar.title.board') !!}       </a>
+                <a href="{{ route('home') }}">          {!! trans('front.sidebar.title.board') !!}       </a>
             </li>
 
             <li>
-                <a href="{{ route('client_home') }}"> {{ trans('front.sidebar.sub_title.clients') }}  </a>
+                <a href="{{ route('client_home') }}">   {{ trans('front.sidebar.sub_title.clients') }}  </a>
+            </li>
+
+            <li>
+                <a href="{{ route('answer_home') }}">   {{ trans('front.sidebar.sub_title.support') }}  </a>
+            </li>
+
+            <li>
+                <a href="{{ route('shipment_home') }}"> {{ trans('front.sidebar.sub_title.shipment') }}  </a>
             </li>
 
         </ul>

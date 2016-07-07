@@ -34,7 +34,7 @@ class EmployeeController extends Controller
             //
             $employees     = User::FilterAndPaginate($request->get('search'), $request->get('type'));
 
-            $cant_profiles = Profile::where('id', '!=', '3')->count();
+            $cant_profiles = Profile::where('id', '!=', 3)->count();
 
             $roles         = Role::where('id', '>', 2)->count();
 

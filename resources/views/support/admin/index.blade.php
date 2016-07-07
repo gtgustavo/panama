@@ -2,7 +2,7 @@
 
 @section('header_menu')
 
-    @can('admin')
+    @can('employee')
 
         @include('dashboard.admin.partials.header')
     @else
@@ -20,7 +20,7 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
-            @include('system.client.partials.tiles')
+            @include('dashboard.admin.partials.tiles_admin')
 
             @include('support.partials.filter')
 

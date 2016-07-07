@@ -8,6 +8,8 @@ use App\Http\Requests\Security\EmployeesRequest;
 use App\Models\Administration\Country;
 use App\Models\Credentials\People;
 use App\Models\Credentials\User;
+use App\Models\Support\Support;
+use App\Models\System\Shipment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -31,9 +33,15 @@ class ClientController extends Controller
         {
             $clients      = User::FilterAndPaginateClient($request->get('search'), $request->get('type'));
 
-            $cant_clients = count(User::where('profile_id', 3)->get());
+            $cant_clients = User::where('profile_id', 3)->count();
 
-            return view('system.client.index', compact('clients', 'cant_clients'));
+            $pending      = Support::where('status', 'PENDIENTE')->count();
+
+            $wb_open      = Shipment::where('status', 'ABIERTO')->count();
+
+            $wb_close     = Shipment::where('status', 'CERRADO')->count();
+
+            return view('system.client.index', compact('clients', 'cant_clients', 'pending', 'wb_open', 'wb_close'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message

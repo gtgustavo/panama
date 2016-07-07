@@ -32,11 +32,11 @@ class AdministratorController extends Controller
         {
             $employees     = User::FilterAndPaginateAdministrator($request->get('search'), $request->get('type'));
 
-            $cant_profiles = count(Profile::where('id', '!=', '3')->get());
+            $cant_profiles = Profile::where('id', '!=', 3)->count();
 
-            $roles         = count(Role::where('id', '>', 2)->get());
+            $roles         = Role::where('id', '>', 2)->count();
 
-            $users         = count(User::where('profile_id', '!=', 3)->get());
+            $users         = User::where('profile_id', '!=', 3)->count();
 
             return view('administration.admin.index', compact('employees', 'roles', 'users', 'cant_profiles'));
         }

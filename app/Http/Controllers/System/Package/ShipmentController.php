@@ -5,7 +5,8 @@ namespace App\Http\Controllers\System\Package;
 use App\Helpers\Package\Package as PackageHelper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\ShipmentRequest;
-use App\Models\System\Package;
+use App\Models\Credentials\User;
+use App\Models\Support\Support;
 use App\Models\System\Shipment;
 use Illuminate\Http\Request;
 
@@ -26,9 +27,15 @@ class ShipmentController extends Controller
         {
             $shipments = Shipment::with('packages')->get();
 
-            $packages = Package::FilterAndPaginateStatus('RECIBIDO EN CENTRO DE EMBARQUE');
+            $cant_clients = User::where('profile_id', 3)->count();
 
-            return view('system.shipment.index', compact('shipments', 'packages'));
+            $pending      = Support::where('status', 'PENDIENTE')->count();
+
+            $wb_open      = Shipment::where('status', 'ABIERTO')->count();
+
+            $wb_close     = Shipment::where('status', 'CERRADO')->count();
+
+            return view('system.shipment.index', compact('shipments', 'cant_clients', 'pending', 'wb_open', 'wb_close'));
         }
 
         return Access::redirectDefault();

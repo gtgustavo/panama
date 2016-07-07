@@ -2,7 +2,7 @@
 
 @section('header_menu')
 
-    @can('admin')
+    @can('employee')
 
         @include('system.consigning.partials.header')
     @else
@@ -26,7 +26,7 @@
                 <br>
             @else
 
-                @include('system.consigning.partials.tiles')
+                @include('dashboard.admin.partials.tiles_admin')
             @endcan
 
             @include('a_templates.partials.messages')

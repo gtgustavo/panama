@@ -28,7 +28,7 @@ class ProfileController extends Controller
         {
             $profiles      = Profile::with('roles')->with('users')->where('id', '!=', '3')->get();
 
-            $cant_profiles = Profile::where('id', '!=', '3')->count();
+            $cant_profiles = Profile::where('id', '!=', 3)->count();
 
             $roles         = Role::where('id', '>', 2)->count();
 

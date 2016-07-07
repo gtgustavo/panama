@@ -6,11 +6,13 @@ use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\System\ConsigningRequest;
 use App\Models\Administration\Road;
+use App\Models\Support\Support;
 use App\Models\System\Consigning;
 use App\Models\Credentials\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\System\Shipment;
 use Styde\Html\Facades\Alert;
 
 class ConsigningController extends Controller
@@ -25,11 +27,19 @@ class ConsigningController extends Controller
     {
         if(Access::allow('view-consigning'))
         {
-            $consigning = Consigning::where('user_id', $client)->get();
+            $consigning   = Consigning::where('user_id', $client)->get();
 
-            $client     = User::findOrFail($client);
+            $client       = User::findOrFail($client);
 
-            return view('system.consigning.index', compact('consigning', 'client'));
+            $cant_clients = User::where('profile_id', 3)->count();
+
+            $pending      = Support::where('status', 'PENDIENTE')->count();
+
+            $wb_open      = Shipment::where('status', 'ABIERTO')->count();
+
+            $wb_close     = Shipment::where('status', 'CERRADO')->count();
+
+            return view('system.consigning.index', compact('consigning', 'client', 'cant_clients', 'pending', 'wb_open', 'wb_close'));
         }
 
         return Access::redirectDefault();

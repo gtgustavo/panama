@@ -15,6 +15,7 @@
 
                 <!-- dashboard tiles -->
                 @include('dashboard.client.partials.tiles')
+                <br>
 
                 @include('a_templates.partials.messages')
 

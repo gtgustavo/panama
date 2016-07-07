@@ -403,9 +403,7 @@ return [
 
             'tile' => [
 
-                'clients' => 'CLIENTES REGISTRADOS',
-
-                'stop'    => 'stop',
+                'client' => 'CLIENTES REGISTRADOS',
 
             ],
 
@@ -534,6 +532,13 @@ return [
             'title' => 'EMBARQUES',
 
             'create' => 'Nuevo Embarque',
+
+            'tile' => [
+
+                'wb_open'  => 'GUÍAS DE EMBARQUE ABIERTA',
+
+                'wb_close' => 'GUÍAS DE EMBARQUE CERRADO',
+            ],
 
             'table' => [
 

@@ -14,6 +14,10 @@
             </li>
 
             <li>
+                <a href="{{ route('answer_home') }}">   {{ trans('front.sidebar.sub_title.support') }}  </a>
+            </li>
+
+            <li>
                 <a href="{{ route('shipment_home') }}"> {{ trans('front.sidebar.sub_title.shipment') }}  </a>
             </li>
 
