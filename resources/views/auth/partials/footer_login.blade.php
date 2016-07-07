@@ -10,6 +10,8 @@
 
     <a href="{{ route('password') }}"   class="mr10 pull-right"> {!! trans('front.form.button.forget') !!} </a>
 
+    <!--
     @include('a_templates.extras.mini_lang')
+    -->
 
 </div>

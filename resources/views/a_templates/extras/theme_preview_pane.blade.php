@@ -3,26 +3,24 @@
     <div class="panel">
         <div class="panel-heading">
         <span class="panel-icon">
-          <i class="fa fa-gear text-primary"></i>
+          <i class="fa fa-tint text-primary"></i>
         </span>
-            <span class="panel-title"> Theme Options</span>
+            <span class="panel-title"> Opciones de Tema </span>
         </div>
         <div class="panel-body pn">
             <ul class="nav nav-list nav-list-sm pl15 pt10" role="tablist">
                 <li class="active">
-                    <a href="#toolbox-header" role="tab" data-toggle="tab">Navbar</a>
+                    <a href="#toolbox-header" role="tab" data-toggle="tab"> Barra </a>
                 </li>
+
                 <li>
-                    <a href="#toolbox-sidebar" role="tab" data-toggle="tab">Sidebar</a>
-                </li>
-                <li>
-                    <a href="#toolbox-settings" role="tab" data-toggle="tab">Misc</a>
+                    <a href="#toolbox-settings" role="tab" data-toggle="tab"> Panel </a>
                 </li>
             </ul>
             <div class="tab-content p20 ptn pb15">
                 <div role="tabpanel" class="tab-pane active" id="toolbox-header">
                     <form id="toolbox-header-skin">
-                        <h4 class="mv20">Header Skins</h4>
+                        <h4 class="mv20"> Color de Cabecera </h4>
                         <div class="skin-toolbox-swatches">
                             <div class="checkbox-custom checkbox-disabled fill mb5">
                                 <input type="radio" name="headerSkin" id="headerSkin8" checked value="">
@@ -84,31 +82,34 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="toolbox-settings">
                     <form id="toolbox-settings-misc">
-                        <h4 class="mv20 mtn">Layout Options</h4>
+                        <h4 class="mv20 mtn"> Opciones de Panel </h4>
                         <div class="form-group">
                             <div class="checkbox-custom fill mb5">
                                 <input type="checkbox" checked="" id="header-option">
-                                <label for="header-option">Fixed Header</label>
+                                <label for="header-option">Fijar Cabecera</label>
                             </div>
                         </div>
+                        <!--
                         <div class="form-group">
                             <div class="checkbox-custom fill mb5">
                                 <input type="checkbox" checked="" id="sidebar-option">
                                 <label for="sidebar-option">Fixed Sidebar</label>
                             </div>
                         </div>
+                        -->
                         <div class="form-group">
                             <div class="checkbox-custom fill mb5">
-                                <input type="checkbox" id="breadcrumb-option">
-                                <label for="breadcrumb-option">Fixed Breadcrumbs</label>
+                                <input type="checkbox" checked="" id="breadcrumb-option">
+                                <label for="breadcrumb-option">Fijar Panel</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="checkbox-custom fill mb5">
                                 <input type="checkbox" id="breadcrumb-hidden">
-                                <label for="breadcrumb-hidden">Hide Breadcrumbs</label>
+                                <label for="breadcrumb-hidden">Ocultar Panel</label>
                             </div>
                         </div>
+                        <!--
                         <h4 class="mv20">Layout Options</h4>
                         <div class="form-group">
                             <div class="radio-custom mb5">
@@ -124,11 +125,12 @@
                                 </label>
                             </div>
                         </div>
+                        -->
                     </form>
                 </div>
             </div>
             <div class="form-group mn br-t p15">
-                <a href="#" id="clearLocalStorage" class="btn btn-primary btn-block pb10 pt10">Clear LocalStorage</a>
+                <a href="#" id="clearLocalStorage" class="btn btn-primary btn-block pb10 pt10">Limpiar configuración</a>
             </div>
         </div>
     </div>

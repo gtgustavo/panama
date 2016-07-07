@@ -29,7 +29,9 @@
 
     <ul class="nav navbar-nav navbar-right">
 
+        <!--
         @include('a_templates.extras.lang')
+        -->
 
         <li class="menu-divider hidden-xs">
             @if(Auth::check())
