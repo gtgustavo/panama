@@ -38,7 +38,9 @@ class AdministratorController extends Controller
 
             $users         = User::where('profile_id', '!=', 3)->count();
 
-            return view('administration.admin.index', compact('employees', 'roles', 'users', 'cant_profiles'));
+            $user_admin    = User::where('profile_id', 2)->count();
+
+            return view('administration.admin.index', compact('employees', 'roles', 'users', 'cant_profiles', 'user_admin'));
         }
 
         return Access::redirectDefault();

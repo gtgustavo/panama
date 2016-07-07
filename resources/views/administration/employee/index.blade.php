@@ -2,7 +2,13 @@
 
 @section('header_menu')
 
-    @include('administration.a_partials.header_employee')
+    @can('super_admin')
+
+    @include('administration.a_partials.header_super')
+    @else
+
+        @include('administration.a_partials.header_employee')
+    @endcan
 
 @endsection
 
@@ -14,7 +20,13 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
-            @include('administration.a_partials.tiles_employee')
+            @can('super_admin')
+
+            @include('administration.a_partials.tiles_super')
+            @else
+
+                @include('administration.a_partials.tiles_employee')
+            @endcan
 
             @include('a_templates.partials.messages')
 

@@ -16,17 +16,23 @@
                 <a href="{{ route('profile_home') }}">       {{ trans('front.sidebar.sub_title.profiles') }}  </a>
             </li>
 
+            <li>
+                <a href="{{ route('employee_home') }}"> {{ trans('front.sidebar.sub_title.employees') }} </a>
+            </li>
         </ul>
 
     </div>
 
     <div class="topbar-right hidden-xs hidden-sm">
 
+        <a href="{{ route('administrator_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+            <span class="fa fa-user pr5"></span> {!! trans('front.form.administrator.create') !!} </a>
+
         <a href="{{ route('profile_create') }}" class="btn btn-default btn-sm light fw600 ml10">
             <span class="fa fa-plus pr5"></span> {!! trans('front.form.profile.create') !!} </a>
 
-        <a href="{{ route('administrator_create') }}" class="btn btn-default btn-sm light fw600 ml10">
-            <span class="fa fa-user pr5"></span> {!! trans('front.form.administrator.create') !!} </a>
+        <a href="{{ route('employee_create') }}" class="btn btn-default btn-sm light fw600 ml10">
+            <span class="fa fa-user pr5"></span> {!! trans('front.form.employee.create') !!} </a>
 
     </div>
 

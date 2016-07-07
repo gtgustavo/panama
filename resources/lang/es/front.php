@@ -144,6 +144,8 @@ return [
 
                 'users'    => 'EMPLEADOS',
 
+                'admin'    => 'ADMINISTRADORES'
+
             ],
 
             'table' => [

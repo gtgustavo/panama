@@ -40,7 +40,9 @@ class EmployeeController extends Controller
 
             $users         = User::where('profile_id', '!=', 3)->count();
 
-            return view('administration.employee.index', compact('employees', 'roles', 'users', 'cant_profiles'));
+            $user_admin    = User::where('profile_id', 2)->count();
+
+            return view('administration.employee.index', compact('employees', 'roles', 'users', 'cant_profiles', 'user_admin'));
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
