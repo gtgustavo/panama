@@ -15,19 +15,24 @@
 
                 <thead>
                     <tr class="bg-light">
-                        @can('admin')
+                        @can('employee')
                             <th class="system">
                                 {!! Form::checkbox('select_all', null, null, ['id' => 'select_all', 'class' => 'checkbox', 'title' => 'select all']) !!}
                             </th>
                         @endcan
 
                         <th class="system">{!! trans('front.form.package.table.wr') !!}         </th>
-                        <th class="system">{!! trans('front.form.package.table.wb') !!}         </th>
+                        @can('employee')
+                            <th class="system">{!! trans('front.form.package.table.wb') !!}         </th>
+                        @endcan
                         <th class="system">{!! trans('front.form.package.table.consigning') !!} </th>
                         <th class="system">{!! trans('front.form.package.table.name_e') !!}     </th>
                         <th class="system">{!! trans('front.form.package.table.dni') !!}        </th>
                         <th class="system">{!! trans('front.form.package.table.name_r') !!}     </th>
                         <th class="system">{!! trans('front.form.package.table.status') !!}     </th>
+                        @can('client')
+                            <th class="system">{!! trans('front.form.package.table.date') !!}     </th>                 </td>
+                        @endcan
                         <th class="system"></th>
                     </tr>
                 </thead>
@@ -37,18 +42,23 @@
                     @foreach($packages as $package)
 
                         <tr>
-                            @can('admin')
+                            @can('employee')
                                 <td class="">
                                     {!! Form::checkbox('package_id[]', $package->id, null, ['class' => 'checkbox', 'title' => $package->id]) !!}
                                 </td>
                             @endcan
                             <td class=""> {{ $package->wr }}                                  </td>
-                            <td class=""> {{ $package->shipment['wb'] }}                      </td>
+                            @can('employee')
+                                <td class=""> {{ $package->shipment['wb'] }}                      </td>
+                            @endcan
                             <td class=""> {{ $package->consigning->province->country->name }} </td>
                             <td class=""> {{ $package->client->people->full_name }}           </td>
                             <td class=""> {{ $package->client->people->dni }}                 </td>
                             <td class=""> {{ $package->consigning->name }}                    </td>
                             <td class=""> {{ $package->status }}                              </td>
+                            @can('client')
+                                <td class=""> {{ $package->updated_at->format('d / m / Y') }}                      </td>
+                            @endcan
 
                             <td class="text-right">
 
@@ -88,17 +98,22 @@
 
                 <tfoot>
                     <tr class="bg-light">
-                        @can('admin')
+                        @can('employee')
                             <th class="system"></th>
                         @endcan
 
                         <th class="system">{!! trans('front.form.package.table.wr') !!}         </th>
-                        <th class="system">{!! trans('front.form.package.table.wb') !!}         </th>
+                        @can('employee')
+                            <th class="system">{!! trans('front.form.package.table.wb') !!}         </th>
+                        @endcan
                         <th class="system">{!! trans('front.form.package.table.consigning') !!} </th>
                         <th class="system">{!! trans('front.form.package.table.name_e') !!}     </th>
                         <th class="system">{!! trans('front.form.package.table.dni') !!}        </th>
                         <th class="system">{!! trans('front.form.package.table.name_r') !!}     </th>
                         <th class="system">{!! trans('front.form.package.table.status') !!}     </th>
+                        @can('client')
+                            <th class="system">{!! trans('front.form.package.table.date') !!}     </th>                 </td>
+                        @endcan
                         <th class="system"></th>
                     </tr>
                 </tfoot>

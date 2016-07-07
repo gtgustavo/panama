@@ -521,6 +521,8 @@ return [
                 'cost'       => 'COSTO',
 
                 'status'     => 'ESTATUS',
+
+                'date'       => 'FECHA',
             ],
 
             'events' => [
