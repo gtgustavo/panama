@@ -139,7 +139,7 @@ return [
         'time'                  => 'Hora',
         'subject'               => 'Asunto',
         'message'               => 'Mensaje',
-        'dni'                   => 'DNI',
+        'dni'                   => 'Cédula',
         'profile'               => 'Pefil',
         'profiles'              => 'Pefiles',
         'status'                => 'Estatus',

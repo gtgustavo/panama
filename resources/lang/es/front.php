@@ -55,7 +55,7 @@ return [
 
         'title' => [
 
-            'board'          => 'Dashboard',
+            'board'          => 'Inicio',
 
             'employees'      => 'Empleados',
 
@@ -82,7 +82,7 @@ return [
 
             'reception_centers' => 'Centros de Recepción',
 
-            'diary'             => 'Agenda',
+            'diary'             => 'Direcciones de Envío',
 
             'tickets'           => 'Tickets de Soporte',
 
@@ -105,7 +105,7 @@ return [
 
             'list_reception_center' => 'Centros de Recepción',
 
-            'list_recipient'        => 'Direcciones de Envío',
+            'list_recipient'        => 'Ver Dirección',
 
             'list_administrator'    => 'Administradores',
 
@@ -176,9 +176,11 @@ return [
             ],
         ],
 
-        'other' => [
+        'other'      => [
 
-            'wed' => 'Web Check In',
+            'wed'    => 'Web Check In',
+
+            'go_web' => 'Ir a la Pagina',
 
         ],
 
@@ -352,7 +354,7 @@ return [
 
                 'name'   => 'NOMBRE',
 
-                'dni'    => 'DNI',
+                'dni'    => 'CÉDULA',
 
                 'theme'  => 'TEMA',
 
@@ -380,7 +382,7 @@ return [
 
                 'name'             => 'NOMBRE',
 
-                'dni'              => 'DNI',
+                'dni'              => 'CÉDULA',
 
                 'email'            => 'EMAIL',
 
@@ -413,7 +415,7 @@ return [
 
                 'name'             => 'NOMBRE',
 
-                'dni'              => 'DNI',
+                'dni'              => 'CÉDULA',
 
                 'country'          => 'PAÍS',
 
@@ -442,7 +444,7 @@ return [
 
             'title'  => 'DIRECCIONES DE ENVÍO',
 
-            'create' => 'Nueva Dirección de Envío',
+            'create' => 'Agregar dirección',
 
             'tile' => [
 
@@ -473,7 +475,7 @@ return [
 
             'events' => [
 
-                'create' => 'Nueva Dirección de Envío',
+                'create' => 'Agregar dirección',
 
                 'edit'   => 'Actualizar Dirección de Envío',
             ],
@@ -506,7 +508,7 @@ return [
 
                 'name_r'     => 'RECEPTOR',
 
-                'dni'        => 'DNI',
+                'dni'        => 'CÉDULA',
 
                 'wr'         => 'WR',
 
@@ -572,7 +574,7 @@ return [
 
         'actions' => [
 
-            'title'      => 'Acciones',
+            'title'      => 'Opciones',
 
             'edit'       => 'Actualizar',
 
