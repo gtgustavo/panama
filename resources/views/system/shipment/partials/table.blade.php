@@ -39,7 +39,7 @@
 
                                 <div class="btn-group text-right">
 
-                                    <button type="button" class="btn btn-success br2 btn-xs fs12 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-danger br2 btn-xs fs12 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         {!! trans('front.form.actions.title') !!}
                                         <span class="caret ml5"></span>
                                     </button>

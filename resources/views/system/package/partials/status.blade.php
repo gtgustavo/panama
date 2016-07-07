@@ -4,5 +4,5 @@
 
 </div>
 
-<button type="button" class="btn btn-primary btn-status" > {!! trans('front.form.button.status') !!} </button>
+<button type="button" class="btn btn-danger btn-status" > {!! trans('front.form.button.status') !!} </button>
 

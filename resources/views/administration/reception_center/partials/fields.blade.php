@@ -38,7 +38,7 @@
 
     <div class="col-sm-12">
         <p class="text-right">
-            {!! Form::submit($button, ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit($button, ['class' => 'btn btn-danger']) !!}
         </p>
     </div>
 </div>
