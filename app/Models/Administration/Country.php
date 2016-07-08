@@ -10,7 +10,7 @@ class Country extends Model
 
     protected $fillable = ['name', 'iso'];
 
-    public static function simpleCountry($id)
+    public static function singleCountry($id)
     {
         return Country::where('id', $id)->get();
     }

@@ -100,6 +100,10 @@
 
             @include('administration.employee.partials.field_reception_center')
 
+        @elseif($employee->profile_id == 2)
+
+            @include('administration.employee.partials.field_reception_center')
+
         @endif
 
     @else

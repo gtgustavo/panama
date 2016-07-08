@@ -19,4 +19,14 @@ class Profile extends Model
     {
         return $this->hasMany('App\Models\Credentials\User');
     }
+
+    public static function employee()
+    {
+        return Profile::where('id', '>', 3)->lists('name', 'id');
+    }
+
+    public static function administrator()
+    {
+        return Profile::where('id', 2)->lists('name', 'id');
+    }
 }

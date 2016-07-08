@@ -37,22 +37,22 @@ class EmployeeController extends Controller
             $this->country = Country::all();
 
             // list all user reception centers by name and id
-            $this->reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
+            $this->reception_center = ReceptionCenter::getList();
 
         } else {
 
             // Get Country
-            $this->country = Country::simpleCountry(Auth::user()->myCountry());
+            $this->country = Country::singleCountry(Auth::user()->myCountry());
 
             // list all user reception centers by name and id
-            $this->reception_center = ReceptionCenter::where('province_id', Auth::user()->people->province->id)->where('id', '>', 1)->lists('name', 'id');
+            $this->reception_center = ReceptionCenter::receptions(Auth::user()->myCountry());
         }
 
         //view profiles and reception centers
         $this->isEmployee = true;
 
         // list all user profiles by name and id
-        $this->profile = Profile::where('id', '>', 3)->lists('name', 'id');
+        $this->profile = Profile::employee();
     }
 
     /**
@@ -94,7 +94,7 @@ class EmployeeController extends Controller
         if(Access::allow('create-employees'))
         {
             // return the form view with lists
-            return view('administration.employee.create')->with(['country' => $this->country, 'isEmployee' => $this->isEmployee, 'profile' => $this->profile, 'reception_center' => $this->reception_center]);;
+            return view('administration.employee.create')->with(['country' => $this->country, 'isEmployee' => $this->isEmployee, 'profile' => $this->profile, 'reception_center' => $this->reception_center]);
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -164,18 +164,6 @@ class EmployeeController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('edit-employees'))
         {
-            //view profiles and reception centers
-            $isEmployee = true;
-
-            // List of country
-            $country = Country::all();
-
-            // list all user profiles by name and id
-            $profile = Profile::where('id', '>', 3)->lists('name', 'id');
-
-            // list all user reception centers by name and id
-            $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
-
             // obtain registration of user credentials
             $employee = User::findOrFail($id);
 
@@ -183,7 +171,7 @@ class EmployeeController extends Controller
             $people = People::findOrFail($people);
 
             // return the form view with variables
-            return view('administration.employee.edit', compact('isEmployee', 'country', 'employee', 'people', 'profile', 'reception_center'));
+            return view('administration.employee.edit', compact('employee', 'people'))->with(['country' => $this->country, 'isEmployee' => $this->isEmployee, 'profile' => $this->profile, 'reception_center' => $this->reception_center]);
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -221,6 +209,8 @@ class EmployeeController extends Controller
                 $credentials = [
 
                     'email'        => $collection['email'],
+
+                    'reception_id' => $request->input('reception_id'),
                 ];
 
             } else { // other users

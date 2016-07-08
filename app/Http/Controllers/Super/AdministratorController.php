@@ -11,7 +11,6 @@ use App\Models\Credentials\People;
 use App\Models\Credentials\User;
 use App\Models\Security\Profile;
 use App\Models\Security\Role;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -20,13 +19,35 @@ use Styde\Html\Facades\Alert;
 
 class AdministratorController extends Controller
 {
+    private $country;
+
+    private $isEmployee;
+
+    private $profile;
+
+    private $reception_center;
+
+    public function __construct()
+    {
+        // Get Country
+        $this->country = Country::all();
+
+        // list all user reception centers by name and id
+        $this->reception_center = ReceptionCenter::getList();
+
+        //view profiles and reception centers
+        $this->isEmployee = true;
+
+        // list all user profiles by name and id
+        $this->profile = Profile::administrator();
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         if(Access::allow('view-administrator'))
         {
@@ -55,20 +76,8 @@ class AdministratorController extends Controller
     {
         if(Access::allow('create-administrator'))
         {
-            //view profiles and reception centers
-            $isEmployee = true;
-
-            // List of country
-            $country = Country::all();
-
-            // list all user profiles by name and id
-            $profile = Profile::where('id', 2)->lists('name', 'id');
-
-            // list all user reception centers by name and id
-            $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
-
             // return the form view with lists
-            return view('administration.admin.create', compact('isEmployee', 'country', 'profile', 'reception_center'));
+            return view('administration.admin.create')->with(['country' => $this->country, 'isEmployee' => $this->isEmployee, 'profile' => $this->profile, 'reception_center' => $this->reception_center]);
         }
 
         return Access::redirectDefault();
@@ -132,18 +141,6 @@ class AdministratorController extends Controller
     {
         if(Access::allow('edit-administrator'))
         {
-            //view profiles and reception centers
-            $isEmployee = true;
-
-            // List of country
-            $country = Country::all();
-
-            // list all user profiles by name and id
-            $profile = Profile::where('id', 2)->lists('name', 'id');
-
-            // list all user reception centers by name and id
-            $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
-
             // obtain registration of user credentials
             $employee = User::findOrFail($id);
 
@@ -151,7 +148,7 @@ class AdministratorController extends Controller
             $people = People::findOrFail($people);
 
             // return the form view with variables
-            return view('administration.admin.edit', compact('isEmployee', 'country', 'employee', 'people', 'profile', 'reception_center'));
+            return view('administration.admin.edit', compact('employee', 'people'))->with(['country' => $this->country, 'isEmployee' => $this->isEmployee, 'profile' => $this->profile, 'reception_center' => $this->reception_center]);
         }
 
         return Access::redirectDefault();
@@ -184,6 +181,8 @@ class AdministratorController extends Controller
             $credentials = [
 
                 'email'        => $collection['email'],
+
+                'reception_id' => $request->input('reception_id'),
             ];
 
             // update access credentials

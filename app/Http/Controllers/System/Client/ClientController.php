@@ -34,7 +34,7 @@ class ClientController extends Controller
         } else {
 
             // Get Country
-            $this->country = Country::where('id', Auth::user()->people->province->country->id)->get();
+            $this->country = Country::singleCountry(Auth::user()->myCountry());
         }
 
         //view profiles and reception centers
