@@ -17,9 +17,7 @@ $factory->define(App\Models\Administration\ReceptionCenter::class, function ($fa
 
         'name'        => $faker->catchPhrase,
 
-        'country'     => $faker->country,
-
-        'province'    => $faker->state,
+        'province_id' => $faker->numberBetween($min = 1, $max = 36),
 
         'city'        => $faker->city,
 
@@ -59,11 +57,11 @@ $factory->define(App\Models\Credentials\User::class, function ($faker) {
 
         'password'     => bcrypt('gt123456'),
 
-        'profile_id'   => $faker->randomElement($array = array (3,4,5,6)),
+        'profile_id'   => $faker->randomElement($array = array (3)),
 
-        'people_id'    => $faker->unique()->numberBetween($min = 6, $max = 205),
+        'people_id'    => $faker->unique()->numberBetween($min = 6, $max = 55),
 
-        'reception_id' => $faker->numberBetween($min = 2, $max = 50),
+        'reception_id' => $faker->numberBetween($min = 2, $max = 15),
     ];
 
 });

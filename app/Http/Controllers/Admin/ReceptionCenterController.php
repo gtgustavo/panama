@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\Helper;
 use App\Helpers\System\Access;
 use App\Http\Requests\Administration\ReceptionCenterRequest;
+use App\Models\Administration\Country;
 use App\Models\Administration\ReceptionCenter;
 
 use App\Http\Requests;
@@ -49,7 +50,10 @@ class ReceptionCenterController extends Controller
     {
         if(Access::allow('create-reception-center'))
         {
-            return view('administration.reception_center.create');
+            // List of country
+            $country = Country::all();
+
+            return view('administration.reception_center.create', compact('country'));
         }
 
         return Access::redirectDefault();
@@ -89,7 +93,10 @@ class ReceptionCenterController extends Controller
         {
             $reception_center = ReceptionCenter::findOrFail($id);
 
-            return view('administration.reception_center.edit', compact('reception_center'));
+            // List of country
+            $country = Country::all();
+
+            return view('administration.reception_center.edit', compact('reception_center', 'country'));
         }
 
         return Access::redirectDefault();

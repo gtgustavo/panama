@@ -20,17 +20,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('reception', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50);
-            $table->string('country', 50);
-            $table->string('province', 50);
-            $table->string('city', 50);
-            $table->string('postal_code', 10);
-            $table->string('address', 150);
-            $table->timestamps();
-        });
-
         Schema::create('country', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
@@ -44,6 +33,20 @@ class CreateUsersTable extends Migration
             $table->integer('country_id')->unsigned();
 
             $table->foreign('country_id')->references('id')->on('country')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+
+        Schema::create('reception', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->integer('province_id')->unsigned();
+            $table->string('city', 50);
+            $table->string('postal_code', 10)->nullable();
+            $table->string('address', 150);
+
+            $table->foreign('province_id')->references('id')->on('province')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
@@ -119,9 +122,9 @@ class CreateUsersTable extends Migration
         Schema::drop('role');
         Schema::drop('user');
         Schema::drop('people');
+        Schema::drop('reception');
         Schema::drop('province');
         Schema::drop('country');
-        Schema::drop('reception');
         Schema::drop('profile');
     }
 }

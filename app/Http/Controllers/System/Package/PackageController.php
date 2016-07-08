@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
 
 class PackageController extends Controller
@@ -70,6 +71,8 @@ class PackageController extends Controller
                 $package = new Package($request->all());
 
                 $package->user_id = $client;
+
+                $package->reception_id = Auth::user()->reception_id;
 
                 $package->status = 'ENTREGADO EN CENTRO';
 

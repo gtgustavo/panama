@@ -30,7 +30,7 @@ class AdministratorController extends Controller
     {
         if(Access::allow('view-administrator'))
         {
-            $employees     = User::FilterAndPaginateAdministrator($request->get('search'), $request->get('type'));
+            $employees     = User::FilterAndPaginateAdministrator();
 
             $cant_profiles = Profile::where('id', '!=', 3)->count();
 

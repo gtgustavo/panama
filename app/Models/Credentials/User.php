@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -57,6 +58,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->profile_id == 3;
     }
 
+    public function myCountry()
+    {
+        return Auth::user()->people->province->country->id;
+    }
+
     public function people()
     {
         return $this->hasOne('App\Models\Credentials\People', 'id', 'people_id');
@@ -82,37 +88,41 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Models\Support\Support');
     }
 
-    public static function FilterAndPaginate($search, $field)
+    public static function FilterAndPaginate($reception, $profile)
     {
-        return User::name($search, $field)
+        return User::center($reception, $profile)
             ->where('profile_id', '!=', '3')
             ->where('profile_id', '!=', '1')
             ->orderBy('id', 'ASC')
             ->get();
     }
 
-    public static function FilterAndPaginateClient($search, $field)
+    public static function FilterAndPaginateClient($reception, $profile)
     {
-        return User::name($search, $field)
+        return User::center($reception, $profile)
             ->where('profile_id', '3')
             ->orderBy('id', 'DES')
             ->get();
     }
 
-    public static function FilterAndPaginateAdministrator($search, $field)
+    public static function FilterAndPaginateAdministrator()
     {
-        return User::name($search, $field)
-            ->where('profile_id', '2')
+        return User::where('profile_id', '2')
             ->orderBy('id', 'DES')
             ->get();
     }
 
-    public function scopeName($query, $search, $field)
+
+    public function scopeCenter($query, $reception, $profile)
     {
-        if ((trim($search) != "") AND (trim($field) != "")){
+        if($profile == 1)
+        {
+            $query->where('reception_id', '!=', 0);
 
-            $query->where($field, "LIKE", "%$search%");
+        } else {
 
+            $query->where('reception_id', $reception);
         }
     }
+
 }

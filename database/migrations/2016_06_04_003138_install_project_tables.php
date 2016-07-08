@@ -82,6 +82,7 @@ class InstallProjectTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('consigning_id')->unsigned();
             $table->integer('box_id')->unsigned();
+            $table->integer('reception_id')->unsigned();
 
             $table->string('magaya', 50);
 
@@ -107,6 +108,8 @@ class InstallProjectTables extends Migration
             $table->foreign('consigning_id')->references('id')->on('consigning')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('box_id')->references('id')->on('box')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('reception_id')->references('id')->on('reception')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

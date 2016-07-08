@@ -8,7 +8,7 @@ class Package extends Model
 {
     protected $table = 'package';
 
-    protected $fillable = ['user_id', 'shipment_id', 'wr', 'consigning_id', 'box_id', 'magaya', 'shipping_type', 'extra_pounds', 'cost', 'status', 'note'];
+    protected $fillable = ['user_id', 'shipment_id', 'wr', 'consigning_id', 'box_id', 'reception_id', 'magaya', 'shipping_type', 'extra_pounds', 'cost', 'status', 'note'];
 
     public function client()
     {

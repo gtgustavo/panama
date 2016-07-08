@@ -24,7 +24,7 @@ class TicketsController extends Controller
     {
         if(Access::allow('view-tickets'))
         {
-            $tickets   = Ticket::with('pendingCount')->with('respondedCount')->get();
+            $tickets   = Ticket::all();
 
             $reception = ReceptionCenter::count();
 

@@ -89,6 +89,37 @@
 
             <li>
                 <a class="accordion-toggle" href="#">
+                    <span class="fa fa-university"></span>
+                    <span class="sidebar-title"> {!! trans('front.sidebar.sub_title.reception_centers') !!} </span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="nav sub-nav">
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-university"></span>
+                            {{ trans('front.sidebar.sub_title.reception_centers') }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="{{ route('reception_center_create') }}">
+                                    {!! trans('front.form.reception_center.create') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('reception_center_home') }}">
+                                    {{ trans('front.sidebar.sub_sub_title.list_reception_center') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a class="accordion-toggle" href="#">
                     <span class="fa fa-suitcase"></span>
                     <span class="sidebar-title"> {!! trans('front.sidebar.title.deal') !!} </span>
                     <span class="caret"></span>
@@ -137,7 +168,6 @@
 
                 </ul>
             </li>
-
 
             <li>
                 <a class="accordion-toggle" href="#">
@@ -190,38 +220,17 @@
                 </ul>
             </li>
 
-
             <li>
                 <a class="accordion-toggle" href="#">
-                    <span class="fa fa-life-ring"></span>
-                    <span class="sidebar-title"> {!! trans('front.sidebar.title.support') !!} </span>
+                    <span class="fa fa-ticket"></span>
+                    <span class="sidebar-title"> {!! trans('front.sidebar.sub_sub_title.list_ticket') !!} </span>
                     <span class="caret"></span>
                 </a>
                 <ul class="nav sub-nav">
 
                     <li>
                         <a class="accordion-toggle" href="#">
-                            <span class="fa fa-university"></span>
-                            {{ trans('front.sidebar.sub_title.reception_centers') }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="{{ route('reception_center_create') }}">
-                                    {!! trans('front.form.reception_center.create') !!}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('reception_center_home') }}">
-                                    {{ trans('front.sidebar.sub_sub_title.list_reception_center') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-ticket"></span>
+                            <span class="fa fa-life-ring"></span>
                             {{ trans('front.sidebar.sub_title.tickets') }}
                             <span class="caret"></span>
                         </a>

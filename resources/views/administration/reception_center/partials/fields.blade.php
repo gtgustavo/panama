@@ -7,11 +7,31 @@
 <div class="section row">
 
     <div class="col-md-6">
-        {!! Field::text('country',  ['class' => 'gui-input', 'ph' => trans('validation.attributes.country'), 'max' => '50']) !!}
+
+        <label for="client" class="field-label text-muted fs18 mb10">
+            {!! trans('validation.attributes.country') !!}
+        </label>
+
+        <select name="country_id" id="country" class="form-control" required>
+
+            <option value=""> {!! trans('front.form.element.option') !!} </option>
+
+            @foreach($country as $data)
+
+                <option value="{!! $data->id !!}"> {!! $data->name !!} </option>
+
+            @endforeach
+
+        </select>
+
     </div>
 
     <div class="col-md-6">
-        {!! Field::text('province', ['class' => 'gui-input', 'ph' => trans('validation.attributes.province'),  'max' => '50']) !!}
+        <label for="client" class="field-label text-muted fs18 mb10">
+            {!! trans('validation.attributes.province') !!}
+        </label>
+
+        <select name="province_id" id="province" class="form-control" required></select>
     </div>
 
 </div>
@@ -42,3 +62,9 @@
         </p>
     </div>
 </div>
+
+@section('script')
+
+    @include('administration.employee.partials.ajax_country')
+
+@endsection

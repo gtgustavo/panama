@@ -10,7 +10,6 @@ use App\Models\Credentials\People;
 use App\Models\Credentials\User;
 use App\Models\Support\Support;
 use App\Models\System\Shipment;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -20,18 +19,39 @@ use Styde\Html\Facades\Alert;
 
 class ClientController extends Controller
 {
+    private $country;
+
+    private $isEmployee;
+
+    public function __construct()
+    {
+        // Is Super Admin
+        if(Auth::user()->profile_id == 1)
+        {
+            // Get Country
+            $this->country = Country::all();
+
+        } else {
+
+            // Get Country
+            $this->country = Country::where('id', Auth::user()->people->province->country->id)->get();
+        }
+
+        //view profiles and reception centers
+        $this->isEmployee = false;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         // validate if you have permission to perform this action
         if(Access::allow('view-client'))
         {
-            $clients      = User::FilterAndPaginateClient($request->get('search'), $request->get('type'));
+            $clients      = User::FilterAndPaginateClient(Auth::user()->reception_id, Auth::user()->profile_id);
 
             $cant_clients = User::where('profile_id', 3)->count();
 
@@ -58,14 +78,8 @@ class ClientController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('create-client'))
         {
-            //view profiles and reception centers
-            $isEmployee = false;
-
-            // List of country
-            $country = Country::all();
-
             // return the form view
-            return view('system.client.create', compact('isEmployee', 'country'));
+            return view('system.client.create')->with(['country' => $this->country, 'isEmployee' => $this->isEmployee]);
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
@@ -135,12 +149,6 @@ class ClientController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('edit-client'))
         {
-            //view profiles and reception centers
-            $isEmployee = false;
-
-            // List of country
-            $country = Country::all();
-
             // obtain registration of user credentials
             $client = User::findOrFail($id);
 
@@ -148,7 +156,7 @@ class ClientController extends Controller
             $people = People::findOrFail($people);
 
             // return the form view with variables
-            return view('system.client.edit', compact('isEmployee', 'country', 'client', 'people'));
+            return view('system.client.edit', compact('client', 'people'))->with(['country' => $this->country, 'isEmployee' => $this->isEmployee]);
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message

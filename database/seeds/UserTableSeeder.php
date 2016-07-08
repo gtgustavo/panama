@@ -15,10 +15,8 @@ class UserTableSeeder extends Seeder
     {
         DB::table('reception')->insert(array(
             'name'        => 'ONLINE',
-            'country'     => 'ONLINE',
-            'province'    => 'ONLINE',
-            'city'        => 'ONLINE',
-            'postal_code' => 'ONLINE',
+            'province_id' => 23,
+            'city'        => 'CARACAS',
             'address'     => 'ONLINE',
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
@@ -29,7 +27,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'Admin',
             'dni'         => '12345660',
             'phone_c'     => '55558888888',
-            'province_id' => 17,
+            'province_id' => 23,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -39,7 +37,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'Allucanship',
             'dni'         => '12345670',
             'phone_c'     => '55558888888',
-            'province_id' => 17,
+            'province_id' => 23,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -49,7 +47,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'CENTER',
             'dni'         => '12345671',
             'phone_c'     => '55558888888',
-            'province_id' => 17,
+            'province_id' => 23,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -59,7 +57,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'CENTER',
             'dni'         => '12345672',
             'phone_c'     => '55558888888',
-            'province_id' => 17,
+            'province_id' => 23,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -69,7 +67,7 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'Admin',
             'dni'         => '12345673',
             'phone_c'     => '55558888888',
-            'province_id' => 17,
+            'province_id' => 23,
             'created_at'  => Carbon::now(),
             'updated_at'  => Carbon::now(),
         ));
@@ -129,10 +127,10 @@ class UserTableSeeder extends Seeder
             'updated_at'   => Carbon::now(),
         ));
 
-        factory(App\Models\Administration\ReceptionCenter::class, 49)->create();
+        factory(App\Models\Administration\ReceptionCenter::class, 14)->create();
 
-        factory(App\Models\Credentials\People::class, 200)->create();
+        factory(App\Models\Credentials\People::class, 50)->create();
 
-        factory(App\Models\Credentials\User::class, 200)->create();
+        factory(App\Models\Credentials\User::class, 50)->create();
     }
 }

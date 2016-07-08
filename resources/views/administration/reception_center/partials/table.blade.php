@@ -21,6 +21,8 @@
                         <th class="system">{!! trans('front.form.reception_center.table.province') !!} </th>
                         <th class="system">{!! trans('front.form.reception_center.table.city') !!}     </th>
                         <th class="system">{!! trans('front.form.reception_center.table.employee') !!} </th>
+                        <th class="system">{!! trans('front.form.reception_center.table.client') !!}   </th>
+                        <th class="system">{!! trans('front.form.reception_center.table.package') !!}  </th>
                         <th class="system"></th>
                     </tr>
                 </thead>
@@ -30,12 +32,14 @@
                     @foreach($reception_center as $reception)
 
                         <tr>
-                            <td class=""> {{ $reception->id }}             </td>
-                            <td class=""> {{ $reception->name }}           </td>
-                            <td class=""> {{ $reception->country }}        </td>
-                            <td class=""> {{ $reception->province }}       </td>
-                            <td class=""> {{ $reception->city }}           </td>
-                            <td class=""> {{ $reception->users->count() }} </td>
+                            <td class=""> {{ $reception->id }}                                  </td>
+                            <td class=""> {{ $reception->name }}                                </td>
+                            <td class=""> {{ $reception->province->country->name }}             </td>
+                            <td class=""> {{ $reception->province->name }}                      </td>
+                            <td class=""> {{ $reception->city }}                                </td>
+                            <td class=""> {{ $reception->employeeCount->first()['aggregate'] }} </td>
+                            <td class=""> {{ $reception->clientCount->first()['aggregate'] }}   </td>
+                            <td class=""> {{ $reception->packageCount->first()['aggregate'] }}  </td>
 
                             <td class="text-right">
 
@@ -75,6 +79,8 @@
                     <th class="system">{!! trans('front.form.reception_center.table.province') !!} </th>
                     <th class="system">{!! trans('front.form.reception_center.table.city') !!}     </th>
                     <th class="system">{!! trans('front.form.reception_center.table.employee') !!} </th>
+                    <th class="system">{!! trans('front.form.reception_center.table.client') !!}   </th>
+                    <th class="system">{!! trans('front.form.reception_center.table.package') !!}  </th>
                     <th class="system"></th>
                 </tr>
                 </tfoot>

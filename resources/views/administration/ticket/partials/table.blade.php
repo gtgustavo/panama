@@ -28,10 +28,10 @@
                     @foreach($tickets as $ticket)
 
                         <tr>
-                            <td class=""> {{ $ticket->id }}                      </td>
-                            <td class=""> {{ $ticket->theme }}                   </td>
-                            <td class=""> {{ $ticket->pendingCount->count() }}   </td>
-                            <td class=""> {{ $ticket->respondedCount->count() }} </td>
+                            <td class=""> {{ $ticket->id }}                                   </td>
+                            <td class=""> {{ $ticket->theme }}                                </td>
+                            <td class=""> {{ $ticket->pendingCount->first()['aggregate'] }}   </td>
+                            <td class=""> {{ $ticket->respondedCount->first()['aggregate'] }} </td>
 
                             <td class="text-right">
 

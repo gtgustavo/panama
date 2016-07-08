@@ -205,7 +205,11 @@ return [
 
                 'city'     => 'CIUDAD',
 
-                'employee' => 'EMPLEADO',
+                'employee' => 'EMPLEADOS',
+
+                'client'   => 'CLIENTES',
+
+                'package'  => 'PAQUETES',
             ],
 
             'events' => [

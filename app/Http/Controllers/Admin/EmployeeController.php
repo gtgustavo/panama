@@ -11,28 +11,62 @@ use App\Models\Credentials\People;
 use App\Models\Security\Profile;
 use App\Models\Security\Role;
 use App\Models\Credentials\User;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Styde\Html\Facades\Alert;
 
 class EmployeeController extends Controller
 {
+    private $country;
+
+    private $isEmployee;
+
+    private $profile;
+
+    private $reception_center;
+
+    public function __construct()
+    {
+        // Is Super Admin
+        if(Auth::user()->profile_id == 1)
+        {
+            // Get Country
+            $this->country = Country::all();
+
+            // list all user reception centers by name and id
+            $this->reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
+
+        } else {
+
+            // Get Country
+            $this->country = Country::simpleCountry(Auth::user()->myCountry());
+
+            // list all user reception centers by name and id
+            $this->reception_center = ReceptionCenter::where('province_id', Auth::user()->people->province->id)->where('id', '>', 1)->lists('name', 'id');
+        }
+
+        //view profiles and reception centers
+        $this->isEmployee = true;
+
+        // list all user profiles by name and id
+        $this->profile = Profile::where('id', '>', 3)->lists('name', 'id');
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         // validate if you have permission to perform this action
         if(Access::allow('view-employees'))
         {
             //
-            $employees     = User::FilterAndPaginate($request->get('search'), $request->get('type'));
+            $employees     = User::FilterAndPaginate(Auth::user()->reception_id, Auth::user()->profile_id);
 
             $cant_profiles = Profile::where('id', '!=', 3)->count();
 
@@ -59,20 +93,8 @@ class EmployeeController extends Controller
         // validate if you have permission to perform this action
         if(Access::allow('create-employees'))
         {
-            //view profiles and reception centers
-            $isEmployee = true;
-
-            // List of country
-            $country = Country::all();
-
-            // list all user profiles by name and id
-            $profile = Profile::where('id', '>', 3)->lists('name', 'id');
-
-            // list all user reception centers by name and id
-            $reception_center = ReceptionCenter::where('id', '>', 1)->lists('name', 'id');
-
             // return the form view with lists
-            return view('administration.employee.create', compact('isEmployee', 'country', 'profile', 'reception_center'));
+            return view('administration.employee.create')->with(['country' => $this->country, 'isEmployee' => $this->isEmployee, 'profile' => $this->profile, 'reception_center' => $this->reception_center]);;
         }
 
         // if you do not have permission to perform this option, we return to the previous page with a default message
