@@ -22,6 +22,24 @@ class UserTableSeeder extends Seeder
             'updated_at'  => Carbon::now(),
         ));
 
+        DB::table('reception')->insert(array(
+            'name'        => 'MWR VENEZUELA',
+            'province_id' => 23,
+            'city'        => 'CARACAS',
+            'address'     => 'CARACAS',
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+        ));
+
+        DB::table('reception')->insert(array(
+            'name'        => 'MWR PANAMA',
+            'province_id' => 8,
+            'city'        => 'PANAMA',
+            'address'     => 'PANAMA',
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
+        ));
+
         DB::table('people')->insert(array(
             'first_name'  => 'System',
             'last_name'   => 'Admin',
@@ -127,10 +145,10 @@ class UserTableSeeder extends Seeder
             'updated_at'   => Carbon::now(),
         ));
 
-        factory(App\Models\Administration\ReceptionCenter::class, 14)->create();
+        //factory(App\Models\Administration\ReceptionCenter::class, 14)->create();
 
-        factory(App\Models\Credentials\People::class, 50)->create();
+        factory(App\Models\Credentials\People::class, 20)->create();
 
-        factory(App\Models\Credentials\User::class, 50)->create();
+        factory(App\Models\Credentials\User::class, 20)->create();
     }
 }

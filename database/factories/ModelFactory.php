@@ -59,9 +59,9 @@ $factory->define(App\Models\Credentials\User::class, function ($faker) {
 
         'profile_id'   => $faker->randomElement($array = array (3)),
 
-        'people_id'    => $faker->unique()->numberBetween($min = 6, $max = 55),
+        'people_id'    => $faker->unique()->numberBetween($min = 6, $max = 25),
 
-        'reception_id' => $faker->numberBetween($min = 2, $max = 15),
+        'reception_id' => $faker->numberBetween($min = 2, $max = 3),
     ];
 
 });
