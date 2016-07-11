@@ -14,7 +14,7 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
-            @include('dashboard.client.partials.tiles')
+            @include('dashboard.client.partials.tiles_2')
 
             <br>
 

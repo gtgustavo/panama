@@ -20,7 +20,7 @@
         <div class="tray tray-center">
 
             @can('client')
-                @include('dashboard.client.partials.tiles')
+                @include('dashboard.client.partials.tiles_2')
                 <br>
             @endcan
 

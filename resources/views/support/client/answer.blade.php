@@ -14,7 +14,7 @@
         <div class="tray tray-center">
 
             <!-- dashboard tiles -->
-            @include('dashboard.client.partials.tiles')
+            @include('dashboard.client.partials.tiles_2')
 
             <br>
 
@@ -51,8 +51,5 @@
 @endsection
 
 @section('script')
-    <script>
-        // slider panel clients
-        jssor_1_slider_init();
-    </script>
+    {!! Html::script('assets/js/app/slider_client/init.js') !!}
 @endsection

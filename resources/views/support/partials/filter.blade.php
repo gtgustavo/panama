@@ -8,7 +8,7 @@
 
     </div>
 
-    {!! Form::submit(trans('front.form.button.search'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::submit(trans('front.form.button.search'), ['class' => 'btn orange']) !!}
 
     {!! Form::close() !!}
 

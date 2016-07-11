@@ -213,17 +213,19 @@ Route::group(['prefix' => 'consigning/{client}', 'middleware' => ['web', 'auth']
 // Routes Package
 Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System\Package'], function(){
 
-    Route::get('/',           ['uses' => 'PackageController@index',        'as' => 'package_home']);
+    Route::get('/',            ['uses' => 'PackageController@index',        'as' => 'package_home']);
 
-    Route::get('create',      ['uses' => 'PackageController@create',       'as' => 'package_create']);
+    Route::get('create',       ['uses' => 'PackageController@create',       'as' => 'package_create']);
 
-    Route::post('create',     ['uses' => 'PackageController@store',        'as' => 'package_create']);
+    Route::post('create',      ['uses' => 'PackageController@store',        'as' => 'package_create']);
 
-    Route::get('{id}/edit',   ['uses' => 'PackageController@edit',         'as' => 'package_edit']);
+    Route::get('web_check_in', ['uses' => 'PackageController@show',         'as' => 'package_web_check_in']);
 
-    Route::put('{id}/update', ['uses' => 'PackageController@update',       'as' => 'package_update']);
+    Route::get('{id}/view',    ['uses' => 'PackageController@edit',         'as' => 'package_view_web_check_in']);
 
-    Route::post('status',     ['uses' => 'StatusPackageController@status', 'as' => 'package_change_status']);
+    Route::put('{id}/receive', ['uses' => 'PackageController@update',       'as' => 'package_receive']);
+
+    Route::post('status',      ['uses' => 'StatusPackageController@status', 'as' => 'package_change_status']);
 });
 
 // Routes Shipment

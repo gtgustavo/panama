@@ -10,6 +10,10 @@
             </li>
 
             <li>
+                <a href="{{ route('package_web_check_in') }}">   {{ trans('front.form.other.wed') }}  </a>
+            </li>
+
+            <li>
                 <a href="{{ route('client_home') }}">   {{ trans('front.sidebar.sub_title.clients') }}  </a>
             </li>
 
@@ -27,13 +31,13 @@
 
     <div class="topbar-right hidden-xs hidden-sm">
 
-        <a href="{{ route('package_create') }}" class="btn btn-danger btn-sm light fw600 ml10">
+        <a href="{{ route('package_create') }}" class="btn orange btn-sm light fw600 ml10">
             <span class="fa fa-cube pr5"></span> {!! trans('front.form.package.create') !!} </a>
 
-        <a href="{{ route('client_create') }}"  class="btn btn-danger btn-sm light fw600 ml10">
+        <a href="{{ route('client_create') }}"  class="btn orange btn-sm light fw600 ml10">
             <span class="fa fa-user pr5"></span> {!! trans('front.form.client.create') !!}  </a>
 
-        <a href="{{ route('shipment_create') }}"  class="btn btn-danger btn-sm light fw600 ml10">
+        <a href="{{ route('shipment_create') }}"  class="btn orange btn-sm light fw600 ml10">
             <span class="fa fa-ship pr5"></span> {!! trans('front.form.shipment.create') !!}  </a>
 
     </div>

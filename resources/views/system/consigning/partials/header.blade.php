@@ -10,6 +10,10 @@
             </li>
 
             <li>
+                <a href="{{ route('package_web_check_in') }}">   {{ trans('front.form.other.wed') }}  </a>
+            </li>
+
+            <li>
                 <a href="{{ route('client_home') }}">   {{ trans('front.sidebar.sub_title.clients') }}  </a>
             </li>
 

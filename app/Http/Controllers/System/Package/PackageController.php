@@ -99,6 +99,37 @@ class PackageController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+        if(Access::allow('view-package'))
+        {
+            $web = false;
+
+            $packages = Package::where('status', 'PRECHEQUEADO')->get();
+
+            $wed_check_in      = Package::where('status', 'PRECHEQUEADO')->count();
+
+            $reception_center  = Package::where('status', 'ENTREGADO EN CENTRO')->count();
+
+            $sent_shipping     = Package::where('status', 'ENVIADO A CENTRO DE EMBARQUE')->count();
+
+            $received_shipping = Package::where('status', 'RECIBIDO EN CENTRO DE EMBARQUE')->count();
+
+            $shipment          = Package::where('status', 'EMBARCADO')->count();
+
+            $received          = Package::where('status', 'RECIBIDO EN CENTRO PAÍS DESTINO')->count();
+
+            return view('system.package.web_check_in', compact('web', 'packages', 'wed_check_in', 'reception_center', 'sent_shipping', 'received_shipping', 'shipment', 'received'));
+        }
+
+        return Access::redirectDefault();
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -108,7 +139,9 @@ class PackageController extends Controller
     {
         if(Access::allow('edit-package'))
         {
-            //
+            $package = Package::findOrFail($id);
+
+            dd($package);
         }
 
         return Access::redirectDefault();

@@ -4,11 +4,11 @@
 
     <div class="form-group">
 
-        {!! Form::select('status', config('options.status_package'), null, ['class' => 'form-control']) !!}
+        {!! Form::select('status', config('options.status_package_client'), null, ['class' => 'form-control']) !!}
 
     </div>
 
-    {!! Form::submit(trans('front.form.button.search'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::submit(trans('front.form.button.search'), ['class' => 'btn orange']) !!}
 
     {!! Form::close() !!}
 

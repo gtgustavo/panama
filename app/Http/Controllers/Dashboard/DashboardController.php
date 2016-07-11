@@ -88,6 +88,8 @@ class DashboardController extends Controller
 
         $packages = Package::FilterAndPaginateStatus($search, Auth::user()->reception_id, Auth::user()->profile_id);
 
+        $web = true;
+
         $wed_check_in      = Package::where('status', 'PRECHEQUEADO')->count();
 
         $reception_center  = Package::where('status', 'ENTREGADO EN CENTRO')->count();
@@ -100,7 +102,7 @@ class DashboardController extends Controller
 
         $received          = Package::where('status', 'RECIBIDO EN CENTRO PAÍS DESTINO')->count();
 
-        return view('dashboard.admin.index', compact('packages', 'wed_check_in', 'reception_center', 'sent_shipping', 'received_shipping', 'shipment', 'received'));
+        return view('dashboard.admin.index', compact('web', 'packages', 'wed_check_in', 'reception_center', 'sent_shipping', 'received_shipping', 'shipment', 'received'));
     }
 
     public function client(Request $request)

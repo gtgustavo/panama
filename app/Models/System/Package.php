@@ -63,7 +63,7 @@ class Package extends Model
 
         } else {
 
-            $query->where('reception_id', $reception);
+            $query->where('reception_id', $reception)->where('status', '!=', 'PRECHEQUEADO');
         }
     }
 

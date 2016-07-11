@@ -8,6 +8,9 @@
 <!-- HighCharts Plugin -->
 {!! Html::script('vendor/plugins/highcharts/highcharts.js') !!}
 
+<!-- Slick Slider Plugin -->
+{!! Html::script('vendor/plugins/slick/slick.js') !!}
+
 <!-- Calendar date picker -->
 {!! Html::script('assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js') !!}
 {!! Html::script('assets/admin-tools/admin-forms/js/i18n/datepicker-es.js') !!}

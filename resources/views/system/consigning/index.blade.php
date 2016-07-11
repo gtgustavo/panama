@@ -22,7 +22,7 @@
             <!-- dashboard tiles -->
             @can('client')
 
-                @include('dashboard.client.partials.tiles')
+                @include('dashboard.client.partials.tiles_2')
                 <br>
             @else
 
@@ -42,8 +42,8 @@
 @endsection
 
 @section('script')
-    <script>
-        // slider panel clients
-        jssor_1_slider_init();
-    </script>
+
+    <!-- Slider Client -->
+    {!! Html::script('assets/js/app/slider_client/init.js') !!}
+
 @endsection

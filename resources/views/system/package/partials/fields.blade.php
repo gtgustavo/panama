@@ -198,7 +198,7 @@
 
     <div class="col-sm-12">
         <p class="text-right">
-            {!! Form::submit($button, ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit($button, ['class' => 'btn orange']) !!}
         </p>
     </div>
 </div>
@@ -207,9 +207,7 @@
 
     @include('system.package.partials.ajax')
 
-    <script>
-        // slider panel clients
-        jssor_1_slider_init();
-    </script>
+    <!-- Slider Client -->
+    {!! Html::script('assets/js/app/slider_client/init.js') !!}
 
 @endsection

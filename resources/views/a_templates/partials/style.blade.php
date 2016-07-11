@@ -1,6 +1,9 @@
 <!-- Font CSS -->
 {!! Html::style('assets/font_css.css') !!}
 
+<!-- Slick.js CSS -->
+{!! Html::style('vendor/plugins/slick/slick.css') !!}
+
 <!-- Theme CSS -->
 {!! Html::style('assets/skin/default_skin/css/theme.css') !!}
 
@@ -18,5 +21,11 @@
 
 <!-- Slider -->
 {!! Html::style('assets/js/app/slider/slider.css') !!}
+
+<!-- Image Responsive -->
+{!! Html::style('assets/responsive_image.css') !!}
+
+<!-- Style Required -->
+{!! Html::style('assets/color_button.css') !!}
 
 @yield('style')

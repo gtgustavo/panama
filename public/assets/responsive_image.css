@@ -1,0 +1,9 @@
+/* Esta imagen de adapta al ancho de lo que lo contenga con un máximo de 600px */
+img{
+    width:100%;
+    max-width:600px;
+}
+/* Este es el segundo método */
+img{
+    max-width:100%;
+}

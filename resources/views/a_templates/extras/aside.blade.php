@@ -307,6 +307,11 @@
                                 <span class="fa fa-cube"></span> {!! trans('front.form.package.create') !!}
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('package_web_check_in') }}">
+                                <span class="fa fa-cube"></span> {!! trans('front.form.other.wed') !!}
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
