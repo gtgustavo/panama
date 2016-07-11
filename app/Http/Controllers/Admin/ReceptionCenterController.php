@@ -12,6 +12,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Support\Support;
 use App\Models\Support\Ticket;
+use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
 
 class ReceptionCenterController extends Controller
@@ -25,7 +26,7 @@ class ReceptionCenterController extends Controller
     {
         if(Access::allow('view-reception-center'))
         {
-            $reception_center = ReceptionCenter::all();
+            $reception_center = ReceptionCenter::FilterAndPaginate(Auth::user()->reception_id, Auth::user()->profile_id);
 
             $reception        = ReceptionCenter::count();
 

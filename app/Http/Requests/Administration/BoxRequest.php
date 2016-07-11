@@ -29,13 +29,13 @@ class BoxRequest extends Request
 
             'dimensions'       => 'required|string|max:20|min:4|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\.\- ]+$/i',
 
-            'maximum_poundage' => 'required|numeric|between:0,999999.99',
+            'maximum_poundage' => 'numeric|between:0,999999.99',
 
-            'cost_extra_pound' => 'required|numeric|between:0,999999.99',
+            'cost_extra_pound' => 'numeric|between:0,999999.99',
 
             'cost_standard'    => 'required|numeric|between:0,999999.99',
 
-            'cost_express'     => 'required|numeric|between:0,999999.99'
+            'cost_express'     => 'numeric|between:0,999999.99'
 
         ];
     }

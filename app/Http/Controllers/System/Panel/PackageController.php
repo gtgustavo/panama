@@ -63,6 +63,8 @@ class PackageController extends Controller
 
         $package->user_id = $this->user->id;
 
+        $package->reception_id = $this->user->reception_id;
+
         $package->save();
 
         ChangeStatus::create([

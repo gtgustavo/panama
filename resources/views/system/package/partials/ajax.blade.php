@@ -58,20 +58,38 @@
 
         $("#shipping_type").change(function () {
 
+            var type = $(this).val();
+
+            if(type == 'STANDARD')
+            {
+                $('#extra_pounds').prop('disabled', true);
+            }
+            else if(type == 'EXPRESS')
+            {
+                $('#extra_pounds').prop('disabled', false);
+            }
+
             calculate_shipping_cost();
         });
 
         function calculate_shipping_cost()
         {
-            var extra = $('#extra_pounds').val();
+            if($('#extra_pounds').is(':disabled') || $('#extra_pounds').val() == ''){
+
+                var extra = 0;
+
+            } else {
+
+                var extra = $('#extra_pounds').val();
+            }
 
             var box = $('#box').val();
 
             var shipping_type = $('#shipping_type').val();
 
-            if(extra == '')
+            if(box == '')
             {
-                extra = 0;
+                box = null;
             }
 
             $.ajax({

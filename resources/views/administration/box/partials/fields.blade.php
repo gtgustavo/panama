@@ -1,6 +1,14 @@
 <div class="section row">
 
     <div class="col-md-6">
+        <input type="checkbox" name="control" id="control" class="checkbox"> Express
+    </div>
+
+</div>
+
+<div class="section row">
+
+    <div class="col-md-6">
         {!! Field::text('box', ['class' => 'gui-input', 'ph' => trans('validation.attributes.box'), 'max' => '50']) !!}
     </div>
 
@@ -13,11 +21,11 @@
 <div class="section row">
 
     <div class="col-md-6">
-        {!! Field::text('maximum_poundage', ['class' => 'gui-input', 'ph' => trans('validation.attributes.maximum_poundage'), 'max' => '20']) !!}
+        {!! Field::text('maximum_poundage', ['class' => 'gui-input', 'ph' => trans('validation.attributes.maximum_poundage'), 'max' => '20', 'disabled']) !!}
     </div>
 
     <div class="col-md-6">
-        {!! Field::text('cost_extra_pound', ['class' => 'gui-input', 'ph' => trans('validation.attributes.cost_extra_pound'), 'max' => '10']) !!}
+        {!! Field::text('cost_extra_pound', ['class' => 'gui-input', 'ph' => trans('validation.attributes.cost_extra_pound'), 'max' => '10', 'disabled']) !!}
     </div>
 
 </div>
@@ -29,7 +37,7 @@
     </div>
 
     <div class="col-md-6">
-        {!! Field::text('cost_express', ['class' => 'gui-input', 'ph' => trans('validation.attributes.cost_express'), 'max' => '10']) !!}
+        {!! Field::text('cost_express', ['class' => 'gui-input', 'ph' => trans('validation.attributes.cost_express'), 'max' => '10', 'disabled']) !!}
     </div>
 
 </div>
@@ -56,3 +64,29 @@
         </p>
     </div>
 </div>
+
+@section('script')
+
+    <script>
+
+        $('#control').change(function(){
+
+            if ($('#control').is(':checked') == true){
+
+                $('#maximum_poundage').prop('disabled', false);
+                $('#cost_extra_pound').prop('disabled', false);
+                $('#cost_express').prop('disabled', false);
+                console.log('checked');
+
+            } else {
+
+                $('#maximum_poundage').prop('disabled', true);
+                $('#cost_extra_pound').prop('disabled', true);
+                $('#cost_express').prop('disabled', true);
+                console.log('unchecked');
+            }
+        });
+
+    </script>
+
+@endsection

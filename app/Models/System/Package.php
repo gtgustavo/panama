@@ -30,9 +30,10 @@ class Package extends Model
         return $this->hasOne('App\Models\Administration\Box', 'id', 'box_id');
     }
 
-    public static function FilterAndPaginateStatus($search) //$wr
+    public static function FilterAndPaginateStatus($search, $reception, $profile) //$wr
     {
-        return Package::status($search)
+        return Package::center($reception, $profile)
+            ->status($search)
             //->wr($wr)
             ->orderBy('id', 'ASC')
             ->get();
@@ -51,6 +52,18 @@ class Package extends Model
         if ((trim($search) != ""))
         {
             $query->where('status', $search);
+        }
+    }
+
+    public function scopeCenter($query, $reception, $profile)
+    {
+        if($profile == 1)
+        {
+            $query->where('reception_id', '!=', 0);
+
+        } else {
+
+            $query->where('reception_id', $reception);
         }
     }
 

@@ -48,6 +48,8 @@
 
             <select name="box_id" id="box" class="form-control" required>
 
+                <option value=""></option>
+
                 @foreach($boxes as $data)
 
                     <option value="{!! $data->id !!}"> {!! $data->full_box !!} </option>
@@ -73,7 +75,7 @@
     <div class="section row">
 
         <div class="col-md-6">
-            {!! Field::number('extra_pounds',  ['min' => '0.00', 'step' => '0.01', 'class' => 'gui-input', 'ph' => trans('validation.attributes.extra_pounds'), 'max' => '5']) !!}
+            {!! Field::number('extra_pounds',  ['min' => '0.00', 'step' => '0.01', 'class' => 'gui-input', 'ph' => trans('validation.attributes.extra_pounds'), 'max' => '5', 'disabled']) !!}
         </div>
 
         <div class="col-md-6">
@@ -99,7 +101,7 @@
     <!-- Input hidden control cost shipment -->
 
     <div class="section">
-        {!! Field::text('note', ['class' => 'gui-input', 'ph' => trans('validation.attributes.note'), 'max' => '150']) !!}
+        {!! Field::text('note', ['class' => 'gui-input', 'ph' => trans('validation.attributes.note'), 'max' => '150', 'required']) !!}
     </div>
 
 @else
@@ -137,6 +139,8 @@
             </label>
 
             <select name="box_id" id="box" class="form-control" required>
+
+                <option value=""></option>
 
                 @foreach($boxes as $data)
 

@@ -46,6 +46,7 @@ class ReceptionCenter extends Model
     {
         return $this->packages()
             ->selectRaw('reception_id, count(*) as aggregate')
+            ->where('status', 'ENTREGADO EN CENTRO')
             ->groupBy('reception_id');
     }
 
@@ -58,6 +59,25 @@ class ReceptionCenter extends Model
                 ->where('reception.id', '>', 1);
             })
             ->lists('reception.name', 'reception.id');
+    }
+
+    public static function FilterAndPaginate($reception, $profile)
+    {
+        return ReceptionCenter::center($reception, $profile)
+            ->orderBy('id', 'ASC')
+            ->get();
+    }
+
+    public function scopeCenter($query, $reception, $profile)
+    {
+        if($profile == 1)
+        {
+            $query->where('id', '!=', 0);
+
+        } else {
+
+            $query->where('id', $reception);
+        }
     }
 
     public static function getList()

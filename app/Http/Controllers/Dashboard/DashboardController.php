@@ -86,7 +86,7 @@ class DashboardController extends Controller
     {
         $search = $this->packages($request, $default);
 
-        $packages = Package::FilterAndPaginateStatus($search);
+        $packages = Package::FilterAndPaginateStatus($search, Auth::user()->reception_id, Auth::user()->profile_id);
 
         $wed_check_in      = Package::where('status', 'PRECHEQUEADO')->count();
 

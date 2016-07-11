@@ -149,11 +149,15 @@ class AjaxController extends Controller
 
     public function cost_shipment(Request $request)
     {
-        if($request->ajax())
+        // GET var of jquery
+        // Box id
+        $box_id = $request->input('box');
+
+        if($box_id == null)
         {
-            // GET var of jquery
-            // Box id
-            $box_id = $request->input('box');
+            $cost_net = 0;
+
+        } else {
 
             // Shipping type
             $shipping_type = $request->input('shipping_type');
@@ -182,7 +186,10 @@ class AjaxController extends Controller
 
             // Total to pay
             $cost_net    = $cost_single + $cost_extra;
+        }
 
+        if($request->ajax())
+        {
             echo $cost_net;
         }
     }
