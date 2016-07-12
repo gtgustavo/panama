@@ -32,8 +32,17 @@
 @endsection
 
 @section('script')
+
     <script>
-        // slider panel clients
-        jssor_1_slider_init();
+
+        $(document).ready(function(){
+            $('.bxslider').bxSlider({
+                auto:true,
+                pause: 2000,
+                slideWidth:1600
+            });
+        });
+
     </script>
+
 @endsection

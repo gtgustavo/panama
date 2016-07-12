@@ -31,8 +31,7 @@
 {!! Html::script('assets/js/app/dynamic_table/dataTables.bootstrap.min.js') !!}
 {!! Html::script('assets/js/app/dynamic_table/init_dynamic_table.js') !!}
 
-<!-- Slider -->
-{!! Html::script('assets/js/app/slider/jssor.slider.min.js') !!}
-{!! Html::script('assets/js/app/slider/slider.js') !!}
+<!-- Slider Principal -->
+{!! Html::script('assets/js/app/slider_principal/jquery.bxslider.min.js') !!}
 
 @yield('script')

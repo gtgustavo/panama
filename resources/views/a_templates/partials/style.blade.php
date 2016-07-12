@@ -19,8 +19,8 @@
 <!-- Tables Dynamic -->
 {!! Html::style('assets/js/app/dynamic_table/dataTables.bootstrap.min.css') !!}
 
-<!-- Slider -->
-{!! Html::style('assets/js/app/slider/slider.css') !!}
+<!-- Slider Principal -->
+{!! Html::style('assets/js/app/slider_principal/jquery.bxslider.css') !!}
 
 <!-- Image Responsive -->
 {!! Html::style('assets/responsive_image.css') !!}
