@@ -35,12 +35,6 @@ class StatusPackageController extends Controller
 
                 break;
 
-            case 6:
-
-                $message = $this->reception_received($packages, $new_status);
-
-                break;
-
             default:
 
                 $message = $this->admin($packages, $new_status);
@@ -64,21 +58,21 @@ class StatusPackageController extends Controller
             {
                 if($register->status == 'PRECHEQUEADO' || $register->status == 'ENTREGADO EN CENTRO')
                 {
-                    $this->new_status($register->id, $data_status);
+                    $this->new_status($register->id, $data_status, null);
                 }
             }
             elseif($data_status == 'ENVIADO A CENTRO DE EMBARQUE')
             {
                 if($register->status == 'ENTREGADO EN CENTRO')
                 {
-                    $this->new_status($register->id, $data_status);
+                    $this->new_status($register->id, $data_status, null);
                 }
             }
             elseif($data_status == 'ENTREGADO')
             {
                 if($register->status == 'RECIBIDO EN CENTRO PAÍS DESTINO')
                 {
-                    $this->new_status($register->id, $data_status);
+                    $this->new_status($register->id, $data_status, null);
                 }
             }
         }
@@ -103,14 +97,14 @@ class StatusPackageController extends Controller
                 {
                     if($register->status == 'ENVIADO A CENTRO DE EMBARQUE')
                     {
-                        $this->new_status($register->id, $data_status);
+                        $this->new_status($register->id, $data_status, null);
                     }
                 }
                 elseif($data_status == 'EMBARCADO')
                 {
                     if($register->status == 'RECIBIDO EN CENTRO DE EMBARQUE')
                     {
-                        $this->new_status_shipment($register->id, $data_status, $shipment->id);
+                        $this->new_status($register->id, $data_status, $shipment->id);
                     }
                 }
             }
@@ -121,14 +115,6 @@ class StatusPackageController extends Controller
 
             $message = "Debe crear una guía de embarque";
         }
-
-        return $message;
-    }
-
-    // Status employee reception received
-    private function reception_received($data_package, $data_status)
-    {
-        $message = 'test received';
 
         return $message;
     }
@@ -144,38 +130,15 @@ class StatusPackageController extends Controller
         {
             case 'EMBARCADO':
 
-                $shipment = Shipment::where('status', 'ABIERTO')->get();
+                $shipment = Shipment::where('status', 'ABIERTO')->first();
 
                 $cant = count($shipment);
 
                 if($cant > 0)
                 {
-
-                    foreach($shipment as $data)
-                    {
-                        $id_s = $data->id;
-                    }
-
                     foreach($packages as $package)
                     {
-                        $register = Package::findOrFail($package);
-
-                        $status = [
-
-                            'status' => $new_status,
-
-                            'shipment_id' => $id_s,
-
-                        ];
-
-                        $register->update($status);
-
-                        ChangeStatus::create([
-
-                            'package_id' => $package,
-
-                            'status'     => $register->status
-                        ]);
+                        $this->new_status($package->id, $new_status, $shipment->id);
                     }
 
                     $message = trans('messages.package.change', ['status' => $new_status]);
@@ -191,21 +154,7 @@ class StatusPackageController extends Controller
 
                 foreach($packages as $package)
                 {
-                    $register = Package::findOrFail($package);
-
-                    $status = [
-
-                        'status' => $new_status,
-                    ];
-
-                    $register->update($status);
-
-                    ChangeStatus::create([
-
-                        'package_id' => $package,
-
-                        'status'     => $register->status
-                    ]);
+                    $this->new_status($package->id, $new_status, null);
                 }
 
                 $message = trans('messages.package.change', ['status' => $new_status]);
@@ -216,14 +165,26 @@ class StatusPackageController extends Controller
 
 
     // Register new status of package
-    private function new_status($package, $data_status)
+    private function new_status($package, $data_status, $shipment)
     {
         $register = Package::findOrFail($package);
 
-        $status = [
+        if($shipment != null)
+        {
+            $status = [
 
-            'status' => $data_status,
-        ];
+                'status'      => $data_status,
+
+                'shipment_id' => $shipment,
+            ];
+        }
+        else
+        {
+            $status = [
+
+                'status' => $data_status,
+            ];
+        }
 
         $register->update($status);
 
@@ -235,25 +196,4 @@ class StatusPackageController extends Controller
         ]);
     }
 
-    private function new_status_shipment($package, $data_status, $shipment)
-    {
-        $register = Package::findOrFail($package);
-
-        $status = [
-
-            'status'      => $data_status,
-
-            'shipment_id' => $shipment,
-
-        ];
-
-        $register->update($status);
-
-        ChangeStatus::create([
-
-            'package_id' => $package,
-
-            'status'     => $register->status
-        ]);
-    }
 }

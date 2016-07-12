@@ -38,8 +38,10 @@
         $(document).ready(function(){
             $('.bxslider').bxSlider({
                 auto:true,
-                pause: 2000,
-                slideWidth:1600
+                pause: 5000,
+                slideWidth:1600,
+                adaptiveHeight: true,
+
             });
         });
 

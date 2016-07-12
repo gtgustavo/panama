@@ -4,8 +4,9 @@
         /* demo slider styles */
         .slick-slide h1 {
             background: #FFF;
-            border: 5px solid #dc820d;
+            border: 2px solid #404040;
             height: 200px;
+            width: 200px;
             line-height: 190px;
             margin: 5px;
             text-align: center;
@@ -33,25 +34,51 @@
 
         <div class="slick-slide">
             <h1>
-                <img src="/../assets/img/slider/mini/rotador1.jpg" width="320" height="190"/>
+                <img src="/../assets/img/slider/mini/rotador1.jpg"/>
             </h1>
         </div>
 
         <div class="slick-slide">
             <h1>
-                <img src="/../assets/img/slider/mini/rotador2.jpg" width="320" height="190"/>
+                <img src="/../assets/img/slider/mini/rotador2.jpg"/>
             </h1>
         </div>
 
         <div class="slick-slide">
             <h1>
-                <img src="/../assets/img/slider/mini/rotador3.jpg" width="320" height="190"/>
+                <img src="/../assets/img/slider/mini/rotador3.jpg"/>
             </h1>
         </div>
 
         <div class="slick-slide">
             <h1>
-                <img src="/../assets/img/slider/mini/rotador4.jpg" width="320" height="190"/>
+                <img src="/../assets/img/slider/mini/rotador4.jpg"/>
+            </h1>
+        </div>
+
+        <!-- repeat -->
+
+        <div class="slick-slide">
+            <h1>
+                <img src="/../assets/img/slider/mini/rotador1.jpg"/>
+            </h1>
+        </div>
+
+        <div class="slick-slide">
+            <h1>
+                <img src="/../assets/img/slider/mini/rotador2.jpg"/>
+            </h1>
+        </div>
+
+        <div class="slick-slide">
+            <h1>
+                <img src="/../assets/img/slider/mini/rotador3.jpg"/>
+            </h1>
+        </div>
+
+        <div class="slick-slide">
+            <h1>
+                <img src="/../assets/img/slider/mini/rotador4.jpg"/>
             </h1>
         </div>
 
