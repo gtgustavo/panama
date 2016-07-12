@@ -100,9 +100,19 @@ return [
 
     'shipment' => [
 
-        'create'      => 'Guía de embarque: :shipment, creado satisfactoriamente',
+        'create'       => 'Guía de embarque: :shipment, creado satisfactoriamente',
 
-        'exist'       => 'No puede crear una nueva guía de embarque hasta cerrar la existente',
+        'exist'        => 'No puede crear una nueva guía de embarque hasta cerrar la existente',
+
+        'close'        => 'Guía de embarque: :shipment, ha zarpado al país destino satisfactoriamente',
+
+        'not_package'  => 'No puede cerrar una guía de embarque que no posee paquetes',
+
+        'not_close'    => 'No puede cerrar esta guía de embarque: :shipment',
+
+        'finish'       => 'Guía de embarque: :shipment, recibida en país destino satisfactoriamente',
+
+        'not_received' => 'No puede recibir esta guía de embarque: :shipment',
 
     ],
 

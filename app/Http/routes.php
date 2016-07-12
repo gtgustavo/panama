@@ -231,15 +231,15 @@ Route::group(['prefix' => 'package', 'middleware' => ['web', 'auth', 'admin'], '
 // Routes Shipment
 Route::group(['prefix' => 'shipment', 'middleware' => ['web', 'auth', 'admin'], 'namespace' => 'System\Package'], function(){
 
-    Route::get('/',           ['uses' => 'ShipmentController@index',  'as' => 'shipment_home']);
+    Route::get('/',             ['uses' => 'ShipmentController@index',   'as' => 'shipment_home']);
 
-    Route::get('create',      ['uses' => 'ShipmentController@create', 'as' => 'shipment_create']);
+    Route::get('create',        ['uses' => 'ShipmentController@create',  'as' => 'shipment_create']);
 
-    Route::post('create',     ['uses' => 'ShipmentController@store',  'as' => 'shipment_create']);
+    Route::post('create',       ['uses' => 'ShipmentController@store',   'as' => 'shipment_create']);
 
-    Route::get('{id}/edit',   ['uses' => 'ShipmentController@edit',   'as' => 'shipment_edit']);
+    Route::get('{id}/close',    ['uses' => 'ShipmentController@edit',    'as' => 'shipment_close']);
 
-    Route::put('{id}/update', ['uses' => 'ShipmentController@update', 'as' => 'shipment_update']);
+    Route::get('{id}/received', ['uses' => 'ShipmentController@destroy', 'as' => 'shipment_received']);
 });
 
 // PANEL

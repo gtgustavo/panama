@@ -46,7 +46,13 @@
 
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a href="{{ route('shipment_edit',   [$shipment->id]) }}">{!! trans('front.form.actions.edit') !!}</a>
+                                            <a href="{{ route('shipment_close',    [$shipment->id]) }}">{!! trans('front.form.actions.close') !!}</a>
+                                        </li>
+
+                                        <li class="divider"></li>
+
+                                        <li>
+                                            <a href="{{ route('shipment_received', [$shipment->id]) }}">{!! trans('front.form.actions.received') !!}</a>
                                         </li>
                                     </ul>
 

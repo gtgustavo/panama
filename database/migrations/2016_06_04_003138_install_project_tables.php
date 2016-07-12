@@ -97,6 +97,7 @@ class InstallProjectTables extends Migration
                                         'ENVIADO A CENTRO DE EMBARQUE',
                                         'RECIBIDO EN CENTRO DE EMBARQUE',
                                         'EMBARCADO',
+                                        'EMBARQUE EN TRANSITO',
                                         'RECIBIDO EN CENTRO PAÍS DESTINO',
                                         'ENTREGADO'
                                     ])->default('PRECHEQUEADO');
@@ -125,6 +126,7 @@ class InstallProjectTables extends Migration
                                         'ENVIADO A CENTRO DE EMBARQUE',
                                         'RECIBIDO EN CENTRO DE EMBARQUE',
                                         'EMBARCADO',
+                                        'EMBARQUE EN TRANSITO',
                                         'RECIBIDO EN CENTRO PAÍS DESTINO',
                                         'ENTREGADO'
                                     ])->default('PRECHEQUEADO');
@@ -140,7 +142,7 @@ class InstallProjectTables extends Migration
             $table->string('wb', 20)->unique();
             $table->string('magaya', 50);
             $table->timestamp('departure_date');
-            $table->enum('status', ['ABIERTO', 'CERRADO'])->default('ABIERTO');
+            $table->enum('status', ['ABIERTO', 'EMBARCADO', 'CERRADO'])->default('ABIERTO');
             $table->timestamps();
         });
     }

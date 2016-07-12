@@ -7,11 +7,14 @@ use App\Helpers\System\Access;
 use App\Http\Requests\System\ShipmentRequest;
 use App\Models\Credentials\User;
 use App\Models\Support\Support;
+use App\Models\System\ChangeStatus;
+use App\Models\System\Package;
 use App\Models\System\Shipment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Styde\Html\Facades\Alert;
 
 class ShipmentController extends Controller
@@ -66,11 +69,9 @@ class ShipmentController extends Controller
     {
         if(Access::allow('create-shipment'))
         {
-            $shipment = Shipment::where('status', 'ABIERTO')->get();
+            $shipment = Shipment::where('status', 'ABIERTO')->count();
 
-            $cant = count($shipment);
-
-            if($cant == 0)
+            if($shipment == 0)
             {
                 $wb_code = PackageHelper::make_wb_code();
 
@@ -103,7 +104,38 @@ class ShipmentController extends Controller
     {
         if(Access::allow('edit-shipment'))
         {
-            //
+            $shipment = Shipment::findOrFail($id);
+
+            $new_status_package = 'EMBARQUE EN TRANSITO';
+
+            if($shipment->status == 'ABIERTO')
+            {
+                $packages = Package::status_shipment('EMBARCADO', $shipment->id);
+
+                if(count($packages) > 0)
+                {
+                    foreach($packages as $package)
+                    {
+                        $this->new_status($package->id, $new_status_package, false);
+                    }
+
+                    $shipment->status = 'EMBARCADO';
+
+                    $shipment->save();
+
+                    Alert::message(trans('messages.shipment.close', ['shipment' => $shipment->wb]), 'info');
+                }
+                else
+                {
+                    Alert::message(trans('messages.shipment.not_package'), 'warning');
+                }
+            }
+            else
+            {
+                Alert::message(trans('messages.shipment.not_close', ['shipment' => $shipment->wb]), 'warning');
+            }
+
+            return $this->redirectDefault();
         }
 
         return Access::redirectDefault();
@@ -134,12 +166,67 @@ class ShipmentController extends Controller
      */
     public function destroy($id)
     {
-        if(Access::allow('delete-shipment'))
+        if(Access::allow('received-shipment'))
         {
-            //
+            $shipment = Shipment::findOrFail($id);
+
+            $new_status_package = 'RECIBIDO EN CENTRO PAÍS DESTINO';
+
+            if($shipment->status == 'EMBARCADO')
+            {
+                $packages = Package::status_shipment('EMBARQUE EN TRANSITO', $shipment->id);
+
+                foreach($packages as $package)
+                {
+                    $this->new_status($package->id, $new_status_package, true);
+                }
+
+                $shipment->status = 'CERRADO';
+
+                $shipment->save();
+
+                Alert::message(trans('messages.shipment.finish', ['shipment' => $shipment->wb]), 'info');
+            }
+            else
+            {
+                Alert::message(trans('messages.shipment.not_received', ['shipment' => $shipment->wb]), 'warning');
+            }
+
+            return $this->redirectDefault();
         }
 
         return Access::redirectDefault();
+    }
+
+    // Register new status of package
+    private function new_status($package, $data_status, $reception)
+    {
+        $register = Package::findOrFail($package);
+
+        if($reception)
+        {
+            $status = [
+
+                'reception_id' => Auth::user()->reception_id,
+
+                'status'       => $data_status,
+            ];
+        }
+        else
+        {
+            $status = [
+                'status' => $data_status,
+            ];
+        }
+
+        $register->update($status);
+
+        ChangeStatus::create([
+
+            'package_id' => $package,
+
+            'status'     => $register->status
+        ]);
     }
 
     /**

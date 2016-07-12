@@ -47,6 +47,13 @@ class Package extends Model
             ->get();
     }
 
+    public static function status_shipment($status, $shipment)
+    {
+        return Package::where('status', $status)
+            ->where('shipment_id', $shipment)
+            ->get();
+    }
+
     public function scopeStatus($query, $search)
     {
         if ((trim($search) != ""))

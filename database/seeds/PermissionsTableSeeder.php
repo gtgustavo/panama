@@ -20,6 +20,7 @@ class PermissionsTableSeeder extends Seeder
         $this->role_client();
         $this->role_warehouse();
         $this->role_shipment();
+        $this->role_received();
         $this->add_roles();
     }
 
@@ -450,10 +451,29 @@ class PermissionsTableSeeder extends Seeder
         ));
     }
 
+    // Received
+    private function role_received()
+    {
+        // Shipment
+        DB::table('role')->insert(array(
+            'name'         => 'received-shipment',
+            'display_name' => 'Recibir Embarques',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+
+        DB::table('role')->insert(array(
+            'name'         => 'deliver-package',
+            'display_name' => 'Entregar Paquetes',
+            'created_at'   => Carbon::now(),
+            'updated_at'   => Carbon::now(),
+        ));
+    }
+
     private function add_roles()
     {
         // SUPER ADMIN
-        for($i=3; $i < 51; $i++)
+        for($i=3; $i < 53; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,
@@ -464,7 +484,7 @@ class PermissionsTableSeeder extends Seeder
         }
 
         // ADMIN
-        for($i=7; $i < 51; $i++)
+        for($i=7; $i < 53; $i++)
         {
             DB::table('profile_role')->insert(array(
                 'role_id'    => $i,

@@ -9,8 +9,9 @@ return [
         'ENVIADO A CENTRO DE EMBARQUE'    => 'ENVIADO A CENTRO DE EMBARQUE',
         'RECIBIDO EN CENTRO DE EMBARQUE'  => 'RECIBIDO EN CENTRO DE EMBARQUE',
         'EMBARCADO'                       => 'EMBARCADO',
+        'EMBARQUE EN TRANSITO'            => 'EMBARQUE EN TRANSITO',
         'RECIBIDO EN CENTRO PAÍS DESTINO' => 'RECIBIDO EN CENTRO PAÍS DESTINO',
-        'ENTREGADO'                       => 'ENTREGADO',
+        'ENTREGADO'                       => 'ENTREGADO A RECEPTOR',
     ],
 
     'status_package_client' => [
@@ -22,8 +23,9 @@ return [
         'ENVIADO A CENTRO DE EMBARQUE'    => 'ENVIADO A CENTRO DE EMBARQUE',
         'RECIBIDO EN CENTRO DE EMBARQUE'  => 'RECIBIDO EN CENTRO DE EMBARQUE',
         'EMBARCADO'                       => 'EMBARCADO',
+        'EMBARQUE EN TRANSITO'            => 'EMBARQUE EN TRANSITO',
         'RECIBIDO EN CENTRO PAÍS DESTINO' => 'RECIBIDO EN CENTRO PAÍS DESTINO',
-        'ENTREGADO'                       => 'ENTREGADO',
+        'ENTREGADO'                       => 'ENTREGADO A RECEPTOR',
     ],
 
     'change_status_center' => [
@@ -31,6 +33,7 @@ return [
         ''                                => 'ESTATUS DE PAQUETES',
         'ANULADO'                         => 'ANULAR',
         'ENVIADO A CENTRO DE EMBARQUE'    => 'ENVIADO A CENTRO DE EMBARQUE',
+        'ENTREGADO'                       => 'ENTREGADO A RECEPTOR',
     ],
 
     'change_status_shipment' => [
@@ -43,8 +46,7 @@ return [
     'change_package_received' => [
 
         ''                                => 'ESTATUS DE PAQUETES',
-        'RECIBIDO EN CENTRO PAÍS DESTINO' => 'RECIBIDO EN PAÍS DESTINO',
-        'ENTREGADO'                       => 'ENTREGADO',
+        'ENTREGADO'                       => 'ENTREGADO A RECEPTOR',
     ],
 
     'shipping_type' => [

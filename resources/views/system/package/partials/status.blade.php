@@ -10,8 +10,6 @@
 
     @elseif(Auth::user()->profile_id == 6) <!-- empleado pais destino -->
 
-        {!! Form::select('change_status', config('options.change_package_received'), null, ['class' => 'form-control', 'id' => 'change_status']) !!}
-
     @else
 
         {!! Form::select('change_status', config('options.status_package_client'), null, ['class' => 'form-control', 'id' => 'change_status']) !!}
@@ -20,5 +18,8 @@
 
 </div>
 
+@if(Auth::user()->profile_id != 6)
+
 <button type="button" class="btn orange btn-status" > {!! trans('front.form.button.status') !!} </button>
 
+@endif

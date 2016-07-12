@@ -107,6 +107,8 @@ class AdministratorController extends Controller
 
                 'email'        => $collection['email'],
 
+                'password'     => bcrypt($password),
+
                 'people_id'    => $people->id,
 
                 'profile_id'   => $request->input('profile_id'),

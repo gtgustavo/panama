@@ -597,6 +597,8 @@ return [
             'status'     => 'Cambiar',
 
             'received'   => 'Recibir',
+
+            'close'      => 'Cerrar',
         ],
 
         /*
