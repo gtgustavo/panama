@@ -77,23 +77,25 @@ return [
 
     'package' => [
 
-        'create'      => 'Paquete: :package, creado satisfactoriamente',
+        'create'       => 'Paquete: :package, creado satisfactoriamente',
 
-        'update'      => 'Paquete: :package, actualizado satisfactoriamente',
+        'update'       => 'Paquete: :package, actualizado satisfactoriamente',
 
-        'delete'      => 'Paquete: :package, eliminado satisfactoriamente',
+        'delete'       => 'Paquete: :package, eliminado satisfactoriamente',
 
-        'annular'     => 'Paquete: :package, anulado satisfactoriamente',
+        'annular'      => 'Paquete: :package, anulado satisfactoriamente',
 
-        'not_action'  => 'No puede ejecutar la opción seleccionada sobre el paquete: :package, después de pasar el estatus a: enviado a centro de embarque',
+        'not_action'   => 'No puede ejecutar la opción seleccionada sobre el paquete: :package, después de pasar el estatus a: enviado a centro de embarque',
 
-        'null'        => 'Paquete: :package, se encuentra anulado y no puede ejecutar la opción seleccionada',
+        'null'         => 'Paquete: :package, se encuentra anulado y no puede ejecutar la opción seleccionada',
 
-        'error_dni'   => 'El DNI: :dni, no se encuentra en nuestros registros.',
+        'error_dni'    => 'El DNI: :dni, no se encuentra en nuestros registros.',
 
-        'success_dni' => ':client',
+        'success_dni'  => ':client',
 
-        'change'      => 'Estatus cambiado a: :status',
+        'change'       => 'Estatus cambiado a: :status',
+
+        'web_check_in' => 'Paquete: :package, recibido satisfactoriamente',
     ],
 
     'shipment' => [

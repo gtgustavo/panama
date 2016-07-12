@@ -72,10 +72,12 @@
 
                                 <div class="btn-group text-right">
 
-                                    <button type="button" class="btn orange br2 btn-xs fs12 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        {!! trans('front.form.actions.title') !!}
-                                        <span class="caret ml5"></span>
-                                    </button>
+                                    @if($web == false)
+                                        <button type="button" class="btn orange br2 btn-xs fs12 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            {!! trans('front.form.actions.title') !!}
+                                            <span class="caret ml5"></span>
+                                        </button>
+                                    @endif
 
                                     <ul class="dropdown-menu" role="menu">
 
@@ -89,6 +91,8 @@
                                             <li>
                                                 <a href="{{ route('my_package_edit', [$package->id]) }}"> {!! trans('front.form.actions.edit') !!}</a>
                                             </li>
+
+                                            <li class="divider"></li>
 
                                             <li>
                                                 <a href="{{ route('my_package_delete', [$package->id]) }}" onclick="return confirm('{!! trans('messages.confirm.annular_package') !!}')"> {!! trans('front.form.actions.annular') !!}</a>

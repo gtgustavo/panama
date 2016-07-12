@@ -107,8 +107,10 @@ class DashboardController extends Controller
 
     public function client(Request $request)
     {
+        $web = false;
+
         $packages = Package::FilterAndPaginateStatusClient($request->get('status'), Auth::user()->id);
 
-        return view('dashboard.client.index', compact('packages'));
+        return view('dashboard.client.index', compact('packages', 'web'));
     }
 }

@@ -141,7 +141,20 @@ class PackageController extends Controller
         {
             $package = Package::findOrFail($id);
 
-            dd($package);
+            $package->reception_id = Auth::user()->reception_id;
+
+            $package->status = 'ENTREGADO EN CENTRO';
+
+            $package->save();
+
+            ChangeStatus::create([
+                'package_id' => $package->id,
+                'status'     => $package->status
+            ]);
+
+            Alert::message(trans('messages.package.web_check_in', ['package' => $package->wr]), 'success');
+
+            return $this->redirectDefault();
         }
 
         return Access::redirectDefault();
