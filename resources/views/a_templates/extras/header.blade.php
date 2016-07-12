@@ -2,7 +2,7 @@
 
     <div class="navbar-branding">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <b> {!! trans('front.head.title') !!} </b>
+            <img src="/../assets/img/logos/logo_mini.png" class="w30">  <strong> {!! trans('front.head.title') !!} </strong>
         </a>
         <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
     </div>
