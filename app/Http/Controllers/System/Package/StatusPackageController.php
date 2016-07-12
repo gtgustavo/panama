@@ -74,6 +74,13 @@ class StatusPackageController extends Controller
                     $this->new_status($register->id, $data_status);
                 }
             }
+            elseif($data_status == 'ENTREGADO')
+            {
+                if($register->status == 'RECIBIDO EN CENTRO PAÍS DESTINO')
+                {
+                    $this->new_status($register->id, $data_status);
+                }
+            }
         }
 
         $message = trans('messages.package.change', ['status' => $data_status]);
