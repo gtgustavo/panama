@@ -121,7 +121,7 @@ class PackageController extends Controller
 
             $shipment          = Package::where('status', 'EMBARCADO')->count();
 
-            $received          = Package::where('status', 'RECIBIDO EN CENTRO PAÍS DESTINO')->count();
+            $received          = Package::where('status', 'ENTREGADO')->count();
 
             return view('system.package.web_check_in', compact('web', 'packages', 'wed_check_in', 'reception_center', 'sent_shipping', 'received_shipping', 'shipment', 'received'));
         }

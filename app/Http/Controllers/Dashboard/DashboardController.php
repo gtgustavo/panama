@@ -100,7 +100,7 @@ class DashboardController extends Controller
 
         $shipment          = Package::where('status', 'EMBARCADO')->count();
 
-        $received          = Package::where('status', 'RECIBIDO EN CENTRO PAÍS DESTINO')->count();
+        $received          = Package::where('status', 'ENTREGADO')->count();
 
         return view('dashboard.admin.index', compact('web', 'packages', 'wed_check_in', 'reception_center', 'sent_shipping', 'received_shipping', 'shipment', 'received'));
     }

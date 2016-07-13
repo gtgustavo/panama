@@ -503,7 +503,7 @@ return [
 
                 'shipment'             => 'EMBARCADO A PAÍS DESTINO',
 
-                'received_destination' => 'RECIBIDO EN PAÍS DESTINO',
+                'received_destination' => 'ENTREGADO AL RECEPTOR',
             ],
 
             'table' => [

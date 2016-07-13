@@ -130,15 +130,32 @@ class StatusPackageController extends Controller
         {
             case 'EMBARCADO':
 
-                $shipment = Shipment::where('status', 'ABIERTO')->first();
+                $shipment = Shipment::where('status', 'ABIERTO')->get();
 
                 $cant = count($shipment);
 
                 if($cant > 0)
                 {
+                    foreach($shipment as $data)
+                    {
+                        $id_s = $data->id;
+                    }
+
                     foreach($packages as $package)
                     {
-                        $this->new_status($package->id, $new_status, $shipment->id);
+                        $register = Package::findOrFail($package);
+
+                        $status = [
+                            'status' => $new_status,
+                            'shipment_id' => $id_s,
+                        ];
+
+                        $register->update($status);
+
+                        ChangeStatus::create([
+                            'package_id' => $package,
+                            'status'     => $register->status
+                        ]);
                     }
 
                     $message = trans('messages.package.change', ['status' => $new_status]);
@@ -154,7 +171,18 @@ class StatusPackageController extends Controller
 
                 foreach($packages as $package)
                 {
-                    $this->new_status($package->id, $new_status, null);
+                    $register = Package::findOrFail($package);
+
+                    $status = [
+                        'status' => $new_status,
+                    ];
+
+                    $register->update($status);
+
+                    ChangeStatus::create([
+                        'package_id' => $package,
+                        'status'     => $register->status
+                    ]);
                 }
 
                 $message = trans('messages.package.change', ['status' => $new_status]);
@@ -162,7 +190,6 @@ class StatusPackageController extends Controller
 
         return $message;
     }
-
 
     // Register new status of package
     private function new_status($package, $data_status, $shipment)
